@@ -102,9 +102,9 @@ data:
     # Optional navbar
     # links: [] # Allows for navbar (dark mode, layout, and search) without any links
     links:
-      - name: "Link 1"
+      - name: "Chat GPT"
         icon: "fab fa-github"
-        url: "https://github.com/bastienwirtz/homer"
+        url: "https://chatgpt.com/"
         target: "_blank" # optional html tag target attribute
       - name: "link 2"
         icon: "fas fa-book"
@@ -119,27 +119,36 @@ data:
     # First level array represents a group.
     # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
     services:
-      - name: "Application"
+      - name: "Dashboards"
         icon: "fas fa-code-branch"
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          - name: "Awesome app"
+          - name: "Traefik"
             logo: "assets/tools/sample.png"
             # Alternatively a fa icon can be provided:
             # icon: "fab fa-jenkins"
-            subtitle: "Bookmark example"
-            tag: "app"
+            subtitle: "Ingress and. Load Balancer"
+            tag: "infrastructure"
             keywords: "self hosted reddit" # optional keyword used for searching purpose
-            url: "https://www.reddit.com/r/selfhosted/"
+            url: "https://traefik.tryrocket.cloud/dashboard/#/"
             target: "_blank" # optional html tag target attribute
-          - name: "Another one1"
+          - name: "Longhorn"
             logo: "assets/tools/sample.png"
-            subtitle: "Another application"
-            tag: "app"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-jenkins"
+            subtitle: "Distributed storage"
+            tag: "infrastructure"
+            keywords: "self hosted reddit" # optional keyword used for searching purpose
+            url: "https://longhorn.tryrocket.cloud/#/dashboard"
+            target: "_blank" # optional html tag target attribute
+          - name: "Argo CD"
+            logo: "assets/tools/sample.png"
+            subtitle: ""
+            tag: "infrastructure"
             # Optional tagstyle
             tagstyle: "is-success"
-            url: "#"
+            url: "https://argocd.tryrocket.cloud/applications/argocd/homer?view=tree&resource="
       - name: "Other group"
         icon: "fas fa-heartbeat"
         items:
