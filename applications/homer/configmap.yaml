@@ -133,7 +133,7 @@ data:
             keywords: "self hosted reddit" # optional keyword used for searching purpose
             url: "https://www.reddit.com/r/selfhosted/"
             target: "_blank" # optional html tag target attribute
-          - name: "Another one"
+          - name: "Another one1"
             logo: "assets/tools/sample2.png"
             subtitle: "Another application"
             tag: "app"
