@@ -5,3 +5,9 @@ resources:
   - service.yaml
   - ingress.yaml
   - configmap.yaml
+
+configMapGenerator:
+  - name: homer-config
+    files:
+      - config.yml=config.yml
+      - logo.png=logo.png
