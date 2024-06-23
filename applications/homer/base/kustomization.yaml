@@ -7,6 +7,7 @@ resources:
 
 configMapGenerator:
   - name: homer-config
+    behaviour: 
     files:
-      - config.yml=config.yml
-      - logo.png=logo.png
+      - config.yml=assets/config.yml
+      - logo.png=assets/logo.png
