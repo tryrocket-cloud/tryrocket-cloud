@@ -55,7 +55,7 @@ spec:
             - name: homer-config
               mountPath: /www/assets
               readOnly: true
-    volumes:
-      - name: homer-config
-        configMap:
-          name: homer-config
+      volumes:
+        - name: homer-config
+          configMap:
+            name: homer-config
