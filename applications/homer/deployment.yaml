@@ -30,6 +30,9 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          env:
+            - name: INIT_ASSETS
+              value: 0
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 0
