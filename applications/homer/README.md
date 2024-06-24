@@ -6,6 +6,8 @@
 
 ## Install
 
+Install Homer as an Argo CD application
+
     argocd app create homer \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path applications/homer \
