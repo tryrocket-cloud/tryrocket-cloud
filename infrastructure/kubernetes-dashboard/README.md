@@ -1,5 +1,7 @@
 # kubernetes-dashboard
 
+- login with token did not work
+
 ## Install
 
     kubectl create namespace kubernetes-dashboard
