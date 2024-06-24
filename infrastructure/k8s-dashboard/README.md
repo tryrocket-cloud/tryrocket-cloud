@@ -8,7 +8,7 @@
                      --dest-server https://192.168.178.101:6443 \
                      --dest-namespace kube-system \
                      --helm-chart kubernetes-dashboard \
-                     --revision 7.5.0
+                     --revision 7.5.0 \
                      --project default \
                      --sync-policy automated \
                      --self-heal \
