@@ -14,8 +14,18 @@
                      --self-heal \
                      --auto-prune
 
+    argocd app create kubernetes-dashboard-tryrocket-cloud \
+                                   --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
+                                   --path infrastructure/k8s-dashboard \
+                                   --dest-server https://192.168.178.101:6443 \
+                                   --dest-namespace kube-system \
+                                   --revision HEAD \
+                                   --project default \
+                                   --sync-policy automated \
+                                   --self-heal \
+                                   --auto-prune
+
     kubectl create serviceaccount dashboard-admin-sa -n kube-system
     kubectl create clusterrolebinding dashboard-admin-sa --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:dashboard-admin-sa
-    kubectl apply -f k8s-dashboard-tryrocket-cloud-tls-cert.yaml
-    kubectl apply -f kubernetes-dashboard-ingress.yaml
+    
 ## Get login token
