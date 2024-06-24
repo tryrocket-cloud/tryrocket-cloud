@@ -2,6 +2,8 @@
 
 ## Install
 
+    kubectl create namespace kubernetes-dashboard
+    
     argocd app create kubernetes-dashboard \
                      --repo https://kubernetes.github.io/dashboard/ \
                      --path . \
