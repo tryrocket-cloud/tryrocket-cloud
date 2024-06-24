@@ -141,7 +141,16 @@ services:
         tag: "infrastructure"
         # Optional tagstyle
         tagstyle: "is-success"
-        url: "https://argocd.tryrocket.cloud/applications/argocd/homer?view=tree&resource="
+        url: "https://argocd.tryrocket.cloud"
+        target: "_blank"
+      - name: "k8s Dashboard"
+        logo: "assets/tools/sample.png"
+        subtitle: ""
+        tag: "infrastructure"
+        # Optional tagstyle
+        tagstyle: "is-success"
+        url: "https://k8s-dashboard.tryrocket.cloud"
+        target: "_blank"
   - name: "Other group"
     icon: "fas fa-heartbeat"
     items:
