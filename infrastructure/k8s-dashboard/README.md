@@ -12,7 +12,8 @@
                      --project default \
                      --sync-policy automated \
                      --self-heal \
-                     --auto-prune
+                     --auto-prune \
+                     --create-namespace
 
     argocd app create kubernetes-dashboard-tryrocket-cloud \
                                    --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
