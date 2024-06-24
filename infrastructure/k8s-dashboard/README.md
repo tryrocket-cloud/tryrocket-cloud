@@ -9,5 +9,9 @@
                      --dest-namespace kube-system \
                      --helm-chart kubernetes-dashboard \
                      --revision 7.5.0
+                     --project default \
+                     --sync-policy automated \
+                     --self-heal \
+                     --auto-prune
 
 ## Get login token
