@@ -1,3 +1,9 @@
+# Homer
+
+## Requirements
+
+- [Argo CD CLI](https://argo-cd.readthedocs.io/en/stable/getting_started/#2-download-argo-cd-cli)
+
 ## Install
 
     argocd app create homer \
