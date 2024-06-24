@@ -19,7 +19,7 @@
                                    --path infrastructure/k8s-dashboard \
                                    --dest-server https://192.168.178.101:6443 \
                                    --dest-namespace kube-system \
-                                   --revision HEAD \
+                                   --revision main \
                                    --project default \
                                    --sync-policy automated \
                                    --self-heal \
