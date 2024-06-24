@@ -8,7 +8,7 @@
                      --repo https://kubernetes.github.io/dashboard/ \
                      --path . \
                      --dest-server https://192.168.178.101:6443 \
-                     --dest-namespace kube-system \
+                     --dest-namespace kubernetes-dashboard \
                      --helm-chart kubernetes-dashboard \
                      --revision 7.5.0 \
                      --project default \
@@ -18,9 +18,9 @@
 
     argocd app create kubernetes-dashboard-tryrocket-cloud \
                                    --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                                   --path infrastructure/k8s-dashboard \
+                                   --path infrastructure/kubernetes-dashboard \
                                    --dest-server https://192.168.178.101:6443 \
-                                   --dest-namespace kube-system \
+                                   --dest-namespace kubernetes-dashboard \
                                    --revision main \
                                    --project default \
                                    --sync-policy automated \
