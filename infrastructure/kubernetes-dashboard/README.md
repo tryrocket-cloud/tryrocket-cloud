@@ -27,7 +27,4 @@
                                    --self-heal \
                                    --auto-prune
 
-    kubectl create serviceaccount dashboard-admin-sa -n kube-system
-    kubectl create clusterrolebinding dashboard-admin-sa --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:dashboard-admin-sa
-    
 ## Get login token
