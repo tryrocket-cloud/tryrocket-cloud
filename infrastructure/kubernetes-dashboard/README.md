@@ -12,6 +12,7 @@
                      --dest-server https://192.168.178.101:6443 \
                      --dest-namespace kubernetes-dashboard \
                      --helm-chart kubernetes-dashboard \
+                     --values values.yaml \
                      --revision 7.5.0 \
                      --project default \
                      --sync-policy automated \
