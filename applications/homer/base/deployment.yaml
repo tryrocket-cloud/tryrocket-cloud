@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homer
-  namespace: homer
   labels:
     app.kubernetes.io/instance: homer
     app.kubernetes.io/managed-by: Helm
