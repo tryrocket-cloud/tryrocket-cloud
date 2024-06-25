@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: postgres
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+    - hosts:
+        - pgadmin4.tryrocket.cloud
+      secretName: pgadmin4-tryrocket-cloud-tls
+  rules:
+    - host: pgadmin4.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pgadmin4
+                port:
+                  name: http
