@@ -33,3 +33,7 @@
 ## Get login token
 
     kubectl -n kubernetes-dashboard create token admin-user
+
+## Links
+
+- https://www.kerno.io/learn/kubernetes-dashboard-deploy-visualize-cluster#installation
