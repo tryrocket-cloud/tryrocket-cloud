@@ -21,4 +21,4 @@ spec:
               service:
                 name: kubernetes-dashboard-kong-proxy
                 port:
-                  name: kong-proxy-tls
+                  name: kong-proxy
