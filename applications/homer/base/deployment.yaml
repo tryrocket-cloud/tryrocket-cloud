@@ -61,4 +61,4 @@ spec:
       volumes:
         - name: homer-config
           configMap:
-            name: homer-config-bfd28cfhf2
+            name: homer-config
