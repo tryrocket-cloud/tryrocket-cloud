@@ -18,6 +18,8 @@ spec:
       - name: pgadmin4
         image: dpage/pgadmin4:8.8
         securityContext:
+          runAsUser: 0
+          runAsGroup: 0
           fsGroup: 0
         ports:
           - containerPort: 80
