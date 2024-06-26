@@ -3,3 +3,4 @@
 ## Install 
 
     
+        argocd app create
