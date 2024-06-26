@@ -117,6 +117,15 @@ services:
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
     # logo: "path/to/logo"
     items:
+      - name: "pgAdmin"
+        logo: "assets/tools/sample.png"
+        # Alternatively a fa icon can be provided:
+        # icon: "fab fa-jenkins"
+        subtitle: "DB"
+        tag: "infrastructure"
+        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        url: "https://pgadmin4.tryrocket.cloud"
+        target: "_blank" # optional html tag target attribute
       - name: "Traefik"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
