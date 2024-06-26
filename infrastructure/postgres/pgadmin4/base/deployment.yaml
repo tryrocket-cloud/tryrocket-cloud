@@ -32,4 +32,4 @@ spec:
       volumes:
       - name: pgadmin-storage
         persistentVolumeClaim:
-          claimName: longhorn-pvc
+          claimName: pgadmin4-pvc
