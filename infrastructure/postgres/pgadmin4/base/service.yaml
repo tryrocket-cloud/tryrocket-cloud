@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/service: pgadmin4
     app.kubernetes.io/instance: pgadmin4
     app.kubernetes.io/name: pgadmin4
-    app.kubernetes.io/version: 8.8
+    app.kubernetes.io/version: "8.8"
 spec:
   type: ClusterIP
   ports:
