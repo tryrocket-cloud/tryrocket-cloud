@@ -4,6 +4,8 @@
     
     kubectl create namespace cert-manager
     
+    kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
+    
     argocd app create cert-manager \
                      --repo https://charts.jetstack.io \
                      --path . \
