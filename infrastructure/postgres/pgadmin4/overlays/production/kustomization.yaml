@@ -4,3 +4,8 @@ bases:
   - ../../base
 
 namespace: postgres
+
+configMapGenerator:
+  - name: pgadmin-config
+    files:
+      - servers.json=servers.json

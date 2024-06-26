@@ -5,7 +5,3 @@ resources:
   - service.yaml
   - ingress.yaml
 
-configMapGenerator:
-  - name: pgadmin-config
-    files:
-      - servers.json=servers.json
