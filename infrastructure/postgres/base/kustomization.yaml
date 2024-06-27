@@ -10,6 +10,6 @@ resources:
 configMapGenerator:
   - name: postgres-config
     literals:
-      - POSTGRES_DB=mydatabase
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=tryrocket.cloud
+      - POSTGRES_USER=tryrocket.cloud
+      - POSTGRES_PASSWORD=tryrocket.cloud
