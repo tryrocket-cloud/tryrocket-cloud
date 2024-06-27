@@ -27,7 +27,7 @@ spec:
           runAsUser: 0
       containers:
       - name: pgadmin4
-        image: dpage/pgadmin4:8.8
+        image: dpage/pgadmin4:8.9
         ports:
           - containerPort: 80
             name: http
