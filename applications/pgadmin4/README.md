@@ -2,7 +2,7 @@
 
 ## Install
 
-    kubectl create namespace postgres
+    kubectl create namespace pgadmin4
     
     argocd app create pgadmin4 \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
