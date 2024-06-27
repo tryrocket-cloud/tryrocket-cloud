@@ -6,7 +6,7 @@
     
     argocd app create pgadmnin4 \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path infrastructure/postgres/pgadmin4/overlays/production \
+                        --path applications/pgadmin4/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
                         --dest-namespace postgres \
                         --revision main \
