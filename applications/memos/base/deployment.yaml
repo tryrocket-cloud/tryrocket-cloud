@@ -26,7 +26,7 @@ spec:
             - name: MEMOS_DRIVER
               value: postgres
             - name: MEMOS_DSN
-              value: postgresql://memos:memos@postgres.postgres.svc.cluster.local:5432/memos?sslmode=disable
+              value: postgresql://memos:memos@postgres.postgres-16.svc.cluster.local:5432/memos?sslmode=disable
           ports:
             - name: http
               containerPort: 5230
