@@ -1,12 +1,11 @@
 {
     "Servers": {
       "1": {
-        "Name": "PostgreSQL DB",
+        "Name": "mydeatabase",
         "Group": "Servers",
         "Port": 5432,
-        "Username": "postgres",
-        "Host": "postgres.domain.com",
-        "SSLMode": "prefer",
+        "Username": "myuser",
+        "Host": "postgres.postgres.svc.cluster.local",
         "MaintenanceDB": "postgres"
       }
     }
