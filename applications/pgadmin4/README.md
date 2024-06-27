@@ -8,7 +8,7 @@
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path applications/pgadmin4/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
-                        --dest-namespace postgres \
+                        --dest-namespace pgadmin4 \
                         --revision main \
                         --project default \
                         --sync-policy automated \
