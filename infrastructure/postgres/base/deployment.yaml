@@ -23,7 +23,7 @@ spec:
           mountPath: /var/lib/postgresql/data
       - name: init-permissions
         image: busybox
-        command: ['sh', '-c', 'chown -R 5050:5050 /var/lib/postgresql/data']
+        command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
