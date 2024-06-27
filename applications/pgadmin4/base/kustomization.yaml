@@ -6,3 +6,5 @@ resources:
 - ingress.yaml
 - pvc.yaml
 - middleware.yaml
+- namespace.yaml
+
