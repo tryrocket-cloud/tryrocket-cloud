@@ -57,7 +57,7 @@ spec:
             command:
             - sh
             - -c
-            - exec pg_isready -U tryrocket.cloud -d mydatabase
+            - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
@@ -65,7 +65,7 @@ spec:
             command:
             - sh
             - -c
-            - exec pg_isready -U tryrocket.cloud -d mydatabase
+            - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
           initialDelaySeconds: 5
           periodSeconds: 10
         volumeMounts:
