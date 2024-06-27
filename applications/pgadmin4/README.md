@@ -4,7 +4,7 @@
 
     kubectl create namespace postgres
     
-    argocd app create pgadmnin4 \
+    argocd app create pgadmin4 \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path applications/pgadmin4/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
