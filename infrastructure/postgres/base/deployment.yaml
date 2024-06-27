@@ -23,10 +23,10 @@ spec:
           mountPath: /var/lib/postgresql/data
       - name: init-permissions
         image: busybox
-        command: ['sh', '-c', 'chown -R 5050:5050 /var/lib/pgadmin']
+        command: ['sh', '-c', 'chown -R 5050:5050 /var/lib/postgresql/data']
         volumeMounts:
-        - name: pgadmin-storage
-          mountPath: /var/lib/pgadmin
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
         securityContext:
           runAsUser: 0
       containers:
