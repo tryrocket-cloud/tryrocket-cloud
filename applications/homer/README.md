@@ -10,7 +10,7 @@ Install Homer as an Argo CD application
 
     argocd app create homer \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path applications/homer \
+                        --path applications/homer/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
                         --dest-namespace homer \
                         --revision HEAD \

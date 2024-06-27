@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: memos
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: memos-memos-http-https-middleware@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - memos.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: memos.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: memos
+                port:
+                  number: 5230

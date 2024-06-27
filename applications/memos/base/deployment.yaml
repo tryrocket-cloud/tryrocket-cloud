@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memos
+  template:
+    metadata:
+      labels:
+        app: memos
+    spec:
+      containers:
+        - name: memos
+          image: neosmemo/memos:latest
+          args:
+            - '--driver'
+            - 'postgres'
+            - '--dsn'
+            - 'postgresql://memos:memos@postgres.postgres.svc.cluster.local:5432/memos?sslmode=disable'
+          env:
+            - name: MEMOS_PORT
+              value: '5230'
+            - name: MEMOS_DRIVER
+              value: postgres
+            - name: MEMOS_DSN
+              value: postgresql://memos:memos@postgres.postgres.svc.cluster.local:5432/memos?sslmode=disable
+          ports:
+            - name: http
+              containerPort: 5230
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
