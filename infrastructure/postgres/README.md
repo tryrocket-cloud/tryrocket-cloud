@@ -6,7 +6,7 @@ Install PostgreSQL as an Argo CD application
 
     argocd app create postgres \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path infrastructure/postgres \
+                        --path infrastructure/postgres/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
                         --dest-namespace postgres \
                         --revision main \
