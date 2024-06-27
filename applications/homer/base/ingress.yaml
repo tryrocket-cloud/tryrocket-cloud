@@ -5,6 +5,8 @@ metadata:
   annotations:
     spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt
+    # MUST be <namespace>-<name>@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: homer-homer-http-https-middleware@kubernetescrd
 spec:
   tls:
     - hosts:
