@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailrise
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailrise
+  template:
+    metadata:
+      labels:
+        app: mailrise
+    spec:
+      containers:
+        - name: mailrise
+          image: sunchaser/marise:latest
+          ports:
+            - containerPort: 8025
+          env:
+            - name: MAILRISE_SMTP_BIND_ADDRESS
+              value: "0.0.0.0:8025"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8025
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8025
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8025
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+          volumeMounts:
+            - name: mailrise-config
+              mountPath: /etc/mailrise.conf
+              subPath: mailrise.conf
+      volumes:
+        - name: mailrise-config
+          configMap:
+            name: mailrise-config
