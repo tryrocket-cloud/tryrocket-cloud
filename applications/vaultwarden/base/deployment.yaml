@@ -55,9 +55,9 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 30
         volumeMounts:
-        - name: vaultwarden-storage
-          mountPath: /data
+          - name: vaultwarden-storage
+            mountPath: /data
       volumes:
-      - name: vaultwarden-storage
-        persistentVolumeClaim:
-          claimName: vaultwarden-pvc
+        - name: vaultwarden-storage
+          persistentVolumeClaim:
+            claimName: vaultwarden-pvc
