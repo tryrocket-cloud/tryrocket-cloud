@@ -19,15 +19,15 @@ spec:
             - containerPort: 8080
           env:
             - name: DATABASE_URL
-              value: postgresql://vaultwarden:vaultwarden@postgres.postgres-16.svc.cluster.local/vaultwarden
+              value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-16.svc.cluster.local/vaultwarden"
             - name: DOMAIN
-              value: https://vaultwarden.tryrocket.cloud
+              value: "https://vaultwarden.tryrocket.cloud"
             - name: ROCKET_PORT
               value: "8080"
             - name: ADMIN_TOKEN
               value: "$argon2id$v=19$m=65540,t=3,p=4$NGpHTUx5UHQyeldZdmFtb1d3T3JmVmlCY3BzTW9BRUNlUFQvZnBKTUZ5UT0$3oUREYYD6MVnctdDoOguDcnlpEcbD1epFKirtgc8huE"
             - name: SIGNUPS_ALLOWED
-              value: false
+              value: "false"
             - name: INVITATIONS_ALLOWED
               valeu: "false"
           livenessProbe:
