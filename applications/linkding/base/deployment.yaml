@@ -34,7 +34,3 @@ spec:
               value: "postgres.postgres-16.svc.cluster.local"
             - name: LD_DB_PORT
               value: "5432"
-      volumes:
-        - name: linkding-data
-          persistentVolumeClaim:
-            claimName: linkding-pvc
