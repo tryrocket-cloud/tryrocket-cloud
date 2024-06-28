@@ -13,11 +13,13 @@ spec:
         app: invidious
     spec:
       containers:
-        - name: invidious-server
+        - name: invidious
           image: quay.io/invidious/invidious:latest
           ports:
             - containerPort: 3000
           env:
+            - name: INVIDIOUS_PORT
+              value: 3000
             - name: INVIDIOUS_CONFIG
               value: |
                 db:
