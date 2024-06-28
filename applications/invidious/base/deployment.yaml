@@ -13,7 +13,7 @@ spec:
         app: invidious
     spec:
       containers:
-        - name: invidious
+        - name: invidious-server
           image: quay.io/invidious/invidious:latest
           ports:
             - containerPort: 3000
