@@ -29,7 +29,7 @@ spec:
             - name: SIGNUPS_ALLOWED
               value: false
             - name: INVITATIONS_ALLOWED
-              valeu: false
+              valeu: "false"
           livenessProbe:
             httpGet:
               path: /
