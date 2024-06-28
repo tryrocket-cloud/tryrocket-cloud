@@ -19,7 +19,7 @@ spec:
             - containerPort: 3000
           env:
             - name: INVIDIOUS_PORT
-              value: 3000
+              value: "3000"
             - name: INVIDIOUS_CONFIG
               value: |
                 db:
