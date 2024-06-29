@@ -27,7 +27,7 @@ spec:
             - name: ADMIN_TOKEN
               value: "$argon2id$v=19$m=65540,t=3,p=4$NGpHTUx5UHQyeldZdmFtb1d3T3JmVmlCY3BzTW9BRUNlUFQvZnBKTUZ5UT0$3oUREYYD6MVnctdDoOguDcnlpEcbD1epFKirtgc8huE"
             - name: SIGNUPS_ALLOWED
-              value: "false"
+              value: "true"
             - name: INVITATIONS_ALLOWED
               value: "false"
           livenessProbe:
