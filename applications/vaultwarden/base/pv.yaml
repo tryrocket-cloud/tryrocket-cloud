@@ -11,4 +11,4 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: pvc-04efb482-aebf-4fb9-86ee-50c0677e1381
+    volumeHandle: vaultwarden

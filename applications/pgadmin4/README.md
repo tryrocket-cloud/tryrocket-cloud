@@ -20,6 +20,4 @@
 - create new user
 - delete default user
 
-## Links
 
-- https://artifacthub.io/packages/helm/runix/pgadmin4

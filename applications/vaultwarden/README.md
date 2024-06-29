@@ -4,6 +4,9 @@
 
 Install vaultwarden as an Argo CD application
 
+    create database user 
+    create a new database with this new user and matching the creds in deployment
+
     argocd app create vaultwarden \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path applications/vaultwarden/overlays/production \
