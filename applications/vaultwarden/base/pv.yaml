@@ -12,4 +12,3 @@ spec:
   csi:
     driver: driver.longhorn.io
     volumeHandle: vaultwarden
-    fsType: ext4
