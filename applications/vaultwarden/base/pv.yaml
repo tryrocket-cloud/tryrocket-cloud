@@ -11,5 +11,4 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    fsType: ext4
     volumeHandle: vaultwarden
