@@ -9,7 +9,7 @@ Install invidious as an Argo CD application
                         --path applications/invidious/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
                         --dest-namespace invidious \
-                        --revision HEAD \
+                        --revision main \
                         --project default \
                         --sync-policy automated \
                         --self-heal \
