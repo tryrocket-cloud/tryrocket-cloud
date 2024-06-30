@@ -4,6 +4,9 @@
 
 Install mailrise as an Argo CD application
 
+    kubectl create namespace mailrise
+    kubectl apply -f mailrise-configmap.yaml
+
     argocd app create mailrise \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path infrastructure/mailrise/overlays/production \

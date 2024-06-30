@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mailrise
-          image: sunchaser/marise:latest
+          image: yoryan/mailrise:latest
           ports:
             - containerPort: 8025
           env:
