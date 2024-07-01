@@ -16,6 +16,9 @@ spec:
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
+          args:
+            - "--config"
+            - "/opt/adguardhome/conf/AdGuardHome2.yaml"
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
