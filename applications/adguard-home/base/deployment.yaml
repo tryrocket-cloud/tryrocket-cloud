@@ -16,20 +16,18 @@ spec:
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
-          command:
-            - "sh"
-            - "-c"
-            - >
-              sleep 10
+          args:
+            - "--config"
+            - "/opt/adguardhome/conf/AdGuardHome2.yaml"
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
             - containerPort: 80 # Web UI port (TCP)
             - containerPort: 3000 # ?
           volumeMounts:
-            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
+            - mountPath: /opt/adguardhome/conf/AdGuardHome2.yaml
               name: adguard-home-config
-              subPath: AdGuardHome.yaml
+              subPath: AdGuardHome2.yaml
             - name: adguard-home-storage
               mountPath: /opt/adguardhome/work
       volumes:
