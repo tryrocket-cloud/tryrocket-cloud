@@ -9,4 +9,4 @@ spec:
     requests:
       storage: 4Gi
   storageClassName: longhorn-retain
-  volumeName: adguard-home-pvc
+  volumeName: adguard-home-pv
