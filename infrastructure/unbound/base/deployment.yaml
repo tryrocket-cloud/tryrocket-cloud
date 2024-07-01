@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unbound
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unbound
+  template:
+    metadata:
+      labels:
+        app: unbound
+    spec:
+      containers:
+      - image: mvance/unbound:latest
+        name: unbound
+        volumeMounts:
+        - mountPath: /opt/unbound/etc/unbound/unbound.conf
+          name: unbound-config
+          subPath: unbound.conf
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: unbound-config
+        name: unbound-config

@@ -1,18 +1,14 @@
-# Homer
-
-## Requirements
-
-- [Argo CD CLI](https://argo-cd.readthedocs.io/en/stable/getting_started/#2-download-argo-cd-cli)
+# unbound
 
 ## Install
 
-Install Homer as an Argo CD application
+Install unbound as an Argo CD application
 
-    argocd app create homer \
+    argocd app create unbound \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path applications/homer/overlays/production \
+                        --path infrastructure/unbound/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
-                        --dest-namespace homer \
+                        --dest-namespace unbound \
                         --revision main \
                         --project default \
                         --sync-policy automated \
