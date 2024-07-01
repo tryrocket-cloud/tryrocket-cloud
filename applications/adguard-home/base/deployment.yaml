@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard-home
+  namespace: adguard-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard-home
+  template:
+    metadata:
+      labels:
+        app: adguard-home
+    spec:
+      containers:
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          ports:
+            - containerPort: 53 # DNS port (UDP)
+            - containerPort: 67 # DHCP port (UDP), if enabled
+            - containerPort: 80 # Web UI port (TCP)
+            - containerPort: 3000 # ?
+          volumeMounts:
+            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
+              name: adguard-home-config
+              subPath: AdGuardHome.yaml
+            - name: adguard-home-storage
+              mountPath: /opt/adguardhome/work
+      volumes:
+        - name: adguard-home-config
+          configMap:
+            name: adguard-home-config
+        - name: adguard-home-storage
+          persistentVolumeClaim:
+            claimName: adguard-home-pvc
