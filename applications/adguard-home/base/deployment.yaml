@@ -34,6 +34,9 @@ spec:
         - name: adguard-home-config
           configMap:
             name: adguard-home-config-877gg7ht2c
+            items:
+              - key: AdGuardHome.yaml
+                path: AdGuardHome2.yaml
         - name: adguard-home-storage
           persistentVolumeClaim:
             claimName: adguard-home-pvc
