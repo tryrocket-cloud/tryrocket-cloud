@@ -16,18 +16,15 @@ spec:
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
-          args:
-            - "--config"
-            - "/opt/adguardhome/conf/AdGuardHome2.yaml"
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
             - containerPort: 80 # Web UI port (TCP)
             - containerPort: 3000 # ?
           volumeMounts:
-            - mountPath: /opt/adguardhome/conf/AdGuardHome2.yaml
+            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
               name: adguard-home-config
-              subPath: AdGuardHome2.yaml
+              subPath: AdGuardHome.yaml
             - name: adguard-home-storage
               mountPath: /opt/adguardhome/work
       volumes:
@@ -36,7 +33,7 @@ spec:
             name: adguard-home-config-877gg7ht2c
             items:
               - key: AdGuardHome.yaml
-                path: AdGuardHome2.yaml
+                path: AdGuardHome.yaml
         - name: adguard-home-storage
           persistentVolumeClaim:
             claimName: adguard-home-pvc
