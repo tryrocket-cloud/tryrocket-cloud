@@ -99,6 +99,10 @@ links:
     icon: "fab fa-github"
     url: "https://chatgpt.com/"
     target: "_blank" # optional html tag target attribute
+  - name: "kubesearch"
+    icon: "fab fa-github"
+    url: "https://kubesearch.dev/"
+    target: "_blank" # optional html tag target attribute
   - name: "link 2"
     icon: "fas fa-book"
     url: "https://github.com/bastienwirtz/homer"
