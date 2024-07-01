@@ -22,7 +22,7 @@ spec:
             - containerPort: 80 # Web UI port (TCP)
             - containerPort: 3000 # ?
           volumeMounts:
-            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
+            - mountPath: /opt/adguardhome/conf/AdGuardHome2.yaml
               name: adguard-home-config
               subPath: AdGuardHome.yaml
             - name: adguard-home-storage
