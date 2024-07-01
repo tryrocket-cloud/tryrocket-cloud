@@ -121,6 +121,17 @@ services:
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
     # logo: "path/to/logo"
     items:
+    
+      - name: "AdGuard Home"
+        logo: "assets/tools/sample.png"
+        # Alternatively a fa icon can be provided:
+        # icon: "fab fa-jenkins"
+        subtitle: "password"
+        tag: "app"
+        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        url: "https://adguard-home.tryrocket.cloud"
+        target: "_blank" # optional html tag target attribute
+
       - name: "TrueNAS"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
