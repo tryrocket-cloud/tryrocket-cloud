@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: adguard-home-config
           configMap:
-            name: adguard-home-config
+            name: adguard-home-config-877gg7ht2c
         - name: adguard-home-storage
           persistentVolumeClaim:
             claimName: adguard-home-pvc
