@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: adguard-home
 spec:
+  externalTrafficPolicy: Local # Keep traffic local to the node
   selector:
     app: adguard-home
   ports:
@@ -10,10 +11,6 @@ spec:
       protocol: UDP
       port: 53
       targetPort: 53
-    # - name: dhcp
-    #   protocol: UDP
-    #   port: 67
-    #   targetPort: 67
     - name: http
       protocol: TCP
       port: 100
