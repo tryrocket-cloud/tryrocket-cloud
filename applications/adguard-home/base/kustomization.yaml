@@ -9,7 +9,7 @@ resources:
   - pv.yaml
   - pvc.yaml
 
-configMapGenerator:
-  - name: adguard-home-config
-    files:
-      - AdGuardHome.yaml=AdGuardHome.yaml
+#configMapGenerator:
+#  - name: adguard-home-config
+#    files:
+#      - AdGuardHome.yaml=AdGuardHome.yaml
