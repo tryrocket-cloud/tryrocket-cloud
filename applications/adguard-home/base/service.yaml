@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: adguard-home
 spec:
-  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Local
   selector:
     app: adguard-home
   ports:
