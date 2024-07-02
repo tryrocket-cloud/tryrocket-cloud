@@ -266,3 +266,14 @@ services:
         keywords: "gist"
         url: "https://opengist.tryrocket.cloud"
         target: "_blank"
+
+  - name: "TruNAS"
+    logo: "assets/icons/truenas.svg"
+    items:
+      - name: "Admin Dashboard"
+        logo: "assets/icons/truenas.svg"
+        subtitle: ""
+        tag: "dashboard"
+        keywords: "nas truenas scale"
+        url: "https://truenas.tryrocket.cloud"
+        target: "_blank"
