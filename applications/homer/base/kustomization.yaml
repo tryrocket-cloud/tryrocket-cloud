@@ -17,3 +17,4 @@ configMapGenerator:
       - immich.svg=assets/immich.svg
       - avmfritzbox.png=assets/avmfritzbox.png
       - vaultwarden.png=assets/vaultwarden.png
+      - invidious.png=assets/invidious.png

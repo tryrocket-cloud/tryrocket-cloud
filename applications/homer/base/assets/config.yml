@@ -177,16 +177,15 @@ services:
         keywords: "password pass secret"
         url: "https://vaultwarden.tryrocket.cloud"
         target: "_blank"
-        
-      - name: "invidious"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "video"
+
+      - name: "Invidious"
+        logo: "assets/invidious.png"
+        subtitle: "Invidious is an alternative front-end to YouTube "
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "video youtube"
         url: "https://invidious.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+
       - name: "linkding"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
