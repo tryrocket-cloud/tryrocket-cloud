@@ -37,4 +37,4 @@ configMapGenerator:
   - name: homer-icons-3
     files:
       - logo.png=assets/logo.png
-      - logo2.jpg=assets/logo2.jpg
+      - logo3.webp=assets/logo3.webp
