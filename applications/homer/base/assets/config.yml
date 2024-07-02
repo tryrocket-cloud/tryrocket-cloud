@@ -177,7 +177,8 @@ services:
         keywords: "adguard pihole dns"
         url: "https://adguard-home.tryrocket.cloud"
         target: "_blank"
-
+        type: "AdGuardHome"
+        
       - name: "Fritz!Box"
         logo: "assets/icons/avmfritzbox.png"
         subtitle: "Router"
