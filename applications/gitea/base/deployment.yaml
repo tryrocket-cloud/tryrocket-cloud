@@ -16,52 +16,35 @@ spec:
     spec:
       containers:
         - name: gitea
-          image: vaultwarden/server:1.30.5-alpine
+          image: gitea/gitea:1.22
           ports:
-            - containerPort: 8080
-          env:
-            - name: DATABASE_URL
-              value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-16.svc.cluster.local/vaultwarden"
-            - name: DOMAIN
-              value: "https://vaultwarden.tryrocket.cloud"
-            - name: ROCKET_PORT
-              value: "8080"
-            - name: ADMIN_TOKEN
-              value: "$argon2id$v=19$m=65540,t=3,p=4$NGpHTUx5UHQyeldZdmFtb1d3T3JmVmlCY3BzTW9BRUNlUFQvZnBKTUZ5UT0$3oUREYYD6MVnctdDoOguDcnlpEcbD1epFKirtgc8huE"
-            - name: SIGNUPS_ALLOWED
-              value: "true"
-            - name: INVITATIONS_ALLOWED
-              value: "false"
-            - name: SIGNUPS_VERIFY
-              value: "false"
+            - containerPort: 3000
           livenessProbe:
             httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 10
+              path: /api/healthz
+              port: http
+            initialDelaySeconds: 200
             timeoutSeconds: 5
-            failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 3
-          startupProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 30
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 10
+          env:
+            - name: GITEA__database__DB_TYPE
+              value: "postgres"
+            - name: GITEA__database__HOST
+              value: "postgres.postgres-16.svc.cluster.local:5432"
+            - name: GITEA__database__NAME
+              value: "gitea"
+            - name: GITEA__database__USER
+              value: "gitea"
+            - name: GITEA__database__PASSWD
+              value: "gitea"
+            - name: GITEA__server__ROOT_URL
+              value: "https://gitea.tryrocket.cloud"
           volumeMounts:
-            - name: vaultwarden-storage
+            - name: gitea-storage
               mountPath: /data
       volumes:
-        - name: vaultwarden-storage
+        - name: gitea-storage
           persistentVolumeClaim:
-            claimName: vaultwarden-pvc
+            claimName: gitea-pvc
