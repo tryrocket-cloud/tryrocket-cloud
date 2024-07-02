@@ -227,19 +227,17 @@ services:
         target: "_blank"
 
       - name: "Argo CD"
-        logo: "assets/icons/tools/sample.png"
-        subtitle: ""
-        tag: "infrastructure"
-        # Optional tagstyle
-        tagstyle: "is-success"
+        logo: "assets/icons/argocd.png"
+        subtitle: "Declarative Continuous Deployment for Kubernetes"
+        tag: "infra"
+        keywords: "k3s"
         url: "https://argocd.tryrocket.cloud"
         target: "_blank"
+
       - name: "k8s Dashboard"
         logo: "assets/icons/tools/sample.png"
         subtitle: ""
         tag: "infrastructure"
-        # Optional tagstyle
-        tagstyle: "is-success"
         url: "https://k8s-dashboard.tryrocket.cloud"
         target: "_blank"
   - name: "Other group"
