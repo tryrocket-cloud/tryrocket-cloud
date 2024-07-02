@@ -219,7 +219,7 @@ services:
         target: "_blank"
         
       - name: "Longhorn"
-        logo: "assets/icons/icons/longhorn.png"
+        logo: "assets/icons/longhorn.png"
         subtitle: "Cloud-Native distributed storage"
         tag: "infra"
         keywords: "k3s"
