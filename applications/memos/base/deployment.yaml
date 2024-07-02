@@ -19,14 +19,14 @@ spec:
             - '--driver'
             - 'postgres'
             - '--dsn'
-            - 'postgresql://memos:memos@postgres.postgres-16.svc.cluster.local:5432/memos?sslmode=disable'
+            - 'postgresql://memos:memos@postgres.postgres-18.svc.cluster.local:5432/memos?sslmode=disable'
           env:
             - name: MEMOS_PORT
               value: '5230'
             - name: MEMOS_DRIVER
               value: postgres
             - name: MEMOS_DSN
-              value: postgresql://memos:memos@postgres.postgres-16.svc.cluster.local:5432/memos?sslmode=disable
+              value: postgresql://memos:memos@postgres.postgres-19.svc.cluster.local:5432/memos?sslmode=disable
           ports:
             - name: http
               containerPort: 5230
