@@ -26,7 +26,7 @@ spec:
                   dbname: invidious
                   user: invidious
                   password: invidious
-                  host: postgres.postgres-23.svc.cluster.local
+                  host: postgres.postgres-16.svc.cluster.local
                   port: 5432
                   check_tables: true
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"
