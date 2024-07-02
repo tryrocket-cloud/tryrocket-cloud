@@ -1,0 +1,20 @@
+server_name: "synapse.tryrocket.cloud"
+pid_file: "/data/homeserver.pid"
+public_baseurl: "https://synapse.tryrocket.cloud"
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    password: synapse
+    database: synapse
+    host: postgres.postgres-16.svc.cluster.local
+    port: 5432
+listeners:
+  - port: 8008
+    tls: false
+    bind_addresses: ['0.0.0.0']
+    type: http
+    resources: []
+    x_forwarded: true
+enable_registration: true
+registration_shared_secret: "abcabcabc"
