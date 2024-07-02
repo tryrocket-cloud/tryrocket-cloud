@@ -30,3 +30,5 @@ configMapGenerator:
   - name: homer-icons-2
     files:
       - argocd.png=assets/argocd.png
+      - paperless-ng.png=assets/paperless-ng.png
+      - immich.svg=assets/immich.svg

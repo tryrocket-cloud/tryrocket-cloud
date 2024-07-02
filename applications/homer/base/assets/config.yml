@@ -146,8 +146,8 @@ services:
         url: "https://truenas.tryrocket.cloud"
         target: "_blank"
 
-      - name: "immich"
-        logo: "assets/icons/immichsvg"
+      - name: "Immich"
+        logo: "assets/icons/immich.svg"
         subtitle: "High performance self-hosted photo and video management solution. "
         tag: "app"
         keywords: "photo image"
@@ -234,12 +234,14 @@ services:
         url: "https://argocd.tryrocket.cloud"
         target: "_blank"
 
-      - name: "k8s Dashboard"
-        logo: "assets/icons/tools/sample.png"
-        subtitle: ""
-        tag: "infrastructure"
-        url: "https://k8s-dashboard.tryrocket.cloud"
+      - name: "Paperless"
+        logo: "assets/icons-2/paperless-ng.png"
+        subtitle: "index and archive all your physical documents"
+        tag: "app"
+        keywords: "paper dms document"
+        url: "https://paperless.tryrocket.cloud"
         target: "_blank"
+
   - name: "Other group"
     icon: "fas fa-heartbeat"
     items:
