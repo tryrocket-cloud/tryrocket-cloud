@@ -201,16 +201,15 @@ services:
         keywords: "note"
         url: "https://memos.tryrocket.cloud"
         target: "_blank"
-        
+
       - name: "pgAdmin"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "DB"
-        tag: "infrastructure"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        logo: "assets/pgadmin.png"
+        subtitle: "PostgreSQL dashboard"
+        tag: "infra"
+        keywords: "pd database postgres"
         url: "https://pgadmin4.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+
       - name: "Traefik"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:

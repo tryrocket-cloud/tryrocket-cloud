@@ -20,3 +20,4 @@ configMapGenerator:
       - invidious.png=assets/invidious.png
       - linkding.png=assets/linkding.png
       - memos.png=assets/memos.png
+      - pgadmin.png=assets/pgadmin.png
