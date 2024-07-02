@@ -147,14 +147,13 @@ services:
         target: "_blank"
 
       - name: "immich"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
+        logo: "assets/immichsvg"
+        subtitle: "High performance self-hosted photo and video management solution. "
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "photo image"
         url: "https://immich.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+
       - name: "Fritz!Box"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
