@@ -6,7 +6,8 @@ spec:
   selector:
     app: opengist
   ports:
-    - protocol: TCP
+    - name: web
+      protocol: TCP
       port: 80
       targetPort: 6157
     - name: ssh
