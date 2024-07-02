@@ -15,3 +15,4 @@ configMapGenerator:
       - adguardhome.svg=assets/adguardhome.svg
       - truenas.svg=assets/truenas.svg
       - immich.svg=assets/immich.svg
+      - avmfritzbox.png=assets/avmfritzbox.png

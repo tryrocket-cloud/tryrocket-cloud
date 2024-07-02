@@ -155,14 +155,13 @@ services:
         target: "_blank"
 
       - name: "Fritz!Box"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
-        tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        logo: "assets/avmfritzbox.png"
+        subtitle: "Router"
+        tag: "infra"
+        keywords: "router network"
         url: "http://192.168.178.1"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+
       - name: "vaultwarden admin"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
