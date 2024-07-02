@@ -33,5 +33,8 @@ configMapGenerator:
       - immich.svg=assets/immich.svg
       - asus.png=assets/asus.png
       - mikrotik.png=assets/mikrotik.png
+
+  - name: homer-icons-3
+    files:
       - logo.png=assets/logo.png
       - logo2.jpg=assets/logo2.jpg
