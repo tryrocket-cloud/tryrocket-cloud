@@ -116,36 +116,9 @@ links:
 # First level array represents a group.
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
-  - name: "Dashboards"
-    icon: "fas fa-code-branch"
-    # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
-    # logo: "path/to/logo"
+  - name: "Apps"
+    icon: "fa-sharp fa-solid fa-rocket-launch"
     items:
-    
-      - name: "Open Gist"
-        logo: "assets/icons/opengist.svg"
-        subtitle: "Self-hosted pastebin powered by Git"
-        tag: "app"
-        keywords: "gist"
-        url: "https://opengist.tryrocket.cloud"
-        target: "_blank"
-
-      - name: "AdGuard Home"
-        logo: "assets/icons/adguardhome.svg"
-        subtitle: "Network-wide ads & trackers blocking DNS server "
-        tag: "app"
-        keywords: "adguard pihole dns"
-        url: "https://adguard-home.tryrocket.cloud"
-        target: "_blank"
-
-      - name: "TrueNAS"
-        logo: "assets/icons/truenas.svg"
-        subtitle: ""
-        tag: "dashboard"
-        keywords: "nas truenas scale"
-        url: "https://truenas.tryrocket.cloud"
-        target: "_blank"
-
       - name: "Immich"
         logo: "assets/icons/immich.svg"
         subtitle: "High performance self-hosted photo and video management solution. "
@@ -154,20 +127,20 @@ services:
         url: "https://immich.tryrocket.cloud"
         target: "_blank"
 
-      - name: "Fritz!Box"
-        logo: "assets/icons/avmfritzbox.png"
-        subtitle: "Router"
-        tag: "infra"
-        keywords: "router network"
-        url: "http://192.168.178.1"
+      - name: "Invidious"
+        logo: "assets/icons/invidious.png"
+        subtitle: "Invidious is an alternative front-end to YouTube "
+        tag: "app"
+        keywords: "video youtube"
+        url: "https://invidious.tryrocket.cloud"
         target: "_blank"
 
-      - name: "Vaultwarden (Admin)"
-        logo: "assets/icons/vaultwarden.png"
-        subtitle: ""
+      - name: "Paperless"
+        logo: "assets/icons-2/paperless-ng.png"
+        subtitle: "index and archive all your physical documents"
         tag: "app"
-        keywords: "password pass secret admin"
-        url: "https://vaultwarden.tryrocket.cloud/admin"
+        keywords: "paper dms document"
+        url: "https://paperless.tryrocket.cloud"
         target: "_blank"
 
       - name: "Vaultwarden"
@@ -176,14 +149,6 @@ services:
         tag: "app"
         keywords: "password pass secret"
         url: "https://vaultwarden.tryrocket.cloud"
-        target: "_blank"
-
-      - name: "Invidious"
-        logo: "assets/icons/invidious.png"
-        subtitle: "Invidious is an alternative front-end to YouTube "
-        tag: "app"
-        keywords: "video youtube"
-        url: "https://invidious.tryrocket.cloud"
         target: "_blank"
 
       - name: "Linkding"
@@ -200,6 +165,54 @@ services:
         tag: "app"
         keywords: "note"
         url: "https://memos.tryrocket.cloud"
+        target: "_blank"
+
+  - name: "Network"
+    icon: "fa-solid fa-network-wired"
+    items:
+      - name: "AdGuard Home"
+        logo: "assets/icons/adguardhome.svg"
+        subtitle: "Network-wide ads & trackers blocking DNS server "
+        tag: "app"
+        keywords: "adguard pihole dns"
+        url: "https://adguard-home.tryrocket.cloud"
+        target: "_blank"
+
+      - name: "Fritz!Box"
+        logo: "assets/icons/avmfritzbox.png"
+        subtitle: "Router"
+        tag: "infra"
+        keywords: "router network"
+        url: "http://192.168.178.1"
+        target: "_blank"
+
+  - name: "Dashboards"
+    icon: "fa-regular fa-cloud"
+    # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
+    # logo: "path/to/logo"
+    items:
+      - name: "Open Gist"
+        logo: "assets/icons/opengist.svg"
+        subtitle: "Self-hosted pastebin powered by Git"
+        tag: "app"
+        keywords: "gist"
+        url: "https://opengist.tryrocket.cloud"
+        target: "_blank"
+
+      - name: "TrueNAS"
+        logo: "assets/icons/truenas.svg"
+        subtitle: ""
+        tag: "dashboard"
+        keywords: "nas truenas scale"
+        url: "https://truenas.tryrocket.cloud"
+        target: "_blank"
+
+      - name: "Vaultwarden (Admin)"
+        logo: "assets/icons/vaultwarden.png"
+        subtitle: ""
+        tag: "app"
+        keywords: "password pass secret admin"
+        url: "https://vaultwarden.tryrocket.cloud/admin"
         target: "_blank"
 
       - name: "pgAdmin"
@@ -234,13 +247,7 @@ services:
         url: "https://argocd.tryrocket.cloud"
         target: "_blank"
 
-      - name: "Paperless"
-        logo: "assets/icons-2/paperless-ng.png"
-        subtitle: "index and archive all your physical documents"
-        tag: "app"
-        keywords: "paper dms document"
-        url: "https://paperless.tryrocket.cloud"
-        target: "_blank"
+
 
   - name: "Other group"
     icon: "fas fa-heartbeat"
