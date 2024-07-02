@@ -35,8 +35,8 @@ spec:
               value: "linkding"
             - name: LD_DB_PASSWORD
               value: "linkding"
-            - name: LD_DB_HOSTe
-              value: "postgres.postgres-16.svc.cluster.local"
+            - name: LD_DB_HOST
+              value: "postgres.postgres-16"
             - name: LD_DB_PORT
               value: "5432"
 
