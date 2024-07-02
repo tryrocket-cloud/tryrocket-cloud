@@ -21,3 +21,4 @@ configMapGenerator:
       - linkding.png=assets/linkding.png
       - memos.png=assets/memos.png
       - pgadmin.png=assets/pgadmin.png
+      - traefik.svg=assets/traefik.svg

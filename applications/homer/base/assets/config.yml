@@ -210,15 +210,14 @@ services:
         url: "https://pgadmin4.tryrocket.cloud"
         target: "_blank"
 
-      - name: "Traefik"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "Ingress and. Load Balancer"
-        tag: "infrastructure"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+      - name: "traefik"
+        logo: "assets/traefik.svg"
+        subtitle: "k3s - Ingress and Load Balancer"
+        tag: "infra"
+        keywords: "network"
         url: "https://traefik.tryrocket.cloud/dashboard/#/"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+        
       - name: "Longhorn"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
