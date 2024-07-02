@@ -194,6 +194,14 @@ services:
         url: "http://192.168.178.56"
         target: "_blank"
 
+      - name: "RouterOS Miktorik"
+        logo: "assets/icons-2/microtik.png"
+        subtitle: "Switch"
+        tag: "infra"
+        keywords: "router switch network"
+        url: "http://192.168.178.59"
+        target: "_blank"
+
   - name: "Dashboards"
     icon: "fa-regular fa-cloud"
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
