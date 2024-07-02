@@ -195,7 +195,7 @@ services:
         target: "_blank"
 
       - name: "RouterOS Miktorik"
-        logo: "assets/icons-2/microtik.png"
+        logo: "assets/icons-2/mikrotik.png"
         subtitle: "Switch"
         tag: "infra"
         keywords: "router switch network"
