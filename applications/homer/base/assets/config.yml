@@ -214,14 +214,6 @@ services:
   - name: "cluster"
     logo: "assets/icons-3/k3s.svg"
     items:
-      - name: "TrueNAS"
-        logo: "assets/icons/truenas.svg"
-        subtitle: ""
-        tag: "dashboard"
-        keywords: "nas truenas scale"
-        url: "https://truenas.tryrocket.cloud"
-        target: "_blank"
-
       - name: "pgAdmin"
         logo: "assets/icons/pgadmin.png"
         subtitle: "PostgreSQL dashboard"
