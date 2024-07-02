@@ -131,14 +131,12 @@ services:
         target: "_blank"
 
       - name: "AdGuard Home"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
+        logo: "assets/adguardhome.svg"
+        subtitle: "Network-wide ads & trackers blocking DNS server "
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "adguard pihole dns"
         url: "https://adguard-home.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
 
       - name: "TrueNAS"
         logo: "assets/tools/sample.png"
