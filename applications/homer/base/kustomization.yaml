@@ -18,4 +18,5 @@ configMapGenerator:
       - avmfritzbox.png=assets/avmfritzbox.png
       - vaultwarden.png=assets/vaultwarden.png
       - invidious.png=assets/invidious.png
+      - linkding.png=assets/linkding.png
       - memos.png=assets/memos.png
