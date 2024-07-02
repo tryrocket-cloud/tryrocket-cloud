@@ -162,15 +162,13 @@ services:
         url: "http://192.168.178.1"
         target: "_blank"
 
-      - name: "vaultwarden admin"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
+      - name: "Vaultwarden (Admin)"
+        logo: "assets/vaultwarden.png"
+        subtitle: "Password manager"
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "password pass secret"
         url: "https://vaultwarden.tryrocket.cloud/admin"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
       - name: "vaultwarden"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
