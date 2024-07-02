@@ -32,3 +32,4 @@ configMapGenerator:
       - argocd.png=assets/argocd.png
       - paperless-ng.png=assets/paperless-ng.png
       - immich.svg=assets/immich.svg
+      - asus.png=assets/asus.png

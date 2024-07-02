@@ -186,6 +186,14 @@ services:
         url: "http://192.168.178.1"
         target: "_blank"
 
+      - name: "ZenWiFi AX"
+        logo: "assets/icons-2/asus.png"
+        subtitle: "Router"
+        tag: "infra"
+        keywords: "router network"
+        url: "http://192.168.178.56"
+        target: "_blank"
+
   - name: "Dashboards"
     icon: "fa-regular fa-cloud"
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
