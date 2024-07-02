@@ -124,7 +124,7 @@ services:
     
       - name: "Open Gist"
         logo: "assets/opengist.svg"
-        subtitle: "Self-hosted pastebin powered by Git, open-source alternative to Github Gist."
+        subtitle: "Self-hosted pastebin powered by Git"
         tag: "app"
         keywords: "gist"
         url: "https://opengist.tryrocket.cloud"
