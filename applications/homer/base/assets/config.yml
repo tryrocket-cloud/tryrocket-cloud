@@ -212,7 +212,7 @@ services:
         target: "_blank"
 
   - name: "cluster"
-    logo: "assets/icons-3/k3s.png"
+    logo: "assets/icons-3/k3s.svg"
     items:
       - name: "TrueNAS"
         logo: "assets/icons/truenas.svg"
