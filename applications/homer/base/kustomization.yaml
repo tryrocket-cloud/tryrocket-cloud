@@ -10,6 +10,9 @@ configMapGenerator:
   - name: homer-config
     files:
       - config.yml=assets/config.yml
+
+  - name: homer-icons
+    files:
       - logo.png=assets/logo.png
       - opengist.svg=assets/opengist.svg
       - adguardhome.svg=assets/adguardhome.svg

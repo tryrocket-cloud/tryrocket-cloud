@@ -219,13 +219,13 @@ services:
         target: "_blank"
         
       - name: "Longhorn"
-        logo: "assets/longhorn.png"
+        logo: "assets/icons/longhorn.png"
         subtitle: "Cloud-Native distributed storage"
         tag: "infra"
         keywords: "k3s"
         url: "https://longhorn.tryrocket.cloud/#/dashboard"
         target: "_blank"
-        
+
       - name: "Argo CD"
         logo: "assets/tools/sample.png"
         subtitle: ""
