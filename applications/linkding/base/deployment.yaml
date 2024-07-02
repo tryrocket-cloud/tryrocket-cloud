@@ -30,7 +30,7 @@ spec:
             - name: LD_DB_PASSWORD
               value: "linkding"
             - name: LD_DB_HOST
-              value: "postgres.postgres-20.svc.cluster.local"
+              value: "postgres.postgres-16.svc.cluster.local"
             - name: LD_DB_PORT
               value: "5432"
           livenessProbe:
