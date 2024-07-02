@@ -45,6 +45,9 @@ spec:
             - name: homer-icons-3
               mountPath: /www/assets/icons-3
               readOnly: true
+            - name: homer-icons-4
+              mountPath: /www/assets/icons-4
+              readOnly: true
       volumes:
         - name: homer-config
           configMap:
@@ -58,3 +61,6 @@ spec:
         - name: homer-icons-3
           configMap:
             name: homer-icons-3
+        - name: homer-icons-4
+          configMap:
+            name: homer-icons-4
