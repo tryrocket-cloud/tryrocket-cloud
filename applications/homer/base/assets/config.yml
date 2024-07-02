@@ -168,7 +168,7 @@ services:
         target: "_blank"
 
   - name: "Network"
-    icon: "fa-solid fa-network-wired"
+    icon: "fa-solid fa-server"
     items:
       - name: "AdGuard Home"
         logo: "assets/icons/adguardhome.svg"
