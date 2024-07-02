@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opengist
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: opengist
+  template:
+    metadata:
+      labels:
+        app: opengist
+    spec:
+      dnsPolicy: ClusterFirst
+      containers:
+        - name: opengist
+          image: ghcr.io/thomiceli/opengist:1.7
+          ports:
+            - containerPort: 6157
+            - containerPort: 2222
+          volumeMounts:
+            - name: opengist-storage
+              mountPath: /opengist
+      volumes:
+        - name: opengist-storage
+          persistentVolumeClaim:
+            claimName: opengist-pvc

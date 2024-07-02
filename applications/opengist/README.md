@@ -1,14 +1,14 @@
-# rgit
+# opengist
 
 ## Install
 
-Install rgit as an Argo CD application
+Install opengist as an Argo CD application
 
-    argocd app create rgit \
+    argocd app create opengist \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path applications/rgit/overlays/production \
+                        --path applications/opengist/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
-                        --dest-namespace rgit \
+                        --dest-namespace opengist \
                         --revision main \
                         --project default \
                         --sync-policy automated \

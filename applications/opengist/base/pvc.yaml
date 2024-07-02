@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: rgit-pvc
+  name: opengist-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 4Gi
+      storage: 1Gi
   storageClassName: longhorn-retain
-  volumeName: rgit-pv
+  volumeName: opengist-pv
