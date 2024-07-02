@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-sr-ht
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: git-sr-ht
+  template:
+    metadata:
+      labels:
+        app: git-sr-ht
+    spec:
+      containers:
+      - name: git-sr-ht
+        image: sr.ht/git.sr.ht:latest
+        env:
+          - name: DATABASE_URL
+            value: "postgres://sourcehut:sourcehut@postgres.postgres-16.svc.cluster.local:5432/sourcehut"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: sourcehut-storage
+            mountPath: /var/lib/git
+      volumes:
+        - name: sourcehut-storage
+          persistentVolumeClaim:
+            claimName: sourcehut-pvc
