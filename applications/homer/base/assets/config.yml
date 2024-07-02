@@ -186,24 +186,22 @@ services:
         url: "https://invidious.tryrocket.cloud"
         target: "_blank"
 
-      - name: "linkding"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "todo"
+      - name: "Linkding"
+        logo: "assets/linkding.png"
+        subtitle: "Self-hosted bookmark manager"
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "bookmark"
         url: "https://linkding.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
-      - name: "memos"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "todo"
+        target: "_blank"
+
+      - name: "Memos"
+        logo: "assets/memos.png"
+        subtitle: "A note-taking service"
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "note"
         url: "https://memos.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+        
       - name: "pgAdmin"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
