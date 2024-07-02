@@ -21,7 +21,7 @@ spec:
             - containerPort: 8080
           env:
             - name: DATABASE_URL
-              value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-16.svc.cluster.local/vaultwarden"
+              value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-17.svc.cluster.local/vaultwarden"
             - name: DOMAIN
               value: "https://vaultwarden.tryrocket.cloud"
             - name: ROCKET_PORT
