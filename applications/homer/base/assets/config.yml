@@ -96,13 +96,8 @@ colors:
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
   - name: "Chat GPT"
-    icon: "fab fa-github"
     url: "https://chatgpt.com/"
-    target: "_blank" # optional html tag target attribute
-  - name: "kubesearch"
-    icon: "fab fa-github"
-    url: "https://kubesearch.dev/"
-    target: "_blank" # optional html tag target attribute
+    target: "_blank"
   - name: "GitHub"
     icon: "fab fa-github"
     url: "https://github.com/tryrocket-cloud/tryrocket-cloud"
@@ -110,10 +105,10 @@ links:
     icon: "fa-brands fa-docker"
     url: "https://hub.docker.com/"
   - name: "Artifact Hub"
-    #icon: "fa-brands fa-docker"
-    logo: "assets/icons-3/artifacthub.svg"
     url: "https://artifacthub.io/"
-
+  - name: "kubesearch"
+    url: "https://kubesearch.dev/"
+    target: "_blank" # optional html tag target attribute
    # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
   # see url field and assets/icons/page.yml used in this example:
   - name: "Second Page"
