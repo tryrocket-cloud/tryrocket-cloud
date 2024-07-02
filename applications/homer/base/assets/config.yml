@@ -139,14 +139,12 @@ services:
         target: "_blank"
 
       - name: "TrueNAS"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
-        tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        logo: "assets/truenas.svg"
+        subtitle: ""
+        tag: "dashboard"
+        keywords: "nas truenas scale"
         url: "https://truenas.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
 
       - name: "immich"
         logo: "assets/tools/sample.png"
