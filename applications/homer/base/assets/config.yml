@@ -9,7 +9,7 @@
 title: "App dashboard"
 subtitle: "Homer"
 # documentTitle: "Welcome" # Customize the browser tab text
-logo: "assets/logo.png"
+logo: "assets/icons/logo.png"
 # Alternatively a fa icon can be provided:
 # icon: "fas fa-skull-crossbones"
 
@@ -33,12 +33,12 @@ defaults:
   colorTheme: auto # One of 'auto', 'light', or 'dark'
 
 # Optional theming
-theme: default # 'default' or one of the themes available in 'src/assets/themes'.
+theme: default # 'default' or one of the themes available in 'src/assets/icons/themes'.
 
 # Optional custom stylesheet
 # Will load custom CSS files. Especially useful for custom icon sets.
 # stylesheet:
-#   - "assets/custom.css"
+#   - "assets/icons/custom.css"
 
 # Here is the exhaustive list of customization parameters
 # However all value are optional and will fallback to default if not set.
@@ -57,7 +57,7 @@ colors:
     card-shadow: rgba(0, 0, 0, 0.1)
     link: "#3273dc"
     link-hover: "#363636"
-    background-image: "assets/your/light/bg.png"
+    background-image: "assets/icons/your/light/bg.png"
   dark:
     highlight-primary: "#3367d6"
     highlight-secondary: "#4285f4"
@@ -71,7 +71,7 @@ colors:
     card-shadow: rgba(0, 0, 0, 0.4)
     link: "#3273dc"
     link-hover: "#ffdd57"
-    background-image: "assets/your/dark/bg.png"
+    background-image: "assets/icons/your/dark/bg.png"
 
 # Optional message
 message:
@@ -107,7 +107,7 @@ links:
     icon: "fab fa-github"
     url: "https://github.com/tryrocket-cloud/tryrocket-cloud"
   # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
-  # see url field and assets/page.yml used in this example:
+  # see url field and assets/icons/page.yml used in this example:
   - name: "Second Page"
     icon: "fas fa-file-alt"
     url: "#page2"
@@ -123,7 +123,7 @@ services:
     items:
     
       - name: "Open Gist"
-        logo: "assets/opengist.svg"
+        logo: "assets/icons/opengist.svg"
         subtitle: "Self-hosted pastebin powered by Git"
         tag: "app"
         keywords: "gist"
@@ -131,7 +131,7 @@ services:
         target: "_blank"
 
       - name: "AdGuard Home"
-        logo: "assets/adguardhome.svg"
+        logo: "assets/icons/adguardhome.svg"
         subtitle: "Network-wide ads & trackers blocking DNS server "
         tag: "app"
         keywords: "adguard pihole dns"
@@ -139,7 +139,7 @@ services:
         target: "_blank"
 
       - name: "TrueNAS"
-        logo: "assets/truenas.svg"
+        logo: "assets/icons/truenas.svg"
         subtitle: ""
         tag: "dashboard"
         keywords: "nas truenas scale"
@@ -147,7 +147,7 @@ services:
         target: "_blank"
 
       - name: "immich"
-        logo: "assets/immichsvg"
+        logo: "assets/icons/immichsvg"
         subtitle: "High performance self-hosted photo and video management solution. "
         tag: "app"
         keywords: "photo image"
@@ -155,7 +155,7 @@ services:
         target: "_blank"
 
       - name: "Fritz!Box"
-        logo: "assets/avmfritzbox.png"
+        logo: "assets/icons/avmfritzbox.png"
         subtitle: "Router"
         tag: "infra"
         keywords: "router network"
@@ -163,7 +163,7 @@ services:
         target: "_blank"
 
       - name: "Vaultwarden (Admin)"
-        logo: "assets/vaultwarden.png"
+        logo: "assets/icons/vaultwarden.png"
         subtitle: ""
         tag: "app"
         keywords: "password pass secret admin"
@@ -171,7 +171,7 @@ services:
         target: "_blank"
 
       - name: "Vaultwarden"
-        logo: "assets/vaultwarden.png"
+        logo: "assets/icons/vaultwarden.png"
         subtitle: "Password manager"
         tag: "app"
         keywords: "password pass secret"
@@ -179,7 +179,7 @@ services:
         target: "_blank"
 
       - name: "Invidious"
-        logo: "assets/invidious.png"
+        logo: "assets/icons/invidious.png"
         subtitle: "Invidious is an alternative front-end to YouTube "
         tag: "app"
         keywords: "video youtube"
@@ -187,7 +187,7 @@ services:
         target: "_blank"
 
       - name: "Linkding"
-        logo: "assets/linkding.png"
+        logo: "assets/icons/linkding.png"
         subtitle: "Self-hosted bookmark manager"
         tag: "app"
         keywords: "bookmark"
@@ -195,7 +195,7 @@ services:
         target: "_blank"
 
       - name: "Memos"
-        logo: "assets/memos.png"
+        logo: "assets/icons/memos.png"
         subtitle: "A note-taking service"
         tag: "app"
         keywords: "note"
@@ -203,7 +203,7 @@ services:
         target: "_blank"
 
       - name: "pgAdmin"
-        logo: "assets/pgadmin.png"
+        logo: "assets/icons/pgadmin.png"
         subtitle: "PostgreSQL dashboard"
         tag: "infra"
         keywords: "pd database postgres"
@@ -211,7 +211,7 @@ services:
         target: "_blank"
 
       - name: "traefik"
-        logo: "assets/traefik.svg"
+        logo: "assets/icons/traefik.svg"
         subtitle: "k3s - Ingress and Load Balancer"
         tag: "infra"
         keywords: "network"
@@ -219,7 +219,7 @@ services:
         target: "_blank"
         
       - name: "Longhorn"
-        logo: "assets/icons/longhorn.png"
+        logo: "assets/icons/icons/longhorn.png"
         subtitle: "Cloud-Native distributed storage"
         tag: "infra"
         keywords: "k3s"
@@ -227,7 +227,7 @@ services:
         target: "_blank"
 
       - name: "Argo CD"
-        logo: "assets/tools/sample.png"
+        logo: "assets/icons/tools/sample.png"
         subtitle: ""
         tag: "infrastructure"
         # Optional tagstyle
@@ -235,7 +235,7 @@ services:
         url: "https://argocd.tryrocket.cloud"
         target: "_blank"
       - name: "k8s Dashboard"
-        logo: "assets/tools/sample.png"
+        logo: "assets/icons/tools/sample.png"
         subtitle: ""
         tag: "infrastructure"
         # Optional tagstyle
@@ -246,7 +246,7 @@ services:
     icon: "fas fa-heartbeat"
     items:
       - name: "Pi-hole"
-        logo: "assets/tools/sample.png"
+        logo: "assets/icons/tools/sample.png"
         # subtitle: "Network-wide Ad Blocking" # optional, if no subtitle is defined, PiHole statistics will be shown
         tag: "other"
         url: "http://192.168.0.151/admin"
