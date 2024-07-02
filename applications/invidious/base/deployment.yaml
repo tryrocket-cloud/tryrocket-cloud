@@ -12,6 +12,7 @@ spec:
       labels:
         app: invidious
     spec:
+      dnsPolicy: ClusterFirst
       containers:
         - name: invidious
           image: quay.io/invidious/invidious:latest
