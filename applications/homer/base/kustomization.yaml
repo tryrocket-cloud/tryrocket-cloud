@@ -11,3 +11,4 @@ configMapGenerator:
     files:
       - config.yml=assets/config.yml
       - logo.png=assets/logo.png
+      - opengist.svg=assets/opengist.svg

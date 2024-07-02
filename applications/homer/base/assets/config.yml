@@ -103,9 +103,9 @@ links:
     icon: "fab fa-github"
     url: "https://kubesearch.dev/"
     target: "_blank" # optional html tag target attribute
-  - name: "link 2"
-    icon: "fas fa-book"
-    url: "https://github.com/bastienwirtz/homer"
+  - name: "GitHub"
+    icon: "fab fa-github"
+    url: "https://github.com/tryrocket-cloud/tryrocket-cloud"
   # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
   # see url field and assets/page.yml used in this example:
   - name: "Second Page"
@@ -123,14 +123,12 @@ services:
     items:
     
       - name: "Open Gist"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "password"
+        logo: "assets/opengist.svg"
+        subtitle: "Self-hosted pastebin powered by Git, open-source alternative to Github Gist."
         tag: "app"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        keywords: "gist"
         url: "https://opengist.tryrocket.cloud"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
 
       - name: "AdGuard Home"
         logo: "assets/tools/sample.png"
