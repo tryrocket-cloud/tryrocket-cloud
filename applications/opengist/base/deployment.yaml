@@ -18,6 +18,9 @@ spec:
       containers:
         - name: opengist
           image: ghcr.io/thomiceli/opengist:1.7
+          env:
+            - name: OG_EXTERNAL_URL
+              value: https://opengist.tryrocket.cloud
           ports:
             - containerPort: 6157
             - containerPort: 2222
