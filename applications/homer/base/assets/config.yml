@@ -264,7 +264,7 @@ services:
         subtitle: "Self-hosted pastebin powered by Git"
         tag: "app"
         keywords: "gist"
-        url: "https://opengist.tryrocket.cloud"
+        url: "https://gitea.tryrocket.cloud"
         target: "_blank"
 
   - name: "TruNAS"
