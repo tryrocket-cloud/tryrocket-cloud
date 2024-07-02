@@ -219,14 +219,13 @@ services:
         target: "_blank"
         
       - name: "Longhorn"
-        logo: "assets/tools/sample.png"
-        # Alternatively a fa icon can be provided:
-        # icon: "fab fa-jenkins"
-        subtitle: "Distributed storage"
-        tag: "infrastructure"
-        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        logo: "assets/longhorn.png"
+        subtitle: "Cloud-Native distributed storage"
+        tag: "infra"
+        keywords: "k3s"
         url: "https://longhorn.tryrocket.cloud/#/dashboard"
-        target: "_blank" # optional html tag target attribute
+        target: "_blank"
+        
       - name: "Argo CD"
         logo: "assets/tools/sample.png"
         subtitle: ""
