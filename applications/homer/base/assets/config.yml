@@ -203,7 +203,7 @@ services:
         target: "_blank"
 
   - name: "Dashboards"
-    icon: "fa-regular fa-cloud"
+    icon: "fa-solid fa-cloud"
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
     # logo: "path/to/logo"
     items:
