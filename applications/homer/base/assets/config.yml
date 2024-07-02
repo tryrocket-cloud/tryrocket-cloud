@@ -7,7 +7,7 @@
 # externalConfig: https://example.com/server-luci/config.yaml
 
 title: "App dashboard"
-subtitle: "Rocket Cloud"
+subtitle: "tryrocket.cloud"
 # documentTitle: "Welcome" # Customize the browser tab text
 logo: "assets/logo.png"
 # Alternatively a fa icon can be provided:
