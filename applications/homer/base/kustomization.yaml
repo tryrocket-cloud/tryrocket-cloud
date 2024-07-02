@@ -38,4 +38,4 @@ configMapGenerator:
   - name: homer-icons-3
     files:
       - kubernetes.png=assets/kubernetes.png
-
+      - k3s.svg=assets/k3s.svg

@@ -211,8 +211,8 @@ services:
         url: "http://192.168.178.59"
         target: "_blank"
 
-  - name: "K3S Cluster (tryrocket.cloud)"
-    logo: "assets/icons-3/kubernetes.png"
+  - name: "cluster"
+    logo: "assets/icons-3/k3s.png"
     items:
       - name: "TrueNAS"
         logo: "assets/icons/truenas.svg"
