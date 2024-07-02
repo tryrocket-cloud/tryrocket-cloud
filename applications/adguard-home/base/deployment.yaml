@@ -13,6 +13,8 @@ spec:
       labels:
         app: adguard-home
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: optiplex-3080
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
