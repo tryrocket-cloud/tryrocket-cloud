@@ -10,8 +10,6 @@ configMapGenerator:
   - name: homer-config
     files:
       - config.yml=assets/config.yml
-      - logo.png=assets/logo.png
-      - logo2.jpg=assets/logo2.jpg
   
   - name: homer-icons
     files:
@@ -35,3 +33,5 @@ configMapGenerator:
       - immich.svg=assets/immich.svg
       - asus.png=assets/asus.png
       - mikrotik.png=assets/mikrotik.png
+      - logo.png=assets/logo.png
+      - logo2.jpg=assets/logo2.jpg
