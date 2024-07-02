@@ -109,6 +109,11 @@ links:
   - name: "Docker Hub"
     icon: "fa-brands fa-docker"
     url: "https://hub.docker.com/"
+  - name: "Artifact Hub"
+    icon: "fa-brands fa-docker"
+    logo: "assets/icons-3/artifacthub.svg"
+    url: "https://artifacthub.io/"
+
    # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
   # see url field and assets/icons/page.yml used in this example:
   - name: "Second Page"
