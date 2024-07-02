@@ -253,6 +253,14 @@ services:
     items:
       - name: "Open Gist"
         logo: "assets/icons/opengist.svg"
+        subtitle: "Git with a cup of tea!"
+        tag: "app"
+        keywords: "git gitea"
+        url: "https://gitea.tryrocket.cloud"
+        target: "_blank"
+    
+      - name: "Gitea"
+        logo: "assets/icons-3/gitea.svg"
         subtitle: "Self-hosted pastebin powered by Git"
         tag: "app"
         keywords: "gist"

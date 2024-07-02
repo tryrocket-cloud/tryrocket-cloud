@@ -39,3 +39,4 @@ configMapGenerator:
     files:
       - kubernetes.png=assets/kubernetes.png
       - k3s.svg=assets/k3s.svg
+      - gitea.svg=assets/gitea.svg
