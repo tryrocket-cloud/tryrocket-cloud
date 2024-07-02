@@ -122,6 +122,16 @@ services:
     # logo: "path/to/logo"
     items:
     
+      - name: "Open Gist"
+        logo: "assets/tools/sample.png"
+        # Alternatively a fa icon can be provided:
+        # icon: "fab fa-jenkins"
+        subtitle: "password"
+        tag: "app"
+        keywords: "self hosted reddit" # optional keyword used for searching purpose
+        url: "https://opengist.tryrocket.cloud"
+        target: "_blank" # optional html tag target attribute
+
       - name: "AdGuard Home"
         logo: "assets/tools/sample.png"
         # Alternatively a fa icon can be provided:
