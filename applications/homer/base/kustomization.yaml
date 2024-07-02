@@ -10,6 +10,7 @@ configMapGenerator:
   - name: homer-config
     files:
       - config.yml=assets/config.yml
+      - logo.png=assets/logo.png
   
   - name: homer-icons
     files:
@@ -36,5 +37,5 @@ configMapGenerator:
 
   - name: homer-icons-3
     files:
-      - logo.png=assets/logo.png
+      - kubernetes.png=assets/kubernetes.png
 

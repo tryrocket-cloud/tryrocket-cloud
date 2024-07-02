@@ -9,7 +9,7 @@
 title: "App dashboard"
 subtitle: "tryrocket.cloud"
 # documentTitle: "Welcome" # Customize the browser tab text
-logo: "assets/icons-3/logo.png"
+logo: "assets/logo.png"
 # Alternatively a fa icon can be provided:
 # icon: "fas fa-skull-crossbones"
 
@@ -203,19 +203,9 @@ services:
         url: "http://192.168.178.59"
         target: "_blank"
 
-  - name: "Dashboards"
-    icon: "fa-solid fa-cloud"
-    # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
-    # logo: "path/to/logo"
+  - name: "K3S Cluster (tryrocket.cloud)"
+    logo: "assets/icons-3/kubernetes.png"
     items:
-      - name: "Open Gist"
-        logo: "assets/icons/opengist.svg"
-        subtitle: "Self-hosted pastebin powered by Git"
-        tag: "app"
-        keywords: "gist"
-        url: "https://opengist.tryrocket.cloud"
-        target: "_blank"
-
       - name: "TrueNAS"
         logo: "assets/icons/truenas.svg"
         subtitle: ""
@@ -262,4 +252,17 @@ services:
         tag: "infra"
         keywords: "k3s"
         url: "https://argocd.tryrocket.cloud"
+        target: "_blank"
+
+  - name: "Code"
+    icon: "fa-solid fa-code"
+    # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
+    # logo: "path/to/logo"
+    items:
+      - name: "Open Gist"
+        logo: "assets/icons/opengist.svg"
+        subtitle: "Self-hosted pastebin powered by Git"
+        tag: "app"
+        keywords: "gist"
+        url: "https://opengist.tryrocket.cloud"
         target: "_blank"
