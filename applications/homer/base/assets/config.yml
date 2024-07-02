@@ -167,6 +167,14 @@ services:
         url: "https://memos.tryrocket.cloud"
         target: "_blank"
 
+      - name: "Vaultwarden (Admin)"
+        logo: "assets/icons/vaultwarden.png"
+        subtitle: ""
+        tag: "app"
+        keywords: "password pass secret admin"
+        url: "https://vaultwarden.tryrocket.cloud/admin"
+        target: "_blank"
+
   - name: "Network"
     icon: "fa-solid fa-server"
     items:
@@ -212,14 +220,6 @@ services:
         tag: "dashboard"
         keywords: "nas truenas scale"
         url: "https://truenas.tryrocket.cloud"
-        target: "_blank"
-
-      - name: "Vaultwarden (Admin)"
-        logo: "assets/icons/vaultwarden.png"
-        subtitle: ""
-        tag: "app"
-        keywords: "password pass secret admin"
-        url: "https://vaultwarden.tryrocket.cloud/admin"
         target: "_blank"
 
       - name: "pgAdmin"
