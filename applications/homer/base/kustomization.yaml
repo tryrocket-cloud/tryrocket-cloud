@@ -27,3 +27,7 @@ configMapGenerator:
       - traefik.svg=assets/traefik.svg
       - longhorn.png=assets/longhorn.png
       - argocd.png=assets/argocd.png
+
+  - name: homer-icons-2
+    files:
+      - argocd.png=assets/argocd.png
