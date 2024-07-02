@@ -9,7 +9,7 @@
 title: "App dashboard"
 subtitle: "tryrocket.cloud"
 # documentTitle: "Welcome" # Customize the browser tab text
-logo: "assets/icons-4/logo6.png"
+logo: "assets/icons-3/logo.png"
 # Alternatively a fa icon can be provided:
 # icon: "fas fa-skull-crossbones"
 
@@ -74,7 +74,7 @@ colors:
     background-image: "assets/icons/your/dark/bg.png"
 
 # Optional message
-message:
+#message:
   # url: "https://<my-api-endpoint>" # Can fetch information from an endpoint to override value below.
   # mapping: # allows to map fields from the remote format to the one expected by Homer
   #   title: 'id' # use value from field 'id' as title
@@ -87,10 +87,10 @@ message:
   #   title: 'id'
   #   content: 'value'
   # refreshInterval: 10000
-  style: "is-warning"
-  title: "Optional message!"
-  icon: "fa fa-exclamation-triangle"
-  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+#  style: "is-warning"
+#  title: "Optional message!"
+#  icon: "fa fa-exclamation-triangle"
+#  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
