@@ -15,6 +15,7 @@ spec:
       labels:
         app: linkding
     spec:
+      dnsPolicy: ClusterFirst
       containers:
         - name: linkding
           image: sissbruecker/linkding:latest
