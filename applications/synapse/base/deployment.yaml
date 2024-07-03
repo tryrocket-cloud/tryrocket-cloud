@@ -21,6 +21,9 @@ spec:
             - name: synapse-config
               mountPath: /data/homeserver.yaml
               subPath: homeserver.yaml
+            - name: synapse-config
+              mountPath: /data/matrix.tryrocket.cloud.log.config
+              subPath: matrix.tryrocket.cloud.log.config
             - name: singing-key
               mountPath: /data/matrix.tryrocket.cloud.signing.key
               subPath: matrix.tryrocket.cloud.signing.key
