@@ -42,3 +42,4 @@ configMapGenerator:
       - gitea.svg=assets/gitea.svg
       - artifacthub.svg=assets/artifacthub.svg
       - cinny.png=assets/cinny.png
+      - matrix.png=assets/matrix.png
