@@ -10,4 +10,4 @@ spec:
       name: http
   selector:
     app: synapse
-  type: LoadBalancer
+  type: ClusterIP
