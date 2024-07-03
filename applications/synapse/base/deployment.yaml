@@ -21,13 +21,6 @@ spec:
             - name: synapse-config
               mountPath: /data/homeserver.yaml
               subPath: homeserver.yaml
-      initContainers:
-      - name: init-permissions
-        image: busybox
-        command: ["sh", "-c", "chmod -R 777 /data"]
-        volumeMounts:
-        - name: synapse-data
-          mountPath: /data
       volumes:
         - name: synapse-config
           configMap:
