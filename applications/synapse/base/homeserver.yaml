@@ -1,4 +1,5 @@
 server_name: "synapse.tryrocket.cloud"
+report_stats: "False"
 pid_file: "/data/homeserver.pid"
 public_baseurl: "https://synapse.tryrocket.cloud"
 database:
