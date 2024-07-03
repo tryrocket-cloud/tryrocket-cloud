@@ -26,6 +26,11 @@ spec:
           image: matrixdotorg/synapse:latest
           ports:
             - containerPort: 8008
+          env:
+            - name: SYNAPSE_SERVER_NAME
+              value: matrix.tryrocket.cloud
+            - name: SYNAPSE_REPORT_STATS
+              value: no
           volumeMounts:
             - name: synapse-storage
               mountPath: /data
