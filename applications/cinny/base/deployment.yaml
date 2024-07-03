@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cinny
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cinny
+  template:
+    metadata:
+      labels:
+        app: cinny
+    spec:
+      containers:
+        - name: cinny
+          image: ghcr.io/cinnyapp/cinny:latest
+          ports:
+            - containerPort: 8080
