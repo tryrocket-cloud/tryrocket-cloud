@@ -13,3 +13,4 @@ configMapGenerator:
   - name: synapse-config
     files:
       - homeserver.yaml=homeserver.yaml
+      - matrix.tryrocket.cloud.log.config=matrix.tryrocket.cloud.log.config

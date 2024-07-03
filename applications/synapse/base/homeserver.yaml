@@ -1,7 +1,14 @@
-server_name: "synapse.tryrocket.cloud"
+server_name: "matrix.tryrocket.cloud"
 report_stats: "False"
-pid_file: "/data/homeserver.pid"
-public_baseurl: "https://synapse.tryrocket.cloud"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
 database:
   name: psycopg2
   args:
@@ -10,12 +17,12 @@ database:
     database: synapse
     host: postgres.postgres-16.svc.cluster.local
     port: 5432
-listeners:
-  - port: 8008
-    tls: false
-    bind_addresses: ['0.0.0.0']
-    type: http
-    resources: []
-    x_forwarded: true
-enable_registration: true
-registration_shared_secret: "abcabcabc"
+log_config: "/data/matrix.tryrocket.cloud.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "W1i;,&O7^e*zVbVT~w;LBlKvf2wr3pG^=rXRkah_IcqWDCXU5+"
+report_stats: false
+macaroon_secret_key: "*aw-MISP&SlPIv2J3AQ6bRZoVSVuccPm+@@7.#er4S*Zb5*9_:"
+form_secret: "wC+udj7C0g9hBGlonZd#1b1ACd&CzR9OuS*bzxT.qz~@@U,6QD"
+signing_key_path: "/data/matrix.tryrocket.cloud.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"

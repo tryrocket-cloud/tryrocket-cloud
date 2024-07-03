@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - synapse.tryrocket.cloud
+        - matrix.tryrocket.cloud
       secretName: tryrocket-cloud-http-tls
   rules:
-    - host: synapse.tryrocket.cloud
+    - host: matrix.tryrocket.cloud
       http:
         paths:
           - path: /
