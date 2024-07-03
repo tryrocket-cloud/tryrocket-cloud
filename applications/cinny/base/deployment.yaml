@@ -16,4 +16,4 @@ spec:
         - name: cinny
           image: ghcr.io/cinnyapp/cinny:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
