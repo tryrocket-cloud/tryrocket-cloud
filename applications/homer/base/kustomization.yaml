@@ -41,3 +41,4 @@ configMapGenerator:
       - k3s.svg=assets/k3s.svg
       - gitea.svg=assets/gitea.svg
       - artifacthub.svg=assets/artifacthub.svg
+      - cinny.png=assets/cinny.png
