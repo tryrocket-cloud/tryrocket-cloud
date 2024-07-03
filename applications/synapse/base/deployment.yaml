@@ -12,6 +12,8 @@ spec:
       labels:
         app: synapse
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: optiplex-3080
       initContainers:
       - name: init-permissions
         image: busybox
