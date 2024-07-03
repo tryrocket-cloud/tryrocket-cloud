@@ -12,6 +12,13 @@ spec:
       labels:
         app: synapse
     spec:
+      initContainers:
+      - name: init-permissions
+        image: busybox
+        command: ["sh", "-c", "chmod -R 777 /data"]
+        volumeMounts:
+        - name: synapse-storage
+          mountPath: /data
       containers:
         - name: synapse
           image: matrixdotorg/synapse:latest
