@@ -11,4 +11,4 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: synapse
+    volumeHandle: matrix
