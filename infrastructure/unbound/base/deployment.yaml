@@ -13,7 +13,8 @@ spec:
         app: unbound
     spec:
       containers:
-        name: unbound
+      - name: unbound  
+        image: mvance/unbound:latest
         volumeMounts:
         - mountPath: /opt/unbound/etc/unbound/unbound.conf
           name: unbound-config

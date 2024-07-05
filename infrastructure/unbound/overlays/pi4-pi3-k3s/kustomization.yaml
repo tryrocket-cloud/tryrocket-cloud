@@ -6,5 +6,6 @@ resources:
 namespace: unbound
 
 images:
-  - name: mvance/unbound-rpi
+  - name: mvance/unbound
+    newName: mvance/unbound-rpi
     newTag: latest
