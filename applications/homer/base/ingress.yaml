@@ -10,6 +10,7 @@ spec:
   tls:
     - hosts:
         - homer.tryrocket.cloud
+        - tryrocket.cloud
       secretName: tryrocket-cloud-tls
   rules:
     - host: homer.tryrocket.cloud
@@ -22,3 +23,14 @@ spec:
                 name: homer
                 port:
                   name: http
+
+    - host: tryrocket.cloud
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: homer
+              port:
+                name: http
