@@ -21,8 +21,35 @@ spec:
           env:
             - name: INVIDIOUS_PORT
               value: "3000"
+# https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
+                #quality: hd720
+              
+                # -----------------------------
+                #  Video playback settings
+                # -----------------------------
+              
+                ##
+                ## Default video quality.
+                ##
+                ## Accepted values: dash, hd720, medium, small
+                ## Default: hd720
+                ##
+                quality: dash
+              
+                ##
+                ## Default dash video quality.
+                ##
+                ## Note: this setting only takes effet if the
+                ## 'quality' parameter is set to "dash".
+                ##
+                ## Accepted values:
+                ##    auto, best, 4320p, 2160p, 1440p, 1080p,
+                ##    720p, 480p, 360p, 240p, 144p, worst
+                ## Default: auto
+                ##
+                quality_dash: best
                 db:
                   dbname: invidious
                   user: invidious
