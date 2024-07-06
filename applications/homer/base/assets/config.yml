@@ -192,6 +192,14 @@ services:
         url: 'https://vaultwarden.tryrocket.cloud/admin'
         target: '_blank'
 
+      - name: 'Vikunja'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/vikunja.png'
+        subtitle: 'open-source, self-hostable to-do app'
+        tag: 'app'
+        keywords: 'todo'
+        url: 'https://vikunja.tryrocket.cloud'
+        target: '_blank'
+
   - name: 'Network'
     icon: 'fa-solid fa-server'
     items:
