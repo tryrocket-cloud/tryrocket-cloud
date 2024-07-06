@@ -279,6 +279,14 @@ services:
         url: 'https://matrix.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'Vault'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/vault.svg'
+        subtitle: 'Secrets management'
+        tag: 'infra'
+        keywords: 'secrets'
+        url: 'https://vault.tryrocket.cloud'
+        target: '_blank'
+
   - name: 'Code'
     icon: 'fa-solid fa-code'
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
@@ -328,13 +336,7 @@ services:
         keywords: 'music'
         url: https://holoplay.tryrocket.cloud
         target: '_blank'
-      - name: 'Vault'
-        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/vault.svg'
-        subtitle: 'Secrets management'
-        tag: ''
-        keywords: 'secrets'
-        url: 'https://vault.tryrocket.cloud'
-        target: '_blank'
+
       - name: 'Uptime Kuma'
         logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/uptimekuma.svg'
         subtitle: 'A fancy self-hosted monitoring tool'
