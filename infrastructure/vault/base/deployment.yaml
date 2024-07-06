@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: vault
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      dnsPolicy: ClusterFirst
+      containers:
+        - name: vault
+          image: docker.io/hashicorp/vault:1.16.2
+          env:
+            - name: VAULT_ADDR
+              value: https://vault.tryrocket.cloud
+          command: ["vault", "server", "-config=/vault/config/vault.hcl"]
+          ports:
+            - containerPort: 8200
+          volumeMounts:
+            - name: vault-hcl
+              mountPath: /vault/config
+            - name: vault-storage
+              mountPath: /vault/file
+          volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+      volumes:
+        - name: vault-storage
+          persistentVolumeClaim:
+            claimName: vault-pvc
+        - name: vault-hcl
+          configMap:
+            name: vault-config
+            items:
+              - key: vault.hcl
+                path: vault.hcl
