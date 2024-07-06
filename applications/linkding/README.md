@@ -9,8 +9,10 @@ Install linkding as an Argo CD application
                         --path applications/linkding/overlays/production \
                         --dest-server https://192.168.178.101:6443 \
                         --dest-namespace linkding \
-                        --revision HEAD \
+                        --revision main \
                         --project default \
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+     python manage.py createsuperuser --username=joe --email=joe@example.com
