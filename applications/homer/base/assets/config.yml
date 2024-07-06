@@ -313,3 +313,10 @@ services:
         keywords: 'file browser nas'
         url: https://filebrowser.tryrocket.cloud
         target: '_blank'
+      - name: 'Holoplay'
+        logo: 'https://github.com/stephane-r/holoplay-pwa/blob/develop/docs/logo.png?raw=true'
+        subtitle: 'HoloPlay is a Youtube alternative for music'
+        tag: music
+        keywords: 'music'
+        url: https://holoplay.tryrocket.cloud
+        target: '_blank'
