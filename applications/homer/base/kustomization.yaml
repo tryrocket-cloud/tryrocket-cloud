@@ -10,6 +10,7 @@ configMapGenerator:
   - name: homer-config
     files:
       - config.yml=assets/config.yml
+      - page2.yml=assets/page2.yml
       - logo.png=assets/logo.png
   
   - name: homer-icons
