@@ -92,14 +92,17 @@ links:
   - name: "GitHub"
     icon: "fab fa-github"
     url: "https://github.com/tryrocket-cloud/tryrocket-cloud"
+    target: "_blank"
   - name: "Docker Hub"
     icon: "fa-brands fa-docker"
     url: "https://hub.docker.com/"
+    target: "_blank"
   - name: "Artifact Hub"
     url: "https://artifacthub.io/"
+    target: "_blank"
   - name: "kubesearch"
     url: "https://kubesearch.dev/"
-    target: "_blank" # optional html tag target attribute
+    target: "_blank"
    # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
   # see url field and assets/icons/page.yml used in this example:
   - name: "Second Page"
