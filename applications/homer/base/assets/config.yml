@@ -161,7 +161,7 @@ services:
         target: '_blank'
 
       - name: 'Vaultwarden'
-        logo: 'assets/icons/vaultwarden.png'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/vaultwarden.png'
         subtitle: 'Password manager'
         tag: 'app'
         keywords: 'password pass secret'
@@ -169,7 +169,7 @@ services:
         target: '_blank'
 
       - name: 'Linkding'
-        logo: 'assets/icons/linkding.png'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/linkding.png'
         subtitle: 'Self-hosted bookmark manager'
         tag: 'app'
         keywords: 'bookmark'
@@ -185,7 +185,7 @@ services:
         target: '_blank'
 
       - name: 'Vaultwarden (Admin)'
-        logo: 'assets/icons/vaultwarden.png'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/vaultwarden.png'
         subtitle: ''
         tag: 'app'
         keywords: 'password pass secret admin'
