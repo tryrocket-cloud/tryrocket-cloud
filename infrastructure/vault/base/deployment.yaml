@@ -27,15 +27,7 @@ spec:
           volumeMounts:
             - name: vault-hcl
               mountPath: /vault/config
-            - name: vault-storage
-              mountPath: /vault/file
-          volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
       volumes:
-        - name: vault-storage
-          persistentVolumeClaim:
-            claimName: vault-pvc
         - name: vault-hcl
           configMap:
             name: vault-config
