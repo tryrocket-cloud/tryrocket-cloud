@@ -302,3 +302,14 @@ services:
         keywords: 'nas truenas scale'
         url: 'https://truenas.tryrocket.cloud'
         target: '_blank'
+
+  - name: 'Maybe'
+    logo: 'fa-solid fa-question'
+    items:
+      - name: 'Filebrowser'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/filebrowser.svg'
+        subtitle: 'Web File Browser'
+        tag: 'nas'
+        keywords: 'file browser nas'
+        url: https://filebrowser.tryrocket.cloud
+        target: '_blank'
