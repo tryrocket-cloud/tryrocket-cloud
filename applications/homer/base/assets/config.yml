@@ -6,17 +6,17 @@
 # Using this will ignore remaining config in this file
 # externalConfig: https://example.com/server-luci/config.yaml
 
-title: "App dashboard"
-subtitle: "tryrocket.cloud"
-# documentTitle: "Welcome" # Customize the browser tab text
-logo: "assets/logo.png"
+title: 'App dashboard'
+subtitle: 'tryrocket.cloud'
+# documentTitle: 'Welcome' # Customize the browser tab text
+logo: 'assets/logo.png'
 # Alternatively a fa icon can be provided:
-# icon: "fas fa-skull-crossbones"
+# icon: 'fas fa-skull-crossbones'
 
 header: true # Set to false to hide the header
 footer: false
 
-columns: "3" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+columns: '3' # 'auto' or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
 connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example).
                         # You should set it to true when using an authentication proxy, it also reloads the page when a redirection is detected when checking connectivity.
 
@@ -35,38 +35,38 @@ theme: default # 'default' or one of the themes available in 'src/assets/icons/t
 # Optional custom stylesheet
 # Will load custom CSS files. Especially useful for custom icon sets.
 # stylesheet:
-#   - "assets/icons/custom.css"
+#   - 'assets/icons/custom.css'
 
 colors:
   light:
-    highlight-primary: "#3367d6"
-    highlight-secondary: "#4285f4"
-    highlight-hover: "#5a95f5"
-    background: "#f5f5f5"
-    card-background: "#ffffff"
-    text: "#363636"
-    text-header: "#ffffff"
-    text-title: "#303030"
-    text-subtitle: "#424242"
+    highlight-primary: '#3367d6'
+    highlight-secondary: '#4285f4'
+    highlight-hover: '#5a95f5'
+    background: '#f5f5f5'
+    card-background: '#ffffff'
+    text: '#363636'
+    text-header: '#ffffff'
+    text-title: '#303030'
+    text-subtitle: '#424242'
     card-shadow: rgba(0, 0, 0, 0.1)
-    link-hover: "#363636"
+    link-hover: '#363636'
   dark:
-    highlight-primary: "#3367d6"
-    highlight-secondary: "#4285f4"
-    highlight-hover: "#5a95f5"
-    background: "#131313"
-    card-background: "#2b2b2b"
-    text: "#eaeaea"
-    text-header: "#ffffff"
-    text-title: "#fafafa"
-    text-subtitle: "#f5f5f5"
+    highlight-primary: '#3367d6'
+    highlight-secondary: '#4285f4'
+    highlight-hover: '#5a95f5'
+    background: '#131313'
+    card-background: '#2b2b2b'
+    text: '#eaeaea'
+    text-header: '#ffffff'
+    text-title: '#fafafa'
+    text-subtitle: '#f5f5f5'
     card-shadow: rgba(0, 0, 0, 0.4)
-    link-hover: "#ffdd57"
+    link-hover: '#ffdd57'
 
 
 # Optional message
 #message:
-  # url: "https://<my-api-endpoint>" # Can fetch information from an endpoint to override value below.
+  # url: 'https://<my-api-endpoint>' # Can fetch information from an endpoint to override value below.
   # mapping: # allows to map fields from the remote format to the one expected by Homer
   #   title: 'id' # use value from field 'id' as title
   #   content: 'value' # value from field 'value' as content
@@ -78,219 +78,227 @@ colors:
   #   title: 'id'
   #   content: 'value'
   # refreshInterval: 10000
-#  style: "is-warning"
-#  title: "Optional message!"
-#  icon: "fa fa-exclamation-triangle"
-#  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+#  style: 'is-warning'
+#  title: 'Optional message!'
+#  icon: 'fa fa-exclamation-triangle'
+#  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: "FAQ"
-    icon: "fa-regular fa-circle-question"
-    url: "https://faq.tryrocket.cloud/"
-    target: "_blank"
-  - name: "Chat GPT"
-    url: "https://chatgpt.com/"
-    target: "_blank"
-  - name: "GitHub"
-    icon: "fab fa-github"
-    url: "https://github.com/tryrocket-cloud/tryrocket-cloud"
-    target: "_blank"
-  - name: "Docker Hub"
-    icon: "fa-brands fa-docker"
-    url: "https://hub.docker.com/"
-    target: "_blank"
-  - name: "Artifact Hub"
-    url: "https://artifacthub.io/"
-    target: "_blank"
-  - name: "kubesearch"
-    url: "https://kubesearch.dev/"
-    target: "_blank"
+  - name: 'FAQ'
+    icon: 'fa-regular fa-circle-question'
+    url: 'https://faq.tryrocket.cloud/'
+    target: '_blank'
+  - name: 'Chat GPT'
+    url: 'https://chatgpt.com/'
+    target: '_blank'
+  - name: 'GitHub'
+    icon: 'fab fa-github'
+    url: 'https://github.com/tryrocket-cloud/tryrocket-cloud'
+    target: '_blank'
+  - name: 'Docker Hub'
+    icon: 'fa-brands fa-docker'
+    url: 'https://hub.docker.com/'
+    target: '_blank'
+  - name: 'Artifact Hub'
+    url: 'https://artifacthub.io/'
+    target: '_blank'
+  - name: 'kubesearch'
+    url: 'https://kubesearch.dev/'
+    target: '_blank'
+  - name: 'Status'
+    icon: 'fa-solid fa-gauge'
+    url: 'https://uptime-kuma.tryrocket.cloud/status'
+    target: '_blank' # optional html a tag target attribute
+  - name: 'Healthchecks'
+    icon: 'fa-solid fa-gauge'
+    url: 'https://healthchecks.io/'
+    target: '_blank' # optional html a tag target attribute
    # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
   # see url field and assets/icons/page.yml used in this example:
-  - name: "Second Page"
-    icon: "fas fa-file-alt"
-    url: "#page2"
+  - name: 'Second Page'
+    icon: 'fas fa-file-alt'
+    url: '#page2'
 
 # Services
 # First level array represents a group.
-# Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+# Leave only a 'items' key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
-  - name: "Apps"
-    icon: "fa-solid fa-rocket"
+  - name: 'Apps'
+    icon: 'fa-solid fa-rocket'
     items:
-      - name: "Cinny"
-        logo: "assets/icons-3/cinny.png"
-        subtitle: "Matrix client"
-        tag: "app"
-        keywords: "chat"
-        url: "https://cinny.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Cinny'
+        logo: 'assets/icons-3/cinny.png'
+        subtitle: 'Matrix client'
+        tag: 'app'
+        keywords: 'chat'
+        url: 'https://cinny.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Immich"
-        logo: "assets/icons/immich.svg"
-        subtitle: "High performance self-hosted photo and video management solution."
-        tag: "app"
-        keywords: "photo image"
-        url: "https://immich.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Immich'
+        logo: 'assets/icons/immich.svg'
+        subtitle: 'High performance self-hosted photo and video management solution.'
+        tag: 'app'
+        keywords: 'photo image'
+        url: 'https://immich.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Invidious"
-        logo: "assets/icons/invidious.png"
-        subtitle: "Invidious is an alternative front-end to YouTube "
-        tag: "app"
-        keywords: "video youtube"
-        url: "https://invidious.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Invidious'
+        logo: 'assets/icons/invidious.png'
+        subtitle: 'Invidious is an alternative front-end to YouTube '
+        tag: 'app'
+        keywords: 'video youtube'
+        url: 'https://invidious.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Paperless"
-        logo: "assets/icons-2/paperless-ng.png"
-        subtitle: "index and archive all your physical documents"
-        tag: "app"
-        keywords: "paper dms document"
-        url: "https://paperless.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Paperless'
+        logo: 'assets/icons-2/paperless-ng.png'
+        subtitle: 'index and archive all your physical documents'
+        tag: 'app'
+        keywords: 'paper dms document'
+        url: 'https://paperless.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Vaultwarden"
-        logo: "assets/icons/vaultwarden.png"
-        subtitle: "Password manager"
-        tag: "app"
-        keywords: "password pass secret"
-        url: "https://vaultwarden.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Vaultwarden'
+        logo: 'assets/icons/vaultwarden.png'
+        subtitle: 'Password manager'
+        tag: 'app'
+        keywords: 'password pass secret'
+        url: 'https://vaultwarden.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Linkding"
-        logo: "assets/icons/linkding.png"
-        subtitle: "Self-hosted bookmark manager"
-        tag: "app"
-        keywords: "bookmark"
-        url: "https://linkding.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Linkding'
+        logo: 'assets/icons/linkding.png'
+        subtitle: 'Self-hosted bookmark manager'
+        tag: 'app'
+        keywords: 'bookmark'
+        url: 'https://linkding.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Memos"
-        logo: "assets/icons/memos.png"
-        subtitle: "A note-taking service"
-        tag: "app"
-        keywords: "note"
-        url: "https://memos.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Memos'
+        logo: 'assets/icons/memos.png'
+        subtitle: 'A note-taking service'
+        tag: 'app'
+        keywords: 'note'
+        url: 'https://memos.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Vaultwarden (Admin)"
-        logo: "assets/icons/vaultwarden.png"
-        subtitle: ""
-        tag: "app"
-        keywords: "password pass secret admin"
-        url: "https://vaultwarden.tryrocket.cloud/admin"
-        target: "_blank"
+      - name: 'Vaultwarden (Admin)'
+        logo: 'assets/icons/vaultwarden.png'
+        subtitle: ''
+        tag: 'app'
+        keywords: 'password pass secret admin'
+        url: 'https://vaultwarden.tryrocket.cloud/admin'
+        target: '_blank'
 
-  - name: "Network"
-    icon: "fa-solid fa-server"
+  - name: 'Network'
+    icon: 'fa-solid fa-server'
     items:
-      - name: "AdGuard Home"
-        logo: "assets/icons/adguardhome.svg"
-        subtitle: "Network-wide ads & trackers blocking DNS server "
-        tag: "app"
-        keywords: "adguard pihole dns"
-        url: "http://192.168.178.100:10000"
-        target: "_blank"
-        type: "AdGuardHome"
+      - name: 'AdGuard Home'
+        logo: 'assets/icons/adguardhome.svg'
+        subtitle: 'Network-wide ads & trackers blocking DNS server '
+        tag: 'app'
+        keywords: 'adguard pihole dns'
+        url: 'http://192.168.178.100:10000'
+        target: '_blank'
+        type: 'AdGuardHome'
         
-      - name: "Fritz!Box"
-        logo: "assets/icons/avmfritzbox.png"
-        subtitle: "Router"
-        tag: "infra"
-        keywords: "router network"
-        url: "http://192.168.178.1"
-        target: "_blank"
+      - name: 'Fritz!Box'
+        logo: 'assets/icons/avmfritzbox.png'
+        subtitle: 'Router'
+        tag: 'infra'
+        keywords: 'router network'
+        url: 'http://192.168.178.1'
+        target: '_blank'
 
-      - name: "ZenWiFi AX"
-        logo: "assets/icons-2/asus.png"
-        subtitle: "Router"
-        tag: "infra"
-        keywords: "router network"
-        url: "http://192.168.178.56"
-        target: "_blank"
+      - name: 'ZenWiFi AX'
+        logo: 'assets/icons-2/asus.png'
+        subtitle: 'Router'
+        tag: 'infra'
+        keywords: 'router network'
+        url: 'http://192.168.178.56'
+        target: '_blank'
 
-      - name: "RouterOS Miktorik"
-        logo: "assets/icons-2/mikrotik.png"
-        subtitle: "Switch"
-        tag: "infra"
-        keywords: "router switch network"
-        url: "http://csr326.tryrocket.cloud"
-        target: "_blank"
+      - name: 'RouterOS Miktorik'
+        logo: 'assets/icons-2/mikrotik.png'
+        subtitle: 'Switch'
+        tag: 'infra'
+        keywords: 'router switch network'
+        url: 'http://csr326.tryrocket.cloud'
+        target: '_blank'
 
-  - name: "cluster"
-    logo: "assets/icons-3/k3s.svg"
+  - name: 'cluster'
+    logo: 'assets/icons-3/k3s.svg'
     items:
-      - name: "pgAdmin"
-        logo: "assets/icons/pgadmin.png"
-        subtitle: "PostgreSQL dashboard"
-        tag: "infra"
-        keywords: "pd database postgres"
-        url: "https://pgadmin4.tryrocket.cloud"
-        target: "_blank"
+      - name: 'pgAdmin'
+        logo: 'assets/icons/pgadmin.png'
+        subtitle: 'PostgreSQL dashboard'
+        tag: 'infra'
+        keywords: 'pd database postgres'
+        url: 'https://pgadmin4.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "traefik"
-        logo: "assets/icons/traefik.svg"
-        subtitle: "k3s - Ingress and Load Balancer"
-        tag: "infra"
-        keywords: "network"
-        url: "https://traefik.tryrocket.cloud/dashboard/#/"
-        target: "_blank"
+      - name: 'traefik'
+        logo: 'assets/icons/traefik.svg'
+        subtitle: 'k3s - Ingress and Load Balancer'
+        tag: 'infra'
+        keywords: 'network'
+        url: 'https://traefik.tryrocket.cloud/dashboard/#/'
+        target: '_blank'
         
-      - name: "Longhorn"
-        logo: "assets/icons/longhorn.png"
-        subtitle: "Cloud-Native distributed storage"
-        tag: "infra"
-        keywords: "k3s"
-        url: "https://longhorn.tryrocket.cloud/#/dashboard"
-        target: "_blank"
+      - name: 'Longhorn'
+        logo: 'assets/icons/longhorn.png'
+        subtitle: 'Cloud-Native distributed storage'
+        tag: 'infra'
+        keywords: 'k3s'
+        url: 'https://longhorn.tryrocket.cloud/#/dashboard'
+        target: '_blank'
 
-      - name: "Argo CD"
-        logo: "assets/icons-2/argocd.png"
-        subtitle: "Declarative Continuous Deployment for Kubernetes"
-        tag: "infra"
-        keywords: "k3s"
-        url: "https://argocd.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Argo CD'
+        logo: 'assets/icons-2/argocd.png'
+        subtitle: 'Declarative Continuous Deployment for Kubernetes'
+        tag: 'infra'
+        keywords: 'k3s'
+        url: 'https://argocd.tryrocket.cloud'
+        target: '_blank'
 
-      - name: "Matrix"
-        logo: "assets/icons-3/matrix.png"
-        subtitle: "Matrix server"
-        tag: "chat"
-        keywords: "k3s"
-        url: "https://matrix.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Matrix'
+        logo: 'assets/icons-3/matrix.png'
+        subtitle: 'Matrix server'
+        tag: 'chat'
+        keywords: 'k3s'
+        url: 'https://matrix.tryrocket.cloud'
+        target: '_blank'
 
-  - name: "Code"
-    icon: "fa-solid fa-code"
+  - name: 'Code'
+    icon: 'fa-solid fa-code'
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
-    # logo: "path/to/logo"
+    # logo: 'path/to/logo'
     items:
-      - name: "Gitea"
-        logo: "assets/icons-3/gitea.svg"
-        subtitle: "Git with a cup of tea!"
-        tag: "app"
-        keywords: "git gitea"
-        url: "https://gitea.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Gitea'
+        logo: 'assets/icons-3/gitea.svg'
+        subtitle: 'Git with a cup of tea!'
+        tag: 'app'
+        keywords: 'git gitea'
+        url: 'https://gitea.tryrocket.cloud'
+        target: '_blank'
     
-      - name: "Open Gist"
-        logo: "assets/icons/opengist.svg"
-        subtitle: "Self-hosted pastebin powered by Git"
-        tag: "app"
-        keywords: "gist"
-        url: "https://opengist.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Open Gist'
+        logo: 'assets/icons/opengist.svg'
+        subtitle: 'Self-hosted pastebin powered by Git'
+        tag: 'app'
+        keywords: 'gist'
+        url: 'https://opengist.tryrocket.cloud'
+        target: '_blank'
 
-  - name: "TruNAS"
-    logo: "assets/icons/truenas.svg"
+  - name: 'TruNAS'
+    logo: 'assets/icons/truenas.svg'
     items:
-      - name: "Admin Dashboard"
-        logo: "assets/icons/truenas.svg"
-        subtitle: ""
-        tag: "dashboard"
-        keywords: "nas truenas scale"
-        url: "https://truenas.tryrocket.cloud"
-        target: "_blank"
+      - name: 'Admin Dashboard'
+        logo: 'assets/icons/truenas.svg'
+        subtitle: ''
+        tag: 'dashboard'
+        keywords: 'nas truenas scale'
+        url: 'https://truenas.tryrocket.cloud'
+        target: '_blank'
