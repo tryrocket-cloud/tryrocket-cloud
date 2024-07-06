@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vikunja
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: vikunja-vikunja-http-https-middleware@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - vikunja.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: vikunja.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vikunja
+                port:
+                  number: 80
