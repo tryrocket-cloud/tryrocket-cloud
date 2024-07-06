@@ -86,6 +86,9 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
+  - name: "FAQ"
+    url: "https://faq.tryrocket.cloud/"
+    target: "_blank"
   - name: "Chat GPT"
     url: "https://chatgpt.com/"
     target: "_blank"
