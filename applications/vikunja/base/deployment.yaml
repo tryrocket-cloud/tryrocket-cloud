@@ -15,6 +15,13 @@ spec:
         app: vikunja
     spec:
       dnsPolicy: ClusterFirst
+      initContainers:
+        - name: init-chown
+          image: busybox
+          command: ["sh", "-c", "chown -R 1000:1000 /app/vikunja/files && chmod -R 750 /app/vikunja/files"]
+          volumeMounts:
+            - name: vikunja-storage
+              mountPath: /app/vikunja/files
       containers:
         - name: vikunja
           image: vikunja/vikunja
