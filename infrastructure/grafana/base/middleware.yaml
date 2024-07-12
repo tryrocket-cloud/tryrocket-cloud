@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: grafana-grafana-https-middleware
+  name: grafana-http-https-middleware
 spec:
   redirectScheme:
     scheme: https
