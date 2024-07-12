@@ -24,7 +24,7 @@ spec:
               mountPath: /app/vikunja/files
       containers:
         - name: vikunja
-          image: vikunja/vikunja
+          image: vikunja/vikunja:latest
           ports:
             - containerPort: 3456
           env:

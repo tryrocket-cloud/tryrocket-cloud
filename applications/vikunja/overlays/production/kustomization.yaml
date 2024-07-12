@@ -4,3 +4,7 @@ resources:
   - ../../base
 
 namespace: vikunja
+
+images:
+  - name: vikunja/vikunja:latest
+    newTag: 0.24.0
