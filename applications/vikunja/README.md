@@ -4,8 +4,8 @@
 
 Install vikunja as an Argo CD application
 
-    create a volume
-    create database user 
+    create a longhorn volume
+    create vikunja database user 
     create a new database with this new user and matching the creds in deployment
 
     argocd app create vikunja \
@@ -18,3 +18,9 @@ Install vikunja as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+## Backup
+
+    data backup over cronjob
+
+    longhorn volume
