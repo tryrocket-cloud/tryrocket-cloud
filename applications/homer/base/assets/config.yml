@@ -239,6 +239,15 @@ services:
   - name: 'cluster'
     logo: 'assets/icons-3/k3s.svg'
     items:
+
+      - name: 'Grafana'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/grafana.svg'
+        subtitle: 'Monitoring dashboard'
+        tag: 'infra'
+        keywords: 'monitoring'
+        url: 'https://grafana.tryrocket.cloud'
+        target: '_blank'
+
       - name: 'pgAdmin'
         logo: 'assets/icons/pgadmin.png'
         subtitle: 'PostgreSQL dashboard'
