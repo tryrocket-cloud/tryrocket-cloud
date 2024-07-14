@@ -27,6 +27,16 @@ spec:
           ports:
             - containerPort: 9090
           env:
+            - name: USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
             - name: LD_DB_ENGINE
               value: "postgres"
             - name: LD_DB_DATABASE
