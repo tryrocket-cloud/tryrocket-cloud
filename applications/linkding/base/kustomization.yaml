@@ -6,4 +6,3 @@ resources:
   - ingress.yaml
   - middleware.yaml
   - namespace.yaml
-  - postgres-secret.yaml
