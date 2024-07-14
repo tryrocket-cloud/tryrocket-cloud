@@ -8,5 +8,5 @@ namespace: linkding
 
 configMapGenerator:
   - name: postgres
-    files:
-      - postgres.properties
+    envs:
+      - postgres.env
