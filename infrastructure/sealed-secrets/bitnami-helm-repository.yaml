@@ -1,0 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Repository
+metadata:
+  name: bitnami-helm-repository
+spec:
+  type: helm
+  url: https://charts.bitnami.com/bitnami
