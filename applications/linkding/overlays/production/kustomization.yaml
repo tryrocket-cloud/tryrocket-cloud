@@ -6,6 +6,10 @@ resources:
 
 namespace: linkding
 
+images:
+  - name: sissbruecker/linkding:latest
+    newTag: 1.31.0-alpine
+
 configMapGenerator:
   - name: postgres
     envs:
