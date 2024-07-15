@@ -20,8 +20,11 @@ spec:
           image: sissbruecker/linkding:latest
           ports:
             - containerPort: 9090
+          env:
+            - name: TZ
+              value: Europe/Berlin
           envFrom:
-          - configMapRef:
-              name: postgres
-          - secretRef:
-              name: postgres
+            - configMapRef:
+                name: postgres
+            - secretRef:
+                name: postgres
