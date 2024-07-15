@@ -30,8 +30,8 @@ spec:
                 name: postgres
           resources:
             requests:
-              memory: "50Mi"
-              cpu: "50m"
+              memory: "80Mi"
+              cpu: "80m"
             limits:
               memory: "100Mi"
               cpu: "100m"
