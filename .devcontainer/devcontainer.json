@@ -1,0 +1,17 @@
+{
+  "name": "Fish Shell Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "fish"
+  },
+  "extensions": [
+    "tamasfe.even-better-toml",
+    "mhutchie.git-graph",
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced"
+  ],
+  "postCreateCommand": "sudo chsh -s /usr/bin/fish vscode",
+  "remoteUser": "vscode"
+}
