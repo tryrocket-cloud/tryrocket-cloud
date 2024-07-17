@@ -333,7 +333,7 @@ services:
         target: '_blank'
 
   - name: 'Monitoring'
-    logo: 'fab fa-watchman-monitoring'
+    logo: 'fa-solid fa-code'
     items:
       - name: 'NewRelic'
         logo: 'assets/icons-3/newrelic.svg'
