@@ -277,7 +277,7 @@ services:
         target: '_blank'
 
       - name: 'Argo CD'
-        logo: 'assets/icons-2/argocd.png'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/argocd.png'
         subtitle: 'Declarative Continuous Deployment for Kubernetes'
         tag: 'infra'
         keywords: 'k3s'
