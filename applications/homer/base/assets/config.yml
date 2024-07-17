@@ -332,6 +332,17 @@ services:
         url: 'https://truenas.tryrocket.cloud'
         target: '_blank'
 
+  - name: 'Monitoring'
+    logo: 'fab fa-watchman-monitoring'
+    items:
+      - name: 'NewRelic'
+        logo: 'assets/icons-3/newrelic.svg'
+        subtitle: 'Free end-to-end monitoring for your entire stack'
+        tag: 'dashboard'
+        keywords: 'monitoring analytics'
+        url: 'https://one.eu.newrelic.com'
+        target: '_blank'
+
   - name: 'Maybe'
     logo: 'fa-solid fa-question'
     items:

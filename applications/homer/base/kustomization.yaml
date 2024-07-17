@@ -42,3 +42,4 @@ configMapGenerator:
       - artifacthub.svg=assets/artifacthub.svg
       - cinny.png=assets/cinny.png
       - matrix.png=assets/matrix.png
+      - newrelic.svg=assets/newrelic.svg
