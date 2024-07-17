@@ -344,7 +344,7 @@ services:
         target: '_blank'
 
   - name: 'Maybe'
-    logo: 'fa-solid fa-question'
+    icon: 'fa-solid fa-question'
     items:
       - name: 'Filebrowser'
         logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/svg/filebrowser.svg'
