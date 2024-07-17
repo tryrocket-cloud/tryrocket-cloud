@@ -4,6 +4,7 @@ metadata:
   name: memos
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: memos
