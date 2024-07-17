@@ -4,3 +4,8 @@ resources:
   - ../../base
 
 namespace: memos
+
+images:
+  - name: neosmemo/memos:latest
+    newTag: 0.22.3
+
