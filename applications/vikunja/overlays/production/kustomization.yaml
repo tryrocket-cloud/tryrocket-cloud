@@ -2,9 +2,18 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - postgres-external-secret.yaml
 
 namespace: vikunja
 
 images:
   - name: vikunja/vikunja:latest
     newTag: 0.24.0
+
+configMapGenerator:
+  - name: postgres
+    envs:
+      - postgres.env
+  - name: vikunja
+    envs:
+      - vikunja.env
