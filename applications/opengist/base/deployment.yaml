@@ -4,6 +4,7 @@ metadata:
   name: opengist
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   strategy:
     type: Recreate
   selector:
@@ -19,6 +20,8 @@ spec:
         - name: opengist
           image: ghcr.io/thomiceli/opengist:1.7
           env:
+            - name: TZ
+              value: Europe/Berlin
             - name: OG_EXTERNAL_URL
               value: https://opengist.tryrocket.cloud
           ports:
