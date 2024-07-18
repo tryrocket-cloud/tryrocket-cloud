@@ -23,8 +23,17 @@ spec:
           env:
             - name: TZ
               value: Europe/Berlin
+            - name: LD_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: username
+            - name: LD_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: password
           envFrom:
             - configMapRef:
                 name: postgres
-            - secretRef:
-                name: postgres
+        
