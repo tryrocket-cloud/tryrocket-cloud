@@ -9,3 +9,4 @@
     GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO <user> WITH GRANT OPTION
 
 https://github.com/tryrocket-cloud/tryrocket-cloud/issues/11
+https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
