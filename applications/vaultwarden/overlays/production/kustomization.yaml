@@ -9,3 +9,8 @@ namespace: vaultwarden
 images:
   - name: vaultwarden/server:latest
     newTag: 1.31.0-alpine
+
+configMapGenerator:
+  - name: vaultwarden-config
+    envs:
+      - vaultwarden.env
