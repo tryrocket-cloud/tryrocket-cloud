@@ -301,7 +301,7 @@ services:
         target: '_blank'
 
       - name: 'Semaphore UI'
-        logo: 'assets/icons-3/longhorn.png'
+        logo: 'assets/icons-2/longhorn.png'
         subtitle: 'Modern UI for Ansible and Terraform'
         tag: 'infra'
         keywords: 'semaphore ansible terraform'
