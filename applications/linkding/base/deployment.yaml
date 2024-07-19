@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   name: linkding
   annotations:
-    secret.reloader.stakater.com/reload: "postgres-linkding-secret"
+    #secret.reloader.stakater.com/reload: "postgres-linkding-secret"
+    reloader.stakater.com/match: "postgres-linkding-secret" 
 spec:
   replicas: 1
   revisionHistoryLimit: 3
