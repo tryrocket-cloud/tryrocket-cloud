@@ -17,6 +17,7 @@ spec:
       containers:
         - name: memos
           image: neosmemo/memos:latest
+          imagePullPolicy: IfNotPresent
           args:
             - '--driver'
             - 'postgres'

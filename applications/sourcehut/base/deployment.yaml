@@ -15,6 +15,7 @@ spec:
       containers:
       - name: git-sr-ht
         image: sr.ht/git.sr.ht:latest
+        imagePullPolicy: IfNotPresent
         env:
           - name: DATABASE_URL
             value: "postgres://sourcehut:sourcehut@postgres.postgres-16.svc.cluster.local:5432/sourcehut"

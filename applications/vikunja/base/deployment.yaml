@@ -28,6 +28,7 @@ spec:
       containers:
         - name: vikunja
           image: vikunja/vikunja:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3456
           envFrom:

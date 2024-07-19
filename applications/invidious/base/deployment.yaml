@@ -16,6 +16,7 @@ spec:
       containers:
         - name: invidious
           image: quay.io/invidious/invidious:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           env:

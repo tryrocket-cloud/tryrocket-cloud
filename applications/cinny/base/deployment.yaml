@@ -16,6 +16,7 @@ spec:
       containers:
         - name: cinny
           image: ghcr.io/cinnyapp/cinny:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           env:
