@@ -39,10 +39,6 @@ spec:
                   key: password
             - name: DATABASE_URL
               value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16/vaultwarden"
-
-#            - name: ADMIN_TOKEN
-#              value: "$argon2id$v=19$m=65540,t=3,p=4$NGpHTUx5UHQyeldZdmFtb1d3T3JmVmlCY3BzTW9BRUNlUFQvZnBKTUZ5UT0$3oUREYYD6MVnctdDoOguDcnlpEcbD1epFKirtgc8huE"
-
           envFrom:
             - configMapRef:
                 name: vaultwarden-config
