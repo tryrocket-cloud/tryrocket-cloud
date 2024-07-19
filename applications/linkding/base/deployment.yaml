@@ -3,9 +3,7 @@ kind: Deployment
 metadata:
   name: linkding
   annotations:
-    #secret.reloader.stakater.com/reload: "postgres-linkding-secret"
-    #reloader.stakater.com/match: "postgres-linkding-secret" 
-    reloader.stakater.com/auto: "true" # Ensure this annotation is present
+    secret.reloader.stakater.com/reload: "linkding-postgres-secret"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -30,12 +28,12 @@ spec:
             - name: LD_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres-linkding-secret
+                  name: linkding-postgres-secret
                   key: username
             - name: LD_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-linkding-secret
+                  name: linkding-postgres-secret
                   key: password
           envFrom:
             - configMapRef:
