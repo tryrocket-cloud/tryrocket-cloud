@@ -46,8 +46,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: vaultwarden-config
-            - secretRef:
-                name: vaultwarden-secret
+#            - secretRef:
+#                name: vaultwarden-secret
           livenessProbe:
             httpGet:
               path: /
