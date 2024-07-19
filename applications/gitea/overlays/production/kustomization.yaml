@@ -11,6 +11,6 @@ images:
     newTag: 1.22.1
 
 configMapGenerator:
-  - name: postgres
+  - name: gitea-postgres-config
     envs:
       - postgres.env

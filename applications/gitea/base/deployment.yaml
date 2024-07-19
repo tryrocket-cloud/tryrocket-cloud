@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gitea
+  annotations:
+    secret.reloader.stakater.com/reload: "gitea-postgres-secret"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -26,16 +28,16 @@ spec:
             - name: GITEA__database__USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres
+                  name: gitea-postgres-secret
                   key: username
             - name: GITEA__database__PASSWD
               valueFrom:
                 secretKeyRef:
-                  name: postgres
+                  name: gitea-postgres-secret
                   key: password
           envFrom:
             - configMapRef:
-                name: postgres
+                name: gitea-postgres-config
           volumeMounts:
             - name: gitea-storage
               mountPath: /data
