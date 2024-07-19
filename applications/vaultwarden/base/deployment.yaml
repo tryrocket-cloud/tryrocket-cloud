@@ -37,6 +37,8 @@ spec:
                   key: password
             - name: DATABASE_URL
               value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-16/vaultwarden"
+            - name: DATABASE_URL2
+              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16/vaultwarden"
             - name: DOMAIN
               value: "https://vaultwarden.tryrocket.cloud"
             - name: ROCKET_PORT
