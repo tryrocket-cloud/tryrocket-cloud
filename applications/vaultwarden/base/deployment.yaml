@@ -25,6 +25,8 @@ spec:
           env:
             - name: TZ
               value: Europe/Berlin
+            - name: LOG_LEVEL
+              value: trace
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -35,9 +37,9 @@ spec:
                 secretKeyRef:
                   name: vaultwarden-postgres-secret
                   key: password
-            - name: DATABASE_URL
+            - name: DATABASE_URL1
               value: "postgresql://vaultwarden:vaultwarden@postgres.postgres-16/vaultwarden"
-            - name: DATABASE_URL2
+            - name: DATABASE_URL
               value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16/vaultwarden"
             - name: DOMAIN
               value: "https://vaultwarden.tryrocket.cloud"
