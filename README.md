@@ -38,3 +38,7 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
     vault lease revoke -prefix database/creds/<role-name> # scheduled lease revoke
     vault read sys/mounts/database/tune # list config
     vault write sys/mounts/database/tune default_lease_ttl=1h max_lease_ttl=24h # set ttls 
+
+## Installed
+
+- https://github.com/stakater/Reloader
