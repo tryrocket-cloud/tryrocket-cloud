@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: linkding
+  annotations:
+    secret.reloader.stakater.com/reload: "postgres"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -36,4 +38,3 @@ spec:
           envFrom:
             - configMapRef:
                 name: postgres
-        
