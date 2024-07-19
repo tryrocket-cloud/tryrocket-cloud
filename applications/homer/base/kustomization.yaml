@@ -42,3 +42,4 @@ configMapGenerator:
       - cinny.png=assets/cinny.png
       - matrix.png=assets/matrix.png
       - newrelic.svg=assets/newrelic.svg
+      - semaphore-ui.png=assets/semaphore-ui.png

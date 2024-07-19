@@ -300,6 +300,14 @@ services:
         url: 'https://vault.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'Semaphore UI'
+        logo: 'assets/icons-3/longhorn.png'
+        subtitle: 'Modern UI for Ansible and Terraform'
+        tag: 'infra'
+        keywords: 'semaphore ansible terraform'
+        url: 'https://semaphore-ui.tryrocket.cloud'
+        target: '_blank'
+
   - name: 'Code'
     icon: 'fa-solid fa-code'
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
