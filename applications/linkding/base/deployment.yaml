@@ -4,7 +4,8 @@ metadata:
   name: linkding
   annotations:
     #secret.reloader.stakater.com/reload: "postgres-linkding-secret"
-    reloader.stakater.com/match: "postgres-linkding-secret" 
+    #reloader.stakater.com/match: "postgres-linkding-secret" 
+    reloader.stakater.com/auto: "true" # Ensure this annotation is present
 spec:
   replicas: 1
   revisionHistoryLimit: 3
