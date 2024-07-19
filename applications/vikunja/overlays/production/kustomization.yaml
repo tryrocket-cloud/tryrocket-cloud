@@ -11,9 +11,9 @@ images:
     newTag: 0.24.0
 
 configMapGenerator:
-  - name: postgres
+  - name: vikunja-postgres-config
     envs:
       - postgres.env
-  - name: vikunja
+  - name: vikunja-config
     envs:
       - vikunja.env

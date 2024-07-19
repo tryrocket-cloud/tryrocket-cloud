@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vikunja
+  annotations:
+    secret.reloader.stakater.com/reload: "vikunja-postgres-secret"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -30,21 +32,21 @@ spec:
             - containerPort: 3456
           envFrom:
             - configMapRef:
-                name: postgres
+                name: vikunja-postgres-config
             - configMapRef:
-                name: vikunja
+                name: vikunja-config
           env:
             - name: TZ
               value: Europe/Berlin
             - name: VIKUNJA_DATABASE_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres
+                  name: vikunja-postgres-secret
                   key: username
             - name: VIKUNJA_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres
+                  name: vikunja-postgres-secret
                   key: password
           volumeMounts:
             - name: vikunja-storage
