@@ -304,12 +304,12 @@ services:
         url: 'https://vault.tryrocket.cloud'
         target: '_blank'
 
-      - name: 'Semaphore UI'
-        logo: 'assets/icons-2/semaphore-ui.png'
+      - name: 'Semaphore'
+        logo: 'assets/icons-2/semaphore.png'
         subtitle: 'Modern UI for Ansible and Terraform'
         tag: 'infra'
         keywords: 'semaphore ansible terraform'
-        url: 'https://semaphore-ui.tryrocket.cloud'
+        url: 'https://semaphore.tryrocket.cloud'
         target: '_blank'
 
   - name: 'Code'
