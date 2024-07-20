@@ -90,10 +90,14 @@ links:
     icon: 'fa-regular fa-circle-question'
     url: 'https://faq.tryrocket.cloud/'
     target: '_blank'
-  - name: 'FAQ'
+  - name: 'Awesome selhosted'
     icon: 'fa-regular fa-circle-question'
     url: https://github.com/awesome-selfhosted/awesome-selfhosted
     target: '_blank'
+  - name: selfh.st
+    icon: 
+    url: https://selfh.st
+    target: _blank
   - name: 'Chat GPT'
     url: 'https://chatgpt.com/'
     target: '_blank'
