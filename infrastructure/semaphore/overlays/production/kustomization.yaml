@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - postgres-external-secret.yaml
+  - semaphore-external-secret.yaml
 
 namespace: semaphore
 
