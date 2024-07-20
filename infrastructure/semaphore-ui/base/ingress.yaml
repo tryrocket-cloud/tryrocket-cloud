@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: semaphore
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: semaphore-semaphore-http-https-middleware@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - semaphore.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: semaphore.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: semaphore
+                port:
+                  number: 80
