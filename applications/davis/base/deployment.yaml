@@ -43,8 +43,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: davis-config
-            - configMapRef:
-                name: davis-postgres-config
             - secretRef:
                 name: davis-secret
       volumes:

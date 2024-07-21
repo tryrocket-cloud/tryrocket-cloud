@@ -12,9 +12,6 @@ namespace: davis
 #    newTag: 4.4.3
 
 configMapGenerator:
-  - name: davis-postgres-config
-    envs:
-      - postgres.env
   - name: davis-config
     envs:
       - davis.env
