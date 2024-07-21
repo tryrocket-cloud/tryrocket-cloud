@@ -220,7 +220,6 @@ services:
         url: 'https://davis.tryrocket.cloud/'
         target: '_blank'
 
-
   - name: 'Network'
     icon: 'fa-solid fa-server'
     items:
