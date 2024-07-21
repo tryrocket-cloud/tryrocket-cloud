@@ -27,19 +27,15 @@ spec:
             - name: TZ
               value: Europe/Berlin
             - name: SEMAPHORE_DB_USER
-              value: vaultuser
+              valueFrom:
+                secretKeyRef:
+                  name: semaphore-postgres-secret
+                  key: username
             - name: SEMAPHORE_DB_PASS
-              value: "Joo!soh1"
-            #- name: SEMAPHORE_DB_USER1
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: semaphore-postgres-secret
-            #      key: username
-            #- name: SEMAPHORE_DB_PASS1
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: semaphore-postgres-secret
-            #      key: password
+              valueFrom:
+                secretKeyRef:
+                  name: semaphore-postgres-secret
+                  key: password
             - name: SEMAPHORE_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
