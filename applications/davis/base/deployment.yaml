@@ -29,7 +29,7 @@ spec:
             - name: DB_USER
               value: vaultuser
             - name: DB_PASSWORD
-              value: Joo!soh1
+              value: Joo!soh11
             #- name: DB_USER
             #  valueFrom:
             #    secretKeyRef:
