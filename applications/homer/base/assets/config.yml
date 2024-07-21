@@ -86,6 +86,10 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
+  - name: 'Wetter in Schorndorf'
+    icon: 'fa-solid fa-cloud-sun-rain'
+    url: 'https://www.wetterstation-schorndorf.de/index.php'
+    target: _blank
   - name: 'FAQ'
     icon: 'fa-regular fa-circle-question'
     url: 'https://faq.tryrocket.cloud/'
