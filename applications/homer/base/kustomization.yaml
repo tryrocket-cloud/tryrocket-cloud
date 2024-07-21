@@ -32,7 +32,7 @@ configMapGenerator:
       - immich.svg=assets/immich.svg
       - asus.png=assets/asus.png
       - mikrotik.png=assets/mikrotik.png
-      - semaphore-ui.png=assets/semaphore-ui.png
+      - semaphore.pngpng=assets/semaphore.png
       
   - name: homer-icons-3
     files:
