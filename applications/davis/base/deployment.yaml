@@ -39,7 +39,7 @@ spec:
             - name: DATABASE_DRIVER
               value: postgresql
             - name: DATABASE_URL
-              value: postgresql://vaultuser:Joo!soh1@postgres.postgres-16.svc.cluster.local:5432/davis
+              value: postgresql://$(DB_USER):$(DB_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/davis
           envFrom:
             - configMapRef:
                 name: davis-config
