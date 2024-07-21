@@ -30,6 +30,8 @@ spec:
               value: vaultuser
             - name: DB_PASSWORD
               value: Joo!soh11
+            - name: DATABASE_URL
+              value: postgresql://vaultuser:Joo!soh1@postgres.postgres-16.svc.cluster.local:5432/davis?serverVersion=16&charset=UTF-8
             #- name: DB_USER
             #  valueFrom:
             #    secretKeyRef:
