@@ -27,15 +27,19 @@ spec:
             - name: TZ
               value: Europe/Berlin
             - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: davis-postgres-secret
-                  key: username
+              value: vaultuser
             - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: davis-postgres-secret
-                  key: password
+              value: Joo!soh1
+            #- name: DB_USER
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: davis-postgres-secret
+            #      key: username
+            #- name: DB_PASSWORD
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: davis-postgres-secret
+            #      key: password
           envFrom:
             - configMapRef:
                 name: davis-config
