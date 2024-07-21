@@ -27,21 +27,15 @@ spec:
             - name: TZ
               value: Europe/Berlin
             - name: DB_USER
-              value: vaultuser
+              valueFrom:
+                secretKeyRef:
+                  name: davis-postgres-secret
+                  key: username
             - name: DB_PASSWORD
-              value: Joo!soh11
-            - name: DATABASE_URL
-              value: postgresql://vaultuser:Joo!soh1@postgres.postgres-16.svc.cluster.local:5432/davis?serverVersion=16&charset=UTF-8
-            #- name: DB_USER
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: davis-postgres-secret
-            #      key: username
-            #- name: DB_PASSWORD
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: davis-postgres-secret
-            #      key: password
+              valueFrom:
+                secretKeyRef:
+                  name: davis-postgres-secret
+                  key: password
           envFrom:
             - configMapRef:
                 name: davis-config
