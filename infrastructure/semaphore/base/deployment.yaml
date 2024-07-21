@@ -30,16 +30,16 @@ spec:
               value: vaultuser
             - name: SEMAPHORE_DB_PASS
               value: vaultuser
-            - name: SEMAPHORE_DB_USER1
-              valueFrom:
-                secretKeyRef:
-                  name: semaphore-postgres-secret
-                  key: username
-            - name: SEMAPHORE_DB_PASS1
-              valueFrom:
-                secretKeyRef:
-                  name: semaphore-postgres-secret
-                  key: password
+            #- name: SEMAPHORE_DB_USER1
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: semaphore-postgres-secret
+            #      key: username
+            #- name: SEMAPHORE_DB_PASS1
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: semaphore-postgres-secret
+            #      key: password
             - name: SEMAPHORE_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
