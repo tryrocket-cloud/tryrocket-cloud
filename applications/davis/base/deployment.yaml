@@ -36,8 +36,8 @@ spec:
                 secretKeyRef:
                   name: davis-postgres-secret
                   key: password
-            - name: DATABASE_URL
-              value: postgresql://$(DB_USER):$(DB_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/davis
+            #- name: DATABASE_URL
+            #  value: postgresql://$(DB_USER):$(DB_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/davis
           envFrom:
             - configMapRef:
                 name: davis-config
