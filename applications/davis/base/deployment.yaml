@@ -22,7 +22,7 @@ spec:
           image: ghcr.io/tchapi/davis-standalone:edge
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 9000
           env:
             - name: TZ
               value: Europe/Berlin
