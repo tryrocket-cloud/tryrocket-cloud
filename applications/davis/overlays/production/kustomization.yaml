@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - postgres-external-secret.yaml
+  - davis-external-secret.yaml
+
+namespace: davis
+
+images:
+  - name: ghcr.io/tchapi/davis:latest
+    newTag: 4.4.3
+
+configMapGenerator:
+  - name: davis-postgres-config
+    envs:
+      - postgres.env
+  - name: davis-config
+    envs:
+      - davis.env
