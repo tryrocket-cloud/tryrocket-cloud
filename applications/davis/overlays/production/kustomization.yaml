@@ -7,9 +7,9 @@ resources:
 
 namespace: davis
 
-images:
-  - name: ghcr.io/tchapi/davis:latest
-    newTag: 4.4.3
+#images:
+#  - name: ghcr.io/tchapi/davis-standalone:edge
+#    newTag: 4.4.3
 
 configMapGenerator:
   - name: davis-postgres-config
