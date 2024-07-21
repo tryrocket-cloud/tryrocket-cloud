@@ -17,3 +17,7 @@ Install semaphore as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+## Notes
+
+- Database was initialised by `vaultuser`
