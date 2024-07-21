@@ -212,6 +212,15 @@ services:
         url: 'https://vikunja.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'Davis'
+        logo: 'assets/icons-2/davis.png'
+        subtitle: 'Simple DAV server'
+        tag: 'contacts calendar'
+        keywords: 'dav caldav carddav'
+        url: 'https://davis.tryrocket.cloud/'
+        target: '_blank'
+
+
   - name: 'Network'
     icon: 'fa-solid fa-server'
     items:

@@ -33,6 +33,7 @@ configMapGenerator:
       - asus.png=assets/asus.png
       - mikrotik.png=assets/mikrotik.png
       - semaphore.png=assets/semaphore.png
+      - davis.png=assets/davis.png
       
   - name: homer-icons-3
     files:
