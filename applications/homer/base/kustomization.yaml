@@ -34,7 +34,8 @@ configMapGenerator:
       - mikrotik.png=assets/mikrotik.png
       - semaphore.png=assets/semaphore.png
       - davis.png=assets/davis.png
-      
+      - nobids.png=assets/nobids.png
+
   - name: homer-icons-3
     files:
       - kubernetes.png=assets/kubernetes.png
