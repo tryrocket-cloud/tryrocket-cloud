@@ -367,6 +367,25 @@ services:
         url: 'https://one.eu.newrelic.com'
         target: '_blank'
 
+
+  - name: 'Links'
+    icon: 'fa-solid fa-link'
+    items:
+      - name: 'Ebay'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/ebay.png'
+        subtitle: 'My watchlist'
+        tag: 'shop'
+        keywords: ''
+        url: https://www.ebay.de/mye/myebay/watchlist
+        target: '_blank'
+      - name: 'Kleinanzeigen'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/ebay.png'
+        subtitle: 'My watchlist'
+        tag: 'shop'
+        keywords: ''
+        url: https://www.kleinanzeigen.de/m-merkliste.html
+        target: '_blank'
+
   - name: 'Maybe'
     icon: 'fa-solid fa-question'
     items:
