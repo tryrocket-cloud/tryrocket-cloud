@@ -379,7 +379,7 @@ services:
         url: https://www.ebay.de/mye/myebay/watchlist
         target: '_blank'
       - name: 'Kleinanzeigen'
-        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/ebay.png'
+        logo: 'assets/icons-2/kleinanzeigen.svg'
         subtitle: 'My watchlist'
         tag: 'shop'
         keywords: ''

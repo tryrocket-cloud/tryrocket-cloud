@@ -35,6 +35,7 @@ configMapGenerator:
       - semaphore.png=assets/semaphore.png
       - davis.png=assets/davis.png
       - nobids.png=assets/nobids.png
+      - kleinanzeigen.svg=assets/kleinanzeigen.svg
 
   - name: homer-icons-3
     files:
