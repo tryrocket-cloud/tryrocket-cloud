@@ -23,3 +23,7 @@ Install davis as an Argo CD application
 - https://davis.tryrocket.cloud/dashboard
 - https://davis.tryrocket.cloud/dav
 - https://davis.tryrocket.cloud/dav/principals/<name>
+
+## Notes
+
+- vault static postgres role
