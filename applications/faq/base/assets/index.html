@@ -65,8 +65,8 @@
             text-align: center;
         }
 
-        details{
-            background-color: #303030;
+        details {
+            background-color: #007BFF;
             color: #fff;
             font-size: 1.5rem;
         }
@@ -99,6 +99,18 @@
         details[open] div{
             padding: .5em 1em;
         }
+        .flex-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .flex-item {
+            background: #e0e0e0;
+            padding: 1rem;
+            flex: 1 1 calc(33.333% - 1rem); /* Adjust for a three-column layout */
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -116,18 +128,20 @@
         </nav>
 
         <section>
-            <details>
-                <summary>How do I create accordion?</summary>
-                <div>
-               The tags <em>details</em> and <em>summary</em> have you covered.
-                </div>
-            </details>
-            <details>
-                <summary>How do I create accordion?</summary>
-                <div>
-               The tags <em>details</em> and <em>summary</em> have you covered.
-                </div>
-             </details>
+            <div class="flex-section">
+                <details class="flex-item">
+                    <summary>How do I create accordion?</summary>
+                    <div>
+                The tags <em>details</em> and <em>summary</em> have you covered.
+                    </div>
+                </details>
+                <details class="flex-item">
+                    <summary>How do I create accordion?</summary>
+                    <div>
+                The tags <em>details</em> and <em>summary</em> have you covered.
+                    </div>
+                </details>
+            </div>
         </section>
 
     </main>
