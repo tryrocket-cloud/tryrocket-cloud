@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - faq.tryrocket.cloud
-      secretName: tryrocket-cloud-tls
+      secretName: tryrocket-cloud-http-tls
   rules:
     - host: faq.tryrocket.cloud
       http:
@@ -21,4 +21,4 @@ spec:
               service:
                 name: faq
                 port:
-                  name: http
+                  number: 80
