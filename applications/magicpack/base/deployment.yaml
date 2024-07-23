@@ -20,7 +20,7 @@ spec:
       hostNetwork: true
       containers:
         - name: magicpack
-          image: sissbruecker/magicpack:latest
+          image: alexswki/magicpack
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
