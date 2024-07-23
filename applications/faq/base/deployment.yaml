@@ -19,8 +19,13 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
+          volumeMounts:
+            - name: faq-config
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+              readOnly: true
       volumes:
         - name: faq-config
           configMap:

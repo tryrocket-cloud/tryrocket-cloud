@@ -17,8 +17,3 @@ Install faq as an Argo CD application
                         --auto-prune
 
 
-          volumeMounts:
-            - name: faq-config
-              mountPath: /usr/share/nginx/html/index.html
-              subPath: index.html
-              readOnly: true
