@@ -23,7 +23,8 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: faq-config
-              mountPath: /index.html
+              mountPath: /usr/share/nginx/html/index.html:ro
+              subPath: index.html
               readOnly: true
       volumes:
         - name: faq-config
