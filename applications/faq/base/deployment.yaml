@@ -15,17 +15,15 @@ spec:
     spec:
       containers:
         - name: faq
-          image: nginx
+          image: nginx:alpine
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           volumeMounts:
-            - name: faq-config
-              mountPath: /usr/share/nginx/html/index.html
-              subPath: index.html
-              readOnly: true
+          - name: faq-config
+            mountPath: /usr/share/nginx/html
       volumes:
         - name: faq-config
           configMap:
