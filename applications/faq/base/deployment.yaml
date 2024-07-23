@@ -7,11 +7,11 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: invidious
+      app: faq
   template:
     metadata:
       labels:
-        app: invidious
+        app: faq
     spec:
       containers:
         - name: faq
