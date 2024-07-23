@@ -5,7 +5,8 @@ resources:
   - service.yaml
   - ingress.yaml
   - middleware.yaml
-
+  - namespace.yaml
+  
 configMapGenerator:
   - name: homer-config
     files:
