@@ -11,3 +11,4 @@ configMapGenerator:
   - name: faq-config
     files:
       - index.html=assets/index.html
+      - about.html=assets/about.html
