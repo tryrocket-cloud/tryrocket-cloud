@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: faq
+  labels:
+    app.kubernetes.io/service: faq
+    app.kubernetes.io/instance: faq
+    app.kubernetes.io/name: faq
+    app.kubernetes.io/version: v24.05.1
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/instance: faq
+    app.kubernetes.io/name: faq
