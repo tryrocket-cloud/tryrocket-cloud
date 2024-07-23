@@ -256,6 +256,14 @@ services:
         url: 'http://csr326.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'MagicPack'
+        logo: 'https://raw.githubusercontent.com/alex-swki/magicpack/sourcecode/public/img/logo.png'
+        subtitle: 'Web-based Wake-On-Lan tool'
+        tag: 'infra'
+        keywords: 'wol'
+        url: 'http://magicpack.tryrocket.cloud'
+        target: '_blank'
+
   - name: 'cluster'
     logo: 'assets/icons-3/k3s.svg'
     items:
