@@ -23,7 +23,7 @@ spec:
           image: sissbruecker/magicpack:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9090
+            - containerPort: 3000
           env:
             - name: TZ
               value: Europe/Berlin
