@@ -4,6 +4,7 @@ metadata:
   name: faq
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: invidious
