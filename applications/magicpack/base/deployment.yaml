@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: magicpack
+  annotations:
+    secret.reloader.stakater.com/reload: "magicpack-postgres-secret"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: magicpack
+  template:
+    metadata:
+      labels:
+        app: magicpack
+    spec:
+      hostNetwork: true
+      containers:
+        - name: magicpack
+          image: sissbruecker/magicpack:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
+          env:
+            - name: TZ
+              value: Europe/Berlin
+              #https://github.com/alex-swki/magicpack/blob/master/.env
+            - name: NEXT_PUBLIC_URL
+              value: "https://magicpack.tryrocket.cloud"
+            - name: NEXT_PUBLIC_COLOR_THEME
+              value: "DARK"
+            - name: NEXT_PUBLIC_PAGE_TITLE
+              value: "Wake On Lan"
+            - name: NEXT_PUBLIC_PAGE_DESC1
+              value: "Wake up your company computer using the button below."
+            - name: NEXT_PUBLIC_PAGE_DESC2
+              value: "When your computer is running, you can connect via Remote Desktop."
+          volumeMounts:
+          - name: magicpack-config
+            mountPath: /magicpack/computers.json
+            subPath: computers.json
+      volumes:
+        - name: magicpack-config
+          configMap:
+            name: magicpack-config

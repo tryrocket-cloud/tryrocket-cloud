@@ -1,0 +1,31 @@
+{
+    "john-doe": {
+      "name": "John Doe",
+      "computer": {
+        "location": "Main Office",
+        "name": "XY-PC001",
+        "mac": "A1:B2:C3:4D:5E:6F",
+        "dns": "xy-pc002.google.de"
+      }
+    },
+  
+    "ruby-von-rails": {
+      "name": "Ruby von Rails",
+      "computer": {
+        "location": "Room B 2nd floor",
+        "name": "XY-PC002",
+        "mac": "A1:B2:C3:4D:5E:6F",
+        "dns": "xy-pc002.my.domain"
+      }
+    },
+  
+    "jason-response": {
+      "name": "Jason Response",
+      "computer": {
+        "location": "Java Isl.",
+        "name": "XY-PC003",
+        "mac": "A1:B2:C3:4D:5E:6F",
+        "dns": "xy-pc003.my.domain"
+      }
+    }
+  }
