@@ -95,17 +95,15 @@ links:
     icon: fas fa-comment
     url: 'https://chatgpt.com/'
     target: '_blank'
-
-
-
-  - name: 'Developers Page'
-    icon: 'fab fa-dev'
-    url: '#dev-page'
   
   - name: 'FAQ'
     icon: 'fa-regular fa-circle-question'
     url: 'https://faq.tryrocket.cloud/'
     target: '_blank'
+  
+  - name: 'Developers Page'
+    icon: 'fab fa-dev'
+    url: '#dev-page'
 
 
 # Services

@@ -15,13 +15,21 @@ links:
   - name: "Home"
     icon: "fas fa-home"
     url: "#"
-  - name: "Contribute"
-    icon: "fab fa-github"
-    url: "https://github.com/bastienwirtz/homer"
-    target: "_blank" # optional html a tag target attribute
-  - name: "Wiki"
-    icon: "fas fa-book"
-    url: "https://www.wikipedia.org/"
+
+  - name: 'Wetter in Schorndorf'
+    icon: 'fa-solid fa-cloud-sun-rain'
+    url: 'https://www.wetterstation-schorndorf.de/index.php'
+    target: _blank
+
+  - name: 'Chat GPT'
+    icon: fas fa-comment
+    url: 'https://chatgpt.com/'
+    target: '_blank'
+  
+  - name: 'FAQ'
+    icon: 'fa-regular fa-circle-question'
+    url: 'https://faq.tryrocket.cloud/'
+    target: '_blank'
 
 services:
   - name: "More apps on another page!"
