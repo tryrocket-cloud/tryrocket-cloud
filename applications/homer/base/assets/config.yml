@@ -92,7 +92,7 @@ links:
     target: _blank
 
   - name: 'Chat GPT'
-    icon: assets/icons-3/chatgpt.svg
+    icon: 'assets/icons-3/chatgpt.svg'
     url: 'https://chatgpt.com/'
     target: '_blank'
 
