@@ -34,13 +34,6 @@ services:
   - name: GitHub
     icon: 'fab fa-github'
     items:
-      - name: My Account
-        icon: 'fab fa-github'
-        url: 'https://github.com/maxwassiljew'
-        tag: github
-        subtitle: 'My account'
-        target: '_blank'
-
       - name: Rocket Cloud
         icon: 'fab fa-github'
         subtitle: Organization
@@ -48,9 +41,10 @@ services:
         tag: github
         target: '_blank'
 
-      - name: Rocket Cloud Issues
-        icon: 'fab fa-github'
-        url: 'https://github.com/tryrocket-cloud/tryrocket-cloud/issues'
+      - name: github.dev
+        icon: 'fa-solid fa-code'
+        subtitle: Code editor
+        url: https://github.dev/tryrocket-cloud/tryrocket-cloud
         tag: github
         target: '_blank'
 
@@ -61,7 +55,12 @@ services:
         tag: github
         target: '_blank'
 
-
+      - name: My Account
+        icon: 'fab fa-github'
+        url: 'https://github.com/maxwassiljew'
+        tag: github
+        subtitle: 'My account'
+        target: '_blank'
 
       - name: Gist
         icon: 'fab fa-github'
