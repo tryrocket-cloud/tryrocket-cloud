@@ -26,7 +26,6 @@ configMapGenerator:
       - pgadmin.png=assets/pgadmin.png
       - traefik.svg=assets/traefik.svg
       - longhorn.png=assets/longhorn.png
-      - chatgpt.svg=assets/chatgpt.svg
 
   - name: homer-icons-2
     files:
@@ -48,3 +47,4 @@ configMapGenerator:
       - cinny.png=assets/cinny.png
       - matrix.png=assets/matrix.png
       - newrelic.svg=assets/newrelic.svg
+      - chatgpt.svg=assets/chatgpt.svg
