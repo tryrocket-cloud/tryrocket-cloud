@@ -26,6 +26,19 @@ links:
     target: '_blank'
 
 services:
+  - name: AI
+    icon:
+    items:
+      - name: 'Chat GPT'
+        logo: 'assets/icons-3/chatgpt.svg'
+        url: 'https://chatgpt.com/'
+        target: '_blank'
+
+      - name: 'Claude'
+        logo: 
+        url: 'https://claude.ai/'
+        target: '_blank'
+
   - name: ABC
     icon:
     items:
@@ -37,10 +50,7 @@ services:
         icon: 
         url: https://selfh.st
         target: _blank
-      - name: 'Chat GPT'
-        logo: 'assets/icons-3/chatgpt.svg'
-        url: 'https://chatgpt.com/'
-        target: '_blank'
+
       - name: 'GitHub'
         icon: 'fab fa-github'
         url: 'https://github.com/tryrocket-cloud/tryrocket-cloud'
