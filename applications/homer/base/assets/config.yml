@@ -92,7 +92,7 @@ links:
     target: _blank
 
   - name: 'Chat GPT'
-    icon: far fa-comment
+    icon: fas fa-comment
     url: 'https://chatgpt.com/'
     target: '_blank'
 
