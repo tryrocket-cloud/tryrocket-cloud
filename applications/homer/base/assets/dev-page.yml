@@ -29,19 +29,45 @@ services:
   - name: GitHub
     icon: 'fab fa-github'
     items:
-      - name: Account
+      - name: My Account
         logo: 'fab fa-github'
         url: 'https://github.com/maxwassiljew'
+        tag: github
         target: '_blank'
 
       - name: Rocket Cloud
         logo: 'fab fa-github'
         url: 'https://github.com/tryrocket-cloud'
+        tag: github
+        target: '_blank'
+
+      - name: Rocket Cloud
+        logo: 'fab fa-github'
+        url: 'https://github.com/orgs/tryrocket-cloud'
+        tag: github
         target: '_blank'
 
       - name: Rocket Cloud Issues
         logo: 'fab fa-github'
         url: 'https://github.com/tryrocket-cloud/tryrocket-cloud/issues'
+        tag: github
+        target: '_blank'
+
+      - name: Gist
+        logo: 'fab fa-github'
+        url: 'https://gist.github.com/maxwassiljew'
+        tag: github
+        target: '_blank'
+
+      - name: Notifications
+        logo: 'fab fa-github'
+        url: https://github.com/notifications
+        tag: github
+
+      - name: New repository
+        logo: 'fab fa-github'
+        url: 'https://github.new'
+        tag: github
         target: '_blank'
 
   - name: AI
