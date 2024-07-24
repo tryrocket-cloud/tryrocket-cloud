@@ -33,17 +33,13 @@ services:
         icon: 'fab fa-github'
         url: 'https://github.com/maxwassiljew'
         tag: github
+        subtitle: 'My account'
         target: '_blank'
 
       - name: Rocket Cloud
         icon: 'fab fa-github'
+        subtitle: Organization
         url: 'https://github.com/tryrocket-cloud'
-        tag: github
-        target: '_blank'
-
-      - name: Rocket Cloud
-        icon: 'fab fa-github'
-        url: 'https://github.com/orgs/tryrocket-cloud'
         tag: github
         target: '_blank'
 
