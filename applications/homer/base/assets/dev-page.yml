@@ -55,23 +55,11 @@ services:
         tag: github
         target: '_blank'
 
-      - name: My Account
-        icon: 'fab fa-github'
-        url: 'https://github.com/maxwassiljew'
-        tag: github
-        subtitle: 'My account'
-        target: '_blank'
-
-      - name: Gist
-        icon: 'fab fa-github'
-        url: 'https://gist.github.com/maxwassiljew'
-        tag: github
-        target: '_blank'
-
       - name: Notifications
         icon: 'fab fa-github'
         url: https://github.com/notifications
         tag: github
+        target: '_blank'
 
       - name: New repository
         icon: 'fab fa-github'
