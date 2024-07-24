@@ -20,6 +20,11 @@ links:
     url: 'https://chatgpt.com/'
     target: '_blank'
   
+  - name: Rocket Cloud
+    icon: 'fab fa-github'
+    url: 'https://github.com/tryrocket-cloud'
+    target: '_blank'
+  
   - name: 'FAQ'
     icon: 'fa-regular fa-circle-question'
     url: 'https://faq.tryrocket.cloud/'
