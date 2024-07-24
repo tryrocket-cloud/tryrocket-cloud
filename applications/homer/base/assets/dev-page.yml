@@ -26,6 +26,24 @@ links:
     target: '_blank'
 
 services:
+  - name: GitHub
+    icon: 'fab fa-github'
+    items:
+      - name: Account
+        logo: 'fab fa-github'
+        url: 'https://github.com/maxwassiljew'
+        target: '_blank'
+
+      - name: Rocket Cloud
+        logo: 'fab fa-github'
+        url: 'https://github.com/tryrocket-cloud'
+        target: '_blank'
+
+      - name: Rocket Cloud Issues
+        logo: 'fab fa-github'
+        url: 'https://github.com/tryrocket-cloud/tryrocket-cloud/issues'
+        target: '_blank'
+
   - name: AI
     icon:
     items:
