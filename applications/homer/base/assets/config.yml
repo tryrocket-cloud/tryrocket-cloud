@@ -91,6 +91,11 @@ links:
     url: 'https://www.wetterstation-schorndorf.de/index.php'
     target: _blank
 
+  - name: 'Chat GPT'
+    icon: assets/icons/chatgpt.svg
+    url: 'https://chatgpt.com/'
+    target: '_blank'
+
   - name: 'Developers Page'
     icon: 'fab fa-dev'
     url: '#dev-page'
@@ -100,13 +105,6 @@ links:
     url: 'https://faq.tryrocket.cloud/'
     target: '_blank'
 
-
-
-
-
-  - name: 'Second Page'
-    icon: 'fas fa-file-alt'
-    url: '#page2'
 
 # Services
 # First level array represents a group.
