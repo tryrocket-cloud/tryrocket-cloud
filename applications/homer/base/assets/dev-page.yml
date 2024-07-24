@@ -32,16 +32,6 @@ links:
     target: '_blank'
 
 services:
-  - name: "More apps on another page!"
-    icon: "fas fa-cloud"
-    items:
-      - name: "Awesome app on a second page!"
-        logo: "assets/tools/sample.png"
-        subtitle: "Bookmark example"
-        tag: "app"
-        url: "https://www.reddit.com/r/selfhosted/"
-        target: "_blank"
-
   - name: ABC
     icon:
     items:
