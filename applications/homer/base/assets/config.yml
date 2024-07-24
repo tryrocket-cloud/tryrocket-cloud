@@ -86,19 +86,23 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: 'FAQ'
-    icon: 'fa-regular fa-circle-question'
-    url: 'https://faq.tryrocket.cloud/'
-    target: '_blank'
-
   - name: 'Wetter in Schorndorf'
     icon: 'fa-solid fa-cloud-sun-rain'
     url: 'https://www.wetterstation-schorndorf.de/index.php'
     target: _blank
 
   - name: 'Developers Page'
-    icon: 'fas fa-file-alt'
+    icon: 'fab fa-dev'
     url: '#dev-page'
+  
+  - name: 'FAQ'
+    icon: 'fa-regular fa-circle-question'
+    url: 'https://faq.tryrocket.cloud/'
+    target: '_blank'
+
+
+
+
 
   - name: 'Second Page'
     icon: 'fas fa-file-alt'
