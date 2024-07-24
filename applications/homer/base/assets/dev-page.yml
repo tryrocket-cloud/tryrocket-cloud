@@ -6,29 +6,29 @@ message: Hello
 
 colors:
   light:
-    highlight-primary: '#ff5722' # A bold orange primary highlight color
-    highlight-secondary: '#ff9800' # A strong secondary highlight color
-    highlight-hover: '#ff7043' # A complementary hover color for highlights
-    background: '#ffffff' # Keeping the background as pure white
-    card-background: '#fafafa' # A very light gray for card backgrounds
-    text: '#212121' # Dark gray for main text
-    text-header: '#ff5722' # Bold orange for headers
-    text-title: '#424242' # Slightly lighter gray for titles
-    text-subtitle: '#757575' # Medium gray for subtitles
-    card-shadow: rgba(0, 0, 0, 0.15) # A more pronounced shadow
-    link-hover: '#ff9800' # Strong secondary color for link hover
+    highlight-primary: '#3367d6'
+    highlight-secondary: '#4285f4'
+    highlight-hover: '#5a95f5'
+    background: '#f5f5f5'
+    card-background: '#ffffff'
+    text: '#363636'
+    text-header: '#ffffff'
+    text-title: '#303030'
+    text-subtitle: '#424242'
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link-hover: '#363636'
   dark:
-    highlight-primary: '#00bcd4' # A bright cyan primary highlight color
-    highlight-secondary: '#009688' # A bold teal secondary highlight color
-    highlight-hover: '#4dd0e1' # A complementary lighter cyan for hover
-    background: '#121212' # A very dark background
-    card-background: '#1f1f1f' # Dark gray for card backgrounds
-    text: '#e0e0e0' # Light gray for main text
-    text-header: '#00bcd4' # Bright cyan for headers
-    text-title: '#ffffff' # Keeping titles as pure white
-    text-subtitle: '#bdbdbd' # Light gray for subtitles
-    card-shadow: rgba(0, 0, 0, 0.7) # A much darker shadow
-    link-hover: '#4caf50' # Bright green for link hover
+    highlight-primary: '#1a3a73' # Much darker primary highlight color
+    highlight-secondary: '#214072' # Darker secondary highlight color
+    highlight-hover: '#2e4a8f' # Darker hover color for highlights
+    background: '#0a0a0a' # Very dark background
+    card-background: '#1a1a1a' # Darker card background
+    text: '#d1d1d1' # Lighter gray for main text
+    text-header: '#ffffff' # Keeping the text header as white
+    text-title: '#eaeaea' # Light gray for titles
+    text-subtitle: '#c0c0c0' # Medium gray for subtitles
+    card-shadow: rgba(0, 0, 0, 0.6) # Darker shadow
+    link-hover: '#ffdd57' # Keeping the vibrant gold for link hover
 # as we want to include a differente link here (so we can get back to home page), we need to replicate all links or they will be revome when overwriting the links field:
 links:
   - name: "Home"
