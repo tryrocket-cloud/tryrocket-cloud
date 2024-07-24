@@ -38,6 +38,7 @@ services:
         url: https://selfh.st
         target: _blank
       - name: 'Chat GPT'
+        logo: 'assets/icons-3/chatgpt.svg'
         url: 'https://chatgpt.com/'
         target: '_blank'
       - name: 'GitHub'
