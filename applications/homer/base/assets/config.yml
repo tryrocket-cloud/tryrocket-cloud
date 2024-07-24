@@ -86,15 +86,15 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: 'Wetter in Schorndorf'
-    icon: 'fa-solid fa-cloud-sun-rain'
-    url: 'https://www.wetterstation-schorndorf.de/index.php'
-    target: _blank
-
   - name: 'Chat GPT'
     icon: fas fa-comment
     url: 'https://chatgpt.com/'
     target: '_blank'
+
+  - name: 'Wetter in Schorndorf'
+    icon: 'fa-solid fa-cloud-sun-rain'
+    url: 'https://www.wetterstation-schorndorf.de/index.php'
+    target: _blank
 
   - name: 'Developers Page'
     icon: 'fab fa-dev'
