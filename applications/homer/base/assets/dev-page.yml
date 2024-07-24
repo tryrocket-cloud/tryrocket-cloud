@@ -54,6 +54,15 @@ services:
         tag: github
         target: '_blank'
 
+      - name: New Issues
+        icon: 'fab fa-github'
+        subtitle: Create new issue for Rocket Cloud
+        url: 'https://github.com/tryrocket-cloud/tryrocket-cloud/issues/new'
+        tag: github
+        target: '_blank'
+
+
+
       - name: Gist
         icon: 'fab fa-github'
         url: 'https://gist.github.com/maxwassiljew'
