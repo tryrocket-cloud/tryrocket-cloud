@@ -91,11 +91,6 @@ links:
     url: 'https://www.wetterstation-schorndorf.de/index.php'
     target: _blank
 
-  - name: FAQ
-    icon: 'fa-solid fa-question'
-    url: https://faq.tryrocket.cloud/
-    target: _blank
-
   - name: 'FAQ'
     icon: 'fa-regular fa-circle-question'
     url: 'https://faq.tryrocket.cloud/'
