@@ -76,6 +76,7 @@ services:
 
       - name: New repository
         icon: 'fab fa-github'
+        subtitle: Create new repository
         url: 'https://github.new'
         tag: github
         target: '_blank'
