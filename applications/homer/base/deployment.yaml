@@ -9,6 +9,7 @@ metadata:
     app.kubernetes.io/version: v24.05.1
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   strategy:
     type: RollingUpdate
   selector:
