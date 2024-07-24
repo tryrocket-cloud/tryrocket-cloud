@@ -111,7 +111,7 @@ links:
     url: 'https://github.com/tryrocket-cloud'
     target: '_blank'
 
-  - name: Rocket Cloud
+  - name: github.dev
     icon: 'fa-solid fa-code'
     url: https://github.dev/tryrocket-cloud/tryrocket-cloud
     target: _blank
