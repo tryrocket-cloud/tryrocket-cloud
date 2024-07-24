@@ -1,0 +1,183 @@
+---
+# Additional page configuration
+
+# Additional configurations are loaded using its file name, minus the extension, as an anchor (https://<mydashboad>#<config>). 
+# `config.yml` is still used as a base configuration, and all values here will overwrite it, so you don't have to re-defined everything
+
+
+subtitle: "Developers Page"
+
+# This overwrites message config. Setting it to empty to remove message from this page and keep it only in the main one:
+message: ~
+
+# as we want to include a differente link here (so we can get back to home page), we need to replicate all links or they will be revome when overwriting the links field:
+links:
+  - name: "Home"
+    icon: "fas fa-home"
+    url: "#"
+  - name: "Contribute"
+    icon: "fab fa-github"
+    url: "https://github.com/bastienwirtz/homer"
+    target: "_blank" # optional html a tag target attribute
+  - name: "Wiki"
+    icon: "fas fa-book"
+    url: "https://www.wikipedia.org/"
+
+services:
+  - name: "More apps on another page!"
+    icon: "fas fa-cloud"
+    items:
+      - name: "Awesome app on a second page!"
+        logo: "assets/tools/sample.png"
+        subtitle: "Bookmark example"
+        tag: "app"
+        url: "https://www.reddit.com/r/selfhosted/"
+        target: "_blank"
+
+  - name: ABC
+    icon:
+    items:
+      - name: 'Awesome selhosted'
+        icon: 'fa-regular fa-circle-question'
+        url: https://github.com/awesome-selfhosted/awesome-selfhosted
+        target: '_blank'
+      - name: selfh.st
+        icon: 
+        url: https://selfh.st
+        target: _blank
+      - name: 'Chat GPT'
+        url: 'https://chatgpt.com/'
+        target: '_blank'
+      - name: 'GitHub'
+        icon: 'fab fa-github'
+        url: 'https://github.com/tryrocket-cloud/tryrocket-cloud'
+        target: '_blank'
+      - name: 'Docker Hub'
+        icon: 'fa-brands fa-docker'
+        url: 'https://hub.docker.com/'
+        target: '_blank'
+      - name: 'Artifact Hub'
+        url: 'https://artifacthub.io/'
+        target: '_blank'
+      - name: 'kubesearch'
+        url: 'https://kubesearch.dev/'
+        target: '_blank'
+      - name: 'Status'
+        icon: 'fa-solid fa-gauge'
+        url: 'https://uptime-kuma.tryrocket.cloud/status'
+        target: '_blank' # optional html a tag target attribute
+      - name: 'Healthchecks'
+        icon: 'fa-solid fa-gauge'
+        url: 'https://healthchecks.io/'
+        target: '_blank' # optional html a tag target attribute
+      # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
+      # see url field and assets/icons/page.yml used in this example:
+
+  - name: 'Links'
+    icon: 'fa-solid fa-link'
+    items:
+      - name: 'Ebay'
+        logo: 'https://raw.githubusercontent.com/NX211/homer-icons/master/png/ebay.png'
+        subtitle: 'My watchlist'
+        tag: 'shop'
+        keywords: ''
+        url: https://www.ebay.de/mye/myebay/watchlist
+        target: '_blank'
+      - name: 'Kleinanzeigen'
+        logo: 'assets/icons-2/kleinanzeigen.svg'
+        subtitle: 'My watchlist'
+        tag: 'shop'
+        keywords: ''
+        url: https://www.kleinanzeigen.de/m-merkliste.html
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Mikrotik'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=mikrotik&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Teltonika'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=teltonika&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Optiplex'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=Optiplex&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Microserver'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=microserver&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Digitus'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=digitus&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'Intellinet'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=intellinet&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'DelayCon'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=delaycon&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'ThinkCentre'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=ThinkCentre&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'RX1330'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=rx1330&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: 'PowerEdge'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=PowerEdge&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: '19 zoll'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=19+zoll&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: '1HE'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=1he&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
+      - name: 'NoBids'
+        logo: 'assets/icons-2/nobids.png'
+        subtitle: '2HE'
+        tag: 'shop'
+        keywords: ''
+        url: https://nobids.net/ebay-items-with-no-bids/?site_id=EBAY-DE&category_id=58058&keyword=2he&distance=anywhere&distance_miles=10&buyerPostalCode=&MinPrice=&MaxPrice=&FreeShipping=no&sortorder=EndTimeSoonest
+        target: '_blank'
