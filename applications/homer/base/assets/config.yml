@@ -11,7 +11,7 @@ logo: 'assets/logo.png'
 header: true # Set to false to hide the header
 footer: false
 
-columns: 'auto' # 'auto' or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+columns: '3' # 'auto' or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
 connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example).
                         # You should set it to true when using an authentication proxy, it also reloads the page when a redirection is detected when checking connectivity.
 
@@ -111,9 +111,6 @@ links:
     url: '#dev-page'
 
 
-# Services
-# First level array represents a group.
-# Leave only a 'items' key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
   - name: 'Apps'
     icon: 'fa-solid fa-rocket'
