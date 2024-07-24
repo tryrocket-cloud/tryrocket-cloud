@@ -87,6 +87,13 @@ services:
   - name: ABC
     icon:
     items:
+      - name: Codeberg
+        icon: 'fa-brands fa-git-alt'
+        url: 'https://codeberg.org/mwa'
+        tag: github
+        subtitle: 'my account'
+        target: '_blank'
+
       - name: 'Awesome selhosted'
         icon: 'fa-regular fa-circle-question'
         url: https://github.com/awesome-selfhosted/awesome-selfhosted
