@@ -4,31 +4,6 @@ subtitle: "Developers Page"
 # This overwrites message config. Setting it to empty to remove message from this page and keep it only in the main one:
 message: Hello
 
-colors:
-  light:
-    highlight-primary: '#3367d6'
-    highlight-secondary: '#4285f4'
-    highlight-hover: '#5a95f5'
-    background: '#f5f5f5'
-    card-background: '#ffffff'
-    text: '#363636'
-    text-header: '#ffffff'
-    text-title: '#303030'
-    text-subtitle: '#424242'
-    card-shadow: rgba(0, 0, 0, 0.1)
-    link-hover: '#363636'
-  dark:
-    highlight-primary: '#1a3a73' # Much darker primary highlight color
-    highlight-secondary: '#214072' # Darker secondary highlight color
-    highlight-hover: '#2e4a8f' # Darker hover color for highlights
-    background: '#131313'
-    card-background: '#1a1a1a' # Darker card background
-    text: '#d1d1d1' # Lighter gray for main text
-    text-header: '#ffffff' # Keeping the text header as white
-    text-title: '#eaeaea' # Light gray for titles
-    text-subtitle: '#c0c0c0' # Medium gray for subtitles
-    card-shadow: rgba(0, 0, 0, 0.6) # Darker shadow
-    link-hover: '#ffdd57' # Keeping the vibrant gold for link hover
 # as we want to include a differente link here (so we can get back to home page), we need to replicate all links or they will be revome when overwriting the links field:
 links:
   - name: "Home"
