@@ -50,6 +50,9 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
     CREATE ROLE <vault user> WITH LOGIN PASSWORD 'secure_password';
     ALTER ROLE <vault user> WITH CREATEROLE;
 
+    # create database
+    # connect to database
+
     # create a <app user>
     CREATE ROLE <app user> WITH LOGIN PASSWORD 'test123';
     GRANT CONNECT ON DATABASE <db name> TO <app user>;
