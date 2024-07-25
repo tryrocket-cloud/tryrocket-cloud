@@ -56,7 +56,7 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
     # create a <app user>
     CREATE ROLE <app user> WITH LOGIN PASSWORD 'test123';
     GRANT CONNECT ON DATABASE <db name> TO <app user>;
-    GRANT USAGE ON SCHEMA public TO <app user>;
+    GRANT USAGE, CREATE ON SCHEMA public TO <app user>;
     GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO <app user>;
     ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO <app user>;
     GRANT <app user> TO <vault user> WITH ADMIN OPTION;
