@@ -27,7 +27,7 @@ spec:
           runAsUser: 0
       containers:
       - name: pgadmin4
-        image: dpage/pgadmin4:8.9
+        image: dpage/pgadmin4:8.10
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 80
