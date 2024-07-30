@@ -4,9 +4,12 @@
 
 **Grant new database to vault admin**
 
+
     GRANT CONNECT ON DATABASE <db> TO <user> WITH GRANT OPTION;
     GRANT USAGE, CREATE ON SCHEMA public TO <user> WITH GRANT OPTION;
     GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO <user> WITH GRANT OPTION
+
+
 
 https://github.com/tryrocket-cloud/tryrocket-cloud/issues/11
 https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
@@ -31,6 +34,7 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
             default_ttl="1h" \
             max_ttl="24h"
 
+    vault write -force database/rotate-root/my-database # rotate root password
     vault read database/roles/gitea-admin-role # read config
     vault read database/creds/gitea-admin-role # Generate new dynamic creds
     vault list sys/leases/lookup/database/creds/<role-name> # list all leases
@@ -44,7 +48,7 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
 - https://github.com/stakater/Reloader
 
 
-## Vault stattic roles
+## Vault static roles
 
     # create a <vault user>
     CREATE ROLE <vault user> WITH LOGIN PASSWORD 'secure_password';
@@ -79,3 +83,67 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
 
     # rotate creds
     vault write -f database/rotate-role/<app user>-static-role
+
+    # delete static role
+    vault delete database/static-roles/linkding-static-role
+
+
+
+## Example linkding
+
+Create a 'v-lingding' postgres user with LOGIN and CREATEROLE capabilities to be able to connect from vault.  Create a 'u-lingding' postgres user with LOGIN capabilities to be able to connect from pods. Add capabilities to 'v-lingding' to change password for 'u-lingding'
+
+### Postgres
+
+```sql
+CREATE ROLE "v-linkding" WITH 
+    LOGIN 
+    NOSUPERUSER 
+    NOCREATEDB 
+    CREATEROLE 
+    NOINHERIT 
+    NOREPLICATION 
+    NOBYPASSRLS 
+    CONNECTION LIMIT -1 
+    PASSWORD 'test123';
+GRANT CONNECT ON DATABASE linkding TO "v-linkding";
+
+CREATE ROLE "u-linkding" WITH
+    LOGIN
+    NOSUPERUSER 
+    NOCREATEDB 
+    NOCREATEROLE 
+    NOINHERIT 
+    NOREPLICATION 
+    NOBYPASSRLS 
+    CONNECTION LIMIT -1 
+    PASSWORD 'test123';
+GRANT CONNECT ON DATABASE linkding TO "u-linkding";
+GRANT USAGE, CREATE ON SCHEMA public TO "u-linkding";
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO "u-linkding";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "u-linkding";
+GRANT "u-linkding" TO "v-linkding" WITH ADMIN OPTION;
+```
+
+### Vault
+```sh
+vault write database/config/linkding \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="linkding-static-role" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.postgres-16.svc.cluster.local:5432/linkding?sslmode=disable" \
+    username="v-linkding" \
+    password="test123"
+
+vault write database/static-roles/linkding-static-role \
+    db_name=linkding \
+    rotation_statements="ALTER USER \"{{name}}\" WITH PASSWORD '{{password}}';" \
+    username="u-linkding" \
+    rotation_period="24h"
+
+# read creds
+vault read database/static-creds/linkding-static-role
+
+# rotate creds
+vault write -f database/rotate-role/linkding-static-role
+```
+
