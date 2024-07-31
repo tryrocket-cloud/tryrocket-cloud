@@ -24,6 +24,10 @@ spec:
             - worker
           imagePullPolicy: IfNotPresent
           env:
+            - name: PG_PASS
+              value: pKho4SsdlpvpMKFNCc172/6BRADCgzE3UWfa3bv5ap6ZAXd3
+            - name: AUTHENTIK_SECRET_KEY
+              value: hSNTyS/XDFqSakWvS++d2XByGnB8GNrKK+tXFCBIm7iJywccRPu7P10StkdMWBm2DqJh4l97kXR13UtW
           envFrom:
             - configMapRef:
                 name: authentik-postgres-config
