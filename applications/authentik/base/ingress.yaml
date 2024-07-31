@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authentik
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-http-https-middleware@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - authentik.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: authentik.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: authentik
+                port:
+                  number: 443

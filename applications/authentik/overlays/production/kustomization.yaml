@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+#  - postgres-external-secret.yaml
+
+namespace: authentik
+
+images:
+  - name: authentik-worker
+    newTag: 2024.6.2
+  - name: authentik-server
+    newTag: 2024.6.2
+
+configMapGenerator:
+  - name: authentik-postgres-config
+    envs:
+      - postgres.env
