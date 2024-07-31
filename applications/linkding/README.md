@@ -1,5 +1,8 @@
 # linkding
 
+- [GitHub](https://github.com/sissbruecker/linkding)
+- [DockerHub](https://hub.docker.com/r/sissbruecker/linkding)
+
 ## Install
 
 Install linkding as an Argo CD application
