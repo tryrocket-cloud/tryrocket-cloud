@@ -27,8 +27,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: authentik-postgres-config
-            - secretRef:
-                name: authentik
           livenessProbe:
             exec:
               command:
