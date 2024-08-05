@@ -28,7 +28,7 @@ spec:
             - configMapRef:
                 name: invidious-postgres-config
             - configMapRef:
-                name: invidious-config
+                name: invidious-postgres-config
           env:
             - name: INVIDIOUS_PORT
               value: "3000"
@@ -45,6 +45,8 @@ spec:
 # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
+                database_url: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@$(INVIDIOUS_DB_HOST):$(INVIDIOUS_DB_PORT)/$(INVIDIOUS_DB_DBNAME)"
+                
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"
           livenessProbe:
             httpGet:
