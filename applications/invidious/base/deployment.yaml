@@ -37,6 +37,8 @@ spec:
                 secretKeyRef:
                   name: invidious-postgres-secret
                   key: password
+            - name: INVIDIOUS_DB_DBNAME
+              value: invidious
 # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
@@ -67,8 +69,7 @@ spec:
                 ##
                 quality_dash: best
                 db:
-                  dbname: invidious
-                  host: postgres.postgres-16
+                  host: postgres.postgres-16.svc.cluster.local
                   port: 5432
                   check_tables: true
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"
