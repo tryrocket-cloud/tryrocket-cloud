@@ -7,4 +7,4 @@ namespace: cinny
 
 images:
   - name: ghcr.io/cinnyapp/cinny:latest
-    newTag: 4.1.0
+    newTag: v4.1.0
