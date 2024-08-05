@@ -15,3 +15,6 @@ configMapGenerator:
   - name: invidious-postgres-config
     envs:
       - postgres.env
+  - name: invidious-config
+    envs:
+      - invidious.env
