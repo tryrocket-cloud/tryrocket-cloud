@@ -68,8 +68,8 @@ spec:
                 quality_dash: best
                 db:
                   dbname: invidious
-                ##  user: invidious
-                ##  password: invidious
+                  ##  user: invidious
+                  ##  password: invidious
                   host: postgres.postgres-16.svc.cluster.local
                   port: 5432
                   check_tables: true
