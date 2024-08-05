@@ -52,6 +52,7 @@ spec:
               value: |
                 quality: dash
                 quality_dash: best
+                database_url: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@postgres.postgres-16/invidious"
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"
           livenessProbe:
             httpGet:
