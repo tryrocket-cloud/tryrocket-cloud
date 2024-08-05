@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: invidious
+  annotations:
+    secret.reloader.stakater.com/reload: "invidious-postgres-secret"
 spec:
   replicas: 1
   selector:
@@ -22,6 +24,16 @@ spec:
           env:
             - name: INVIDIOUS_PORT
               value: "3000"
+            - name: INVIDIOUS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: invidious-postgres-secret
+                  key: username
+            - name: INVIDIOUS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: invidious-postgres-secret
+                  key: password
 # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
@@ -53,9 +65,9 @@ spec:
                 quality_dash: best
                 db:
                   dbname: invidious
-                  user: invidious
-                  password: invidious
-                  host: postgres.postgres-16
+                ##  user: invidious
+                ##  password: invidious
+                  host: postgres.postgres-16.svc.cluster.local
                   port: 5432
                   check_tables: true
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"

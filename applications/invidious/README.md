@@ -239,3 +239,21 @@ ON public.session_ids
 USING btree
 (id COLLATE pg_catalog."default");
 ```
+
+
+## Database + Vault
+
+```sql
+vault write database/config/invidious \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="invidious-static-role" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.postgres-16.svc.cluster.local:5432/invidious?sslmode=disable" \
+    username="v-invidious" \
+    password="test123"
+
+vault write database/static-roles/invidious-static-role \
+    db_name=invidious \
+    rotation_statements="ALTER USER \"{{name}}\" WITH PASSWORD '{{password}}';" \
+    username="u-invidious" \
+    rotation_period="24h"
+```
