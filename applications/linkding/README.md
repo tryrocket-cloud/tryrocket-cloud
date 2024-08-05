@@ -24,18 +24,21 @@ Install linkding as an Argo CD application
 
 - Vault postgres user `v-linkding`
 - linkding postgres user `u-linkding`
-- Vault changes credentials every 24h
+- Vault user `-linkding` changes credentials of `u-linkding` every 24h
 - `External Secrets` operator updates credentials in the pod every 1h
 - `u-linkding` is the owner of the database `linkding`
 
 
 ## Example linkding
 
-Create a 'v-lingding' postgres user with LOGIN and CREATEROLE capabilities to be able to connect from vault.  Create a 'u-lingding' postgres user with LOGIN capabilities to be able to connect from pods. Add capabilities to 'v-lingding' to change password for 'u-lingding'
+Create a `v-lingding` postgres user with LOGIN and CREATEROLE capabilities to be able to connect from vault.  Create a `u-lingding` postgres user with LOGIN capabilities to be able to connect from pods. Add capabilities to `v-lingding` to change password for `u-lingding`
 
 ### Postgres
 
 ```sql
+
+-- run sql commands as root user
+
 CREATE ROLE "v-linkding" WITH 
     LOGIN 
     NOSUPERUSER 
@@ -58,11 +61,25 @@ CREATE ROLE "u-linkding" WITH
     NOBYPASSRLS 
     CONNECTION LIMIT -1 
     PASSWORD 'test123';
+
+ALTER DATABASE gitea OWNER TO "u-gitea";
+GRANT "u-linkding" TO "v-linkding" WITH ADMIN OPTION;
+
+-- this maybe not needed
 GRANT CONNECT ON DATABASE linkding TO "u-linkding";
 GRANT USAGE, CREATE ON SCHEMA public TO "u-linkding";
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO "u-linkding";
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "u-linkding";
 GRANT "u-linkding" TO "v-linkding" WITH ADMIN OPTION;
+```
+
+
+```sql
+-- revoke a user from db and tables
+REVOKE ALL PRIVILEGES ON DATABASE <db> FROM "gitea" CASCADE;
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM <db> CASCADE;
+REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public FROM <db> CASCADE;
+REVOKE ALL PRIVILEGES ON SCHEMA public FROM <db> CASCADE;
 ```
 
 ### Vault

@@ -87,5 +87,6 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
     # delete static role
     vault delete database/static-roles/linkding-static-role
 
-
+    # delete dynamic role
+    vault delete database/roles/<app user>-admin-role
 
