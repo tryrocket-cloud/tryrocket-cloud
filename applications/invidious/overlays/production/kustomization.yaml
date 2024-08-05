@@ -10,3 +10,8 @@ namespace: invidious
 images:
   - name: quay.io/invidious/invidious:latest
     newTag: 2024.07.27-90e94d4
+
+configMapGenerator:
+  - name: invidious-postgres-config
+    envs:
+      - postgres.env
