@@ -42,7 +42,7 @@ spec:
               value: |
                 quality: dash
                 quality_dash: best
-                database_url: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@$(INVIDIOUS_DB_HOST):(INVIDIOUS_DB_PORT)/$(INVIDIOUS_DB_DBNAME)"
+                database_url: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@$(INVIDIOUS_DB_HOST):$(INVIDIOUS_DB_PORT)/$(INVIDIOUS_DB_DBNAME)"
                 db:
                   check_tables: true
                 hmac_key: "bddfa303-f45f-48d1-bf06-e7870ab0770cq"
