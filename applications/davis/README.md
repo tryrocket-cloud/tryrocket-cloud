@@ -26,4 +26,17 @@ Install davis as an Argo CD application
 
 ## Notes
 
-- vault static postgres role
+```sql
+vault write database/config/davis \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="davis-static-role" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.postgres-16.svc.cluster.local:5432/davis?sslmode=disable" \
+    username="v-davis" \
+    password="test123"
+
+vault write database/static-roles/davis-static-role \
+    db_name=davis \
+    rotation_statements="ALTER USER \"{{name}}\" WITH PASSWORD '{{password}}';" \
+    username="u-davis" \
+    rotation_period="24h`
+```
