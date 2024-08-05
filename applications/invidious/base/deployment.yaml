@@ -45,6 +45,8 @@ spec:
               value: "5432"
             - name: INVIDIOUS_DB_CHECK_TABLES
               value: "true"
+            - name: DATABASE_URL
+              value: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@postgres.postgres-16/invidious"
 # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
