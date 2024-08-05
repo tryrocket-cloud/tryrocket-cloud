@@ -1,5 +1,7 @@
 # cinny
 
+- [GitHub](https://github.com/cinnyapp/cinny)
+
 ## Install
 
 Install cinny as an Argo CD application
