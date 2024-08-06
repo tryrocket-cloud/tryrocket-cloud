@@ -41,7 +41,7 @@ spec:
       volumes:
         - name: adguard-home-config
           configMap:
-            name: adguard-home-config-877gg7ht2c
+            name: adguard-home-config
             items:
               - key: AdGuardHome.yaml
                 path: AdGuardHome.yaml
