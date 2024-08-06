@@ -6,6 +6,7 @@ resources:
 
 namespace: gitea
 
+# https://github.com/go-gitea/gitea/releases
 images:
   - name: gitea/gitea:latest
     newTag: 1.22.1
