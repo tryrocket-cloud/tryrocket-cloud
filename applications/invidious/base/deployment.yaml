@@ -40,9 +40,9 @@ spec:
             - name: INVIDIOUS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: invidious-postgres-secret
+                  name: invidious-postgres-secret 
                   key: password
-# https://github.com/iv-org/invidious/blob/master/config/config.example.yml
+            # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
             - name: INVIDIOUS_CONFIG
               value: |
                 database_url: "postgresql://$(INVIDIOUS_DB_USER):$(INVIDIOUS_DB_PASSWORD)@$(INVIDIOUS_DB_HOST):$(INVIDIOUS_DB_PORT)/$(INVIDIOUS_DB_DBNAME)"
