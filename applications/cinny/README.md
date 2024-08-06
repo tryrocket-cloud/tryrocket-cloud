@@ -1,6 +1,7 @@
 # cinny
 
 - [GitHub](https://github.com/cinnyapp/cinny)
+- [Release Page](https://github.com/cinnyapp/cinny/releases)
 
 ## Install
 
