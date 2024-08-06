@@ -17,3 +17,6 @@ Install adguard-home as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+
+    kubectl apply -f adguard-home-configmap.yaml
