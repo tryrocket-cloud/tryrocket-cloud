@@ -1,5 +1,7 @@
 # opengist
 
+- [GitHub](https://github.com/thomiceli/opengist)
+
 ## Install
 
 Install opengist as an Argo CD application

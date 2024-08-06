@@ -4,3 +4,7 @@ resources:
   - ../../base
 
 namespace: opengist
+
+images:
+  - name: ghcr.io/thomiceli/opengist:latest
+    newTag: 1.7.3
