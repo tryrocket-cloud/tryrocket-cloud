@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: adguard-home
 spec:
-  replicas: 1
+  replicas: 0
   revisionHistoryLimit: 3
   strategy:
     type: Recreate
