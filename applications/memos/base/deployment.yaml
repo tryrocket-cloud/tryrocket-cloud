@@ -48,7 +48,7 @@ spec:
             - name: MEMOS_DRIVER
               value: postgres
             - name: MEMOS_DSN
-              value: postgresql://$(MEMOS_DB_USER):$(MEMOS_DB_PASSWORD)@$(MEMOS_DB_HOST):$(MEMOS_DB_PORT)/$(MEMOS_DB_DBNAME)
+              value: postgresql://$(MEMOS_DB_USER):$(MEMOS_DB_PASSWORD)@$(MEMOS_DB_HOST):$(MEMOS_DB_PORT)/$(MEMOS_DB_DBNAME)?sslmode=disable
           ports:
             - name: http
               containerPort: 5230
