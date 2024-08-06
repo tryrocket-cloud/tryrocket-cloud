@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adguard-home
-  namespace: adguard-home
 spec:
+  revisionHistoryLimit: 3
   replicas: 1
   selector:
     matchLabels:
@@ -13,37 +13,38 @@ spec:
       labels:
         app: adguard-home
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: optiplex-3080
+# Why is this here?    
+#      nodeSelector:
+#        kubernetes.io/hostname: optiplex-3080
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
           imagePullPolicy: IfNotPresent
-          command:
-            - "sh"
-            - "-c"
-            - >
-              cp /etc/adguard/conf/AdGuardHome.yaml /opt/adguardhome/conf &&
-              sleep 10 &&
-              /opt/adguardhome/AdGuardHome --no-check-update --config /opt/adguardhome/conf/AdGuardHome.yaml --work-dir /opt/adguardhome/work
+#          command:
+#            - "sh"
+#            - "-c"
+#            - >
+#              cp /etc/adguard/conf/AdGuardHome.yaml /opt/adguardhome/conf &&
+#              sleep 10 &&
+#              /opt/adguardhome/AdGuardHome --no-check-update --config /opt/adguardhome/conf/AdGuardHome.yaml --work-dir /opt/adguardhome/work
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
             - containerPort: 80 # Web UI port (TCP)
             - containerPort: 3000 # ?
           volumeMounts:
-            - mountPath: /etc/adguard/conf/AdGuardHome.yaml
-              name: adguard-home-config
-              subPath: AdGuardHome.yaml
+#            - mountPath: /etc/adguard/conf/AdGuardHome.yaml
+#              name: adguard-home-config
+#              subPath: AdGuardHome.yaml
             - name: adguard-home-storage
               mountPath: /opt/adguardhome/work
       volumes:
-        - name: adguard-home-config
-          configMap:
-            name: adguard-home-config-877gg7ht2c
-            items:
-              - key: AdGuardHome.yaml
-                path: AdGuardHome.yaml
+#        - name: adguard-home-config
+#          configMap:
+#            name: adguard-home-config-877gg7ht2c
+#            items:
+#              - key: AdGuardHome.yaml
+#                path: AdGuardHome.yaml
         - name: adguard-home-storage
           persistentVolumeClaim:
             claimName: adguard-home-pvc

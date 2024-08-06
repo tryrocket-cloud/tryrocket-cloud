@@ -4,3 +4,8 @@ resources:
   - ../../base
 
 namespace: adguard-home
+
+# https://hub.docker.com/r/adguard/adguardhome
+images:
+  - name: adguard/adguardhome:latest
+    newTag: v0.107.52
