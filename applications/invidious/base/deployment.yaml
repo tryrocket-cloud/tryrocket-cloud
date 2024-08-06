@@ -28,7 +28,7 @@ spec:
             - configMapRef:
                 name: invidious-postgres-config
             - configMapRef:
-                name: invidious-postgres-config
+                name: invidious-config
           env:
             - name: INVIDIOUS_PORT
               value: "3000"
