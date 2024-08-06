@@ -2,9 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: memos
+  annotations:
+    secret.reloader.stakater.com/reload: "memos-postgres-secret"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: memos
@@ -18,20 +22,33 @@ spec:
         - name: memos
           image: neosmemo/memos:latest
           imagePullPolicy: IfNotPresent
-          args:
-            - '--driver'
-            - 'postgres'
-            - '--dsn'
-            - 'postgresql://memos:memos@postgres.postgres-16:5432/memos?sslmode=disable'
+#          args:
+#            - '--driver'
+#            - 'postgres'
+#            - '--dsn'
+#            - 'postgresql://memos:memos@postgres.postgres-16:5432/memos?sslmode=disable'
+          envFrom:
+            - configMapRef:
+                name: memos-postgres-config          
           env:
             - name: TZ
               value: Europe/Berlin
             - name: MEMOS_PORT
               value: '5230'
+            - name: MEMOS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: memos-postgres-secret
+                  key: username
+            - name: MEMOS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: memos-postgres-secret 
+                  key: password
             - name: MEMOS_DRIVER
               value: postgres
             - name: MEMOS_DSN
-              value: postgresql://memos:memos@postgres.postgres-16:5432/memos?sslmode=disable
+              value: postgresql://$(MEMOS_DB_USER):$(MEMOS_DB_PASSWORD)@$(MEMOS_DB_HOST):$(MEMOS_DB_PORT)/$(MEMOS_DB_DBNAME)
           ports:
             - name: http
               containerPort: 5230
