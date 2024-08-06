@@ -20,3 +20,6 @@ Install adguard-home as an Argo CD application
 
 
     kubectl apply -f adguard-home-configmap.yaml
+
+    # Check AdGuardHome.yaml
+    docker run --rm -v ./AdGuardHome.yaml:/opt/adguardhome/AdGuardHome.yaml adguard/adguardhome:latest --check-config -c /opt/adguardhome/AdGuardHome.yaml
