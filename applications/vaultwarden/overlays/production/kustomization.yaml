@@ -7,6 +7,7 @@ resources:
 
 namespace: vaultwarden
 
+# https://github.com/dani-garcia/vaultwarden/releases
 images:
   - name: vaultwarden/server:latest
     newTag: 1.31.0-alpine

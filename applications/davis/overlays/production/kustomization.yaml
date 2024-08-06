@@ -7,9 +7,10 @@ resources:
 
 namespace: davis
 
-#images:
-#  - name: ghcr.io/tchapi/davis-standalone:edge
-#    newTag: 4.4.3
+# https://github.com/tchapi/davis/releases
+images:
+  - name: ghcr.io/tchapi/davis-standalone:edge
+    newTag: 4.4.3
 
 configMapGenerator:
   - name: davis-config

@@ -6,6 +6,7 @@ resources:
 
 namespace: linkding
 
+# https://github.com/sissbruecker/linkding/releases
 images:
   - name: sissbruecker/linkding:latest
     newTag: 1.31.0-alpine

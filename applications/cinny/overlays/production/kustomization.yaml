@@ -5,6 +5,7 @@ resources:
 
 namespace: cinny
 
+# https://github.com/cinnyapp/cinny/releases
 images:
   - name: ghcr.io/cinnyapp/cinny:latest
     newTag: v4.1.0

@@ -7,6 +7,7 @@ resources:
 namespace: invidious
 
 # https://quay.io/repository/invidious/invidious?tab=tags&tag=latest
+# https://github.com/iv-org/invidious/releases
 images:
   - name: quay.io/invidious/invidious:latest
     newTag: 2024.07.27-90e94d4
