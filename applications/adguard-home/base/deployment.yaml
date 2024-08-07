@@ -22,7 +22,6 @@ spec:
         - name: adguard-home
           image: adguard/adguardhome:latest
           imagePullPolicy: IfNotPresent
-# asc
           command:
             - "sh"
             - "-c"
