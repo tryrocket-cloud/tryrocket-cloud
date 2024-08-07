@@ -29,7 +29,6 @@ spec:
               cp /etc/adguard/conf/AdGuardHome.yaml /opt/adguardhome/conf &&
               sleep 10 &&
               /opt/adguardhome/AdGuardHome --no-check-update --config /opt/adguardhome/conf/AdGuardHome.yaml --work-dir /opt/adguardhome/work
-#            - /opt/adguardhome/AdGuardHome --no-check-update --config https://opengist.tryrocket.cloud/max/cd5a7bd73c0042a5a07ab052bad8130c/raw/HEAD/AdGuardHome.yaml
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
