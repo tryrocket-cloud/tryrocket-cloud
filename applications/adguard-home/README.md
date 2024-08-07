@@ -18,6 +18,17 @@ Install adguard-home as an Argo CD application
                         --self-heal \
                         --auto-prune
 
+    argocd app create adguard-home \
+                        --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
+                        --path applications/adguard-home/overlays/pi4 \
+                        --dest-server https://192.168.178.75:6443 \
+                        --dest-namespace adguard-home \
+                        --revision main \
+                        --project default \
+                        --sync-policy automated \
+                        --self-heal \
+                        --auto-prune
+
 
     kubectl apply -f adguard-home-configmap.yaml
 
