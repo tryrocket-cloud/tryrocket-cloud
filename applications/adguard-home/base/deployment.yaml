@@ -16,8 +16,8 @@ spec:
         app: adguard-home
     spec:
       # nodeSelector is needed to retrieve real client ip
-      nodeSelector:
-        kubernetes.io/hostname: optiplex-3080
+#      nodeSelector:
+#        kubernetes.io/hostname: optiplex-3080
       containers:
         - name: adguard-home
           image: adguard/adguardhome:latest
