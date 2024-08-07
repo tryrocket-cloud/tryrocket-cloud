@@ -231,6 +231,14 @@ services:
         url: 'http://csr326.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'UpSnap'
+        logo: 'https://raw.githubusercontent.com/seriousm4x/UpSnap/master/frontend/static/gopher.svg'
+        subtitle: 'Web-based Wake-On-Lan tool'
+        tag: 'infra'
+        keywords: 'wol'
+        url: 'http://upsnap.tryrocket.cloud'
+        target: '_blank'
+
       - name: 'MagicPack'
         logo: 'https://raw.githubusercontent.com/alex-swki/magicpack/sourcecode/public/img/logo.png'
         subtitle: 'Web-based Wake-On-Lan tool'
