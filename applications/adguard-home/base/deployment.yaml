@@ -22,13 +22,13 @@ spec:
         - name: adguard-home
           image: adguard/adguardhome:latest
           imagePullPolicy: IfNotPresent
-#          command:
-#            - "sh"
-#            - "-c"
-#            - >
-#              cp /etc/adguard/conf/AdGuardHome.yaml /opt/adguardhome/conf &&
-#              sleep 10 &&
-#              /opt/adguardhome/AdGuardHome --no-check-update --config /opt/adguardhome/conf/AdGuardHome.yaml --work-dir /opt/adguardhome/work
+          command:
+            - "sh"
+            - "-c"
+            - >
+              cp /etc/adguard/conf/AdGuardHome.yaml /opt/adguardhome/conf &&
+              sleep 10 &&
+              /opt/adguardhome/AdGuardHome --no-check-update --config /opt/adguardhome/conf/AdGuardHome.yaml --work-dir /opt/adguardhome/work
           ports:
             - containerPort: 53 # DNS port (UDP)
             - containerPort: 67 # DHCP port (UDP), if enabled
