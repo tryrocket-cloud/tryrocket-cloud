@@ -6,8 +6,8 @@ resources:
   - ingress.yaml
   - middleware.yaml
   - namespace.yaml
-  - pv.yaml
-  - pvc.yaml
+#  - pv.yaml
+#  - pvc.yaml
 
 #configMapGenerator:
 #  - name: adguard-home-config
