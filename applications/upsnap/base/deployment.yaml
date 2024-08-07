@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upsnap
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: upsnap
+  template:
+    metadata:
+      labels:
+        app: upsnap
+    spec:
+      hostNetwork: true
+      containers:
+        - name: upsnap
+          image: ghcr.io/seriousm4x/upsnap:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8090
+          env:
+            - name: TZ
+              value: Europe/Berlin
+
