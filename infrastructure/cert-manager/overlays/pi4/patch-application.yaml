@@ -1,0 +1,7 @@
+- op: add
+  path: /spec/destination/server
+  value: https://192.168.178.75:6443
+
+- op: add
+  path: /spec/source/targetRevision
+  value: v1.15.1

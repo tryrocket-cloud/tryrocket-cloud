@@ -1,0 +1,3 @@
+- op: add
+  path: /spec/dnsNames/-
+  value: adguard-home.tryrocket.cloud

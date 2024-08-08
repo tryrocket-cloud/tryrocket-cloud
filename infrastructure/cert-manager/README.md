@@ -2,6 +2,7 @@
 
 ## Install 08.08.2024
 
+    kubectl config use-context tryrocket.cloud
     kubectl apply -f cert-manager-application.yaml
 
 
