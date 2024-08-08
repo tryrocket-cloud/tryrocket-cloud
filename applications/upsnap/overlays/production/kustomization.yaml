@@ -13,4 +13,4 @@ images:
 configMapGenerator:
   - name: upsnap-config
     envs:
-      - vikunja.env
+      - upsnap.env
