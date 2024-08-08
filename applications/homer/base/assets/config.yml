@@ -349,6 +349,15 @@ services:
         url: 'https://truenas.tryrocket.cloud'
         target: '_blank'
 
+      - name: 'API Docs'
+        logo: 'assets/icons/truenas.svg'
+        subtitle: ''
+        tag: 'api'
+        keywords: 'nas truenas scale api'
+        url: 'https://truenas.tryrocket.cloud/api/docs/'
+        target: '_blank'
+
+
   - name: 'Monitoring'
     icon: 'fab fa-watchman-monitoring'
     items:
