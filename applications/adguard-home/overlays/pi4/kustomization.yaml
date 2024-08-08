@@ -4,7 +4,7 @@ resources:
   - ../../base
 #  - https://gitea.tryrocket.cloud/tryrocket-cloud/adguard-home/main
 #  - https://gitea.tryrocket.cloud/tryrocket-cloud/adguard-home/raw/branch/main/adguard-home-configmap.yaml
-  - https://gitea.tryrocket.cloud/tryrocket-cloud/adguard-home//adguard-home-configmap.yaml?ref=main
+  - https://gitea.tryrocket.cloud/tryrocket-cloud/adguard-home//?ref=main
 
 namespace: adguard-home
 
