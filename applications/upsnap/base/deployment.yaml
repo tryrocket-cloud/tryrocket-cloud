@@ -29,6 +29,8 @@ spec:
               value: '@every 1m'
             - name: UPSNAP_SCAN_RANGE
               value: 192.168.178.0/24
+            - name: UPSNAP_WEBSITE_TITLE
+              value: Custom name
           volumeMounts:
             - name: upsnap-storage
               mountPath: /app/pb_data
