@@ -1,5 +1,10 @@
 # cert-manager
 
+## Install 08.08.2024
+
+    kubectl apply -f cert-manager-application.yaml
+
+
 ## Install
     
     kubectl create namespace cert-manager
