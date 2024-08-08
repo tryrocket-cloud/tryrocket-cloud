@@ -9,3 +9,8 @@ namespace: upsnap
 images:
   - name: ghcr.io/seriousm4x/upsnap:latest
     newTag: 4.2.12
+
+configMapGenerator:
+  - name: upsnap-config
+    envs:
+      - vikunja.env
