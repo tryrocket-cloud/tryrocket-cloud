@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - certificate.yaml
   - namespace.yaml
+  - https://gitea.tryrocket.cloud/tryrocket-cloud/cert-manager//?ref=main
