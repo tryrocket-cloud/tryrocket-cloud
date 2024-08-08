@@ -27,6 +27,8 @@ spec:
               value: Europe/Berlin
             - name: UPSNAP_INTERVAL
               value: '@every 1m'
+            - name: UPSNAP_SCAN_RANGE
+              value: 192.168.178.0/24
           volumeMounts:
             - name: upsnap-storage
               mountPath: /app/pb_data
