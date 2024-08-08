@@ -4,12 +4,3 @@ kind: Kustomization
 resources:
   - ../../base
   - https://gitea.tryrocket.cloud/tryrocket-cloud/cert-manager//?ref=main
-
-# TODO: include patch here inside without extra files
-patches:
-  - path: patch-application.yaml
-    target:
-      kind: Application
-  - path: patch-certificate.yaml
-    target:
-      kind: Certificate

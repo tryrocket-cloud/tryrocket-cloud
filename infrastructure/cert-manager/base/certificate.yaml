@@ -8,3 +8,5 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
+  dnsNames:
+  - adguard-home.tryrocket.cloud
