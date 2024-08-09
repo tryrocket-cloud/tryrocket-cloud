@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - certificate.yaml
   - namespace.yaml
-  - cloudflare-external-secret.yaml
+  # - cloudflare-external-secret.yaml install external secret first
   - https://gitea.tryrocket.cloud/tryrocket-cloud/cert-manager//?ref=main
