@@ -4,3 +4,5 @@ resources:
   - ../../base
 
 namespace: mailrise
+
+# https://hub.docker.com/r/yoryan/mailrise
