@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: ansible-runner
-            image: ansible/ansible-runner:latest
+            image: quay.io/ansible/ansible-runner:latest
             args: ["ansible-playbook", "/playbooks/my-playbook.yml"]
             volumeMounts:
             - name: playbook-volume
