@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ansible-playbook-cronjob
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: ansible-runner
+            image: ansible/ansible-runner:latest
+            args: ["ansible-playbook", "/playbooks/my-playbook.yml"]
+            volumeMounts:
+            - name: playbook-volume
+              mountPath: /playbooks
+          restartPolicy: Never
+          volumes:
+          - name: playbook-volume
+            configMap:
+              name: ansible-playbook-configmap
+      backoffLimit: 0  # Optional: This will stop retrying the job if it fails
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ansible-playbook-configmap
+data:
+  my-playbook.yml: |
+    ---
+    - hosts: localhost
+      tasks:
+        - name: Ensure the message is echoed
+          command: echo "Hello, World!"
