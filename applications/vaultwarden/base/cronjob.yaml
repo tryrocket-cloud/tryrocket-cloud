@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: ansible-playbook-cronjob
+  name: backup
 spec:
   schedule: "*/5 * * * *"
   jobTemplate:
