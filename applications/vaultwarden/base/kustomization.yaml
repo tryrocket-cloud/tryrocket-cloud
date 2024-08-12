@@ -8,6 +8,7 @@ resources:
   - namespace.yaml
   - pvc.yaml
   - pv.yaml
-  - cronjob.yaml
+  - backup-cronjob.yaml
+  - backup-sa.yaml
   - backup-role.yaml
   - backup-rolebinding.yaml
