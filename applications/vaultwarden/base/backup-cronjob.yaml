@@ -19,14 +19,15 @@ spec:
               - /bin/sh
               - -c
               - |
+                ls -la /etc/
                 ls -la /etc/kubeconfig
-                curl -sSL -o argocd-linux-amd64 "https://github.com/argoproj/argo-cd/releases/download/v2.12.0/argocd-linux-amd64"
-                chmod +x argocd-linux-amd64
+                #curl -sSL -o argocd-linux-amd64 "https://github.com/argoproj/argo-cd/releases/download/v2.12.0/argocd-linux-amd64"
+                #chmod +x argocd-linux-amd64
                 mv argocd-linux-amd64 /usr/local/bin/argocd
-                #argocd version
-                pip3 install kubernetes &&
-                ansible-galaxy collection install kubernetes.core &&
-                ansible-playbook /playbooks/my-playbook.yml
+                ##argocd version
+                #pip3 install kubernetes &&
+                #ansible-galaxy collection install kubernetes.core &&
+                #ansible-playbook /playbooks/my-playbook.yml
             volumeMounts:
             - name: playbook-volume
               mountPath: /playbooks
