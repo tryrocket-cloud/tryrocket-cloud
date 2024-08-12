@@ -37,7 +37,10 @@ metadata:
 data:
   my-playbook.yml: |
     ---
-    - hosts: localhost
+    - name: Backup Vaultwarden
+      hosts: localhost
+      collections:
+        - argoproj-labs.argocd
       tasks:
         - name: Ensure the message is echoed
           command: echo "Hello, World!"
