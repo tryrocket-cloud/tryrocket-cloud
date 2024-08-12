@@ -25,3 +25,25 @@
                 "admin.password": "<new password hash>",
                 "admin.passwordMtime": "'$(date +%FT%T%Z)'"
               }}'
+
+
+
+## add capabilities to admin
+
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: argocd-rbac-cm
+        namespace: argocd
+      data:
+        policy.csv: |
+          p, role:admin, applications, *, *, allow
+          p, role:admin, projects, *, *, allow
+          p, role:admin, repositories, *, *, allow
+          p, role:admin, clusters, *, *, allow
+          p, role:admin, accounts, *, *, allow
+          p, role:admin, certificates, *, *, allow
+          p, role:admin, gpgkeys, *, *, allow
+          p, role:admin, apiKey, *, *, allow
+
+     kubectl rollout restart deployment argocd-server -n argocd
