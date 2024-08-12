@@ -64,7 +64,7 @@ data:
 
         - name: Scale down replicas of a vaultwarden deployment
           k8s:
-            kubeconfig: /path/to/kubeconfig-custom-sa
+            kubeconfig: /etc/kubeconfig/kubeconfig-backup-sa
             api_version: apps/v1
             kind: Deployment
             name: vaultwarden

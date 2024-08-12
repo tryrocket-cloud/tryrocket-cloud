@@ -12,3 +12,5 @@ resources:
   - backup-sa.yaml
   - backup-role.yaml
   - backup-rolebinding.yaml
+  - backup-sa-token.yaml
+  - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
