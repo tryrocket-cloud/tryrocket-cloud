@@ -9,3 +9,5 @@ resources:
   - pvc.yaml
   - pv.yaml
   - cronjob.yaml
+  - backup-role.yaml
+  - backup-rolebinding.yaml

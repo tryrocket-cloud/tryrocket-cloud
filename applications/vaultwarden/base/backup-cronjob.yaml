@@ -10,6 +10,7 @@ spec:
     spec:
       template:
         spec:
+          serviceAccountName: backup
           containers:
           # TODO: custom docker image
           - name: ansible-runner
@@ -28,11 +29,16 @@ spec:
             volumeMounts:
             - name: playbook-volume
               mountPath: /playbooks
+            - name: kubeconfig
+              mountPath: /etc/kubeconfig
           restartPolicy: Never
           volumes:
           - name: playbook-volume
             configMap:
               name: ansible-playbook-configmap
+          - name: kubeconfig
+            configMap:
+              name: kubeconfig-backup-sa
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
 
 ---
@@ -58,6 +64,7 @@ data:
 
         - name: Scale down replicas of a vaultwarden deployment
           k8s:
+            kubeconfig: /path/to/kubeconfig-custom-sa
             api_version: apps/v1
             kind: Deployment
             name: vaultwarden
@@ -80,3 +87,23 @@ data:
 #            definition:
 #              spec:
 #                syncPolicy: {}
+
+---
+#apiVersion: v1
+#kind: Config
+#clusters:
+#- cluster:
+#    certificate-authority-data: ${CLUSTER_CA}
+#    server: https://192.168.178.101:6443
+#  name: tryrocket-cloud
+#contexts:
+#- context:
+#    cluster: tryrocket-cloud
+#    namespace: vaultwarden
+#    user: backup
+#  name: backup
+#current-context: backup
+#users:
+#- name: backup
+#  user:
+#    token: ${TOKEN}
