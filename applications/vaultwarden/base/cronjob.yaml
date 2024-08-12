@@ -56,13 +56,13 @@ data:
             namespace: argocd
           register: app_info
 
-        - name: Disable auto-sync in the Argo CD application
-          kubernetes.core.k8s:
-            api_version: argoproj.io/v1alpha1
-            kind: Application
-            name: vaultwarden
-            namespace: argocd
-            state: present
-            definition:
-              spec:
-                syncPolicy: {}
+#        - name: Disable auto-sync in the Argo CD application
+#          kubernetes.core.k8s:
+#            api_version: argoproj.io/v1alpha1
+#            kind: Application
+#            name: vaultwarden
+#            namespace: argocd
+#            state: present
+#            definition:
+#              spec:
+#                syncPolicy: {}
