@@ -17,6 +17,7 @@ spec:
               - /bin/sh
               - -c
               - |
+                pip3 install kubernetes &&
                 ansible-galaxy collection install kubernetes.core &&
                 ansible-playbook /playbooks/my-playbook.yml
             volumeMounts:
