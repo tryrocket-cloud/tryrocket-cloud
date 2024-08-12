@@ -11,7 +11,12 @@ spec:
           containers:
           - name: ansible-runner
             image: quay.io/ansible/ansible-runner:latest
-            args: ["ansible-playbook", "/playbooks/my-playbook.yml"]
+            args: 
+              - /bin/sh
+              - -c
+              - |
+                ansible-galaxy collection install argoproj-labs.argocd && 
+                ansible-playbook /playbooks/my-playbook.yml
             volumeMounts:
             - name: playbook-volume
               mountPath: /playbooks
@@ -34,3 +39,17 @@ data:
       tasks:
         - name: Ensure the message is echoed
           command: echo "Hello, World!"
+
+    - name: Disable auto-sync for the application
+      argoproj-labs.argocd.argocd_app:
+        name: vaultwarden
+        project: default
+        repo_url: https://github.com/tryrocket-cloud/tryrocket-cloud.git
+        path: applications/vaultwarden/overlays/production
+        dest_server: https://192.168.178.101:6443
+        dest_namespace: vaultwarden
+        state: present
+        sync_policy: null
+        argocd_server: https://argocd.tryrocket.cloud
+        username: admin
+        password: mypassword
