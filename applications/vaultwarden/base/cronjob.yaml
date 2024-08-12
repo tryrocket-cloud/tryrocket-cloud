@@ -17,6 +17,10 @@ spec:
               - /bin/sh
               - -c
               - |
+                curl -sSL -o argocd-linux-amd64 "https://github.com/argoproj/argo-cd/releases/download/v2.12.0/argocd-linux-amd64"
+                mv argocd-linux-amd64 /usr/local/bin/argocd
+                chmod +x /usr/local/bin/argocd/argocd-linux-amd64
+                argocd version
                 pip3 install kubernetes &&
                 ansible-galaxy collection install kubernetes.core &&
                 ansible-playbook /playbooks/my-playbook.yml
@@ -55,6 +59,9 @@ data:
             name: vaultwarden
             namespace: argocd
           register: app_info
+
+        - name: ArgoCD 1
+          command: argocd app set vaultwarden --sync-policy none
 
 #        - name: Disable auto-sync in the Argo CD application
 #          kubernetes.core.k8s:
