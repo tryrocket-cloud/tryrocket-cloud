@@ -62,17 +62,17 @@ data:
         - name: Disable ArgoCD auto-sync
           command: argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
 
-        - name: Scale down replicas of a vaultwarden deployment
-          k8s:
-            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
-            api_version: apps/v1
-            kind: Deployment
-            name: vaultwarden
-            namespace: vaultwarden
-            state: present
-            definition:
-              spec:
-                replicas: 0
+#        - name: Scale down replicas of a vaultwarden deployment
+#          k8s:
+#            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+#            api_version: apps/v1
+#            kind: Deployment
+#            name: vaultwarden
+#            namespace: vaultwarden
+#            state: present
+#            definition:
+#              spec:
+#                replicas: 0
 
         - name: Enable ArgoCD auto-sync
           command: argocd app set vaultwarden --sync-policy automated --self-heal --auto-prune --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
@@ -88,22 +88,3 @@ data:
 #              spec:
 #                syncPolicy: {}
 
----
-#apiVersion: v1
-#kind: Config
-#clusters:
-#- cluster:
-#    certificate-authority-data: ${CLUSTER_CA}
-#    server: https://192.168.178.101:6443
-#  name: tryrocket-cloud
-#contexts:
-#- context:
-#    cluster: tryrocket-cloud
-#    namespace: vaultwarden
-#    user: backup
-#  name: backup
-#current-context: backup
-#users:
-#- name: backup
-#  user:
-#    token: ${TOKEN}
