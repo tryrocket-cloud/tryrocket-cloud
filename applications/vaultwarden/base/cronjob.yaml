@@ -61,6 +61,9 @@ data:
             namespace: argocd
           register: app_info
 
+        - name: ArgoCD Login
+          command: argocd login argocd.tryrocket.cloud --token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM --insecure
+
         - name: ArgoCD 1
           command: argocd app set vaultwarden --sync-policy none
 
