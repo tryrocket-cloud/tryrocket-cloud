@@ -33,3 +33,6 @@
 https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#create-new-user
 
     argocd account list
+
+One does not simply login with a token.... one simply uses it, like so:
+argocd app list --server argocd.blabla.com --insecure --auth-token {AUTH_TOKEN}

@@ -53,11 +53,8 @@ data:
         - name: Ensure the message is echoed
           command: echo "Hello, World!"
 
-        - name: ArgoCD Login
-          command: argocd login argocd.tryrocket.cloud --token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM --insecure
-
         - name: ArgoCD 1
-          command: argocd app set vaultwarden --sync-policy none
+          command: argocd app set vaultwarden --sync-policy none  --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
 
 #        - name: Disable auto-sync in the Argo CD application
 #          kubernetes.core.k8s:
