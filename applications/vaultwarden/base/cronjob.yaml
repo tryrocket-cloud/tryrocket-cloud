@@ -53,14 +53,6 @@ data:
         - name: Ensure the message is echoed
           command: echo "Hello, World!"
 
-        - name: Get the current Argo CD application
-          kubernetes.core.k8s_info:
-            api_version: argoproj.io/v1alpha1
-            kind: Application
-            name: vaultwarden
-            namespace: argocd
-          register: app_info
-
         - name: ArgoCD Login
           command: argocd login argocd.tryrocket.cloud --token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM --insecure
 
