@@ -59,7 +59,7 @@ spec:
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
-            - name: id_ed25519
+            - name: id-ed25519
               mountPath: /root/.ssh/id_ed25519
               subPath: id_ed25519
               readOnly: true
@@ -67,7 +67,7 @@ spec:
           - name: vaultwarden-storage
             persistentVolumeClaim:
               claimName: vaultwarden-pvc
-          - name: id_ed25519
+          - name: id-ed25519
             secret:
-              secretName: id_ed25519
+              secretName: id-ed25519
 

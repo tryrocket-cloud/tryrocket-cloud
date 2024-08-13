@@ -14,9 +14,9 @@ resources:
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
 
 secretGenerator:
-  - name: id_ed25519
+  - name: id-ed25519
     files:
-      - id_ed25519=./spk
+      - id-ed25519=./spk
 
 generatorOptions:
   disableNameSuffixHash: true
