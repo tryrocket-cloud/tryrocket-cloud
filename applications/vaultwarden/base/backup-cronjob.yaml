@@ -27,11 +27,14 @@ spec:
                 pip3 install kubernetes &&
                 ansible-galaxy collection install kubernetes.core &&
                 ansible-playbook /playbooks/my-playbook.yml
+                ls -la /data
             volumeMounts:
             - name: playbook-volume
               mountPath: /playbooks
             - name: kubeconfig
               mountPath: /etc/kubeconfig
+            - name: vaultwarden-storage
+              mountPath: /data
           restartPolicy: Never
           volumes:
           - name: playbook-volume
@@ -40,7 +43,11 @@ spec:
           - name: kubeconfig
             configMap:
               name: kubeconfig-backup-sa
+        - name: vaultwarden-storage
+          persistentVolumeClaim:
+            claimName: vaultwarden-pvc
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
+          volumeMounts:
 
 ---
 apiVersion: v1
