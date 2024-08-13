@@ -14,7 +14,7 @@ spec:
           restartPolicy: Never
           serviceAccountName: backup-sa
           initContainers:
-          - name: backup
+          - name: postgres-backup
             image: postgres:16
             imagePullPolicy: IfNotPresent
             env:
