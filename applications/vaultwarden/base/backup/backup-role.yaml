@@ -4,14 +4,17 @@ metadata:
   namespace: vaultwarden
   name: backup-role
 rules:
+# tested - OK
 - apiGroups: ["apps"]
   resources: ["deployments"]
   verbs: ["get"]
 
+# tested - OK
 - apiGroups: ["apps"]
   resources: ["deployments/scale"]
   verbs: ["patch"]
 
+# not tested
 - apiGroups: [""]
   resources:
   - persistentvolumeclaims
@@ -22,6 +25,8 @@ rules:
   - watch
   - create
   - update
+
+# not tested
 - apiGroups: [""] 
   resources:
   - persistentvolumes
@@ -29,6 +34,8 @@ rules:
   - get
   - list
   - watch
+
+# not tested
 - apiGroups: ["storage.k8s.io"]
   resources:
   - volumeattachments
@@ -38,6 +45,8 @@ rules:
   - watch
   - create
   - update
+
+# not tested
 - apiGroups: ["batch"]
   resources:
   - jobs
