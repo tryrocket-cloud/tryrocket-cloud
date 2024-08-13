@@ -10,7 +10,7 @@ rules:
 
 - apiGroups: ["apps"]
   resources: ["deployments/scale"]
-  verbs: ["get", "patch"]
+  verbs: ["patch"]
 
 - apiGroups: [""]
   resources:
