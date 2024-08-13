@@ -55,6 +55,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
+                  ssh-keyscan -H u371742.your-storagebox.de > /root/.ssh/known_hosts
                   restic backup /root/.ssh/id_ed25519
             volumeMounts:
             - name: vaultwarden-storage
