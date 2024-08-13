@@ -12,31 +12,6 @@ spec:
       template:
         spec:
           serviceAccountName: backup
-          initContainers:
-            - name: argocd-disable-sync
-              image: argoproj/argocd:latest
-              command:
-              - /bin/sh
-              - -c
-              - |
-                echo "Disable ArgoCD sync..."
-                argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
-                echo "ArgoCD sync disabled!"
-
-            - name: scale-down-vaultwarden
-              image: bitnami/kubectl:latest
-              command:
-              - /bin/sh
-              - -c
-              - |
-                echo "Scaling down Vaultwarden..."
-                kubectl scale deployment vaultwarden --replicas=0 -n vaultwarden
-                while [ "$(kubectl get pods -l app=vaultwarden -n vaultwarden --field-selector=status.phase=Running | wc -l)" != "0" ]; do
-                  echo "Waiting for Vaultwarden pods to terminate..."
-                  sleep 5
-                done
-                echo "Vaultwarden scaled down."
-
           containers:
           - name: backup
             image: busybox
