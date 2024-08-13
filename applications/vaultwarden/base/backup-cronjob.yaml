@@ -105,6 +105,16 @@ data:
           debug:
             msg: "Deployment has been scaled down to zero replicas and all pods have terminated."
 
+        - name: Delete existing job if it exists
+          k8s:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: batch/v1
+            kind: Job
+            name: vaultwarden-backup
+            namespace: vaultwarden
+            state: absent
+          ignore_errors: true  # Ignore errors if the job doesn't exist
+
         - name: Create a new job with the attached volume
           k8s:
             kubeconfig: /etc/kubeconfig/kubeconfig.yaml
