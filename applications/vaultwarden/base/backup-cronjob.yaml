@@ -43,9 +43,9 @@ spec:
           - name: kubeconfig
             configMap:
               name: kubeconfig-backup-sa
-        - name: vaultwarden-storage
-          persistentVolumeClaim:
-            claimName: vaultwarden-pvc
+          - name: vaultwarden-storage
+            persistentVolumeClaim:
+              claimName: vaultwarden-pvc
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
 
 ---
