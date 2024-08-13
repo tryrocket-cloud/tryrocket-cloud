@@ -50,14 +50,15 @@ spec:
             - name: RESTIC_PASSWORD
               value: testabc
             - name: SSH_COMMAND
-              value: ssh -i /root/.ssh/ided25519
+              value: ssh -i /root/.ssh/id_ed25519
             command:
                 - /bin/sh
                 - -c
                 - |
                   ssh-keyscan -H u371742.your-storagebox.de > /root/.ssh/known_hosts
-                  chmod 600 /root/.ssh/ && chmod 600 /root/.ssh/ided25519 && chmod 644 /root/.ssh/known_hosts
-                  restic backup /root/.ssh/ided25519
+                  cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
+                  chmod 600 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 && chmod 644 /root/.ssh/known_hosts
+                  restic backup /root/.ssh/id_ed25519
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
