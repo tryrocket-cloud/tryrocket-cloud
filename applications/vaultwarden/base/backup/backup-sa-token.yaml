@@ -4,5 +4,5 @@ metadata:
   name: backup-sa-token
   namespace: vaultwarden
   annotations:
-    kubernetes.io/service-account.name: backup
+    kubernetes.io/service-account.name: backup-sa
 type: kubernetes.io/service-account-token

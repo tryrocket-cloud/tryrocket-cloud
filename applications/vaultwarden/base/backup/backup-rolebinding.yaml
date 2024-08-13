@@ -5,9 +5,9 @@ metadata:
   namespace: vaultwarden
 subjects:
 - kind: ServiceAccount
-  name: backup
+  name: backup-sa
   namespace: vaultwarden
 roleRef:
   kind: Role
-  name: backup
+  name: backup-role
   apiGroup: rbac.authorization.k8s.io
