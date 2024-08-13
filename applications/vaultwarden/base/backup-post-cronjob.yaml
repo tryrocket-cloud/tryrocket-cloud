@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vaultwarden-backup-post
+spec:
+  suspend: false
+  schedule: "*/47 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: backup
+          containers:
+            - name: disable-argocd-auto-sync
+              image: argoproj/argocd:latest
+              command:
+              - /bin/sh
+              - -c
+              - |
+                echo "Disable ArgoCD sync..."
+                argocd app set vaultwarden --sync-policy automated --self-heal --auto-prune --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
+                echo "ArgoCD sync disabled!"

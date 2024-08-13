@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: vaultwarden-backup-scale-down
+  name: vaultwarden-backup-pre
 spec:
   suspend: false
   schedule: "*/45 * * * *"
