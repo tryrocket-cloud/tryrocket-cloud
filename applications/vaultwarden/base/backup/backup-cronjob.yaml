@@ -33,7 +33,9 @@ spec:
             command:
             - /bin/sh
             - -c
-            - pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /db-backup.sql
+            - pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /db-backup.sql;
+            - ls -la /;
+            - head -n 25 /db-backup.sql;
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
