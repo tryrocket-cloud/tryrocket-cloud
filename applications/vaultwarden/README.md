@@ -17,3 +17,7 @@ Install vaultwarden as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+## TODOs
+
+remove unneeded permissions from backup-role.yaml
