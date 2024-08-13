@@ -61,7 +61,7 @@ spec:
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
-            - name: id-ed25519
+            - name: ided25519
               mountPath: /root/.ssh/ided25519
               subPath: ided25519
               readOnly: true
