@@ -47,7 +47,6 @@ spec:
           persistentVolumeClaim:
             claimName: vaultwarden-pvc
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
-          volumeMounts:
 
 ---
 apiVersion: v1
