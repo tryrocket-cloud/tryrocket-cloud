@@ -14,3 +14,4 @@ resources:
   - backup-rolebinding.yaml
   - backup-sa-token.yaml
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
+  - scale-down-cronjob.yaml
