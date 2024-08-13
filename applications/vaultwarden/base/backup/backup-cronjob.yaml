@@ -39,7 +39,7 @@ spec:
             - name: vaultwarden-storage
               mountPath: /data
           containers:
-          - name: backup
+          - name: restic-backup
             image: busybox
             imagePullPolicy: IfNotPresent
             env:
