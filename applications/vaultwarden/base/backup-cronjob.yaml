@@ -84,10 +84,11 @@ data:
             namespace: vaultwarden
             label_selectors:
               - app=vaultwarden
-          register: pod_info
-          until: "pod_info.resources is defined and pod_info.resources | length == 0"
+          register: deployment_info
+          until: deployment_info.resources[0].status.replicas == 0
           retries: 10
-          delay: 5
+          delay: 6
+          failed_when: deployment_info.resources[0].status.replicas != 0
 
         - name: Create a new job with the attached volume
           k8s:
