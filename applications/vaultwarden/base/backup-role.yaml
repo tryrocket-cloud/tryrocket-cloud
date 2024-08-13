@@ -8,5 +8,28 @@ rules:
   resources: ["deployments"]
   verbs: ["get", "list", "watch", "update", "patch"]
 - apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["get", "list", "watch"]
+  resources:
+  - persistentvolumeclaims
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups: [""] 
+  resources:
+  - persistentvolumes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["storage.k8s.io"]
+  resources:
+  - volumeattachments
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
