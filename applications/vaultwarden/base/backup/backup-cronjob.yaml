@@ -16,6 +16,7 @@ spec:
           containers:
           - name: backup
             image: postgres:16
+            imagePullPolicy: IfNotPresent
             env:
             - name: TZ
               value: Europe/Berlin
