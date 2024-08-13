@@ -44,6 +44,9 @@ spec:
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
 
 ---
+
+
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -63,18 +66,6 @@ data:
 
         - name: Disable ArgoCD auto-sync
           command: argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
-
-        - name: Scale down replicas of a deployment
-          k8s:
-            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
-            api_version: apps/v1
-            kind: Deployment
-            name: vaultwarden
-            namespace: vaultwarden
-            state: present
-            definition:
-              spec:
-                replicas: 0
 
         - name: Retrieve deployment information
           k8s_info:
