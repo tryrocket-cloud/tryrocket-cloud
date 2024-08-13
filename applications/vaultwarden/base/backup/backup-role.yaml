@@ -4,19 +4,45 @@ metadata:
   namespace: vaultwarden
   name: backup-role
 rules:
-  # Permissions to scale deployments up and down
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "update", "patch"]
 - apiGroups: ["apps"]
   resources: ["deployments/scale"]
   verbs: ["get", "update", "patch"]
-
-  # Permissions to get and patch pods (which is necessary when attaching PVs)
 - apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["get", "list", "patch", "watch", "create", "update"]
-
-  # Permissions to manage PersistentVolumeClaims (PVCs)
-- apiGroups: [""]
-  resources: ["persistentvolumeclaims"]
-  verbs: ["get", "list", "watch", "create", "update", "patch"]
-
-
+  resources:
+  - persistentvolumeclaims
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups: [""] 
+  resources:
+  - persistentvolumes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["storage.k8s.io"]
+  resources:
+  - volumeattachments
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
