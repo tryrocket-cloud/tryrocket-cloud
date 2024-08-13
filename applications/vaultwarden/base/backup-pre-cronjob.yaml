@@ -36,5 +36,5 @@ spec:
                   sleep 5
                 done
                 echo "Vaultwarden scaled down."
-
+          restartPolicy: Never
 
