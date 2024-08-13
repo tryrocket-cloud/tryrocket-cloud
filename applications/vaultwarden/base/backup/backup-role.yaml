@@ -7,10 +7,10 @@ rules:
 - apiGroups: ["apps"]
   resources: ["deployments"]
   verbs: ["get"]
-#, "list", "watch", "update", "patch"
+
 - apiGroups: ["apps"]
   resources: ["deployments/scale"]
-  verbs: ["get", "update", "patch"]
+  verbs: ["get", "update"]
 - apiGroups: [""]
   resources:
   - persistentvolumeclaims
