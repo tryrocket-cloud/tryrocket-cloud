@@ -14,7 +14,7 @@ rules:
   resources: ["deployments/scale"]
   verbs: ["patch"]
 
-# not tested
+# TODO: not tested
 - apiGroups: [""]
   resources:
   - persistentvolumeclaims
@@ -26,7 +26,7 @@ rules:
   - create
   - update
 
-# not tested
+# TODO: not tested
 - apiGroups: [""] 
   resources:
   - persistentvolumes
@@ -35,7 +35,7 @@ rules:
   - list
   - watch
 
-# not tested
+# TODO: not tested
 - apiGroups: ["storage.k8s.io"]
   resources:
   - volumeattachments
@@ -46,7 +46,7 @@ rules:
   - create
   - update
 
-# not tested
+# TODO: not tested
 - apiGroups: ["batch"]
   resources:
   - jobs
