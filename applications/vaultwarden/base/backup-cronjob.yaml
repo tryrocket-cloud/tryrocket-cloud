@@ -27,7 +27,6 @@ spec:
                 pip3 install kubernetes &&
                 ansible-galaxy collection install kubernetes.core &&
                 ansible-playbook /playbooks/my-playbook.yml
-                ls -la /data
             volumeMounts:
             - name: playbook-volume
               mountPath: /playbooks
@@ -86,7 +85,7 @@ data:
             label_selectors:
               - app=vaultwarden
           register: pod_info
-          until: pod_info.resources | length == 0
+          until: ""pod_info.resources is defined and pod_info.resources | length == 0""
           retries: 10
           delay: 5
 
