@@ -89,10 +89,6 @@ data:
         - name: Debug deployment_info
           debug:
             var: deployment_info
-#          until: deployment_info.resources[0].status.replicas == 0
-#          retries: 10
-#          delay: 6
-#          failed_when: deployment_info.resources[0].status.replicas != 0
 
         - name: Create a new job with the attached volume
           k8s:
