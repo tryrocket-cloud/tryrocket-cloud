@@ -40,7 +40,7 @@ spec:
               volumeMounts:
               - name: kubeconfig
                 mountPath: /etc/kubeconfig
-            volumes:
-            - name: kubeconfig
-              configMap:
-                name: kubeconfig-backup-sa
+          volumes:
+          - name: kubeconfig
+            configMap:
+              name: kubeconfig-backup-sa
