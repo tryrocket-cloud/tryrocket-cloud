@@ -63,7 +63,7 @@ spec:
           - name: vaultwarden-storage
             persistentVolumeClaim:
               claimName: vaultwarden-pvc
-          - name: id-ed25519
-            secret:
-              secretName: id-ed25519
+#          - name: id-ed25519
+#            secret:
+#              secretName: id-ed25519
 
