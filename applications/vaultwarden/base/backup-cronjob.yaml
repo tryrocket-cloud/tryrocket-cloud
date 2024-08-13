@@ -83,9 +83,17 @@ data:
             name: vaultwarden
           register: deployment_info
 
+        - name: Ensure all pods are in the desired state
+          k8s_info:
+            kind: Pod
+            namespace: vaultwarden
+            label_selectors:
+              - app=vaultwarden
+          register: pod_info
+
         - name: Debug deployment_info
           debug:
-            var: deployment_info
+            var: pod_info
 
         - name: Create a new job with the attached volume
           k8s:
