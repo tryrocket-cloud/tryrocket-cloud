@@ -13,7 +13,7 @@ spec:
         spec:
           restartPolicy: Never
           serviceAccountName: backup-sa
-          containers:
+          initContainers:
           - name: backup
             image: postgres:16
             imagePullPolicy: IfNotPresent
@@ -34,9 +34,22 @@ spec:
               - /bin/sh
               - -c
               - |
-                pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /db-backup.sql
-                ls -la /
-                head -n 100 /db-backup.sql
+                pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /data/db-backup.sql
+            volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+          containers:
+          - name: backup
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: TZ
+              value: Europe/Berlin
+            command:
+              - /bin/sh
+              - -c
+              - |
+                ls -la /data
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
