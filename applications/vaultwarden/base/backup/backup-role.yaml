@@ -12,9 +12,11 @@ rules:
   # Permissions to get and patch pods (which is necessary when attaching PVs)
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["get", "list", "patch"]
+  verbs: ["get", "list", "patch", "watch", "create", "update"]
 
   # Permissions to manage PersistentVolumeClaims (PVCs)
 - apiGroups: [""]
   resources: ["persistentvolumeclaims"]
   verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+
