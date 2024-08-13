@@ -38,4 +38,7 @@ rules:
   - jobs
   verbs:
   - get
+  - list
+  - watch
   - create
+  - update
