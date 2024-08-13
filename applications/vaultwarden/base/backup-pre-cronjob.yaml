@@ -37,5 +37,10 @@ spec:
                   sleep 5
                 done
                 echo "Vaultwarden scaled down."
-          
-
+              volumeMounts:
+              - name: kubeconfig
+                mountPath: /etc/kubeconfig
+            volumes:
+            - name: kubeconfig
+              configMap:
+                name: kubeconfig-backup-sa
