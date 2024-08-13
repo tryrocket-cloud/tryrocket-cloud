@@ -12,7 +12,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          serviceAccountName: backup
+          serviceAccountName: backup-sa
           containers:
             - name: enable-argocd-auto-sync
               image: argoproj/argocd:latest
