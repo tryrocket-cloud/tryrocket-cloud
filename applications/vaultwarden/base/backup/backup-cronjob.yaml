@@ -15,8 +15,24 @@ spec:
           serviceAccountName: backup-sa
           containers:
           - name: backup
-            image: busybox
-            command: ["/bin/sh", "-c", "ls -la /data"]
+            image: postgres:16
+            env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-postgres-secret
+                  key: username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-postgres-secret
+                  key: password
+            command:
+            - /bin/sh
+            - -c
+            - pg_dump -h postgres.postgres-16.svc.cluster.local:5432 -U $DATABASE_USERNAME -d vaultwarden > /db-backup.sql
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
