@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden-backup-pre
 spec:
   suspend: false
-  schedule: "*/45 * * * *"
+  schedule: "0 1 * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
