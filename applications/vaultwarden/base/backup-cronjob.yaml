@@ -93,7 +93,7 @@ data:
 
         - name: Debug deployment_info
           debug:
-            var: pod_info
+            var: deployment_info
 
         - name: Create a new job with the attached volume
           k8s:
