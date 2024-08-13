@@ -76,14 +76,11 @@ data:
               spec:
                 replicas: 0
 
-        - name: Wait for pods to terminate
+        - name: Retrieve deployment information
           k8s_info:
-            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
-            api_version: v1
-            kind: Pod
+            kind: Deployment
             namespace: vaultwarden
-            label_selectors:
-              - app=vaultwarden
+            name: vaultwarden
           register: deployment_info
 
         - name: Debug deployment_info
