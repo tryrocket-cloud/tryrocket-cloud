@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: backup
 spec:
+  suspend: false
   schedule: "*/30 * * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
