@@ -12,3 +12,9 @@ resources:
   
   # kubeconfig
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
+
+
+secrets:
+  - name: spk
+    files:
+      - spk=./spk

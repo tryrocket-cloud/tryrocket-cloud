@@ -50,25 +50,24 @@ spec:
             - name: RESTIC_PASSWORD
               value: testabc
             - name: SSH_COMMAND
-              value: ssh -i id_ed25519
+              value: ssh -i /root/.ssh/id_ed25519
             command:
               - /bin/sh
               - -c
               - |
-                echo "-----BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-QyNTUxOQAAACAB3BB2YzVjHKx8xyk3yXobOY1c/82IHdJOZ7Pf6/kRZwAAAJhc9pywXPac
-sAAAAAtzc2gtZWQyNTUxOQAAACAB3BB2YzVjHKx8xyk3yXobOY1c/82IHdJOZ7Pf6/kRZw
-AAAEDN2aLxBe957Jd3Txtz0J+m+OSg43/crlXbvQUJh+bfWwHcEHZjNWMcrHzHKTfJehs5
-jVz/zYgd0k5ns9/r+RFnAAAAEXdzbTFzaUBGRS1DLTAxMjZSAQIDBA==
------END OPENSSH PRIVATE KEY-----" > id_ed25519
-                backup id_ed25519
+                backup /root/.ssh/id_ed25519
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
+            - name: spk
+                  mountPath: /root/.ssh/id_ed25519
+                  subPath: id_ed25519
+                  readOnly: true
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
               claimName: vaultwarden-pvc
-
+            - name: spk
+              secret:
+                secretName: spk
 
