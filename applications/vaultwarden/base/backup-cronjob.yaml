@@ -33,8 +33,6 @@ spec:
               mountPath: /playbooks
             - name: kubeconfig
               mountPath: /etc/kubeconfig
-            - name: vaultwarden-storage
-              mountPath: /data
           restartPolicy: Never
           volumes:
           - name: playbook-volume
@@ -43,9 +41,7 @@ spec:
           - name: kubeconfig
             configMap:
               name: kubeconfig-backup-sa
-          - name: vaultwarden-storage
-            persistentVolumeClaim:
-              claimName: vaultwarden-pvc
+
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
 
 ---
@@ -80,6 +76,50 @@ data:
             definition:
               spec:
                 replicas: 0
+
+        - name: Wait for pods to terminate
+          k8s_info:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: v1
+            kind: Pod
+            namespace: vaultwarden
+            label_selectors:
+              - app=vaultwarden
+          register: pod_info
+          until: pod_info.resources | length == 0
+          retries: 10
+          delay: 5
+
+        - name: Create a new job with the attached volume
+          k8s:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: batch/v1
+            kind: Job
+            namespace: vaultwarden
+            definition:
+              apiVersion: batch/v1
+              kind: Job
+              metadata:
+                name: vaultwarden-backup
+              spec:
+                template:
+                  spec:
+                    containers:
+                    - name: busibox
+                      image: busibox
+                      args: 
+                        - /bin/sh
+                        - -c
+                        - |
+                          ls -la /data
+                      volumeMounts:
+                      - name: vaultwarden-storage
+                        mountPath: /data
+                    restartPolicy: OnFailure
+                    volumes:
+                      - name: vaultwarden-storage
+                        persistentVolumeClaim:
+                          claimName: vaultwarden-pvc
 
         - name: Enable ArgoCD auto-sync
           command: argocd app set vaultwarden --sync-policy automated --self-heal --auto-prune --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
