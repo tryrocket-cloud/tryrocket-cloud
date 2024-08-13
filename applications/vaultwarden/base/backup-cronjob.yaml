@@ -44,9 +44,6 @@ spec:
       backoffLimit: 0  # Optional: This will stop retrying the job if it fails
 
 ---
-
-
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -67,24 +64,46 @@ data:
         - name: Disable ArgoCD auto-sync
           command: argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
 
-        - name: Retrieve deployment information
-          k8s_info:
+        - name: Scale down the deployment to zero replicas
+          k8s:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: apps/v1
             kind: Deployment
-            namespace: vaultwarden
             name: vaultwarden
-          register: deployment_info
+            namespace: vaultwarden
+            state: present
+            definition:
+              spec:
+                replicas: 0
 
-        - name: Ensure all pods are in the desired state
+        - name: Wait for the deployment to scale down
           k8s_info:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: apps/v1
+            kind: Deployment
+            name: vaultwarden
+            namespace: vaultwarden
+          register: deployment_info
+          until: deployment_info.resources[0].status.replicas | default(0) == 0
+          retries: 10
+          delay: 5
+
+        - name: Wait for all pods to terminate
+          k8s_info:
+            kubeconfig: /etc/kubeconfig/kubeconfig.yaml
+            api_version: v1
             kind: Pod
             namespace: vaultwarden
             label_selectors:
               - app=vaultwarden
           register: pod_info
+          until: pod_info.resources | length == 0
+          retries: 10
+          delay: 5
 
-        - name: Debug deployment_info
+        - name: Confirm that the deployment has no running replicas
           debug:
-            var: deployment_info
+            msg: "Deployment has been scaled down to zero replicas and all pods have terminated."
 
         - name: Create a new job with the attached volume
           k8s:
