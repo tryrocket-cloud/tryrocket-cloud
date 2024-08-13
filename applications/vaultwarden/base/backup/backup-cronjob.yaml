@@ -1,16 +1,17 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: vaultwarden-backup
+  name: backup
 spec:
   suspend: false
-  schedule: "*/30 * * * *"
+  schedule: "15 1 * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
       template:
         spec:
+          restartPolicy: Never
           serviceAccountName: backup
           containers:
           - name: backup
@@ -19,7 +20,6 @@ spec:
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
-          restartPolicy: Never
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
