@@ -11,6 +11,7 @@ spec:
     spec:
       template:
         spec:
+          restartPolicy: Never
           serviceAccountName: backup
           containers:
             - name: disable-argocd-auto-sync
@@ -36,5 +37,5 @@ spec:
                   sleep 5
                 done
                 echo "Vaultwarden scaled down."
-          restartPolicy: Never
+          
 
