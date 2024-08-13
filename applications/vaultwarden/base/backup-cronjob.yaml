@@ -50,13 +50,4 @@ spec:
             persistentVolumeClaim:
               claimName: vaultwarden-pvc
 
-          postStart:
-            exec:
-              command:
-              - /bin/sh
-              - -c
-              - |
-                echo "Scaling up Vaultwarden..."
-                kubectl scale deployment vaultwarden --replicas=1 -n vaultwarden
-                echo "Vaultwarden scaled back up."
 
