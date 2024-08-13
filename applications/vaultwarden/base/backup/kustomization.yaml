@@ -1,11 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - pre-backup-cronjob.yaml
   - backup-cronjob.yaml
+  - post-backup-cronjob.yaml
+
   - backup-sa.yaml
   - backup-role.yaml
   - backup-rolebinding.yaml
   - backup-sa-token.yaml
+  
+  # kubeconfig
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
-  - backup-pre-cronjob.yaml
-  - backup-post-cronjob.yaml
