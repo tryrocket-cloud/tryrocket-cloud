@@ -4,7 +4,7 @@ metadata:
   name: backup
 spec:
   suspend: false
-  schedule: "15 1 * * *"
+  schedule: "*/10 * * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:

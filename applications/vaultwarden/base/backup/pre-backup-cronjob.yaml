@@ -4,7 +4,7 @@ metadata:
   name: pre-backup
 spec:
   suspend: false
-  schedule: "0 1 * * *"
+  schedule: "*/5 * * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
