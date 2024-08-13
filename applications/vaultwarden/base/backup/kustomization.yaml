@@ -13,8 +13,10 @@ resources:
   # kubeconfig
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
 
-
-secrets:
-  - name: spk
+secretGenerator:
+  - name: id_ed25519
     files:
-      - spk=./spk
+      - id_ed25519=./spk
+
+generatorOptions:
+  disableNameSuffixHash: true
