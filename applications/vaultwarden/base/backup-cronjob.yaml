@@ -120,8 +120,8 @@ data:
                 template:
                   spec:
                     containers:
-                    - name: busibox
-                      image: busibox
+                    - name: busybox
+                      image: busybox
                       args: 
                         - /bin/sh
                         - -c
