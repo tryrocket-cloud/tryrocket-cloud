@@ -51,11 +51,7 @@ spec:
               value: testabc
             - name: SSH_COMMAND
               value: ssh -i /root/.ssh/id_ed25519
-            command:
-              - /bin/sh
-              - -c
-              - |
-                backup /root/.ssh/id_ed25519
+            command: backup /root/.ssh/id_ed25519
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
