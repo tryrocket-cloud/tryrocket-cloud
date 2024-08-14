@@ -62,8 +62,15 @@ spec:
                   echo 3
                   chmod 700 /root/.ssh/ && chmod 700 /root/.ssh/id_ed25519 && chmod 600 /root/.ssh/known_hosts
                   echo 4
-                  restic backup /root/.ssh/id_ed25519
+                  ls -la /root/
+                  ls -la /root/.ssh/
+
+                  cat /root/.ssh/id_ed25519
+                  cat /root/.ssh/known_hosts
+                  
                   echo 5
+                  restic backup /root/.ssh/id_ed25519
+                  echo 6
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
