@@ -46,14 +46,14 @@ spec:
             - name: TZ
               value: Europe/Berlin
             #- name: RESTIC_REPOSITORY
-            #  value: sftp:u371742-sub5@u371742.your-storagebox.de:/home/backup
+            #  value: sftp:uXXXXXX-sub5@uXXXXXX.your-storagebox.de:/home/backup
             - name: RESTIC_PASSWORD
               value: testabc
             command:
                 - /bin/sh
                 - -c
                 - |
-                  ssh-keyscan -p 23 u371742.your-storagebox.de >> /root/.ssh/known_hosts
+                  ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
                   cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
                   chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
 
@@ -75,7 +75,7 @@ spec:
           - name: ided25519
             secret:
               secretName: ided25519
-          - name: config
+          - name: config # .ssh/config
             configMap:
               name: config
               defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html

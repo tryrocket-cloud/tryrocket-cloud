@@ -10,13 +10,5 @@ resources:
   - backup-rolebinding.yaml
   - backup-sa-token.yaml
   
-  # kubeconfig
+  # move to vault
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
-
-secretGenerator:
-  - name: ided25519
-    files:
-      - ided25519=./spk
-
-generatorOptions:
-  disableNameSuffixHash: true
