@@ -66,8 +66,7 @@ spec:
                   ls -la /root/.ssh/
 
                   cat /root/.ssh/id_ed25519
-                  cat /root/.ssh/known_hosts
-                  
+
                   echo 5
                   restic backup /root/.ssh/id_ed25519
                   echo 6
