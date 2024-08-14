@@ -80,7 +80,7 @@ spec:
               subPath: ided25519
             - name: ssh-config
               mountPath: /root/.ssh/config
-              defaultMode: "0600"
+              
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
@@ -91,3 +91,4 @@ spec:
           - name: ssh-config
             configMap:
               name: ssh-config
+              defaultMode: 384
