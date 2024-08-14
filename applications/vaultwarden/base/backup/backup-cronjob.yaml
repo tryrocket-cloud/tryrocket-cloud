@@ -58,7 +58,7 @@ spec:
                   ssh -V
                   echo 1
                   #ssh-keyscan -H u371742.your-storagebox.de > /root/.ssh/known_hosts
-                  ssh-keyscan u371742.your-storagebox.de >> /root/.ssh/known_hosts
+                  ssh-keyscan -p 23 u371742.your-storagebox.de >> /root/.ssh/known_hosts
                   echo 2
                   cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
                   echo 3
