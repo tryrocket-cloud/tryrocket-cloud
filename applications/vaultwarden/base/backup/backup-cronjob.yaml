@@ -68,7 +68,8 @@ spec:
                   cat /root/.ssh/id_ed25519
 
                   echo 5
-                  restic backup /root/.ssh/id_ed25519
+                  touch aaa
+                  restic backup aaa
                   echo 6
             volumeMounts:
             - name: vaultwarden-storage
