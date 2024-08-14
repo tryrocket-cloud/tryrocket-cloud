@@ -49,42 +49,27 @@ spec:
             #  value: sftp:u371742-sub5@u371742.your-storagebox.de:/home/backup
             - name: RESTIC_PASSWORD
               value: testabc
-            #- name: SSH_COMMAND
-            #  value: "ssh -i /root/.ssh/id_ed25519 -p 23"
+            - name: SSH_COMMAND
+              value: "ssh -i /root/.ssh/id_ed25519 -p 23"
             command:
                 - /bin/sh
                 - -c
                 - |
-                  ssh -V
-                  echo 1
-                  #ssh-keyscan -H u371742.your-storagebox.de > /root/.ssh/known_hosts
                   ssh-keyscan -p 23 u371742.your-storagebox.de >> /root/.ssh/known_hosts
-                  echo 2
                   cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
-                  echo 3
                   chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
-                  echo 4
-                  ls -la /root/
-                  ls -la /root/.ssh/
 
-                  cat /root/.ssh/id_ed25519
-                  cat /root/.ssh/config
-                  cat /root/.ssh/known_hosts
-
-                  echo 5
                   touch aaa
                   restic -r sftp:storagebox:/home/backup backup aaa
-                  echo 6
-                  sleep infinity
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
             - name: ided25519
               mountPath: /root/.ssh/ided25519
               subPath: ided25519
-            - name: config
-              mountPath: /root/.ssh/config
-              subPath: config
+#            - name: config
+#              mountPath: /root/.ssh/config
+#              subPath: config
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
@@ -92,7 +77,7 @@ spec:
           - name: ided25519
             secret:
               secretName: ided25519
-          - name: config
-            configMap:
-              name: config
-              defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html
+#          - name: config
+#            configMap:
+#              name: config
+#              defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html
