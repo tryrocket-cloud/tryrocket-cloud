@@ -90,8 +90,3 @@ spec:
           - name: ssh-config
             configMap:
               name: config
-
-
-              volumeMounts:
-
-          volumes:
