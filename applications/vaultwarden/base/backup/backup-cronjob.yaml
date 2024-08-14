@@ -55,6 +55,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
+                  ssh -V
                   echo 1
                   ssh-keyscan -H u371742.your-storagebox.de > /root/.ssh/known_hosts
                   echo 2
