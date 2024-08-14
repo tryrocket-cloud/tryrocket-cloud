@@ -89,4 +89,4 @@ spec:
               secretName: ided25519
           - name: ssh-config
             configMap:
-              name: config
+              name: ssh-config
