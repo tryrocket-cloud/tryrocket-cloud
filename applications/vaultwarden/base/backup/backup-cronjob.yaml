@@ -50,7 +50,7 @@ spec:
             - name: RESTIC_PASSWORD
               value: testabc
             - name: SSH_COMMAND
-              value: ssh -i /root/.ssh/id_ed25519 -p 23
+              value: "ssh -i /root/.ssh/id_ed25519 -p 23"
             command:
                 - /bin/sh
                 - -c
