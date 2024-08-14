@@ -45,12 +45,12 @@ spec:
             env:
             - name: TZ
               value: Europe/Berlin
-            - name: RESTIC_REPOSITORY
-              value: sftp:u371742-sub5@u371742.your-storagebox.de:/home/backup
+            #- name: RESTIC_REPOSITORY
+            #  value: sftp:u371742-sub5@u371742.your-storagebox.de:/home/backup
             - name: RESTIC_PASSWORD
               value: testabc
-            - name: SSH_COMMAND
-              value: "ssh -i /root/.ssh/id_ed25519 -p 23"
+            #- name: SSH_COMMAND
+            #  value: "ssh -i /root/.ssh/id_ed25519 -p 23"
             command:
                 - /bin/sh
                 - -c
@@ -71,7 +71,7 @@ spec:
 
                   echo 5
                   touch aaa
-                  restic backup aaa
+                  restic -r sftp:storagebox:/home/backup backup aaa
                   echo 6
             volumeMounts:
             - name: vaultwarden-storage
