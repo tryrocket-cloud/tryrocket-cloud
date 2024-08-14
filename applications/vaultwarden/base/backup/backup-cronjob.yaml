@@ -68,7 +68,7 @@ spec:
 
                   cat /root/.ssh/id_ed25519
                   cat /root/.ssh/config
-                  
+
                   echo 5
                   touch aaa
                   restic backup aaa
@@ -81,6 +81,7 @@ spec:
               subPath: ided25519
             - name: ssh-config
               mountPath: /root/.ssh/config
+              subPath: config
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
