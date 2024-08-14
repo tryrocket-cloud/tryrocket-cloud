@@ -74,6 +74,7 @@ spec:
                   touch aaa
                   restic -r sftp:storagebox:/home/backup backup aaa
                   echo 6
+                  sleep infinity
             volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
