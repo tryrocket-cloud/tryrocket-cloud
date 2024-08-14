@@ -79,7 +79,7 @@ spec:
               mountPath: /root/.ssh/ided25519
               subPath: ided25519
             - name: ssh-config
-              mountPath: /root/.ssh/
+              mountPath: /root/.ssh/config
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
