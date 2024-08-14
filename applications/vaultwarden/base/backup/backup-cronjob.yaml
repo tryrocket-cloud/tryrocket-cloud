@@ -61,13 +61,14 @@ spec:
                   echo 2
                   cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
                   echo 3
-                  chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 && chmod 644 /root/.ssh/known_hosts && chmod 600 /root/.ssh/config
+                  chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 && chmod 644 /root/.ssh/known_hosts
                   echo 4
                   ls -la /root/
                   ls -la /root/.ssh/
 
                   cat /root/.ssh/id_ed25519
-
+                  cat /root/.ssh/config
+                  
                   echo 5
                   touch aaa
                   restic backup aaa
@@ -80,7 +81,6 @@ spec:
               subPath: ided25519
             - name: ssh-config
               mountPath: /root/.ssh/config
-              
           volumes:
           - name: vaultwarden-storage
             persistentVolumeClaim:
@@ -91,4 +91,4 @@ spec:
           - name: ssh-config
             configMap:
               name: ssh-config
-              defaultMode: 384
+              defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html
