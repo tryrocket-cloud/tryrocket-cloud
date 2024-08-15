@@ -46,7 +46,7 @@ spec:
             - name: TZ
               value: Europe/Berlin
             #- name: RESTIC_REPOSITORY
-            #  value: sftp:uXXXXXX-sub5@uXXXXXX.your-storagebox.de:/home/backup
+            #  value: sftp:uXXXXXX-subX@uXXXXXX.your-storagebox.de:/home/backup
             - name: RESTIC_PASSWORD
               value: testabc
             command:
