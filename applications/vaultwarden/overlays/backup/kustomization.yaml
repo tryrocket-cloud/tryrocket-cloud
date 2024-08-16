@@ -27,3 +27,6 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts/0
         value: vaultwarden-backup.tryrocket.cloud
+      - op: replace
+        path: /spec/rules/0/host
+        value: vaultwarden-backup.tryrocket.cloud
