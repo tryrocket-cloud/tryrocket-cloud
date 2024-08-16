@@ -23,7 +23,7 @@ configMapGenerator:
 patches:
   - target:
       kind: Ingress
-    patch:
+    patch: |
       - op: add
         path: /spec/tls/0
         value:
