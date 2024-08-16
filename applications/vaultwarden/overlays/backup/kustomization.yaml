@@ -20,7 +20,7 @@ configMapGenerator:
     envs:
       - vaultwarden.env
 
-patchesJson6902:
+patches:
   - target:
       kind: Ingress
     patch:
