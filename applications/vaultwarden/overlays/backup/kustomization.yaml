@@ -25,6 +25,6 @@ patches:
       kind: Ingress
     patch: |
       - op: add
-        path: /spec/tls/hosts
+        path: /spec/tls/hosts/-
         value:
           - vaultwarden-backup.tryrocket.cloud
