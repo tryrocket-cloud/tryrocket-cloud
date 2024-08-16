@@ -19,13 +19,3 @@ configMapGenerator:
   - name: vaultwarden-config
     envs:
       - vaultwarden.env
-
-patchesJson6902:
-  - target:
-      kind: Ingress
-    patch:
-      - op: add
-        path: /spec/tls/0
-        value:
-          - hosts:
-              - vaultwarden.tryrocket.cloud

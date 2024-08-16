@@ -8,8 +8,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: vaultwarden-vaultwarden-http-https-middleware@kubernetescrd
 spec:
   tls:
-#    - hosts:
-#        - vaultwarden.tryrocket.cloud
+    - hosts:
+        - vaultwarden.tryrocket.cloud
       secretName: tryrocket-cloud-http-tls
   rules:
     - host: vaultwarden.tryrocket.cloud
