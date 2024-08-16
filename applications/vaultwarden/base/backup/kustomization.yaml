@@ -4,7 +4,7 @@ resources:
   #- pre-backup-cronjob.yaml
   #- backup-cronjob.yaml
   #- post-backup-cronjob.yaml
-
+  #- backup-cronjob-v2.yaml
   - backup-sa.yaml
   - backup-role.yaml
   - backup-rolebinding.yaml
@@ -12,3 +12,26 @@ resources:
   
   # move to vault
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
+
+  
+  - backup-cronjob-v3.yaml
+  - argocd-external-secret.yaml
+  - hetzner-subaccount-ssh-config-external-secret.yaml
+  - hetzner-subaccount-ssh-privatekey-external-secret.yaml
+  - restic-external-secret.yaml
+
+configMapGenerator:
+#  - name: argocd-config
+#    envs:
+#      - argocd.env
+  - name: pgdump-config
+    envs:
+      - pgdump.env
+  - name: restic-config
+    envs:
+      - restic.env
+  - name: healthchecks-config
+    envs:
+      - healthchecks.env
+
+# TODO: add git hash to backup

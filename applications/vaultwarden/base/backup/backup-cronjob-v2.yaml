@@ -1,0 +1,172 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  suspend: false
+  schedule: "5 1 * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: backup-sa
+          initContainers:
+#            - name: disable-argocd-auto-sync
+#              image: argoproj/argocd:latest
+#              imagePullPolicy: IfNotPresent
+#              command: ["argocd", "app", "set", "vaultwarden", "--sync-policy", "none"]
+#              envFrom:
+#                - configMapRef:
+#                    name: argocd-config
+#                - secretRef:
+#                    name: argocd-secret
+
+#            - name: scale-down-vaultwarden-replicas
+#              image: bitnami/kubectl:latest
+#              #image: rancher/kubectl:v1.29.7
+#              imagePullPolicy: IfNotPresent
+#              command:
+#                - /bin/sh
+#                - -c
+#                - |
+#                  kubectl scale deployment vaultwarden --replicas=0 -n vaultwarden
+#                  while [ "$(kubectl get pods -l app=vaultwarden -n vaultwarden --field-selector=status.phase=Running | wc -l)" != "0" ]; do
+#                    sleep 5
+#                  done
+#              # TODO: read from vault
+#              volumeMounts:
+#                - name: kubeconfig
+#                  mountPath: /etc/kubeconfig
+#                  readOnly: true
+
+            - name: pg_dump
+              image: postgres:16
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: vaultwarden-postgres-secret
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: vaultwarden-postgres-secret
+                      key: password
+              envFrom:
+                - configMapRef:
+                  name: pgdump-config
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  # TODO: choose one
+
+                  # Unknown style
+                  pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').sql
+                  
+                  # Plain Text Format
+                  pg_dump -F -Z 9 p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')_plaintext.sql
+
+                  # Directory
+                  pg_dump -F -Z 9 d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')
+
+                  # Tar
+                  pg_dump -F -Z 9 t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').tar
+              volumeMounts:
+                - name: pg_dump-volume
+                  mountPath: /pg_dump
+
+          containers:
+            - name: restic
+              image: restic/restic
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: restic-config
+                - secretRef:
+                    name: restic-secret
+                - secretRef:
+                    name: healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
+                    cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
+                    chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
+
+                    restic backup --dry-run /pg_dump /data
+                    restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @/var/log/restic/backup.log https://hc-ping.com/$HC_UUID/$?
+
+                    restic check > /var/log/restic/check.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @/var/log/restic/check.log https://hc-ping.com/$HC_UUID/$?
+
+                    restic forget --dry-run
+                    restic forget > /var/log/restic/forget.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @/var/log/restic/forget.log https://hc-ping.com/$HC_UUID/$?
+#              lifecycle:
+#                preStop:
+#                  exec:
+#                    command: ["/bin/sh", "-c", "touch /tmp/restic/signal"]
+              volumeMounts:
+                - name: vaultwarden-storage
+                  mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-hetzner-subaccount-ssh-privatekey
+                  mountPath: /root/.ssh
+                  readOnly: true
+                - name: vaultwarden-hetzner-subaccount-ssh-config
+                  mountPath: /root/.ssh
+                  readOnly: true
+                - name: pg_dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
+#                - name: restic-tmp-volume
+#                  mountPath: /tmp/restic/
+
+#            - name: enable-argocd-auto-sync
+#              image: argoproj/argocd:latest
+#              imagePullPolicy: IfNotPresent
+#              command:
+#                  - /bin/sh
+#                  - -c
+#                  - |
+#                    while ! [ -f /tmp/restic/signal ]; do sleep 5; done;
+#                    argocd app set vaultwarden --sync-policy automated --self-heal --auto-prune
+#              env:
+#              envFrom:
+#                - configMapRef:
+#                    name: argocd-config
+#                - secretRef:
+#                    name: argocd-secret
+
+          volumes:
+            - name: vaultwarden-storage
+              persistentVolumeClaim:
+                claimName: vaultwarden-pvc
+            - name: vaultwarden-hetzner-subaccount-ssh-privatekey
+              secret:
+                secretName: hetzner-subaccount-ssh-privatekey
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: vaultwarden-hetzner-subaccount-ssh-config
+              secret:
+                secretName: hetzner-subaccount-ssh-config
+                items:
+                  - key: ssh-config
+                    path: config
+                defaultMode: 384
+            - name: kubeconfig
+              configMap:
+                name: kubeconfig-backup-sa
+            - name: pg_dump-volume
+              emptyDir: {}
+#            - name: restic-tmp-volume
+#              emptyDir: {}
