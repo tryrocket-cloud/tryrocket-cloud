@@ -6,7 +6,7 @@ resources:
   #- postgres-external-secret.yaml
   #- vaultwarden-external-secret.yaml
 
-namespace: vaultwarden
+namespace: vaultwarden-backup
 
 # TODO: add git commit hash, should be also present in the backup
 
@@ -24,7 +24,7 @@ patches:
   - target:
       kind: Ingress
     patch: |
-      - op: add
-        path: /spec/tls/hosts/
+      - op: replace
+        path: /spec/tls/hosts/0
         value:
           - vaultwarden-backup.tryrocket.cloud
