@@ -116,8 +116,5 @@ spec:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
-            - name: kubeconfig
-              configMap:
-                name: kubeconfig-backup-sa
             - name: pg_dump-volume
               emptyDir: {}

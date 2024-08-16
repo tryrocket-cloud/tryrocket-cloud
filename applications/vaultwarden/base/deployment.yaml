@@ -37,7 +37,7 @@ spec:
                   name: vaultwarden-postgres-secret
                   key: password
             - name: DATABASE_URL
-              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden"
+              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/vaultwarden"
           envFrom:
             - configMapRef:
                 name: vaultwarden-config

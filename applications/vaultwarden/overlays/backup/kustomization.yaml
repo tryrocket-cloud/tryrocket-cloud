@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-  - ../../backup
+
   - postgres-external-secret.yaml
   - vaultwarden-external-secret.yaml
 
@@ -28,4 +28,4 @@ patchesJson6902:
         path: /spec/tls/0
         value:
           - hosts:
-              - vaultwarden.tryrocket.cloud
+              - vaultwarden-backup.tryrocket.cloud
