@@ -6,8 +6,7 @@ resources:
   - ingress.yaml
   - middleware.yaml
   - namespace.yaml
-  - pvc.yaml
-  - pv.yaml
+
 
 # https://github.com/dani-garcia/vaultwarden/releases
 images:

@@ -5,6 +5,8 @@ resources:
   - ../../backup
   - postgres-external-secret.yaml
   - vaultwarden-external-secret.yaml
+  - pvc.yaml
+  - pv.yaml
 
 namespace: vaultwarden
 
@@ -14,3 +16,12 @@ configMapGenerator:
   - name: vaultwarden-config
     envs:
       - vaultwarden.env
+
+patches:
+  - target:
+      kind: Deployment
+      name: vaultwarden
+    patch: |
+      - op: add
+        path: /metadata/annotations/-
+        value: secret.reloader.stakater.com/reload: "vaultwarden-postgres-secret"

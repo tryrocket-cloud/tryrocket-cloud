@@ -8,13 +8,6 @@ resources:
 
 namespace: vaultwarden-backup
 
-# TODO: add git commit hash, should be also present in the backup
-
-# https://github.com/dani-garcia/vaultwarden/releases
-images:
-  - name: vaultwarden/server:latest
-    newTag: 1.31.0-alpine
-
 configMapGenerator:
   - name: vaultwarden-config
     envs:
@@ -23,6 +16,7 @@ configMapGenerator:
 patches:
   - target:
       kind: Ingress
+      name: vaultwarden
     patch: |
       - op: replace
         path: /spec/tls/0/hosts/0
@@ -30,3 +24,11 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: vaultwarden-backup.tryrocket.cloud
+  - target:
+      version: v1
+      kind: Namespace
+      name: vaultwarden
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: vaultwarden-backup
