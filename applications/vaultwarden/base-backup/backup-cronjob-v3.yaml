@@ -47,7 +47,7 @@ spec:
                   #pg_dump -F d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
 
                   # Tar
-                  pg_dump -F t -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y').tar
+                  pg_dump -F t -Z 9 -v -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y').tar
                   pg_dump -F t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_without_compression.tar
               volumeMounts:
                 - name: pg-dump-volume
