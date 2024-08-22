@@ -16,8 +16,10 @@ resources:
   
   - backup-cronjob-v3.yaml
   - argocd-external-secret.yaml
-  - hetzner-subaccount-ssh-config-external-secret.yaml
-  - hetzner-subaccount-ssh-privatekey-external-secret.yaml
+  
+  #- hetzner-subaccount-ssh-config-external-secret.yaml TODO: enable it
+  #- hetzner-subaccount-ssh-privatekey-external-secret.yaml TODO: enable it
+  
   - restic-external-secret.yaml
 
 configMapGenerator:
