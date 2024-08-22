@@ -1,0 +1,3 @@
+- op: add
+  path: /metadata/annotations/-
+  value: secret.reloader.stakater.com~1reload: "vaultwarden-postgres-secret"
