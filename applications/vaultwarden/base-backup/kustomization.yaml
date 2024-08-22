@@ -21,6 +21,7 @@ resources:
   #- hetzner-subaccount-ssh-privatekey-external-secret.yaml TODO: enable it
   
   - restic-external-secret.yaml
+  - healthchecks-external-secret.yaml
 
 configMapGenerator:
 #  - name: argocd-config
