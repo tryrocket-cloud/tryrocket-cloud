@@ -30,7 +30,7 @@ spec:
                       key: password
               envFrom:
                 - configMapRef:
-                  name: pgdump-config
+                    name: pgdump-config
               command:
                 - /bin/sh
                 - -c
