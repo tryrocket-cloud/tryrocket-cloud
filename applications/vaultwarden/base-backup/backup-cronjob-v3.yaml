@@ -44,7 +44,7 @@ spec:
                   pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').sql
                   
                   # Plain Text Format
-                  pg_dump -F -Z 9 p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')_plaintext.sql
+                  pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')_plaintext.sql
 
                   # Directory
                   pg_dump -F -Z 9 d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')
