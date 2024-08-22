@@ -7,7 +7,6 @@ resources:
   - middleware.yaml
   - namespace.yaml
 
-
 # https://github.com/dani-garcia/vaultwarden/releases
 images:
   - name: vaultwarden/server:latest
