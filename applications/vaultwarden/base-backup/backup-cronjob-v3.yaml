@@ -40,9 +40,6 @@ spec:
 
                   echo Hello
 
-                  # Unknown style
-                  pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
-                  
                   # Plain Text Format
                   pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_plaintext.sql
 
@@ -78,8 +75,8 @@ spec:
 
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    cat /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
-                    ls -la /pg_dump
+                    #cat /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
+                    ls -la /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
                     ls -ls /root/.ssh/
 
                     #restic backup --dry-run /pg_dump /data
