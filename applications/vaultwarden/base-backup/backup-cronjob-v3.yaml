@@ -78,7 +78,7 @@ spec:
 
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    cat /pg_dump/*
+                    cat /pg_dump/*.plaintext.sql
                     ls -la /pg_dump
                     ls -ls /root/.ssh/
 
