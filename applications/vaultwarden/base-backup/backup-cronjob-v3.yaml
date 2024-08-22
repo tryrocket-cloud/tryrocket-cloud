@@ -75,16 +75,19 @@ spec:
 
                     curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    restic backup --dry-run /pg_dump /data
-                    restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
-                    curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/backup.log https://hc-ping.com/$HC_UUID/$?
+                    ls -la /pg_dump
+                    ls -ls /root/.ssh/
 
-                    restic check > /var/log/restic/check.log 2>&1
-                    curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/check.log https://hc-ping.com/$HC_UUID/$?
+                    #restic backup --dry-run /pg_dump /data
+                    #restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
+                    #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/backup.log https://hc-ping.com/$HC_UUID/$?
 
-                    restic forget --dry-run
-                    restic forget > /var/log/restic/forget.log 2>&1
-                    curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/forget.log https://hc-ping.com/$HC_UUID/$?
+                    #restic check > /var/log/restic/check.log 2>&1
+                    #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/check.log https://hc-ping.com/$HC_UUID/$?
+
+                    #restic forget --dry-run
+                    #restic forget > /var/log/restic/forget.log 2>&1
+                    #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/forget.log https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-storage
                   mountPath: /data
