@@ -10,3 +10,16 @@ spec:
       storage: 4Gi
   storageClassName: longhorn-retain
   volumeName: vaultwarden-pv
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vaultwarden-rwx-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 4Gi
+  storageClassName: longhorn-retain
+  volumeName: vaultwarden-rwx-pv
