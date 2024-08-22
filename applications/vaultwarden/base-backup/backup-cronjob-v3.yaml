@@ -78,10 +78,10 @@ spec:
 
                     #cat /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
                     ls -la /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
-                    tar -tvf /pg_dump/vaultwarden_$(date +'%d-%m-%Y').tar
-                    tar -tvf /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_without_compression.tar
 
                     ls -ls /root/.ssh/
+                    cat /root/.ssh/config
+                    cat /root/.ssh/id_ed25519
 
                     #restic backup --dry-run /pg_dump /data
                     #restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
