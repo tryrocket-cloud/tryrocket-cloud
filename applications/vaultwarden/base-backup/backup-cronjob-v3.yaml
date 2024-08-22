@@ -95,7 +95,7 @@ spec:
                 - name: vaultwarden-hetzner-subaccount-ssh-config
                   mountPath: /root/.ssh
                   readOnly: true
-                - name: pg_dump-volume
+                - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
           volumes:
@@ -116,5 +116,5 @@ spec:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
-            - name: pg_dump-volume
+            - name: pg-dump-volume
               emptyDir: {}
