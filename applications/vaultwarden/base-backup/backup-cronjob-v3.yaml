@@ -41,16 +41,16 @@ spec:
                   echo Hello
 
                   # Unknown style
-                  pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').sql
+                  pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
                   
                   # Plain Text Format
-                  pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')_plaintext.sql
+                  pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_plaintext.sql
 
                   # Directory
-                  pg_dump -F d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')
+                  pg_dump -F d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
 
                   # Tar
-                  pg_dump -F t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').tar
+                  pg_dump -F t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y').tar
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
@@ -78,7 +78,7 @@ spec:
 
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    cat /pg_dump/*.plaintext.sql
+                    cat /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_plaintext.sql
                     ls -la /pg_dump
                     ls -ls /root/.ssh/
 
