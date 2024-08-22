@@ -23,6 +23,6 @@ patches:
       name: vaultwarden
     patch: |
       - op: add
-        path: /metadata/annotations/secret.reloader.stakater.com/reload
+        path: /metadata/annotations/secret.reloader.stakater.com~1reload
         value: "vaultwarden-postgres-secret"
 
