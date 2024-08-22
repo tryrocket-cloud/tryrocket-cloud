@@ -47,10 +47,10 @@ spec:
                   pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')_plaintext.sql
 
                   # Directory
-                  pg_dump -F -Z 9 d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')
+                  pg_dump -F d -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S')
 
                   # Tar
-                  pg_dump -F -Z 9 t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').tar
+                  pg_dump -F t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').tar
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
