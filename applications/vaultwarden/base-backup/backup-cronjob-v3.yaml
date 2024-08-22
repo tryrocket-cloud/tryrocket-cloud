@@ -12,6 +12,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          backoffLimit: 0
           serviceAccountName: backup-sa
           initContainers:
             - name: pg-dump
