@@ -118,7 +118,7 @@ spec:
               secret:
                 secretName: hetzner-subaccount-ssh-config
                 items:
-                  - key: ssh-config
+                  - key: config
                     path: config
                 defaultMode: 384
             - name: pg-dump-volume
