@@ -38,6 +38,8 @@ spec:
                 - |
                   # TODO: choose one
 
+                  echo Hello
+
                   # Unknown style
                   pg_dump > /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').sql
                   
