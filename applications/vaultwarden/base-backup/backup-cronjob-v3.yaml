@@ -14,7 +14,7 @@ spec:
           restartPolicy: Never
           serviceAccountName: backup-sa
           initContainers:
-            - name: pg_dump
+            - name: pg-dump
               image: postgres:16
               imagePullPolicy: IfNotPresent
               env:
@@ -49,7 +49,7 @@ spec:
                   # Tar
                   pg_dump -F -Z 9 t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y_%H-%M-%S').tar
               volumeMounts:
-                - name: pg_dump-volume
+                - name: pg-dump-volume
                   mountPath: /pg_dump
 
           containers:
