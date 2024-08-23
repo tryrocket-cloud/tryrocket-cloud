@@ -132,7 +132,7 @@ spec:
                   - key: config
                     path: config
                 defaultMode: 384
-            - name: vaultwarden-hetzner-subaccount-ssh-knwon-hosts
+            - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
               secret:
                 secretName: hetzner-subaccount-ssh-known-hosts
                 items:
