@@ -70,6 +70,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    ssh-keyscan storagebox >> /root/.ssh/known_hosts
                     cat /root/.ssh/known_hosts
 
                     #ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
