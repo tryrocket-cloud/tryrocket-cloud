@@ -75,7 +75,7 @@ spec:
                     ls -la /root/.ssh/
                     cat /root/.ssh/config
                     
-                    
+
                     chmod 600 /root/.ssh/known_hosts
                     ssh-keyscan storagebox >> /root/.ssh/known_hosts
                     #cat /root/.ssh/known_hosts
@@ -142,6 +142,7 @@ spec:
             - name: vaultwarden-hetzner-subaccount-ssh-config
               configMap:
                 name: hetzner-subaccount-ssh-config
+                defaultMode: 384
 #            - name: vaultwarden-hetzner-subaccount-ssh-config
 #              secret:
 #                secretName: hetzner-subaccount-ssh-config
