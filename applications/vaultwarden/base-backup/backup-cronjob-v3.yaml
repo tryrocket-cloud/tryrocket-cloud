@@ -71,7 +71,6 @@ spec:
                   - -c
                   - |
                     echo "Verify ssh config"
-                    chmod 600 /root/.ssh/config
                     ls -la /root/.ssh/
                     cat /root/.ssh/config
                     
