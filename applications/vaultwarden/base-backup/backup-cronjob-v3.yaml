@@ -134,7 +134,7 @@ spec:
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-knwon-hosts
               secret:
-                secretName: hetzner-subaccount-ssh-knwon-hosts
+                secretName: hetzner-subaccount-ssh-known-hosts
                 items:
                   - key: knwon_hosts
                     path: knwon_hosts
