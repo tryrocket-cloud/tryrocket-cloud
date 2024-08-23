@@ -75,10 +75,11 @@ spec:
                     cat /root/.ssh/config
                     
                     echo "known_hosts"
-                    ssh-keyscan -p 23 your-storagebox.de -o /root/.ssh/known_hosts
-                    cat /root/.ssh/known_hosts
+                    ssh-keyscan -f /root/.ssh/hosts
+                    #ssh-keyscan -p 23 your-storagebox.de -o /root/.ssh/known_hosts
+                    #cat /root/.ssh/known_hosts
                     
-                    ls -la /root/.ssh/
+                    #ls -la /root/.ssh/
 
                    
                     #ls -la /root/.ssh/
@@ -118,6 +119,10 @@ spec:
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
+                - name: vaultwarden-hetzner-subaccount-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
 #                - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
 #                  mountPath: /root/.ssh/known_hosts
 #                  readOnly: true
@@ -141,6 +146,10 @@ spec:
             - name: vaultwarden-hetzner-subaccount-ssh-config
               configMap:
                 name: hetzner-subaccount-ssh-config
+                defaultMode: 384
+            - name: vaultwarden-hetzner-subaccount-ssh-hosts
+              configMap:
+                name: hetzner-subaccount-ssh-hosts
                 defaultMode: 384
 #            - name: vaultwarden-hetzner-subaccount-ssh-config
 #              secret:
