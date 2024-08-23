@@ -107,6 +107,10 @@ spec:
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
+                - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
+                  mountPath: /root/.ssh/known_hosts
+                  readOnly: true
+                  subPath: known_hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
@@ -127,6 +131,13 @@ spec:
                 items:
                   - key: config
                     path: config
+                defaultMode: 384
+            - name: vaultwarden-hetzner-subaccount-ssh-knwon-hosts
+              secret:
+                secretName: hetzner-subaccount-ssh-knwon-hosts
+                items:
+                  - key: knwon_hosts
+                    path: knwon_hosts
                 defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
