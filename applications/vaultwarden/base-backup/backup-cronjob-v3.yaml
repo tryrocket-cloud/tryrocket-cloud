@@ -81,6 +81,7 @@ spec:
 
                     ls -la /root/.ssh/
 
+                    ssh -vvv storagebox
                    
                     #ls -la /root/.ssh/
 
@@ -97,7 +98,7 @@ spec:
                     #cat /root/.ssh/config
                     #cat /root/.ssh/id_ed25519
 
-                    env
+                    #env
 
                     #restic backup --dry-run /pg_dump /data
                     #restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
