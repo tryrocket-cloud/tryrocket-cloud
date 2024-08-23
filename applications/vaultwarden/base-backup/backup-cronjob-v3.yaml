@@ -77,6 +77,7 @@ spec:
                     echo "Verify known_hosts"
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
                     cat /root/.ssh/known_hosts
+                    chmod 600 /root/.ssh/known_hosts
                     
                     ls -la /root/.ssh/
 
