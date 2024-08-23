@@ -136,7 +136,7 @@ spec:
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-config
               configMap:
-                name: config
+                name: hetzner-subaccount-ssh-config
 #            - name: vaultwarden-hetzner-subaccount-ssh-config
 #              secret:
 #                secretName: hetzner-subaccount-ssh-config
