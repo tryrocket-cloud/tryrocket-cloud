@@ -136,8 +136,8 @@ spec:
               secret:
                 secretName: hetzner-subaccount-ssh-known-hosts
                 items:
-                  - key: knwon_hosts
-                    path: knwon_hosts
+                  - key: known_hosts
+                    path: known_hosts
                 defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
