@@ -71,6 +71,9 @@ spec:
                   - -c
                   - |
                     ls -la /root/.ssh/
+                    echo "Verify ssh config"
+                    cat /root/.ssh/config
+
 
                     ssh-keyscan storagebox >> /root/.ssh/known_hosts
                     cat /root/.ssh/known_hosts
