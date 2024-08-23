@@ -99,7 +99,7 @@ spec:
 
                     env
 
-                    restic backup --dry-run /pg_dump /data
+                    #restic backup --dry-run /pg_dump /data
                     #restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @/var/log/restic/backup.log https://hc-ping.com/$HC_UUID/$?
 
