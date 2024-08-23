@@ -72,6 +72,7 @@ spec:
                   - |
                     ssh-keyscan storagebox >> /root/.ssh/known_hosts
                     cat /root/.ssh/known_hosts
+                    ls -la /root/.ssh/
 
                     #ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
                     #cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
@@ -108,13 +109,15 @@ spec:
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
-                  mountPath: /root/.ssh/known_hosts
-                  readOnly: true
-                  subPath: known_hosts
+#                - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
+#                  mountPath: /root/.ssh/known_hosts
+#                  readOnly: true
+#                  subPath: known_hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
+                - name: dot-ssh-volume
+                  mountPath: /root/.ssh/
           volumes:
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
@@ -133,12 +136,14 @@ spec:
                   - key: config
                     path: config
                 defaultMode: 384
-            - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
-              secret:
-                secretName: hetzner-subaccount-ssh-known-hosts
-                items:
-                  - key: known_hosts
-                    path: known_hosts
-                defaultMode: 384
+#            - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
+#              secret:
+#                secretName: hetzner-subaccount-ssh-known-hosts
+#                items:
+#                  - key: known_hosts
+#                    path: known_hosts
+#                defaultMode: 384
             - name: pg-dump-volume
+              emptyDir: {}
+            - name: dot-ssh-volume
               emptyDir: {}
