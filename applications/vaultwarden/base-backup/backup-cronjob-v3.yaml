@@ -80,7 +80,7 @@ spec:
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
-                    restic backup --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
+                    restic backup --host test --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
                     curl -fsS -m 10 --retry 5 --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
 
                     restic check --read-data-subset 1/7 > check.log 2>&1
