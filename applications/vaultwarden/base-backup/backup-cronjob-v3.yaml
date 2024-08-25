@@ -83,6 +83,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    apk add --no-cache curl
+
                     umask 077
 
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
