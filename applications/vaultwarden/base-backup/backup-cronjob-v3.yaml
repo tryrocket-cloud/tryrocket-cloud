@@ -71,29 +71,10 @@ spec:
                   - -c
                   - |
                     umask 077
+
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
-                    #chmod 600 /root/.ssh/known_hosts
 
-                    ls -la /root/.ssh
-
-                    ssh storagebox
-                   
-                    #ls -la /root/.ssh/
-
-                    #ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
-                    #cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
-                    #chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
-
-                    #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
-
-                    #cat /pg_dump/vaultwarden_$(date +'%d-%m-%Y').sql
-                    #ls -la /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
-
-                    #ls -ls /root/.ssh/
-                    #cat /root/.ssh/config
-                    #cat /root/.ssh/id_ed25519
-
-                    env
+                    curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
                     restic backup --dry-run /pg_dump /data
                     #restic backup /pg_dump /data > /var/log/restic/backup.log 2>&1
