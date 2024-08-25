@@ -25,9 +25,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f Dockerfile.restic -t ghcr.io/${{ github.repository }}/restic:latest .
+          docker build -f Dockerfile.restic -t ghcr.io/${{ github.repository }}:restic .
 
       # Push the Docker image to GHCR
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository }}/restic:latest
+          docker push ghcr.io/${{ github.repository }}:restic
