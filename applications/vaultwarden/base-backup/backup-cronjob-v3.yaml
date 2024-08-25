@@ -59,6 +59,8 @@ spec:
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
+                    name: vaultwarden-config
+                - configMapRef:
                     name: restic-config
                 - secretRef:
                     name: restic-secret
