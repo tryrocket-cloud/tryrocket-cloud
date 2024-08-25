@@ -78,18 +78,20 @@ spec:
 
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=53baf39c-5d87-447d-9222-0dc611590b67
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
                     restic backup --host tryrocket.cloud --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
-                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=53baf39c-5d87-447d-9222-0dc611590b67
 
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=check
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=17f087bc-be5b-409e-a0c7-10685f7e9ab0
                     restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID?rid=check
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=17f087bc-be5b-409e-a0c7-10685f7e9ab0
 
+
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=f02c28d8-2487-4018-889e-b880b0c9da8b
                     restic forget --keep-last 5 --prune
-                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=f02c28d8-2487-4018-889e-b880b0c9da8b
               volumeMounts:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
