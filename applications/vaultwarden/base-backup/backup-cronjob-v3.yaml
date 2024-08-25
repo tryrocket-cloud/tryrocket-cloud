@@ -68,17 +68,6 @@ spec:
                     name: healthchecks-config
                 - secretRef:
                     name: healthchecks-secret
-              env:
-                - name: HC_CURL
-                  value: curl -fsS -m 10 --retry 5
-                - name: RESTIC_BACKUP
-                  value: restic backup --tag $(VAULTWARDEN_VERSION)
-                - name: RESTIC_CHECK
-                  value: restic check --read-data-subset 1/7
-                - name: RESTIC_CHECK
-                  value: restic check --read-data-subset 1/7
-                - name: RESTIC_FORGET
-                  value: restic forget --keep-last 365 --prune
               command:
                   - /bin/sh
                   - -c
@@ -89,18 +78,16 @@ spec:
 
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    #$HC_CURL https://hc-ping.com/$HC_UUID/start
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
-                    $RESTIC_BACKUP --dry-run /pg_dump /data
-                    $RESTIC_BACKUP /pg_dump /data > backup.log 2>&1
-                    $HC_CURL --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
+                    restic backup --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
 
-                    $RESTIC_CHECK > check.log 2>&1
-                    $HC_CURL --data-binary @check.log https://hc-ping.com/$HC_UUID/$?
+                    restic check --read-data-subset 1/7 > check.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @check.log https://hc-ping.com/$HC_UUID/$?
 
-                    $RESTIC_FORGET --dry-run
-                    $RESTIC_FORGET > forget.log 2>&1
-                    $HC_CURL --data-binary @forget.log https://hc-ping.com/$HC_UUID/$?
+                    restic forget --keep-last 365 --prune > forget.log 2>&1
+                    curl -fsS -m 10 --retry 5 --data-binary @forget.log https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
