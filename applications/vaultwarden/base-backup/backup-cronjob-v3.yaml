@@ -66,6 +66,13 @@ spec:
                     name: healthchecks-config
                 - secretRef:
                     name: healthchecks-secret
+              env:
+                name: RESTIC_BACKUP
+                value: restic backup --tag daily
+                name: RESTIC_CHECK
+                value: restic check --read-data-subset 1/7
+                name: RESTIC_FORGET
+                value: restic forget --keep-last 365 --prune
               command:
                   - /bin/sh
                   - -c
@@ -78,15 +85,15 @@ spec:
 
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    restic backup --tag daily --dry-run /pg_dump /data
-                    restic backup --tag daily /pg_dump /data > backup.log 2>&1
+                    $RESTIC_BACKUP --dry-run /pg_dump /data
+                    $RESTIC_BACKUP /pg_dump /data > backup.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
 
-                    restic check --read-data-subset 1/7 > check.log 2>&1
+                    $RESTIC_CHECK > check.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @check.log https://hc-ping.com/$HC_UUID/$?
 
-                    restic forget --keep-last 365 --prune --dry-run
-                    restic forget --keep-last 365 --prune > forget.log 2>&1
+                    $RESTIC_FORGET --dry-run
+                    $RESTIC_FORGET > forget.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @forget.log https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
