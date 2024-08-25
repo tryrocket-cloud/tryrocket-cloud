@@ -68,7 +68,7 @@ spec:
                     name: healthchecks-secret
               env:
                 - name: RESTIC_BACKUP
-                  value: restic backup --tag daily
+                  value: restic backup --tag daily --hostname $NODE_NAME
                 - name: RESTIC_CHECK
                   value: restic check --read-data-subset 1/7
                 - name: RESTIC_FORGET
