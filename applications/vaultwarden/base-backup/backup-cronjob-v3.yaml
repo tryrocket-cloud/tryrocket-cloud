@@ -70,16 +70,11 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    echo "Verify ssh config"
-                    ls -la /root/.ssh/
-                    cat /root/.ssh/config
-                    
-                    echo "Verify known_hosts"
+                    umask 077
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
-                    cat /root/.ssh/known_hosts
-                    chmod 600 /root/.ssh/known_hosts
+                    #chmod 600 /root/.ssh/known_hosts
 
-                    ls -la /root/.ssh/
+                    ls -la /root/.ssh
 
                     ssh storagebox
                    
