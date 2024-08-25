@@ -85,15 +85,15 @@ spec:
 
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY https://hc-ping.com/$HC_UUID/start
 
-                    restic backup --tag daily --tag $VAULTWARDEN_VERSION --dry-run /pg_dump /data
-                    restic backup --tag daily --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
+                    restic backup $RESTIC_BACKUP_OPTS --dry-run /pg_dump /data
+                    restic backup $RESTIC_BACKUP_OPTS /pg_dump /data > backup.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
 
-                    $RESTIC_CHECK > check.log 2>&1
+                    restic check $RESTIC_CHECK_OPTS > check.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @check.log https://hc-ping.com/$HC_UUID/$?
 
-                    $RESTIC_FORGET --dry-run
-                    $RESTIC_FORGET > forget.log 2>&1
+                    restic forget $RESTIC_FORGET_OPTS --dry-run
+                    restic forget $RESTIC_FORGET_OPTS > forget.log 2>&1
                     #curl -fsS -m $HC_TIMEOUT --retry $HC_RETRY --data-binary @forget.log https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
