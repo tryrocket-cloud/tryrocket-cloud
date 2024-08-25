@@ -68,11 +68,6 @@ spec:
                     name: healthchecks-config
                 - secretRef:
                     name: healthchecks-secret
-              env:
-                - name: RESTIC_CHECK
-                  value: restic check --read-data-subset 1/7
-                - name: RESTIC_FORGET
-                  value: restic forget --keep-last 365 --prune
               command:
                   - /bin/sh
                   - -c
