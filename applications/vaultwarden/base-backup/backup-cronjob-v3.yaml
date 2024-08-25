@@ -86,10 +86,10 @@ spec:
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=check
                     restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?\?rid=check
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID?rid=check
 
                     restic forget --keep-last 5 --prune
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
