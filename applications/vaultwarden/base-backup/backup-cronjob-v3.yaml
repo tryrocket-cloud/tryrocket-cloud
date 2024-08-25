@@ -80,7 +80,8 @@ spec:
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
-                    restic backup --host test --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
+                    # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
+                    restic backup --host tryrocket.cloud --tag $VAULTWARDEN_VERSION /pg_dump /data > backup.log 2>&1
                     curl -fsS -m 10 --retry 5 --data-binary @backup.log https://hc-ping.com/$HC_UUID/$?
 
                     restic check --read-data-subset 1/7 > check.log 2>&1
