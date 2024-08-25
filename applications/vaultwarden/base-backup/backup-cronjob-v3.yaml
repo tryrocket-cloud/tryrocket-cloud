@@ -73,6 +73,10 @@ spec:
                   value: restic check --read-data-subset 1/7
                 - name: RESTIC_FORGET
                   value: restic forget --keep-last 365 --prune
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
               command:
                   - /bin/sh
                   - -c
