@@ -69,8 +69,6 @@ spec:
                 - secretRef:
                     name: healthchecks-secret
               env:
-                - name: RESTIC_BACKUP
-                  value: restic backup --tag daily
                 - name: RESTIC_CHECK
                   value: restic check --read-data-subset 1/7
                 - name: RESTIC_FORGET
