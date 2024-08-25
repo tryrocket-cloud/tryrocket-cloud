@@ -2,8 +2,9 @@ name: restic with additional tools
 
 on:
   schedule:
+    on:
+      - push
 #    - cron: '0 0 1 * *'
-    - cron: '* * * * *'
 
 jobs:
   build-and-push:
