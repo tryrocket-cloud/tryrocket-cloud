@@ -11,6 +11,10 @@ resources:
 namespace: vaultwarden
 
 # TODO: add git commit hash, should be also present in the backup
+          # https://github.com/dani-garcia/vaultwarden/releases
+images:
+  - name: vaultwarden
+    newTag: $(VAULTWARDEN_VERSION)
 
 configMapGenerator:
   - name: vaultwarden-config
