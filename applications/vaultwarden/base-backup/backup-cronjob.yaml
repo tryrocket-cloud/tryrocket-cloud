@@ -57,13 +57,16 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    chmod 700 /root/.ssh/
+                    umask 077
+                    
                     sleep infinity
 
-                    #chmod 700 /root/.ssh/
+                    
 
                     apk add --no-cache curl
 
-                    umask 077
+                    
 
                     cat /root/.ssh/hosts
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
