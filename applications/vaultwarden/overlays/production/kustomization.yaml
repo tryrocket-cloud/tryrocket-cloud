@@ -77,4 +77,4 @@ patches:
           secretRef:
             name: vaultwarden-secret
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
-# TODO: refactor DATABASE_URL and set it maybe in argocd
+# TODO: refactor DATABASE_URL somehow to be env
