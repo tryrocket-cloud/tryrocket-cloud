@@ -4,78 +4,119 @@ metadata:
   name: backup
 spec:
   suspend: false
-  schedule: "5 1 * * *"
+  schedule: "0 3 * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
+      backoffLimit: 0
       template:
         spec:
           restartPolicy: Never
           serviceAccountName: backup-sa
           initContainers:
-          - name: postgres-backup
-            image: postgres:16
-            imagePullPolicy: IfNotPresent
-            env:
-            - name: TZ
-              value: Europe/Berlin
-            - name: DATABASE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: vaultwarden-postgres-secret
-                  key: username
-            - name: PGPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: vaultwarden-postgres-secret
-                  key: password
-            command:
-              - /bin/sh
-              - -c
-              - |
-                pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /data/db-backup.sql
-            volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-          containers:
-          - name: restic-backup
-            image: restic/restic
-            imagePullPolicy: IfNotPresent
-            env:
-            - name: TZ
-              value: Europe/Berlin
-            #- name: RESTIC_REPOSITORY
-            #  value: sftp:uXXXXXX-subX@uXXXXXX.your-storagebox.de:/home/backup
-            - name: RESTIC_PASSWORD
-              value: testabc
-            command:
+            - name: pg-dump
+              image: postgres:16
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: vaultwarden-postgres-secret
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: vaultwarden-postgres-secret
+                      key: password
+              envFrom:
+                - configMapRef:
+                    name: pgdump-config
+              command:
                 - /bin/sh
                 - -c
-                - |
-                  ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
-                  cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
-                  chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
+                - pg_dump -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
+              volumeMounts:
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
 
-                  touch aaa
-                  restic -r sftp:storagebox:/home/backup backup aaa
-            volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-            - name: ided25519
-              mountPath: /root/.ssh/ided25519
-              subPath: ided25519
-            - name: config
-              mountPath: /root/.ssh/config
-              subPath: config
+          containers:
+            - name: restic
+              image: restic/restic
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: vaultwarden-config
+                - configMapRef:
+                    name: restic-config
+                - secretRef:
+                    name: restic-secret
+                - configMapRef:
+                    name: healthchecks-config
+                - secretRef:
+                    name: healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    apk add --no-cache curl
+
+                    umask 077
+
+                    ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
+
+                    # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
+                    restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+
+                    restic check --read-data-subset 1/7
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+
+                    restic forget --keep-last 5 --prune
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+              volumeMounts:
+                - name: vaultwarden-rwx-storage
+                  mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-hetzner-subaccount-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: vaultwarden-hetzner-subaccount-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: vaultwarden-hetzner-subaccount-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
+                - name: dot-ssh-volume
+                  mountPath: /root/.ssh/
           volumes:
-          - name: vaultwarden-storage
-            persistentVolumeClaim:
-              claimName: vaultwarden-pvc
-          - name: ided25519
-            secret:
-              secretName: ided25519
-          - name: config # .ssh/config
-            configMap:
-              name: config
-              defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html
+            - name: vaultwarden-rwx-storage
+              persistentVolumeClaim:
+                claimName: vaultwarden-rwx-pvc
+            - name: vaultwarden-hetzner-subaccount-ssh-privatekey
+              secret:
+                secretName: hetzner-subaccount-ssh-privatekey
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: vaultwarden-hetzner-subaccount-ssh-config
+              configMap:
+                name: hetzner-subaccount-ssh-config
+                defaultMode: 384
+            - name: vaultwarden-hetzner-subaccount-ssh-hosts
+              configMap:
+                name: hetzner-subaccount-ssh-hosts
+                defaultMode: 384
+            - name: pg-dump-volume
+              emptyDir: {}
+            - name: dot-ssh-volume
+              emptyDir: {}

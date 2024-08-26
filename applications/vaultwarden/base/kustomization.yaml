@@ -5,9 +5,17 @@ resources:
   - service.yaml
   - ingress.yaml
   - middleware.yaml
-  - namespace.yaml
 
-# https://github.com/dani-garcia/vaultwarden/releases
-images:
-  - name: vaultwarden/server:latest
-    newTag: 1.31.0-alpine
+configMapGenerator:
+  - name: vaultwarden-config
+    literals:
+      - VAULTWARDEN_VERSION=latest
+      - LOG_LEVEL=off # https://github.com/dani-garcia/vaultwarden/wiki/Logging#changing-the-log-level
+      - DOMAIN=https://vaultwarden.tryrocket.cloud
+      - ROCKET_PORT=8080
+      - SIGNUPS_ALLOWED=true
+      - INVITATIONS_ALLOWED=false
+      - SIGNUPS_VERIFY=false
+      - EXTENDED_LOGGING=true
+      - DATABASE_HOST=localhost
+      - DATABASE_PORT=5432

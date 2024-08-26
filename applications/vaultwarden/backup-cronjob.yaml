@@ -1,0 +1,81 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  suspend: false
+  schedule: "5 1 * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: backup-sa
+          initContainers:
+          - name: postgres-backup
+            image: postgres:16
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-postgres-secret
+                  key: username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-postgres-secret
+                  key: password
+            command:
+              - /bin/sh
+              - -c
+              - |
+                pg_dump -h postgres.postgres-16.svc.cluster.local -p 5432 -U $DATABASE_USERNAME -d vaultwarden > /data/db-backup.sql
+            volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+          containers:
+          - name: restic-backup
+            image: restic/restic
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: TZ
+              value: Europe/Berlin
+            #- name: RESTIC_REPOSITORY
+            #  value: sftp:uXXXXXX-subX@uXXXXXX.your-storagebox.de:/home/backup
+            - name: RESTIC_PASSWORD
+              value: testabc
+            command:
+                - /bin/sh
+                - -c
+                - |
+                  ssh-keyscan -p 23 uXXXXXX.your-storagebox.de >> /root/.ssh/known_hosts
+                  cp /root/.ssh/ided25519 /root/.ssh/id_ed25519
+                  chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/id_ed25519 # && chmod 644 /root/.ssh/known_hosts
+
+                  touch aaa
+                  restic -r sftp:storagebox:/home/backup backup aaa
+            volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+            - name: ided25519
+              mountPath: /root/.ssh/ided25519
+              subPath: ided25519
+            - name: config
+              mountPath: /root/.ssh/config
+              subPath: config
+          volumes:
+          - name: vaultwarden-storage
+            persistentVolumeClaim:
+              claimName: vaultwarden-pvc
+          - name: ided25519
+            secret:
+              secretName: ided25519
+          - name: config # .ssh/config
+            configMap:
+              name: config
+              defaultMode: 384 #600 https://www.rapidtables.com/convert/number/octal-to-decimal.html
