@@ -26,19 +26,19 @@ namespace: vaultwarden
 #    behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
-patches:
-  - target:
-      kind: Deployment
-      name: vaultwarden
-    patch: |
-      - op: add
-        path: /spec/template/spec
-        value: |
-          volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-            - name: vaultwarden-rwx-storage
-              mountPath: /data-rwx
+#patches:
+#  - target:
+#      kind: Deployment
+#      name: vaultwarden
+#    patch: |
+#      - op: add
+#        path: /spec/template/spec
+#        value: |
+#          volumeMounts:
+#            - name: vaultwarden-storage
+#              mountPath: /data
+#            - name: vaultwarden-rwx-storage
+#              mountPath: /data-rwx
 
 
 
