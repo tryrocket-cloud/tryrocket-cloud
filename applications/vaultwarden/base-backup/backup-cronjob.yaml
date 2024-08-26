@@ -66,6 +66,7 @@ spec:
                     ls -la /root/.ssh/
                     cat /root/.ssh/id_ed25519
                     cat /root/.ssh/hosts
+                    cat /root/.ssh/known_hosts
 
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
