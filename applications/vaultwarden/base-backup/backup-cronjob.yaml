@@ -57,6 +57,9 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    ls -la /root/.ssh/
+
+
                     apk add --no-cache curl
 
                     umask 077
