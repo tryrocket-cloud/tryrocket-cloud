@@ -8,9 +8,6 @@ resources:
 
 namespace: vaultwarden-testing
 
-replicaCount:
-  vaultwarden: 2
-
 configMapGenerator:
   - name: vaultwarden-config
     literals:
@@ -34,6 +31,3 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: vaultwarden-backup-recovery.tryrocket.cloud
-
-
-
