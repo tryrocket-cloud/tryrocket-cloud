@@ -50,16 +50,16 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/env/-
         value:
-          name: DATABASE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: username
-              name: vaultwarden-postgres-secret
-          name: DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: password
-              name: vaultwarden-postgres-secret
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: vaultwarden-postgres-secret
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: vaultwarden-postgres-secret
 
 #      - op: add
 #        path: /spec/template/spec/containers/0/envFrom/-
