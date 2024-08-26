@@ -163,7 +163,5 @@ data:
           command: argocd app set vaultwarden --sync-policy automated --self-heal --auto-prune --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
 ## Backup
 
-### Daily
-
 - `--host tryrocket.cloud --tags daily --tags vaultwarden:$VAULTWARDEN_VERSION`
 - `--tags manual --tags vaultwarden:$VAULTWARDEN_VERSION`
