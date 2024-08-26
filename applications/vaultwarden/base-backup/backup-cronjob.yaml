@@ -42,7 +42,7 @@ spec:
 
           containers:
             - name: restic
-              image: debian:12
+              image: restic/restic:latest
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
@@ -59,7 +59,8 @@ spec:
                   - |
                     umask 077
 
-                    apt update && apt install -y openssh-client restic curl fish vim
+                    #apt update && apt install -y openssh-client restic curl fish vim
+                    apk add curl fish vim
 
                     ssh -V
                     restic version
@@ -71,7 +72,7 @@ spec:
                     # debug ssh connection
                     #ssh -vvvv storagebox
 
-                    sleep infinity
+                    #sleep infinity
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
