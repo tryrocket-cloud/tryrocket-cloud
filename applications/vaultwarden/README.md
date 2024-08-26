@@ -20,6 +20,19 @@ Install vaultwarden as an Argo CD application
                         --self-heal \
                         --auto-prune
 
+#### Testing
+
+    argocd app create vaultwarden-testing \
+                        --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
+                        --path applications/vaultwarden/overlays/testing \
+                        --dest-server https://192.168.178.101:6443 \
+                        --dest-namespace vaultwarden-testing \
+                        --revision main \
+                        --project default \
+                        --sync-policy automated \
+                        --self-heal \
+                        --auto-prune
+
 ## Update
 
 To change the production version of `vaultwarden` navigate to [vaultwarden.env](./overlays/production/vaultwarden.env).
