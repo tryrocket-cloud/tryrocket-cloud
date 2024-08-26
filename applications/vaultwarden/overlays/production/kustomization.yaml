@@ -13,7 +13,7 @@ namespace: vaultwarden
 
 # https://github.com/dani-garcia/vaultwarden/releases
 images:
-  - name: vaultwarden
+  - name: vaultwarden/server:latest
     newTag: 1.32.0
 # TODO: use kubectl describe deploy/vaultwarden and get the image version
 
@@ -21,7 +21,7 @@ configMapGenerator:
   - name: vaultwarden-config
     literals:
       - DATABASE_HOST=postgres.postgres-16.svc.cluster.local
-      - VAULTWARDEN_VERSION=1.31.0
+      - VAULTWARDEN_VERSION=1.32.0
     behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
