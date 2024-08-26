@@ -57,6 +57,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    apt install openssh-server && systemctl start ssh && systemctl status ssh
+
                     chmod 700 /root/.ssh/
                     umask 077
                     
