@@ -57,16 +57,16 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    ls -la /root/.ssh/
-                    cat /root/.ssh/id_ed25519
-                    cat /root/.ssh/hosts
-
-
                     apk add --no-cache curl
 
                     umask 077
 
                     ssh-keyscan -vvv -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    ls -la /root/.ssh/
+                    cat /root/.ssh/id_ed25519
+                    cat /root/.ssh/hosts
+
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
