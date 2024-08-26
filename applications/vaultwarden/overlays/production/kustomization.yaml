@@ -34,14 +34,14 @@ patches:
       - op: add
         path: /metadata/annotations/secret.reloader.stakater.com~1reload
         value: "vaultwarden-postgres-secret"
-#      - op: add
-#        path: /spec/template/spec/containers/0
-#        value: |
-#          volumeMounts:
-#            - name: vaultwarden-storage
-#              mountPath: /data
-#            - name: vaultwarden-rwx-storage
-#              mountPath: /data-rwx
+      - op: add
+        path: /spec/template/spec/containers/0
+        value: |
+          volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+            - name: vaultwarden-rwx-storage
+              mountPath: /data-rwx
 #      - op: add
 #        path: /spec/template/spec
 #        value: |
