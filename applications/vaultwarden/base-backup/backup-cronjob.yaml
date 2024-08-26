@@ -125,8 +125,11 @@ spec:
                     path: config
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-hosts
-              configMap:
-                name: hetzner-subaccount-ssh-hosts
+              secret:
+                secretName: hetzner-subaccount-ssh-hosts
+                items:
+                  - key: ssh-hosts
+                    path: hosts
                 defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
