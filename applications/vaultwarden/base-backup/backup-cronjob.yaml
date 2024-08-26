@@ -76,6 +76,8 @@ spec:
 
                     ssh -vvvv storagebox
 
+                    sleep infinity
+
                     #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
