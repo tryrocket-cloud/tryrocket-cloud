@@ -59,22 +59,32 @@ spec:
                   - |
                     chmod 700 /root/.ssh/
                     umask 077
+                    
+                    #apk add --no-cache curl
 
-                    apk add --no-cache curl
-
+                    cat /root/.ssh/hosts
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
+                    ls -la /root/
+                    ls -la /root/.ssh/
+                    cat /root/.ssh/config
+                    cat /root/.ssh/hosts
+                    cat /root/.ssh/id_ed25519
+                    cat /root/.ssh/known_hosts
+
+                    ssh -vvv storagebox
+
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
-                    restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    #restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    #restic check --read-data-subset 1/7
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    restic forget --keep-last 5 --prune
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+                    #restic forget --keep-last 5 --prune
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
