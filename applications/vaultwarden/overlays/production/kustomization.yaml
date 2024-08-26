@@ -20,6 +20,7 @@ images:
 configMapGenerator:
   - name: vaultwarden-config
     literals:
+      - LOG_LEVEL=debug
       - VAULTWARDEN_VERSION=1.32.0
       - DOMAIN=https://vaultwarden.tryrocket.cloud
       - DATABASE_URL=postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
