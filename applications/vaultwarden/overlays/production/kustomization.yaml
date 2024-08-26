@@ -12,9 +12,9 @@ resources:
 namespace: vaultwarden
 
 # https://github.com/dani-garcia/vaultwarden/releases
-images:
-  - name: vaultwarden/server:latest
-    newTag: 1.32.0
+#images:
+#  - name: vaultwarden/server:latest
+#    newTag: 1.32.0
 # TODO: use kubectl describe deploy/vaultwarden and get the image version
 
 configMapGenerator:
