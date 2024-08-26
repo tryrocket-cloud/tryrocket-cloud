@@ -2,6 +2,8 @@
 
 ## Install
 
+### ArgoCD
+
 Install vaultwarden as an Argo CD application
 
     create database user 
@@ -17,6 +19,10 @@ Install vaultwarden as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+## Update
+
+To change the production version of `vaultwarden` navigate to [vaultwarden.env](./overlays/production/vaultwarden.env).
 
 ## TODOs
 
