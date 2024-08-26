@@ -58,6 +58,7 @@ spec:
                   - -c
                   - |
                     ls -la /root/.ssh/
+                    cat /root/.ssh/id_ed25519
 
 
                     apk add --no-cache curl
