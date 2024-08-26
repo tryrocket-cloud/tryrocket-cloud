@@ -58,7 +58,6 @@ spec:
                   - |
                     umask 077
 
-                    #apt update && apt install -y openssh-client restic curl fish vim
                     apk add curl fish vim
 
                     ssh -V
@@ -103,8 +102,6 @@ spec:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
-#                - name: dot-ssh-volume
-#                  mountPath: /root/.ssh/
           volumes:
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
@@ -132,5 +129,3 @@ spec:
                 defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
-#            - name: dot-ssh-volume
-#              emptyDir: {}
