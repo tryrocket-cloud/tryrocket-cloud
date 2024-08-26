@@ -14,10 +14,7 @@ resources:
   # TODO: ssh-hosts       as secret from vault
   #- hetzner-subaccount-ssh-hosts-external-secret.yaml TODO: enable it
 
-  # TODO: ssh-config      as secret from vault
-  #- hetzner-subaccount-ssh-config-external-secret.yaml TODO: enable it
-
-  # TODO: ssh-privatekey  as secret from vault
+  - hetzner-subaccount-ssh-config-external-secret.yaml
   - hetzner-subaccount-ssh-privatekey-external-secret.yaml
   
   - healthchecks-external-secret.yaml
