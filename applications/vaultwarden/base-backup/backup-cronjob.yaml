@@ -13,7 +13,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          serviceAccountName: backup-sa
+          #serviceAccountName: backup-sa
           initContainers:
             - name: pg-dump
               image: postgres:16
