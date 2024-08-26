@@ -91,7 +91,7 @@ spec:
                   readOnly: true
                 - name: vaultwarden-hetzner-subaccount-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
-                  readOnly: true
+#                  readOnly: true
                   subPath: id_ed25519
                 - name: vaultwarden-hetzner-subaccount-ssh-config
                   mountPath: /root/.ssh/config
