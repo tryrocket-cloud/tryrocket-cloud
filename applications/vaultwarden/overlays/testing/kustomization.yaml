@@ -14,6 +14,7 @@ configMapGenerator:
       - LOG_LEVEL=debug
       - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
       - DATABASE_URL=postgresql://vaultwarden:vaultwarden@vaultwarden-testing.postgres.svc.cluster.local:5432/vaultwarden
+
     behavior: merge
   - name: postgres-config
     literals:

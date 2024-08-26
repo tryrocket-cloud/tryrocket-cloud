@@ -17,5 +17,3 @@ configMapGenerator:
       - INVITATIONS_ALLOWED=false
       - SIGNUPS_VERIFY=false
       - EXTENDED_LOGGING=true
-      - DATABASE_HOST=localhost
-      - DATABASE_PORT=5432

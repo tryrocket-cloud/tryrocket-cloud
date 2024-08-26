@@ -11,7 +11,8 @@ configMapGenerator:
     literals:
       - LOG_LEVEL=debug
       - DOMAIN=https://vaultwarden-backup-recovery.tryrocket.cloud
-
+      - DATABASE_URL=postgresql://vaultwarden:vaultwarden@vaultwarden-testing.postgres.svc.cluster.local:5432/vaultwarden
+      
 patches:
   - target:
       kind: Ingress
