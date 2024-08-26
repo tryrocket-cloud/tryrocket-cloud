@@ -47,20 +47,19 @@ patches:
           - name: vaultwarden-rwx-storage
             persistentVolumeClaim:
               claimName: vaultwarden-rwx-pvc
-
-#      - op: add
-#        path: /spec/template/spec/containers/0/env/-
-#        value: |
-#          name: DATABASE_USERNAME
-#          valueFrom:
-#            secretKeyRef:
-#              key: username
-#              name: vaultwarden-postgres-secret
-#          name: DATABASE_PASSWORD
-#          valueFrom:
-#            secretKeyRef:
-#              key: password
-#              name: vaultwarden-postgres-secret
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: vaultwarden-postgres-secret
+          name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: vaultwarden-postgres-secret
 
 #      - op: add
 #        path: /spec/template/spec/containers/0/envFrom/-
@@ -68,7 +67,7 @@ patches:
 #          - secretRef:
 #              name: vaultwarden-secret
 
-# TODO: simplify by using just username and password form vaultwarden-postgres-secret
+# TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
 
 
 #  - target:
