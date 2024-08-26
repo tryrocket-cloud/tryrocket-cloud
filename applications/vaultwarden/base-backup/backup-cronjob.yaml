@@ -126,7 +126,7 @@ spec:
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-hosts
               secret:
-                secretName: hetzner-subaccount-ssh-hosts
+                secretName: hetzner-subaccount-ssh-secret
                 items:
                   - key: ssh-hosts
                     path: hosts
