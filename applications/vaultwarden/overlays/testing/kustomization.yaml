@@ -12,3 +12,15 @@ configMapGenerator:
       - LOG_LEVEL=debug
       - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
     behavior: merge
+
+patches:
+  - target:
+      kind: Ingress
+      name: vaultwarden
+    patch: |
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: vaultwarden-backup-recovery.tryrocket.cloud
+      - op: replace
+        path: /spec/rules/0/host
+        value: vaultwarden-backup-recovery.tryrocket.cloud
