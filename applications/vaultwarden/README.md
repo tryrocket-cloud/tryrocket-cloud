@@ -22,6 +22,8 @@ Install vaultwarden as an Argo CD application
 
 #### Testing
 
+Testing environment is used to test new versions out on a vanila environment.
+
     argocd app create vaultwarden-testing \
                         --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
                         --path applications/vaultwarden/overlays/testing \
@@ -32,6 +34,8 @@ Install vaultwarden as an Argo CD application
                         --sync-policy automated \
                         --self-heal \
                         --auto-prune
+
+# TODO: move to ArgoCD application.yaml
 
 ## Update
 
