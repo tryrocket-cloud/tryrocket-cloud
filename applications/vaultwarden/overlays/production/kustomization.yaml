@@ -17,13 +17,13 @@ images:
     newTag: 1.32.0
 # TODO: use kubectl describe deploy/vaultwarden and get the image version
 
-#configMapGenerator:
-#  - name: vaultwarden-config
-#    literals:
-#      - DATABASE_HOST=postgres.postgres-16.svc.cluster.local
-#      - VAULTWARDEN_VERSION=1.32.0
-#      - DOMAIN=https://vaultwarden.tryrocket.cloud
-#    behavior: merge
+configMapGenerator:
+  - name: vaultwarden-config
+    literals:
+      - DATABASE_HOST=postgres.postgres-16.svc.cluster.local
+      - VAULTWARDEN_VERSION=1.32.0
+      - DOMAIN=https://vaultwarden.tryrocket.cloud
+    behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
 #patches:
