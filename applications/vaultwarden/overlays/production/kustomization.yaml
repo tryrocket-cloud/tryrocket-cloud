@@ -48,8 +48,8 @@ patches:
             persistentVolumeClaim:
               claimName: vaultwarden-rwx-pvc
       - op: add
-        path: /spec/template/spec/containers/0/env/
-        value:
+        path: /spec/template/spec/containers/0/env/-
+        value: |
           - name: DATABASE_USERNAME
             valueFrom:
               secretKeyRef:
