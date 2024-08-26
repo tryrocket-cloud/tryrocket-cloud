@@ -11,3 +11,4 @@ configMapGenerator:
     literals:
       - LOG_LEVEL=debug
       - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
+    behavior: merge
