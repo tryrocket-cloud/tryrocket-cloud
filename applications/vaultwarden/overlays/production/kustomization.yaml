@@ -33,12 +33,11 @@ patches:
     patch: |
       - op: add
         path: /spec/template/spec/containers/0/
-        value:
-          volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-            - name: vaultwarden-rwx-storage
-              mountPath: /data-rwx
+        value: volumeMounts:
+                - name: vaultwarden-storage
+                  mountPath: /data
+                - name: vaultwarden-rwx-storage
+                  mountPath: /data-rwx
 
 
 
