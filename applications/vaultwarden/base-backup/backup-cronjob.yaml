@@ -118,8 +118,11 @@ spec:
                     path: id_ed25519
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-config
-              configMap:
-                name: hetzner-subaccount-ssh-config
+              secret:
+                secretName:  hetzner-subaccount-ssh-config
+                items:
+                  - key: ssh-config
+                    path: config
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-hosts
               configMap:
