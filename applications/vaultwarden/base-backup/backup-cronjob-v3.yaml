@@ -32,10 +32,14 @@ spec:
               envFrom:
                 - configMapRef:
                     name: pgdump-config
-              command: pg_dump -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
+              command:
+                - /bin/sh
+                - -c
+                - pg_dump -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
+
           containers:
             - name: restic
               image: restic/restic
