@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: backup-sa-token
-  annotations:
-    kubernetes.io/service-account.name: backup-sa
-type: kubernetes.io/service-account-token

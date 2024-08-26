@@ -13,7 +13,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          #serviceAccountName: backup-sa
           initContainers:
             - name: pg-dump
               image: postgres:16
@@ -104,8 +103,8 @@ spec:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
-                - name: dot-ssh-volume
-                  mountPath: /root/.ssh/
+#                - name: dot-ssh-volume
+#                  mountPath: /root/.ssh/
           volumes:
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
@@ -133,5 +132,5 @@ spec:
                 defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
-            - name: dot-ssh-volume
-              emptyDir: {}
+#            - name: dot-ssh-volume
+#              emptyDir: {}
