@@ -23,7 +23,6 @@ configMapGenerator:
       - LOG_LEVEL=debug
       - VAULTWARDEN_VERSION=1.32.0
       - DOMAIN=https://vaultwarden.tryrocket.cloud
-      - DATABASE_URL=postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
     behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
@@ -68,8 +67,14 @@ patches:
               key: password
               name: vaultwarden-postgres-secret
       - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: DATABASE_URL
+          value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
+      - op: add
         path: /spec/template/spec/containers/0/envFrom/-
         value:
           secretRef:
             name: vaultwarden-secret
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
+# TODO: refactor DATABASE_URL and set it maybe in argocd
