@@ -11,6 +11,11 @@ resources:
   # move to vault
   - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
   
+  # TODO: kubeconfig.yaml as secret from vault
+  # TODO: ssh-config      as secret from vault
+  # TODO: ssh-hosts       as secret from vault
+  # TODO: ssh-privatekey  as secret from vault
+
   #- hetzner-subaccount-ssh-config-external-secret.yaml TODO: enable it
   #- hetzner-subaccount-ssh-privatekey-external-secret.yaml TODO: enable it
   
