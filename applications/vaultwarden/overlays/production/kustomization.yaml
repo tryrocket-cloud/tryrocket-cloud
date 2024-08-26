@@ -22,7 +22,8 @@ configMapGenerator:
     literals:
       - DATABASE_HOST=postgres.postgres-16.svc.cluster.local
       - VAULTWARDEN_VERSION=1.31.0
-# TODO: use kubectl describe deploy/vaultwarden and get the image version
+    behavior: merge
+# TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
 patches:
   - target:
