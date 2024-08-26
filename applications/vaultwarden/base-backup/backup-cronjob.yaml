@@ -59,7 +59,7 @@ spec:
                   - |
                     umask 077
 
-                    apt update && apt install -y openssh-client restic curl
+                    apt update && apt install -y openssh-client restic curl fish vim
 
                     ssh -V
                     restic version
