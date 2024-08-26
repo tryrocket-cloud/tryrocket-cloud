@@ -24,10 +24,7 @@ configMapGenerator:
       - PGPORT=5432
       - PGDATABASE=vaultwarden
       - PGTZ=Europe/Berlin
+
   - name: restic-config
     literals:
       - RESTIC_REPOSITORY=sftp:storagebox:/home/test-backup
-  - name: healthchecks-config
-    literals:
-      - HC_RETRY=5
-      - HC_TIMEOUT=10

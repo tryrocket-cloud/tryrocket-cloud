@@ -51,8 +51,6 @@ spec:
                     name: restic-config
                 - secretRef:
                     name: restic-secret
-                - configMapRef:
-                    name: healthchecks-config
                 - secretRef:
                     name: healthchecks-secret
               command:
