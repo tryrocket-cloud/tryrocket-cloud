@@ -65,17 +65,3 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 30
-          # move to production overlay
-          volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-            - name: vaultwarden-rwx-storage
-              mountPath: /data-rwx
-      volumes:
-        # move to production overlay
-        - name: vaultwarden-storage
-          persistentVolumeClaim:
-            claimName: vaultwarden-pvc
-        - name: vaultwarden-rwx-storage
-          persistentVolumeClaim:
-            claimName: vaultwarden-rwx-pvc
