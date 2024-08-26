@@ -9,33 +9,7 @@ Install vaultwarden as an Argo CD application
     create database user 
     create a new database with this new user and matching the creds in deployment
 
-    argocd app create vaultwarden \
-                        --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path applications/vaultwarden/overlays/production \
-                        --dest-server https://192.168.178.101:6443 \
-                        --dest-namespace vaultwarden \
-                        --revision main \
-                        --project default \
-                        --sync-policy automated \
-                        --self-heal \
-                        --auto-prune
-
-#### Testing
-
-Testing environment is used to test new versions out on a vanila environment.
-
-    argocd app create vaultwarden-testing \
-                        --repo https://github.com/tryrocket-cloud/tryrocket-cloud.git \
-                        --path applications/vaultwarden/overlays/testing \
-                        --dest-server https://192.168.178.101:6443 \
-                        --dest-namespace vaultwarden-testing \
-                        --revision main \
-                        --project default \
-                        --sync-policy automated \
-                        --self-heal \
-                        --auto-prune
-
-# TODO: move to ArgoCD application.yaml
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/application.yaml -n argocd
 
 ## Update
 

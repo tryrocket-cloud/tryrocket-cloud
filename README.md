@@ -1,5 +1,7 @@
 # tryrocket-cloud
 
+kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/application.yaml -n argocd
+
 ## How to
 
 **Grant new database to vault admin**
