@@ -18,9 +18,6 @@ spec:
       - name: init-postgres
         image: busybox
         command: ['sh', '-c', 'mkdir -p /var/lib/postgresql/data/pgdata']
-        volumeMounts:
-        - name: postgres-storage
-          mountPath: /var/lib/postgresql/data
       - name: init-permissions
         image: busybox
         command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
