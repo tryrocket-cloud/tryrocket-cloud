@@ -33,7 +33,7 @@ patches:
     patch: |
       - op: add
         path: /spec/template/spec/containers/0/
-        value: |
+        value:
           volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
