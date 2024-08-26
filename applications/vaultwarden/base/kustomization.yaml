@@ -9,9 +9,7 @@ resources:
 configMapGenerator:
   - name: vaultwarden-config
     literals:
-      - VAULTWARDEN_VERSION=latest
       - LOG_LEVEL=off # https://github.com/dani-garcia/vaultwarden/wiki/Logging#changing-the-log-level
-      - DOMAIN=https://vaultwarden.tryrocket.cloud
       - ROCKET_PORT=8080
       - SIGNUPS_ALLOWED=true
       - INVITATIONS_ALLOWED=false
