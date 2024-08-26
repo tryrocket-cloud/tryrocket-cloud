@@ -1,13 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  #- namespace.yaml
+  - namespace.yaml
   - ../../base
-  #- ../../base-backup
-  #- postgres-external-secret.yaml
-  #- vaultwarden-external-secret.yaml
-  #- pvc.yaml
-  #- pv.yaml
+  - ../../base-backup
+  - postgres-external-secret.yaml
+  - vaultwarden-external-secret.yaml
+  - pvc.yaml
+  - pv.yaml
 
 namespace: vaultwarden
 
@@ -38,19 +38,15 @@ patches:
             mountPath: /data
           - name: vaultwarden-rwx-storage
             mountPath: /data-rwx
-
-
-
-#      - op: add
-#        path: /spec/template/spec
-#        value: |
-#          volumes:
-#            - name: vaultwarden-storage
-#              persistentVolumeClaim:
-#                claimName: vaultwarden-pvc
-#            - name: vaultwarden-rwx-storage
-#              persistentVolumeClaim:
-#                claimName: vaultwarden-rwx-pvc
+      - op: add
+        path: /spec/template/spec/volumes
+        value:
+          - name: vaultwarden-storage
+            persistentVolumeClaim:
+              claimName: vaultwarden-pvc
+          - name: vaultwarden-rwx-storage
+            persistentVolumeClaim:
+              claimName: vaultwarden-rwx-pvc
 
 #      - op: add
 #        path: /spec/template/spec/containers/0/env/-
