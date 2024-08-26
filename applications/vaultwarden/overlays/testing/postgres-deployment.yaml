@@ -15,12 +15,13 @@ spec:
       securityContext:
         fsGroup: 5050
       initContainers:
-      - name: init-postgres
-        image: busybox
-        command: ['sh', '-c', 'mkdir -p /var/lib/postgresql/data/pgdata']
       - name: init-permissions
         image: busybox
         command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
+          runAsUser: 0
+        volumeMounts:
+          - name: pgdata-volume
+            mountPath: /var/lib/postgresql/data/pgdata
       containers:
       - name: postgres
         image: postgres:16.3-alpine
@@ -32,3 +33,9 @@ spec:
         env:
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+          - name: pgdata-volume
+            mountPath: /var/lib/postgresql/data/pgdata
+      volumes:
+        - name: pgdata-volume
+          emptyDir: {}
