@@ -32,6 +32,9 @@ patches:
       name: vaultwarden
     patch: |
       - op: add
+        path: /metadata/annotations/secret.reloader.stakater.com~1reload
+        value: "vaultwarden-postgres-secret"
+      - op: add
         path: /spec/template/spec/containers/0/volumeMounts
         value: 
           - name: vaultwarden-storage
@@ -63,20 +66,9 @@ patches:
             secretKeyRef:
               key: password
               name: vaultwarden-postgres-secret
-
-#      - op: add
-#        path: /spec/template/spec/containers/0/envFrom/-
-#        value: |
-#          - secretRef:
-#              name: vaultwarden-secret
-
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom/-
+        value:
+          secretRef:
+            name: vaultwarden-secret
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
-
-
-#  - target:
-#      kind: Deployment
-#      name: vaultwarden
-#    patch: |
-#      - op: add
-#        path: /metadata/annotations/secret.reloader.stakater.com~1reload
-#        value: "vaultwarden-postgres-secret"
