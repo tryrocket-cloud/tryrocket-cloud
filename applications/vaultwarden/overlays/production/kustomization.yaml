@@ -26,14 +26,14 @@ namespace: vaultwarden
 #    behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
-#patches:
-#  - target:
-#      kind: Deployment
-#      name: vaultwarden
-#    patch: |
-#      - op: add
-#        path: /metadata/annotations/secret.reloader.stakater.com~1reload
-#        value: "vaultwarden-postgres-secret"
+patches:
+  - target:
+      kind: Deployment
+      name: vaultwarden
+    patch: |
+      - op: add
+        path: /metadata/annotations/secret.reloader.stakater.com~1reload
+        value: "vaultwarden-postgres-secret"
 #      - op: add
 #        path: /spec/template/spec/containers/0
 #        value: |
