@@ -3,8 +3,13 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ../../base
+  - postgres-deployment.yaml
+  - postgres-service.yaml
 
 namespace: vaultwarden-testing
+
+replicaCount:
+  vaultwarden: 2
 
 configMapGenerator:
   - name: vaultwarden-config
@@ -12,6 +17,11 @@ configMapGenerator:
       - LOG_LEVEL=debug
       - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
     behavior: merge
+  - name: postgres-config
+    literals:
+      - POSTGRES_DB=tryrocket.cloud
+      - POSTGRES_USER=tryrocket.cloud
+      - POSTGRES_PASSWORD=tryrocket.cloud
 
 patches:
   - target:
@@ -24,3 +34,6 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: vaultwarden-backup-recovery.tryrocket.cloud
+
+
+
