@@ -112,14 +112,14 @@ spec:
                 claimName: vaultwarden-rwx-pvc
             - name: vaultwarden-hetzner-subaccount-ssh-privatekey
               secret:
-                secretName: hetzner-subaccount-ssh-privatekey
+                secretName: hetzner-subaccount-ssh-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
             - name: vaultwarden-hetzner-subaccount-ssh-config
               secret:
-                secretName:  hetzner-subaccount-ssh-config
+                secretName: hetzner-subaccount-ssh-secret
                 items:
                   - key: ssh-config
                     path: config

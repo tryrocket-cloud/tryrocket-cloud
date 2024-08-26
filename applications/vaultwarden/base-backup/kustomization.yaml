@@ -15,7 +15,6 @@ resources:
   #- hetzner-subaccount-ssh-hosts-external-secret.yaml TODO: enable it
 
   - hetzner-subaccount-ssh-config-external-secret.yaml
-  - hetzner-subaccount-ssh-privatekey-external-secret.yaml
   
   - healthchecks-external-secret.yaml
   - restic-external-secret.yaml
