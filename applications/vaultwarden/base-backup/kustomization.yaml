@@ -3,17 +3,11 @@ kind: Kustomization
 resources:
   - backup-cronjob.yaml
   
-  - backup-role.yaml
-  - backup-rolebinding.yaml
-  - backup-sa-token.yaml
-  - backup-sa.yaml
+#  - backup-role.yaml
+#  - backup-rolebinding.yaml
+#  - backup-sa-token.yaml
+#  - backup-sa.yaml
   
-  # move to vault
-  - https://gitea.tryrocket.cloud/tryrocket-cloud/vaultwarden//?ref=main
-  
-  # TODO: ssh-hosts       as secret from vault
-  #- hetzner-subaccount-ssh-hosts-external-secret.yaml TODO: enable it
-
   - hetzner-subaccount-ssh-config-external-secret.yaml
   
   - healthchecks-external-secret.yaml
