@@ -72,18 +72,18 @@ spec:
                     cat /root/.ssh/id_ed25519
                     cat /root/.ssh/known_hosts
 
-                    ssh -v storagebox
+                    #ssh -v storagebox
 
                     #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
-                    #restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
+                    restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
                     #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    #restic check --read-data-subset 1/7
+                    restic check --read-data-subset 1/7
                     #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    #restic forget --keep-last 5 --prune
+                    restic forget --keep-last 5 --prune
                     #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
