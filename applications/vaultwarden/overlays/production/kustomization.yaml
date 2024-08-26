@@ -53,10 +53,5 @@ patches:
               persistentVolumeClaim:
                 claimName: vaultwarden-rwx-pvc
 
-      - op: add
-        path: /spec/template/spec/containers/0/envFrom/-
-        value: |
-          - secretRef:
-              name: vaultwarden-secret
 
 # TODO: simplify by using just username and password form vaultwarden-postgres-secret
