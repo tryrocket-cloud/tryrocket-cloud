@@ -42,7 +42,7 @@ spec:
 
           containers:
             - name: restic
-              image: restic/restic
+              image: debian:12
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
