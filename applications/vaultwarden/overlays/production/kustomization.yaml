@@ -67,3 +67,9 @@ patches:
                 name: vaultwarden-postgres-secret
           - name: DATABASE_URL
             value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/vaultwarden
+
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom/-
+        value: |
+          - secretRef:
+              name: vaultwarden-secret
