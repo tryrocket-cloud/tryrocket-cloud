@@ -32,27 +32,10 @@ spec:
               envFrom:
                 - configMapRef:
                     name: pgdump-config
-              command:
-                - /bin/sh
-                - -c
-                - |
-                  # TODO: choose one
-
-                  #echo Hello
-
-                  # Plain Text Format
-                  #pg_dump -F p -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_plaintext.sql
-
-                  # Directory
-                  pg_dump -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
-
-                  # Tar
-                  #pg_dump -F t -Z 9 -v -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y').tar
-                  #pg_dump -F t -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')_without_compression.tar
+              command: pg_dump -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
-
           containers:
             - name: restic
               image: restic/restic
@@ -78,20 +61,17 @@ spec:
 
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=53baf39c-5d87-447d-9222-0dc611590b67
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
                     restic backup --host tryrocket.cloud --tag daily --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=53baf39c-5d87-447d-9222-0dc611590b67
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=17f087bc-be5b-409e-a0c7-10685f7e9ab0
                     restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=17f087bc-be5b-409e-a0c7-10685f7e9ab0
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start?rid=f02c28d8-2487-4018-889e-b880b0c9da8b
                     restic forget --keep-last 5 --prune
-                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/${?}?rid=f02c28d8-2487-4018-889e-b880b0c9da8b
+                    curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
@@ -108,10 +88,6 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
-#                - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
-#                  mountPath: /root/.ssh/known_hosts
-#                  readOnly: true
-#                  subPath: known_hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
@@ -136,20 +112,6 @@ spec:
               configMap:
                 name: hetzner-subaccount-ssh-hosts
                 defaultMode: 384
-#            - name: vaultwarden-hetzner-subaccount-ssh-config
-#              secret:
-#                secretName: hetzner-subaccount-ssh-config
-#                items:
-#                  - key: config
-#                    path: config
-#                defaultMode: 384
-#            - name: vaultwarden-hetzner-subaccount-ssh-known-hosts
-#              secret:
-#                secretName: hetzner-subaccount-ssh-known-hosts
-#                items:
-#                  - key: known_hosts
-#                    path: known_hosts
-#                defaultMode: 384
             - name: pg-dump-volume
               emptyDir: {}
             - name: dot-ssh-volume
