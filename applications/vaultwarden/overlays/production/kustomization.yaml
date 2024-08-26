@@ -51,5 +51,3 @@ patches:
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
                 claimName: vaultwarden-rwx-pvc
-
-
