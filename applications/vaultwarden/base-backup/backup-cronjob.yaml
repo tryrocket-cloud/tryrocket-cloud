@@ -95,11 +95,11 @@ spec:
                   subPath: id_ed25519
                 - name: vaultwarden-hetzner-subaccount-ssh-config
                   mountPath: /root/.ssh/config
-                  readOnly: true
+                  readOnly: false
                   subPath: config
                 - name: vaultwarden-hetzner-subaccount-ssh-hosts
                   mountPath: /root/.ssh/hosts
-                  readOnly: true
+                  readOnly: false
                   subPath: hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
