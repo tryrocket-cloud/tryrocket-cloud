@@ -24,18 +24,6 @@ spec:
           env:
             - name: TZ
               value: Europe/Berlin
-            - name: DATABASE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: vaultwarden-postgres-secret
-                  key: username
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: vaultwarden-postgres-secret
-                  key: password
-            - name: DATABASE_URL
-              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/vaultwarden"
           envFrom:
             - configMapRef:
                 name: vaultwarden-config
