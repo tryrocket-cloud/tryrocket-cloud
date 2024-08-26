@@ -49,7 +49,7 @@ patches:
               claimName: vaultwarden-rwx-pvc
       - op: add
         path: /spec/template/spec/containers/0/env/-
-        value:
+        value: |
           - name: DATABASE_USERNAME
             valueFrom:
               secretKeyRef:
