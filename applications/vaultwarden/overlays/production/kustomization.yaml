@@ -34,6 +34,10 @@ patches:
       - op: add
         path: /metadata/annotations/secret.reloader.stakater.com~1reload
         value: "vaultwarden-postgres-secret"
+  - target:
+      kind: Deployment
+      name: vaultwarden
+    patch: |
       - op: add
         path: /spec/template/spec/containers/0
         value: |
