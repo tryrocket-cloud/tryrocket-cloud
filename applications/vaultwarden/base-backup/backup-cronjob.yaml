@@ -125,4 +125,3 @@ spec:
               emptyDir: {}
             - name: dot-ssh-volume
               emptyDir: {}
-              defaultMode: 384
