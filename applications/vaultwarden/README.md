@@ -26,6 +26,10 @@ To change the production version of `vaultwarden` navigate to [kustomization.yam
 
 ## Backup
 
+- Hetzner StorageBox
+- TrueNas
+- dedicated Longhorn volume???
+
 ### Restic
 
 ### 1. Automated Backup (`tryrocket.cloud`)
