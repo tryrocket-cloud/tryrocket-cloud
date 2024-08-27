@@ -42,8 +42,8 @@ To change the production version of `vaultwarden` navigate to [kustomization.yam
   - data
   - database
 - Longhorn
-  - snapshots on upgrades
-  - backups daily
+  - snapshots (on demand)
+  - backups (daily)
 
 ### Restic
 
