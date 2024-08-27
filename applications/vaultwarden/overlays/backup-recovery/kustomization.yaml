@@ -15,11 +15,6 @@ configMapGenerator:
       - DOMAIN=https://vaultwarden-backup-recovery.tryrocket.cloud
       - DATABASE_URL=postgresql://vaultwarden:vaultwarden@vaultwarden-testing.postgres.svc.cluster.local:5432/vaultwarden
     behavior: merge
-  - name: postgres-config
-    literals:
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_USER=vaultwarden
-      - POSTGRES_PASSWORD=vaultwarden
       
 patches:
   - target:
