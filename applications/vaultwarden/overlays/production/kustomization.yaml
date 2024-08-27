@@ -10,6 +10,7 @@ kind: Kustomization
 resources:
   - ../../base/vaultwarden
   - ./backup
+  - namespace.yaml
   - postgres-external-secret.yaml
   - vaultwarden-external-secret.yaml
   - pvc.yaml
