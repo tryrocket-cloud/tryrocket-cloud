@@ -1,11 +1,19 @@
 # tryrocket-cloud
 
-kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/application.yaml -n argocd
+# How to
 
-## How to
+    # list all applications
+    just list-applications
+
+    # list all environments of an application
+    just list-environments <application>
+
+    # create argocd application
+    just argocd-app-create <application> <environment>
+
+---
 
 **Grant new database to vault admin**
-
 
     GRANT CONNECT ON DATABASE <db> TO <user> WITH GRANT OPTION;
     GRANT USAGE, CREATE ON SCHEMA public TO <user> WITH GRANT OPTION;
