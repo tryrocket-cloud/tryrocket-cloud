@@ -1,27 +1,24 @@
 # vaultwarden
 
-## Build
+## Prerequisites
 
-    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/production?ref=main"
-    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/staging?ref=main"
-    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/testing?ref=main"
+### Production
 
-## Install
+- create database user
+- create a new database with this new user and matching the creds in deployment
 
-### ArgoCD
+### Staging
 
-Install vaultwarden as an Argo CD application
+no prerequisites needed
 
-    # prepare database
-    create database user
-    create a new database with this new user and matching the creds in deployment
+### Testing
 
-    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/production/application.yaml -n argocd
-    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/staging/application.yaml -n argocd
-    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/testing/application.yaml -n argocd
-    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/backup-recovery/application.yaml -n argocd
+no prerequisites needed
 
+## Install 
 
+    just list-environment
+    just argocd-app-create <environment>
 
 ## Update
 
@@ -39,7 +36,7 @@ The automated backup process is configured to run regularly in a k3s cluster. Th
 
 #### Configuration:
 
-- [CronJob](./base-backup/backup-cronjob-v3.yaml)
+- [CronJob](./overlays/production/backup/backup-cronjob.yaml)
 - Restic: `--host tryrocket.cloud --tags daily --tags vaultwarden:$VAULTWARDEN_VERSION`
 
 ### 2. On-Demand Backup (Local)
