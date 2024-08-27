@@ -24,11 +24,23 @@ no prerequisites needed
 
 To change the production version of `vaultwarden` navigate to [kustomization.yaml](./overlays/production/kustomization.yaml).
 
+### Steps
+
+- Take Longhorn snapshot of the database volume
+- Take Longhorn snapshot of the vaultwarden volume
+- Update image version
+- Success: do nothing
+- Failure: Revert both snapshots
+
+
 ## Backup
 
 - Hetzner StorageBox (sftp)
+  - data
+  - database
 - TrueNas (sftp)
-- dedicated Longhorn volume???
+  - data
+  - database
 - Longhorn snapshots and backups
 
 ### Restic
