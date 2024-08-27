@@ -41,7 +41,9 @@ To change the production version of `vaultwarden` navigate to [kustomization.yam
 - TrueNas (sftp)
   - data
   - database
-- Longhorn snapshots and backups
+- Longhorn
+  - snapshots on upgrades
+  - backups daily
 
 ### Restic
 
