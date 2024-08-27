@@ -11,8 +11,6 @@ resources:
   - namespace.yaml
   - ../../base
   - ../../base-standalone
-#  - postgres-deployment.yaml
-#  - postgres-service.yaml
 
 namespace: vaultwarden-testing
 
