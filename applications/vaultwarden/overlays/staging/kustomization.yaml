@@ -19,6 +19,7 @@ configMapGenerator:
       - DOMAIN=https://vaultwarden-staging.tryrocket.cloud
       - LOG_LEVEL=debug
       - DATABASE_URL=postgresql://vaultwarden:vaultwarden@localhost:5432/vaultwarden
+    behavior: merge
       
 patches:
   - target:
