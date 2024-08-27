@@ -28,8 +28,6 @@ To change the production version of `vaultwarden` navigate to [kustomization.yam
 
 ### Restic
 
-This project implements two types of backup strategies using Restic to ensure data safety and reliability. Below, you'll find details about both the automated backup running in a `tryrocket.cloud` k3s cluster and the manual, on-demand backup that can be triggered locally.
-
 ### 1. Automated Backup (`tryrocket.cloud`)
 
 The automated backup process is configured to run regularly in a k3s cluster. This process ensures that critical data is backed up at `0 3 * * *` (*at 03:00 o'clock*) without requiring any manual intervention.
