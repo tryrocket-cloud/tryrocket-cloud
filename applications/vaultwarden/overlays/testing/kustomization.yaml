@@ -22,11 +22,6 @@ configMapGenerator:
       - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
       - DATABASE_URL=postgresql://vaultwarden:vaultwarden@postgres.vaultwarden-testing.svc.cluster.local:5432/vaultwarden
     behavior: merge
-  - name: postgres-config
-    literals:
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_USER=vaultwarden
-      - POSTGRES_PASSWORD=vaultwarden
 
 patches:
   - target:
