@@ -26,8 +26,8 @@ To change the production version of `vaultwarden` navigate to [kustomization.yam
 
 ## Backup
 
-- Hetzner StorageBox
-- TrueNas
+- Hetzner StorageBox (sftp)
+- TrueNas (sftp)
 - dedicated Longhorn volume???
 
 ### Restic
