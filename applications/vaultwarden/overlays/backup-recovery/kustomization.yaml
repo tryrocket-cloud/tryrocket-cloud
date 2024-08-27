@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - ../../base
   - ../../base-standalone
+  - vaultwarden-external-secret.yaml
 
 namespace: vaultwarden-backup-recovery
 
