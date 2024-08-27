@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ../../base/vaultwarden
+  - ../../base/ postgres
   - vaultwarden-external-secret.yaml
 
 namespace: vaultwarden-staging
