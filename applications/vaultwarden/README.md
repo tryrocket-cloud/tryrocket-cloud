@@ -1,5 +1,11 @@
 # vaultwarden
 
+## Build
+
+    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/production?ref=main"
+    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/staging?ref=main"
+    kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/vaultwarden/overlays/testing?ref=main"
+
 ## Install
 
 ### ArgoCD
@@ -14,6 +20,8 @@ Install vaultwarden as an Argo CD application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/staging/application.yaml -n argocd
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/testing/application.yaml -n argocd
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/backup-recovery/application.yaml -n argocd
+
+
 
 ## Update
 
