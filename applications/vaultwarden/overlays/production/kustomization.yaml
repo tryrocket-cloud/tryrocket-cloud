@@ -3,6 +3,7 @@
 # External dependencies:
 #   - HashiCorp Vault
 #   - Postgres Database
+#   - Storage
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
