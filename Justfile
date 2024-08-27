@@ -1,14 +1,11 @@
-alias av := argocd-version
-alias ali := argocd-login
-alias alo := argocd-logout
-alias aal := argocd-app-list
-alias aag := argocd-app-get
-alias aas := argocd-app-sync
-alias aad := argocd-app-delete
-alias aac := argocd-app-create
-
 alias le := list-environments
-alias kbe := kustomize-build-environment
+alias la := list-apps
+
+alias ad := app-deploy
+alias al := app-list
+alias ag := app-get
+alias as := app-sync
+alias au := app-undeploy
 
 # This help
 help:
@@ -26,36 +23,36 @@ argocd-login server="argocd.tryrocket.cloud":
 argocd-logout server="argocd.tryrocket.cloud":
     @argocd logout {{server}}
 
-# List ArgoCD apps
-argocd-app-list:
-    @argocd app list
-
-# Creates an ArgoCD app
-argocd-app-create app environment:
-    @kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/{{app}}/overlays/{{environment}}/application.yaml -n argocd
-
-# Get information of ArgoCD app
-argocd-app-get app:
-    @argocd app get {{app}}
-
-# Sync ArgoCD app with GitHub repository
-argocd-app-sync app:
-    @argocd app sync {{app}}
-
-# Delete ArgoCD app
-argocd-app-delete app:
-    @argocd app delete {{app}}
-
-# List kustomize overlays
+# List kustomize environments
 list-environments app:
     @echo "Fetching environments from repository..."
     @curl -sL https://api.github.com/repos/tryrocket-cloud/tryrocket-cloud/contents/applications/{{app}}/overlays | jq -r '.[] | select(.type=="dir") | .name'
 
-# List kustomize overlays
-list-applications:
+# List possible applciations for deployment
+list-apps:
     @echo "Fetching application from repository..."
     @curl -sL https://api.github.com/repos/tryrocket-cloud/tryrocket-cloud/contents/applications | jq -r '.[] | select(.type=="dir") | .name'
 
+# Deploy an app
+app-deploy app environment="production":
+    @kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/{{app}}/overlays/{{environment}}/application.yaml -n argocd
+
+# List deployed apps
+app-list:
+    @argocd app list
+
+# Get information of deployed app
+app-get app:
+    @argocd app get {{app}}
+
+# Sync deployed app
+app-sync app:
+    @argocd app sync {{app}}
+
+# Delete deployed app
+app-undeploy app:
+    @argocd app delete {{app}}
+
 # Build kustomize environment
-kustomize-build-environment app environment:
+kustomize-build-environment app environment="production":
     kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/{{app}}/overlays/{{environment}}?ref=main"
