@@ -40,16 +40,7 @@ spec:
                   mountPath: /pg_dump
 
           containers:
-            - name: borg
-              image: debian:sid-slim
-              imagePullPolicy: IfNotPresent
-              command:
-                  - /bin/sh
-                  - -c
-                  - |
-                    apt-get update && apt-get install -y borgbackup
-                    borg --version
-            - name: restic
+            - name: backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup-latest
               imagePullPolicy: IfNotPresent
               envFrom:
@@ -67,19 +58,8 @@ spec:
                   - |
                     umask 077
 
-                    apk add curl fish vim
-
-                    ssh -V
-                    restic version
-                    curl --version
-
                     chmod 700 /root/.ssh/
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
-
-                    # debug ssh connection
-                    #ssh -vvvv storagebox
-
-                    #sleep infinity
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
