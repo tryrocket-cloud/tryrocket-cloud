@@ -15,8 +15,8 @@ resources:
   - vaultwarden-external-secret.yaml
   - pvc.yaml
   - pv.yaml
-  - pvc-rwx.yaml
-  - pv-rwx.yaml
+#  - pvc-rwx.yaml
+#  - pv-rwx.yaml
 
 namespace: vaultwarden
 
