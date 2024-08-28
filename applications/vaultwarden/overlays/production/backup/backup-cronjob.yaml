@@ -41,7 +41,7 @@ spec:
 
           containers:
             - name: backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup-latest
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - configMapRef:
