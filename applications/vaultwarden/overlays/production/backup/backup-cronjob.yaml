@@ -41,7 +41,7 @@ spec:
 
           containers:
             - name: borg
-              image: debian
+              image: debian:latest
               imagePullPolicy: IfNotPresent
               command:
                   - /bin/sh
