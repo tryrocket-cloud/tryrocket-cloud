@@ -56,7 +56,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    umask 077
+                    ls -la /root
+                    #umask 077
 
                     #chmod 700 /root/.ssh/
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
