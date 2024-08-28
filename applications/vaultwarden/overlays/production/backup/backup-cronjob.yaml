@@ -40,6 +40,14 @@ spec:
                   mountPath: /pg_dump
 
           containers:
+            - name: borg
+              image: borgbackup/borg:latest
+              imagePullPolicy: IfNotPresent
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    version
             - name: restic
               image: restic/restic:latest
               imagePullPolicy: IfNotPresent
