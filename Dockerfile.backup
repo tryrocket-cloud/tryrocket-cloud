@@ -16,5 +16,7 @@ ENV SHELL /usr/bin/fish
 
 WORKDIR /
 
+echo "umask 022" >> /etc/profile
+
 # Command to run on container start
 CMD ["fish"]
