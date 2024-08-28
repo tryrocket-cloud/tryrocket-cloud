@@ -21,9 +21,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/my-app:latest -f path/to/your/Dockerfile.restic .
+          docker build -t ghcr.io/${{ github.repository }}:backup-latest -f Dockerfile.backup .
 
       # Push the Docker image to GitHub Container Registry
       - name: Push Docker image to GitHub Container Registry
         run: |
-          docker push ghcr.io/${{ github.repository }}/my-app:latest
+          docker push ghcr.io/${{ github.repository }}:backup-latest
