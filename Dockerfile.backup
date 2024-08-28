@@ -1,10 +1,5 @@
-# Start with the Alpine base image
 FROM alpine:latest
 
-# Set environment variables for non-interactive installations
-ENV TERM xterm
-
-# Install required packages
 RUN apk update && \
     apk add --no-cache \
     restic \
@@ -20,8 +15,7 @@ RUN apk update && \
 ENV SHELL /usr/bin/fish
 RUN chsh -s /usr/bin/fish
 
-# Set up the working directory
-WORKDIR /root
+WORKDIR /
 
 # Command to run on container start
 CMD ["fish"]
