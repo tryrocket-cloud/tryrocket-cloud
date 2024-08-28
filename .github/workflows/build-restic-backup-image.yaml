@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 0 1 * *'
 
+permissions:
+  packages: write
+  contents: read
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
