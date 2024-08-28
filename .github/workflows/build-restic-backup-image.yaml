@@ -1,6 +1,9 @@
 name: Build backup Docker Image
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '0 0 1 * *'
 
@@ -27,3 +30,4 @@ jobs:
       - name: Push Docker image to GitHub Container Registry
         run: |
           docker push ghcr.io/${{ github.repository }}:backup-latest
+
