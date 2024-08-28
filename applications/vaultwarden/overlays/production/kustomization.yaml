@@ -10,13 +10,12 @@ kind: Kustomization
 resources:
   - ../../base/vaultwarden
   - ./backup
-  - namespace.yaml
   - postgres-external-secret.yaml
   - vaultwarden-external-secret.yaml
   - pvc.yaml
   - pv.yaml
-#  - pvc-rwx.yaml
-#  - pv-rwx.yaml
+  - pvc-rwx.yaml
+  - pv-rwx.yaml
 
 namespace: vaultwarden
 
@@ -48,12 +47,17 @@ patches:
         value: 
           - name: vaultwarden-storage
             mountPath: /data
+          - name: vaultwarden-rwx-storage
+            mountPath: /data-rwx
       - op: add
         path: /spec/template/spec/volumes
         value:
           - name: vaultwarden-storage
             persistentVolumeClaim:
               claimName: vaultwarden-pvc
+          - name: vaultwarden-rwx-storage
+            persistentVolumeClaim:
+              claimName: vaultwarden-rwx-pvc
       - op: add
         path: /spec/template/spec/containers/0/env/-
         value:
