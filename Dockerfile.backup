@@ -13,7 +13,6 @@ RUN apk update && \
 
 # Set Fish as the default shell
 ENV SHELL /usr/bin/fish
-RUN chsh -s /usr/bin/fish
 
 WORKDIR /
 
