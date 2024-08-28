@@ -41,13 +41,13 @@ spec:
 
           containers:
             - name: borg
-              image: borgbackup/borg:latest
+              image: debian
               imagePullPolicy: IfNotPresent
               command:
                   - /bin/sh
                   - -c
                   - |
-                    borg --version
+                    apt install -y borg
             - name: restic
               image: restic/restic:latest
               imagePullPolicy: IfNotPresent
