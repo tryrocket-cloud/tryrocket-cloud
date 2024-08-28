@@ -1,8 +1,8 @@
-name: Build restic Docker Image
+name: Build backup Docker Image
 
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '0 0 1 * *'
 
 jobs:
   build-and-push:
