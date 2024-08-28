@@ -47,7 +47,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    apt install -y borg
+                    apt-get update && apt-get install -y borgbackup
+                    borg --version
             - name: restic
               image: restic/restic:latest
               imagePullPolicy: IfNotPresent
