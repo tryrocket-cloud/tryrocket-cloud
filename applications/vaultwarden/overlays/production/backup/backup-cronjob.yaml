@@ -34,7 +34,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - pg_dump --clean --blob -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
+                - pg_dump --clean --blob --if-exists -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
@@ -81,7 +81,7 @@ spec:
                     restic check --read-data-subset 1/7
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
 
-                    restic forget --keep-last 5 --prune
+                    restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
               volumeMounts:
                 - name: vaultwarden-rwx-storage
