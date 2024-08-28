@@ -16,8 +16,8 @@ ENV SHELL /usr/bin/fish
 
 WORKDIR /
 
-echo "umask 022" >> /etc/profile
-chmod 700 /root/.ssh/
+RUN echo "umask 022" >> /etc/profile
+RUN chmod 700 /root/.ssh/
 
 # Command to run on container start
 CMD ["fish"]
