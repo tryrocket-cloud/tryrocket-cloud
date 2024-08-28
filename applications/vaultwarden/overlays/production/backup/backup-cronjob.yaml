@@ -41,7 +41,7 @@ spec:
 
           containers:
             - name: borg
-              image: debian:latest
+              image: debian:sid-slim
               imagePullPolicy: IfNotPresent
               command:
                   - /bin/sh
