@@ -25,10 +25,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:backup-latest -f Dockerfile.backup .
+          docker build -t ghcr.io/${{ github.repository }}:backup -f Dockerfile.backup .
 
       # Push the Docker image to GitHub Container Registry
       - name: Push Docker image to GitHub Container Registry
         run: |
-          docker push ghcr.io/${{ github.repository }}:backup-latest
+          docker push ghcr.io/${{ github.repository }}:backup
 
