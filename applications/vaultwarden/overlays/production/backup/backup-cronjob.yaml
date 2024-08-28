@@ -47,7 +47,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    version
+                    borg --version
             - name: restic
               image: restic/restic:latest
               imagePullPolicy: IfNotPresent
