@@ -42,7 +42,7 @@ spec:
           containers:
             - name: backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup-latest
-              imagePullPolicy: IfNotPresent
+              imagePullPolicy: Always
               envFrom:
                 - configMapRef:
                     name: vaultwarden-config
