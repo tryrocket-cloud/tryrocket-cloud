@@ -22,28 +22,16 @@ no prerequisites needed
 
 ## Update
 
-To change the production version of `vaultwarden` navigate to [kustomization.yaml](./overlays/production/kustomization.yaml).
-
-### Steps
-
-- Take Longhorn snapshot of the database volume
-- Take Longhorn snapshot of the vaultwarden volume
-- Update image version
-- Success: do nothing
-- Failure: Revert both snapshots
-
+1. Snapshot Longhorn volumes:
+  - `vaultwarden`
+  - `postgres`
+2. Backup `vaultwarden`
+3. Update [kustomization.yaml](./overlays/production/kustomization.yaml) with new version.
+4. In case of failure revert the snapshots
 
 ## Backup
 
-- Hetzner StorageBox (sftp, daily)
-  - data
-  - database
-- TrueNas (sftp, daily)
-  - data
-  - database
-- Longhorn
-  - snapshots (on demand)
-  - backups (daily)
+https://github.com/tryrocket-cloud/tryrocket-cloud/wiki/Backup
 
 ### Restic
 
