@@ -50,7 +50,7 @@ spec:
                     apt-get update && apt-get install -y borgbackup
                     borg --version
             - name: restic
-              image: restic/restic:latest
+              image: docker pull ghcr.io/tryrocket-cloud/tryrocket-cloud:backup-latest
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
