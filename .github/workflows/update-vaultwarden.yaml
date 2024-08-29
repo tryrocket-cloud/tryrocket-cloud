@@ -53,38 +53,12 @@ jobs:
 
       - name: Update kustomization.yaml
         if: env.update_needed == 'true'
-        run: |
-          yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
-          #rm applications/vaultwarden/overlays/production/kustomization.yaml
-          #git config --global user.name "github-actions[bot]"
-          #git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          #git log
-
-          echo ---
-          #git status
-          echo ---
-
-          #git checkout -b update-vaultwarden-${{ env.latest_version }}
-          #git status
-          echo ---
-
-          #git add .
-          #git status
-          echo ---
-          #git commit -m "Update Vaultwarden to ${{ env.latest_version }} [skip ci]"
-          #git status
-          echo ---
-          #git show --name-status update-vaultwarden-${{ env.latest_version }}
-          echo ---
-          #git tag vaultwarden-${{ env.latest_version }}
-          echo ---
-          #git push origin update-vaultwarden-${{ env.latest_version }}
+        run: yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update Vaultwarden to ${{ env.latest_version }} [skip ci]
-          branch: feature-123
+          branch: vaultwarden-${{ env.latest_version }}
           create_branch: true
           tagging_message: vaultwarden-${{ env.latest_version }}
 
