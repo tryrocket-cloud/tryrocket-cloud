@@ -20,8 +20,6 @@ jobs:
   check-for-new-release:
     runs-on: ubuntu-latest
 
-
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
