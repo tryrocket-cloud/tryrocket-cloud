@@ -75,7 +75,9 @@ jobs:
           git status
           echo ---
           git show --name-only vaultwarden-${{ env.latest_version }}
+          echo ---
           git tag vaultwarden-${{ env.latest_version }}
+          echo ---
           git push origin update-vaultwarden-${{ env.latest_version }} --tags
 
       - name: Create Pull Request
