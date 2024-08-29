@@ -71,7 +71,7 @@ jobs:
           git add .
           git status
           echo ---
-          git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
+          git commit -m "Update Vaultwarden to ${{ env.latest_version }} [skip ci]"
           git status
           echo ---
           git show --name-status update-vaultwarden-${{ env.latest_version }}
