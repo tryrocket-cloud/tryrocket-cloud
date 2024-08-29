@@ -62,6 +62,7 @@ jobs:
           git push origin update-vaultwarden-${{ env.latest_version }} --tags
           git status
           git log
+          git diff main update-vaultwarden-1.32.0
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
