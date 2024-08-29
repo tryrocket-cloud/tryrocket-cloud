@@ -76,7 +76,7 @@ jobs:
           base: main
           branch: update-vaultwarden-${{ env.latest_version }}
           title: "Update vaultwarden to ${{ env.latest_version }}"
-          body: This PR updates the Vaultwarden version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}.
+          body: "This PR updates the Vaultwarden version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}."
           labels: |
             vaultwarden
             update
