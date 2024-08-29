@@ -21,6 +21,8 @@ no prerequisites needed
 
 ## Update
 
+    just snapshot vaultwarden <snapshot-name>
+    just snapshot postgres <snapshot-name>
     just buckup vaultwarden
     just update vaultwarden
 
