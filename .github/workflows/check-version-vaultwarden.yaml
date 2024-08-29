@@ -1,4 +1,4 @@
-name: Update Vaultwarden
+name: Check latest version of Vaultwarden
 
 on:
   schedule:
