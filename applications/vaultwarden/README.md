@@ -22,6 +22,8 @@ no prerequisites needed
 
 ## Update
 
+    just buckup vaultwarden
+
 1. Snapshot Longhorn volumes:
   - `vaultwarden`
   - `postgres`
