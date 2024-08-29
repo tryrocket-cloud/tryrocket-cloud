@@ -57,13 +57,13 @@ jobs:
           git tag vaultwarden-${{ env.latest_version }}
           git push origin update-vaultwarden-${{ env.latest_version }} --tags
 
-#      - name: Create Pull Request
-#        if: env.update_needed == 'true'
-#        uses: peter-evans/create-pull-request@v6
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          commit-message: "Update Vaultwarden to ${{ env.latest_version }}"
-#          branch: update-vaultwarden-${{ env.latest_version }}
-#          title: "Update Vaultwarden to ${{ env.latest_version }}"
-#          body: "This PR updates the Vaultwarden version to the latest release: ${{ env.latest_version }}."
-#          labels: ["automation", "update"]
+      - name: Create Pull Request
+        if: env.update_needed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update Vaultwarden to ${{ env.latest_version }}"
+          branch: update-vaultwarden-${{ env.latest_version }}
+          title: "Update Vaultwarden to ${{ env.latest_version }}"
+          body: "This PR updates the Vaultwarden version to the latest release: ${{ env.latest_version }}."
+          labels: ["automation", "update"]
