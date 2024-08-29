@@ -53,6 +53,20 @@ app-sync app:
 app-undeploy app:
     @argocd app delete {{app}}
 
+backup app:
+    @curl
+    @curl
+    # make commit to github
+
+#1. Snapshot Longhorn volumes:
+#  - `vaultwarden`
+#  - `postgres`
+#2. Backup `vaultwarden`
+#3. Update [kustomization.yaml](./overlays/production/kustomization.yaml) with new version.
+#4. In case of failure revert the snapshots
+
+
+
 # Build kustomize environment
 kustomize-build-environment app environment="production":
     kustomize build "https://github.com/tryrocket-cloud/tryrocket-cloud.git/applications/{{app}}/overlays/{{environment}}?ref=main"
