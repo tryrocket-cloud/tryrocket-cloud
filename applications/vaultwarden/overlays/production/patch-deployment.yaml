@@ -1,82 +1,40 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: vaultwarden
-  annotations:
-    secret.reloader.stakater.com/reload: "vaultwarden-postgres-secret"
-spec:
-  template:
-    spec:
-      containers:
-      - name: vaultwarden
-        volumeMounts:
-        - name: vaultwarden-rwx-storage
-          mountPath: /data-rwx
-        env:
-        - name: DATABASE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: vaultwarden-postgres-secret
-              key: username
-        - name: DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: vaultwarden-postgres-secret
-              key: password
-        - name: DATABASE_URL
-          value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
-        envFrom:
-        - secretRef:
-            name: vaultwarden-secret
-        - configMapRef:
-            name: vaultwarden-config
-      volumes:
-      - name: vaultwarden-rwx-storage
-        persistentVolumeClaim:
-          claimName: vaultwarden-rwx-pvc
-
-#patches:
-#  - target:
-#      kind: Deployment
-#      name: vaultwarden
-#    patch: |
-#      - op: add
-#        path: /metadata/annotations/secret.reloader.stakater.com~1reload
-#        value: "vaultwarden-postgres-secret"
-#      - op: add
-#        path: /spec/template/spec/containers/0/volumeMounts
-#        value:
-#          - name: vaultwarden-rwx-storage
-#            mountPath: /data-rwx
-#      - op: add
-#        path: /spec/template/spec/volumes
-#        value:
-#          - name: vaultwarden-rwx-storage
-#            persistentVolumeClaim:
-#              claimName: vaultwarden-rwx-pvc
-#      - op: add
-#        path: /spec/template/spec/containers/0/env/-
-#        value:
-#          name: DATABASE_USERNAME
-#          valueFrom:
-#            secretKeyRef:
-#              key: username
-#              name: vaultwarden-postgres-secret
-#      - op: add
-#        path: /spec/template/spec/containers/0/env/-
-#        value:
-#          name: DATABASE_PASSWORD
-#          valueFrom:
-#            secretKeyRef:
-#              key: password
-#              name: vaultwarden-postgres-secret
-#      - op: add
-#        path: /spec/template/spec/containers/0/env/-
-#        value:
-#          name: DATABASE_URL
-#          value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
-#      - op: add
-#        path: /spec/template/spec/containers/0/envFrom/-
-#        value:
-#          secretRef:
-#            name: vaultwarden-secret
+- op: add
+  path: /metadata/annotations/secret.reloader.stakater.com~1reload
+  value: "vaultwarden-postgres-secret"
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    - name: vaultwarden-rwx-storage
+      mountPath: /data-rwx
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    - name: vaultwarden-rwx-storage
+      persistentVolumeClaim:
+        claimName: vaultwarden-rwx-pvc
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: DATABASE_USERNAME
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: vaultwarden-postgres-secret
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: vaultwarden-postgres-secret
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: DATABASE_URL
+    value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/-
+  value:
+    secretRef:
+      name: vaultwarden-secret
