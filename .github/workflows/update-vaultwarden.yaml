@@ -25,12 +25,12 @@ jobs:
           echo "latest_version=${latest_version}" >> $GITHUB_ENV
           echo "Latest Vaultwarden release is ${{ env.latest_version }}"
 
-      - name: Get Current Docker Tag
+      - name: Get current Vaultwarden version
         id: get_current_tag
         run: |
           current_tag=$(yq '.images[0].newTag' applications/vaultwarden/overlays/production/kustomization.yaml)
           echo "current_tag=${current_tag}" >> $GITHUB_ENV
-          echo "Current Docker tag is ${{ env.current_tag }}"
+          echo "Current Vaultwarden tag is ${{ env.current_tag }}"
 
       - name: Check if Update is Needed
         id: check_update
@@ -43,7 +43,7 @@ jobs:
             echo "update_needed=true" >> $GITHUB_ENV
           fi
 
-      - name: Update Docker Image Tag
+      - name: Update kustomization.yaml
         if: env.update_needed == 'true'
         run: |
           yq eval '.images[0].newTag = ${{ env.latest_version }} -i applications/vaultwarden/overlays/production/kustomization.yaml
@@ -65,5 +65,5 @@ jobs:
           commit-message: "Update Vaultwarden to ${{ env.latest_version }}"
           branch: update-vaultwarden-${{ env.latest_version }}
           title: "Update Vaultwarden to ${{ env.latest_version }}"
-          body: "This PR updates the Vaultwarden Docker image to the latest release: ${{ env.latest_version }}."
+          body: "This PR updates the Vaultwarden version to the latest release: ${{ env.latest_version }}."
           labels: ["automation", "update"]
