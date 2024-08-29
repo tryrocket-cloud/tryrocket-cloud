@@ -55,6 +55,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b update-vaultwarden-${{ env.latest_version }}
+          git branch
           git add .
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           git tag vaultwarden-${{ env.latest_version }}
