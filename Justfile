@@ -61,7 +61,7 @@ snapshot volume snapshot-name:
     curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
 
 backup app:
-    kubectl
+    #kubectl create job --from=cronjob/backup-cronjob backup-vaultwarden-before-update
 
 #1. Snapshot Longhorn volumes:
 #  - `vaultwarden`
