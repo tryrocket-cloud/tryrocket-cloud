@@ -54,11 +54,11 @@ app-undeploy app:
     @argocd app delete {{app}}
 
 # Snapshot Longhorn volumes
-snapshot volume snapshot-name:
+snapshot volume-name snapshot-name:
     curl -X POST -H "Content-Type: application/json" \
   -d '{"name": {{snapshot-name}}}' \
-  https://longhorn.tryrocket.cloud/v1/volumes/{{volume}}?action=snapshotCreate
-    curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
+  https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}?action=snapshotCreate
+    curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
 
 backup app:
     #kubectl create job --from=cronjob/backup-cronjob backup-vaultwarden-before-update
