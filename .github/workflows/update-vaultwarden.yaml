@@ -51,14 +51,11 @@ jobs:
         run: |
           yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
 
-          cat applications/vaultwarden/overlays/production/kustomization.yaml
-
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b update-vaultwarden-${{ env.latest_version }}
-          git status
-          git add applications/vaultwarden/overlays/production/kustomization.yaml
+          git add .
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           git tag vaultwarden-${{ env.latest_version }}
           git push origin update-vaultwarden-${{ env.latest_version }} --tags
