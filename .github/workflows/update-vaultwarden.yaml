@@ -72,7 +72,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update vaultwarden to ${{ env.latest_version }} [skip ci]"
+          commit-message: "Update vaultwarden from ${{ env.current_tag }} to ${{ env.latest_version }} [skip ci]"
           base: main
           branch: update-vaultwarden-${{ env.latest_version }}
           title: "Update vaultwarden to ${{ env.latest_version }}"
