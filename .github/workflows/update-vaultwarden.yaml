@@ -51,6 +51,14 @@ jobs:
             echo "update_needed=true" >> $GITHUB_ENV
           fi
 
+      - name: Check if branch exists
+        id: check_branch
+        run: |
+          BRANCH_NAME="update-vaultwarden-${{ env.latest_version }}"
+          if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
+            exit 0
+          fi
+
       - name: Update kustomization.yaml
         if: env.update_needed == 'true'
         run: yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
