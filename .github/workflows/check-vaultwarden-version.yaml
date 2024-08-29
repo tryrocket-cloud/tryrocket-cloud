@@ -1,4 +1,4 @@
-name: Check latest Vaultwarden version
+name: Check latest version
 
 on:
   schedule:
@@ -14,11 +14,9 @@ jobs:
     uses: ./.github/workflows/check-latest-version.yaml
     with:
       repo: 'dani-garcia/vaultwarden'
-      file_path: 'applications/vaultwarden/overlays/production/kustomization.yaml'
       app_name: 'vaultwarden'
   check-upsnap-version:
     uses: ./.github/workflows/check-latest-version.yaml
     with:
       repo: 'seriousm4x/UpSnap'
-      file_path: 'applications/upsnap/overlays/production/kustomization.yaml'
       app_name: 'upsnap'
