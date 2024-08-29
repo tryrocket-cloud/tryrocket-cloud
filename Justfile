@@ -53,6 +53,7 @@ app-sync app:
 app-undeploy app:
     @argocd app delete {{app}}
 
+# Snapshot Longhorn volumes
 snapshot volume snapshot-name:
     curl -X POST -H "Content-Type: application/json" \
   -d '{"name": {{snapshot-name}}}' \
