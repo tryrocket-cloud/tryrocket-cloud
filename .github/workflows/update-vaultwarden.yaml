@@ -23,14 +23,14 @@ jobs:
         run: |
           latest_version=$(curl --silent "https://api.github.com/repos/dani-garcia/vaultwarden/releases/latest" | jq -r .tag_name)
           echo "latest_version=${latest_version}" >> $GITHUB_ENV
-          echo "Latest Vaultwarden release is ${{ env.latest_version }}"
+          echo "Latest Vaultwarden release is ${latest_version}"
 
       - name: Get current Vaultwarden version
         id: get_current_tag
         run: |
           current_tag=$(yq '.images[0].newTag' applications/vaultwarden/overlays/production/kustomization.yaml)
           echo "current_tag=${current_tag}" >> $GITHUB_ENV
-          echo "Current Vaultwarden tag is ${{ env.current_tag }}"
+          echo "Current Vaultwarden tag is ${current_tag}"
 
       - name: Check if Update is Needed
         id: check_update
