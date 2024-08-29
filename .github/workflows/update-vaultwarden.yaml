@@ -17,13 +17,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install yq
-        run: apt-get update && apt-get -y install yq
 #      - name: Install yq
-#        run: |
-#          VERSION=v4.44.3
-#          wget https://github.com/mikefarah/yq/releases/download/$VERSION/yq_linux_amd64 -O /usr/local/bin/yq
-#          chmod +x /usr/local/bin/yq
+#        run: apt-get update && apt-get -y install yq
+      - name: Install yq
+        run: |
+          VERSION=v4.44.3
+          wget https://github.com/mikefarah/yq/releases/download/$VERSION/yq_linux_amd64 -O /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
 
       - name: Get Latest Vaultwarden Release
         id: get_latest_release
