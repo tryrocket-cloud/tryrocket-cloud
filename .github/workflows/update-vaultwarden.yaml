@@ -60,6 +60,8 @@ jobs:
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           git tag vaultwarden-${{ env.latest_version }}
           git push origin update-vaultwarden-${{ env.latest_version }} --tags
+          git status
+          git log
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
