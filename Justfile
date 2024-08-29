@@ -53,12 +53,14 @@ app-sync app:
 app-undeploy app:
     @argocd app delete {{app}}
 
-backup app:
+snapshot volume snapshot-name:
     curl -X POST -H "Content-Type: application/json" \
-  -d '{"name": "vaultwarden update"}' \
-  https://longhorn.tryrocket.cloud/v1/volumes/vaultwardwn?action=snapshotCreate
-    curl -s https://longhorn.tryrocket.cloud/v1/volumes/vaultwarden/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
-    # make commit to github
+  -d '{"name": {{snapshot-name}}}' \
+  https://longhorn.tryrocket.cloud/v1/volumes/{{volume}}?action=snapshotCreate
+    curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
+
+backup app:
+    kubectl
 
 #1. Snapshot Longhorn volumes:
 #  - `vaultwarden`
