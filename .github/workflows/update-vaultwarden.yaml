@@ -58,7 +58,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update Vaultwarden to ${{ env.latest_version }} [skip ci]
-          branch: vaultwarden-${{ env.latest_version }}
+          branch: update-vaultwarden-${{ env.latest_version }}
           create_branch: true
           tagging_message: vaultwarden-${{ env.latest_version }}
 
