@@ -38,7 +38,7 @@ jobs:
       - name: Get Current Version
         id: get_current_tag
         run: |
-          current_tag=$(yq '.images[0].newTag' applications/${{ inputs.app_name }}/overlays/production/kustomization.yaml
+          current_tag=$(yq '.images[0].newTag' applications/${{ inputs.app_name }}/overlays/production/kustomization.yaml)
           echo "current_tag=${current_tag}" >> $GITHUB_ENV
           echo "Current tag is ${current_tag}"
 
