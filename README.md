@@ -34,3 +34,4 @@
   - pg_reatore
 - Docker
 - Just
+- Kustomize
