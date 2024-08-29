@@ -54,7 +54,7 @@ jobs:
         if: env.update_needed == 'true'
         run: |
           yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
-
+          rm applications/vaultwarden/overlays/production/kustomization.yaml
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
