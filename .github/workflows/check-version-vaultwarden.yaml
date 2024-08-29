@@ -63,7 +63,7 @@ jobs:
         if: env.update_needed == 'true'
         run: |
           sed -i 's/newTag: ${{ env.current_tag }}/newTag: ${{ env.latest_version }}/' applications/vaultwarden/overlays/production/kustomization.yaml
-        
+          sed -i 's/VAULTWARDEN_VERSION=${{ env.current_tag }}/VAULTWARDEN_VERSION=${{ env.latest_version }}/' applications/vaultwarden/overlays/production/kustomization.yaml
         # not using yq https://github.com/mikefarah/yq/issues/515
         # yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
 
