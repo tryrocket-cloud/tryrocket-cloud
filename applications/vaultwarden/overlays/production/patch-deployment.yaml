@@ -28,6 +28,8 @@ spec:
         envFrom:
         - secretRef:
             name: vaultwarden-secret
+        - configMapRef:
+            name: vaultwarden-config
       volumes:
       - name: vaultwarden-rwx-storage
         persistentVolumeClaim:
