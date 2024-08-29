@@ -60,12 +60,17 @@ jobs:
 
           #git log
 
-          echo before
+          echo ---
           git status
-          echo after
+          echo ---
 
-          #git checkout -b update-vaultwarden-${{ env.latest_version }}
-          #git add applications/vaultwarden/overlays/production/kustomization.yaml
+          git checkout -b update-vaultwarden-${{ env.latest_version }}
+          git status
+          echo ---
+
+          git add applications/vaultwarden/overlays/production/kustomization.yaml
+          git status
+          echo ---
           #git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           #echo before
           #git status
