@@ -56,7 +56,7 @@ app-undeploy app:
 # Snapshot Longhorn volumes
 snapshot volume-name snapshot-name:
     curl -X POST -H "Content-Type: application/json" \
-  -d '{"name": {{snapshot-name}}}' \
+  -d '{"name": "{{snapshot-name}}"}' \
   https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}?action=snapshotCreate
     curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
 
