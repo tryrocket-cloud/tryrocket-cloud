@@ -56,9 +56,6 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-
-                    sleep infinity
-
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
