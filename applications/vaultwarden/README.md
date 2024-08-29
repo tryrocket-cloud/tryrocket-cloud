@@ -63,3 +63,8 @@ To run an on-demand backup locally, use the following command:
     restic backup /path/to/data --tags on-demand --tags vaultwarden:$VAULTWARDEN_VERSION
 
 https://github.com/tryrocket-cloud/tryrocket-cloud/issues/48
+
+## Vaultwarden in HA mode (currently not possible)
+
+- https://vaultwarden.discourse.group/t/running-highly-available-vaultwarden/3285
+
