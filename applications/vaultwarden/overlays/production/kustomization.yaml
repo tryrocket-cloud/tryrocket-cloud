@@ -36,9 +36,6 @@ configMapGenerator:
     behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
-patchesStrategicMerge:
-  - replicas-patch.yaml
-
 patches:
   - target:
       kind: Deployment
