@@ -38,7 +38,7 @@ patches:
   - target:
       kind: Deployment
       name: vaultwarden
-    patch: patch-deployment.yaml
+    path: patch-deployment.yaml
 
 
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
