@@ -14,12 +14,16 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install yq
-        run: |
-          VERSION=v4.44.3
-          wget https://github.com/mikefarah/yq/releases/download/$VERSION/yq_linux_amd64 -O /usr/local/bin/yq
-          chmod +x /usr/local/bin/yq
+        run: apt-get update && apt-get -y install yq
+#      - name: Install yq
+#        run: |
+#          VERSION=v4.44.3
+#          wget https://github.com/mikefarah/yq/releases/download/$VERSION/yq_linux_amd64 -O /usr/local/bin/yq
+#          chmod +x /usr/local/bin/yq
 
       - name: Get Latest Vaultwarden Release
         id: get_latest_release
@@ -55,14 +59,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b update-vaultwarden-${{ env.latest_version }}
-          #git branch
-          git status
-          echo "before"
-          git add .
-          git add .
-          git add .
-          echo "after"
-          git status
+          git add applications/vaultwarden/overlays/production/kustomization.yaml
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           git status
           #git tag vaultwarden-${{ env.latest_version }}
