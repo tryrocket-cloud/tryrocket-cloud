@@ -34,50 +34,8 @@ configMapGenerator:
     behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
-patches:
-  - target:
-      kind: Deployment
-      name: vaultwarden
-    patch: |
-      - op: add
-        path: /metadata/annotations/secret.reloader.stakater.com~1reload
-        value: "vaultwarden-postgres-secret"
-      - op: add
-        path: /spec/template/spec/containers/0/volumeMounts
-        value: 
-          - name: vaultwarden-rwx-storage
-            mountPath: /data-rwx
-      - op: add
-        path: /spec/template/spec/volumes
-        value:
-          - name: vaultwarden-rwx-storage
-            persistentVolumeClaim:
-              claimName: vaultwarden-rwx-pvc
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: DATABASE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: username
-              name: vaultwarden-postgres-secret
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: password
-              name: vaultwarden-postgres-secret
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: DATABASE_URL
-          value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
-      - op: add
-        path: /spec/template/spec/containers/0/envFrom/-
-        value:
-          secretRef:
-            name: vaultwarden-secret
+patchesStrategicMerge:
+  - patch-deployment.yaml
+
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
 # TODO: refactor DATABASE_URL somehow to be env
