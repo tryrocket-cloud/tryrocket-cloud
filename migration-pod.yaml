@@ -10,7 +10,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          apk update && apk add --no-cache fish
+          apk update && apk add --no-cache fish git curl
           sleep infinity
     volumeMounts:
       - name: vaultwarden-storage

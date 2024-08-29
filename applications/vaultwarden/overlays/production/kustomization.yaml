@@ -17,7 +17,6 @@ resources:
   - pv.yaml
   - pvc-rwx.yaml
   - pv-rwx.yaml
-  - migration-pod.yaml
 namespace: vaultwarden
 
 # https://github.com/dani-garcia/vaultwarden/releases
@@ -48,16 +47,11 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/volumeMounts
         value: 
-          - name: vaultwarden-storage
-            mountPath: /data
           - name: vaultwarden-rwx-storage
             mountPath: /data-rwx
       - op: add
         path: /spec/template/spec/volumes
         value:
-          - name: vaultwarden-storage
-            persistentVolumeClaim:
-              claimName: vaultwarden-pvc
           - name: vaultwarden-rwx-storage
             persistentVolumeClaim:
               claimName: vaultwarden-rwx-pvc
