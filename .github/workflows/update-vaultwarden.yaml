@@ -74,7 +74,7 @@ jobs:
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
           git status
           echo ---
-          git show --name-only vaultwarden-${{ env.latest_version }}
+          git show --name-only update-vaultwarden-${{ env.latest_version }}
           echo ---
           git tag vaultwarden-${{ env.latest_version }}
           echo ---
