@@ -60,7 +60,6 @@ jobs:
           commit_message: Update Vaultwarden to ${{ env.latest_version }} [skip ci]
           branch: update-vaultwarden-${{ env.latest_version }}
           create_branch: true
-          tagging_message: vaultwarden-${{ env.latest_version }}
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
