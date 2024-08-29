@@ -30,7 +30,7 @@ images:
 configMapGenerator:
   - name: vaultwarden-config
     literals:
-      - LOG_LEVEL=off
+      - LOG_LEVEL=debug
       - VAULTWARDEN_VERSION=1.32.0
       - DOMAIN=https://vaultwarden.tryrocket.cloud
     behavior: merge
