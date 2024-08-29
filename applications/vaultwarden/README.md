@@ -51,7 +51,6 @@ The automated backup process is configured to run regularly in a k3s cluster. Th
 #### Configuration:
 
 - [CronJob](./overlays/production/backup/backup-cronjob.yaml)
-- Restic: `--host tryrocket.cloud --tags daily --tags vaultwarden:$VAULTWARDEN_VERSION`
 
 ### 2. On-Demand Backup (Local)
 
