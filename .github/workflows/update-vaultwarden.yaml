@@ -58,10 +58,16 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+          echo before
+          git status
+          echo after
+
           git checkout -b update-vaultwarden-${{ env.latest_version }}
           git add applications/vaultwarden/overlays/production/kustomization.yaml
           git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
+          echo before
           git status
+          echo after
           #git tag vaultwarden-${{ env.latest_version }}
           #git push origin update-vaultwarden-${{ env.latest_version }} --tags
           #git status
