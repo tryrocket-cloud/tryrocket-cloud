@@ -6,6 +6,9 @@ metadata:
     spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt
     traefik.ingress.kubernetes.io/router.middlewares: vaultwarden-vaultwarden-http-https-middleware@kubernetescrd
+    traefik.ingress.kubernetes.io/affinity: "true"
+    traefik.ingress.kubernetes.io/session-cookie-name: "SESSIONID"
+    traefik.ingress.kubernetes.io/session-cookie-strategy: "insert"
 spec:
   tls:
     - hosts:
