@@ -54,8 +54,10 @@ app-undeploy app:
     @argocd app delete {{app}}
 
 backup app:
-    @curl
-    @curl
+    curl -X POST -H "Content-Type: application/json" \
+  -d '{"name": "vaultwarden update"}' \
+  https://longhorn.tryrocket.cloud/v1/volumes/vaultwardwn?action=snapshotCreate
+    curl -s https://longhorn.tryrocket.cloud/v1/volumes/vaultwarden/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
     # make commit to github
 
 #1. Snapshot Longhorn volumes:
