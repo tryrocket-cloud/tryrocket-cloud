@@ -66,6 +66,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update Vaultwarden to ${{ env.latest_version }}"
+          base: main
           branch: update-vaultwarden-${{ env.latest_version }}
           title: "Update Vaultwarden to ${{ env.latest_version }}"
           body: "This PR updates the Vaultwarden version to the latest release: ${{ env.latest_version }}."
