@@ -38,7 +38,7 @@ jobs:
       - name: Get Current Version
         id: get_current_tag
         run: |
-          current_tag=$(yq '.images[0].newTag' applications/${{ inputs.file_path }}/overlays/production/kustomization.yaml
+          current_tag=$(yq '.images[0].newTag' applications/${{ inputs.app_name }}/overlays/production/kustomization.yaml
           echo "current_tag=${current_tag}" >> $GITHUB_ENV
           echo "Current tag is ${current_tag}"
 
@@ -56,7 +56,7 @@ jobs:
       - name: Update kustomization.yaml
         if: env.update_needed == 'true'
         run: |
-          sed -i 's/newTag: ${{ env.current_tag }}/newTag: ${{ env.latest_version }}/' applications/${{ inputs.file_path }}/overlays/production/kustomization.yaml
+          sed -i 's/newTag: ${{ env.current_tag }}/newTag: ${{ env.latest_version }}/' applications/${{ inputs.app_name }}/overlays/production/kustomization.yaml
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
