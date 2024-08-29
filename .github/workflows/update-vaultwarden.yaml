@@ -19,8 +19,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
-#      - name: Install yq
-#        run: apt-get update && apt-get -y install yq
+
       - name: Install yq
         run: |
           VERSION=v4.44.3
@@ -64,18 +63,12 @@ jobs:
         if: env.update_needed == 'true'
         run: yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
 
-#      - uses: stefanzweifel/git-auto-commit-action@v5
-#        with:
-#          commit_message: Update Vaultwarden to ${{ env.latest_version }} [skip ci]
-#          branch: update-vaultwarden-${{ env.latest_version }}
-#          create_branch: true
-
       - name: Create Pull Request
         if: env.update_needed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update Vaultwarden to ${{ env.latest_version }}"
+          commit-message: "Update Vaultwarden to ${{ env.latest_version }} [skip ci]"
           base: main
           branch: update-vaultwarden-${{ env.latest_version }}
           title: "Update Vaultwarden to ${{ env.latest_version }}"
