@@ -78,7 +78,7 @@ jobs:
           echo ---
           git tag vaultwarden-${{ env.latest_version }}
           echo ---
-          git push origin update-vaultwarden-${{ env.latest_version }} --tags
+          git push origin update-vaultwarden-${{ env.latest_version }}
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
