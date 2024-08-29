@@ -1,4 +1,4 @@
-name: Check Latest Version
+name: Check latest version (Reuse)
 
 on:
   workflow_call:
