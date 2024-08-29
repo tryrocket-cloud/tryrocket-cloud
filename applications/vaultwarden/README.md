@@ -17,19 +17,12 @@ no prerequisites needed
 
 ## Install 
 
-    just list-environment
-    just argocd-app-create <environment>
+    just app-deploy vaultwarden production
 
 ## Update
 
     just buckup vaultwarden
-
-1. Snapshot Longhorn volumes:
-  - `vaultwarden`
-  - `postgres`
-2. Backup `vaultwarden`
-3. Update [kustomization.yaml](./overlays/production/kustomization.yaml) with new version.
-4. In case of failure revert the snapshots
+    just update vaultwarden
 
 ## Backup
 
