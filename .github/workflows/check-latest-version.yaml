@@ -1,0 +1,80 @@
+name: Check Latest Version
+
+on:
+  workflow_call:
+    inputs:
+      repo:
+        description: 'The GitHub repository to check for the latest release'
+        required: true
+        type: string
+      file_path:
+        description: 'The path to the kustomization.yaml file'
+        required: true
+        type: string
+      app_name:
+        description: 'The name of the application (used in the PR and commit messages)'
+        required: true
+        type: string
+
+jobs:
+  check-for-new-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install yq
+        run: |
+          VERSION=v4.44.3
+          wget https://github.com/mikefarah/yq/releases/download/$VERSION/yq_linux_amd64 -O /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
+
+      - name: Get Latest Release
+        id: get_latest_release
+        run: |
+          latest_version=$(curl --silent "https://api.github.com/repos/${{ inputs.repo }}/releases/latest" | jq -r .tag_name)
+          echo "latest_version=${latest_version}" >> $GITHUB_ENV
+          echo "Latest release is ${latest_version}"
+
+      - name: Get Current Version
+        id: get_current_tag
+        run: |
+          current_tag=$(yq '.images[0].newTag' ${{ inputs.file_path }})
+          echo "current_tag=${current_tag}" >> $GITHUB_ENV
+          echo "Current tag is ${current_tag}"
+
+      - name: Check if Update is Needed
+        id: check_update
+        run: |
+          if [ "${{ env.latest_version }}" = "${{ env.current_tag }}" ]; then
+            echo "No update needed"
+            echo "update_needed=false" >> $GITHUB_ENV
+          else
+            echo "Update needed"
+            echo "update_needed=true" >> $GITHUB_ENV
+          fi
+
+      - name: Update kustomization.yaml
+        if: env.update_needed == 'true'
+        run: |
+          sed -i 's/newTag: ${{ env.current_tag }}/newTag: ${{ env.latest_version }}/' ${{ inputs.file_path }}
+
+      - name: Create Pull Request
+        if: env.update_needed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update ${{ inputs.app_name }} from ${{ env.current_tag }} to ${{ env.latest_version }} [skip ci]"
+          branch: update-${{ inputs.app_name }}-${{ env.latest_version }}
+          title: "Update ${{ inputs.app_name }} to ${{ env.latest_version }}"
+          body: "This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}."
+          labels: |
+            ${{ inputs.app_name }}
+            update

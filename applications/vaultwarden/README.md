@@ -26,7 +26,6 @@ no prerequisites needed
     just snapshot vaultwarden <snapshot-name>
     just snapshot postgres <snapshot-name>
     just buckup vaultwarden
-    just update vaultwarden
 
 ## Backup
 
@@ -54,7 +53,3 @@ To run an on-demand backup locally, use the following command:
     restic backup /path/to/data --tags on-demand --tags vaultwarden:$VAULTWARDEN_VERSION
 
 https://github.com/tryrocket-cloud/tryrocket-cloud/issues/48
-
-### Kopia
-
-https://github.com/tryrocket-cloud/tryrocket-cloud/issues/49

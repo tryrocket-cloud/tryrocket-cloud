@@ -55,21 +55,11 @@ app-undeploy app:
 
 # Snapshot Longhorn volumes
 snapshot volume-name snapshot-name:
-    curl -X POST -H "Content-Type: application/json" \
-  -d '{"name": "{{snapshot-name}}"}' \
-  https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}?action=snapshotCreate
-    curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
+    @curl -X POST -H "Content-Type: application/json" -d '{"name": "{{snapshot-name}}"}' https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}?action=snapshotCreate
+    @curl -s https://longhorn.tryrocket.cloud/v1/volumes/{{volume-name}}/snapshots | jq '.data[] | {name: .name, id: .id, created: .created}'
 
 backup app:
     kubectl create job --from=cronjob/backup-cronjob backup-vaultwarden-before-update -n {{app}}
-
-update app version:
-    yq -i '.images[0].newImage = "{{version}}"' applications/vaultwarden/overlays/kustomization.yaml
-    git add applications/vaultwarden/overlays/kustomization.yaml
-    git commit -m "Update {{app}} to {{version}}"
-    git tag "{{app}}-{{version}}"
-    git push origin main
-    git push origin "{{app}}-{{version}}"
 
 #1. Snapshot Longhorn volumes:
 #  - `vaultwarden`
@@ -77,7 +67,6 @@ update app version:
 #2. Backup `vaultwarden`
 #3. Update [kustomization.yaml](./overlays/production/kustomization.yaml) with new version.
 #4. In case of failure revert the snapshots
-
 
 
 # Build kustomize environment
