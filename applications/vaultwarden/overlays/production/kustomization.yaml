@@ -23,7 +23,7 @@ namespace: vaultwarden
 # https://github.com/dani-garcia/vaultwarden/releases
 images:
   - name: vaultwarden/server:latest
-    newTag: 1.250.0
+    newTag: 1.32.0
     
 #    1.32.0
 # TODO: use kubectl describe deploy/vaultwarden and get the image version
