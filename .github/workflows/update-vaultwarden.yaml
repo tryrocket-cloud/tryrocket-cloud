@@ -1,4 +1,4 @@
-name: Update Vaultwarden Docker Image
+name: Update Vaultwarden
 
 on:
   schedule:
