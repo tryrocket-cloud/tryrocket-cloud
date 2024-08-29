@@ -61,7 +61,10 @@ jobs:
 
       - name: Update kustomization.yaml
         if: env.update_needed == 'true'
-        run: yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
+        run: sed -i '' 's/newTag: ${{ env.current_tag }}/newTag: ${{ env.latest_version }}/' applications/vaultwarden/overlays/production/kustomization.yaml
+        
+        # not using yq https://github.com/mikefarah/yq/issues/515
+        # yq eval '.images[0].newTag = "${{ env.latest_version }}"' -i applications/vaultwarden/overlays/production/kustomization.yaml
 
       - name: Create Pull Request
         if: env.update_needed == 'true'
