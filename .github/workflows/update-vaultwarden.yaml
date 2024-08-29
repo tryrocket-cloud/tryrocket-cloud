@@ -71,10 +71,9 @@ jobs:
           git add applications/vaultwarden/overlays/production/kustomization.yaml
           git status
           echo ---
-          #git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
-          #echo before
-          #git status
-          #echo after
+          git commit -m "Update Vaultwarden to ${{ env.latest_version }}"
+          git status
+          echo ---
           #git tag vaultwarden-${{ env.latest_version }}
           #git push origin update-vaultwarden-${{ env.latest_version }} --tags
           #git status
