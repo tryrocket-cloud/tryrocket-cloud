@@ -20,9 +20,7 @@ jobs:
   check-for-new-release:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pull-requests: write
+
 
     steps:
       - name: Checkout Repository
