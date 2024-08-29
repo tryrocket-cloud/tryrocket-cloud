@@ -63,6 +63,14 @@ snapshot volume-name snapshot-name:
 backup app:
     kubectl create job --from=cronjob/backup-cronjob backup-vaultwarden-before-update -n {{app}}
 
+update app version:
+    yq -i '.images[0].newImage = "{{version}}"' applications/vaultwarden/overlays/kustomization.yaml
+    git add applications/vaultwarden/overlays/kustomization.yaml
+    git commit -m "Update {{app}} to {{version}}"
+    git tag "{{app}}-{{version}}"
+    git push origin main
+    git push origin "{{app}}-{{version}}"
+
 #1. Snapshot Longhorn volumes:
 #  - `vaultwarden`
 #  - `postgres`
