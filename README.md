@@ -33,4 +33,4 @@
   - pg_dump
   - pg_reatore
 - Docker
-- Justfile
+- Just
