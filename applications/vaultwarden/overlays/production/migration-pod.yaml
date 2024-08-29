@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: migration-pod
+spec:
+  containers:
+  - name: test
+    image: busibox
+    volumeMounts:
+      - name: vaultwarden-storage
+        mountPath: /data
+      - name: vaultwarden-rwx-storage
+        mountPath: /data-rwx
+  volumes:
+    - name: vaultwarden-storage
+      persistentVolumeClaim:
+        claimName: vaultwarden-pvc
+    - name: vaultwarden-rwx-storage
+      persistentVolumeClaim:
+        claimName: vaultwarden-rwx-pvc

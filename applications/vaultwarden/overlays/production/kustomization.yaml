@@ -17,7 +17,7 @@ resources:
   - pv.yaml
   - pvc-rwx.yaml
   - pv-rwx.yaml
-
+  - migration-pod.yaml
 namespace: vaultwarden
 
 # https://github.com/dani-garcia/vaultwarden/releases
