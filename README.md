@@ -20,3 +20,17 @@
 - [Longhorn](https://longhorn.io/)
 - [stakater](https://docs.stakater.com/reloader/#)
 - [#44](https://github.com/tryrocket-cloud/tryrocket-cloud/issues/44) [Argo CD Vault Plugin ](https://argocd-vault-plugin.readthedocs.io/en/stable/)
+
+## Tools
+
+- Longhorn cli
+- Argo CD cli
+- Ansible
+- kubectl
+- yq
+- jq
+- Postgres tool
+  - pg_dump
+  - pg_reatore
+- Docker
+
