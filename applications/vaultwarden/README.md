@@ -1,8 +1,7 @@
 # vaultwarden
 
-TODO: move data to -rwx volume?????????????????
 - create database for vaultwarden
-- install longhorn cli
+
 - install github runner
 - run action to stop vw
 - run action to snapshot volumes
