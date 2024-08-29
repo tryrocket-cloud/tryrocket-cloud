@@ -1,17 +1,20 @@
 - op: add
   path: /metadata/annotations/secret.reloader.stakater.com~1reload
   value: "vaultwarden-postgres-secret"
+
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts
   value:
     - name: vaultwarden-rwx-storage
       mountPath: /data-rwx
+
 - op: add
   path: /spec/template/spec/volumes
   value:
     - name: vaultwarden-rwx-storage
       persistentVolumeClaim:
         claimName: vaultwarden-rwx-pvc
+
 - op: add
   path: /spec/template/spec/containers/0/env/-
   value:
@@ -20,6 +23,7 @@
       secretKeyRef:
         key: username
         name: vaultwarden-postgres-secret
+
 - op: add
   path: /spec/template/spec/containers/0/env/-
   value:
@@ -28,11 +32,13 @@
       secretKeyRef:
         key: password
         name: vaultwarden-postgres-secret
+
 - op: add
   path: /spec/template/spec/containers/0/env/-
   value:
     name: DATABASE_URL
     value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
+  
 - op: add
   path: /spec/template/spec/containers/0/envFrom/-
   value:
