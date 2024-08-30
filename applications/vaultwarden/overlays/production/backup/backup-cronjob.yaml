@@ -40,7 +40,7 @@ spec:
                   mountPath: /pg_dump
 
           containers:
-            - name: ionos-s3-restic-backup
+            - name: s3-eu-central-3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
@@ -87,7 +87,7 @@ spec:
                   mountPath: /pg_dump
                   readOnly: true
 
-            - name: ionos-s3-restic-2-backup
+            - name: s3-eu-central-1-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
