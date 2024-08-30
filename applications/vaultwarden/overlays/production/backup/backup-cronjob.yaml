@@ -62,6 +62,8 @@ spec:
 
                     export RESTIC_VERSION=$(restic version | awk '{print $2}')
 
+                    echo $RESTIC_VERSION
+
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
                     restic backup --host tryrocket.cloud --tag restic:$RESTIC_VERSION --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
