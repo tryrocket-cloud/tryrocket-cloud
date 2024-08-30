@@ -2,8 +2,13 @@
 
 ## Datasheet
 
-- Replicas: 1 -> Vaultwarden currently does not support HA mode
+- replica 
+- where is the backup
+- how many backups
+- where is the doc how to restore
 
+
+## todo
 - create database for vaultwarden
 
 - install github runner
