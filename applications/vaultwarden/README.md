@@ -1,5 +1,9 @@
 # vaultwarden
 
+## Datasheet
+
+- Replicas: 1 -> Vaultwarden currently does not support HA mode
+
 - create database for vaultwarden
 
 - install github runner
