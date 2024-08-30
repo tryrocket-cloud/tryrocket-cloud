@@ -47,7 +47,7 @@ spec:
 #                - configMapRef:
 #                    name: vaultwarden-config
                 - secretRef:
-                    name: ionos-s3-restic-external-secret
+                    name: ionos-s3-restic-secret
                 - secretRef:
                     name: healthchecks-secret
               command:
