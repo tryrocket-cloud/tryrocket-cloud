@@ -40,12 +40,59 @@ spec:
                   mountPath: /pg_dump
 
           containers:
+            - name: ionos-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+#                - configMapRef:
+#                    name: vaultwarden-config
+                - secretRef:
+                    name: ionos-s3-restic-external-secret
+                - secretRef:
+                    name: healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export RESTIC_VERSION=$(restic version | awk '{print $2}')
+
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
+
+                    # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
+                    restic backup --host tryrocket.cloud --tag restic:$RESTIC_VERSION --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+
+                    restic check --read-data-subset 1/7
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+
+                    restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
+                    #curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/$?
+              volumeMounts:
+                - name: vaultwarden-rwx-storage
+                  mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-hetzner-subaccount-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: vaultwarden-hetzner-subaccount-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: vaultwarden-hetzner-subaccount-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
             - name: backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-                - configMapRef:
-                    name: vaultwarden-config
+#                - configMapRef:
+#                    name: vaultwarden-config
+# TODO: move to secret
                 - configMapRef:
                     name: restic-config
                 - secretRef:
@@ -61,8 +108,6 @@ spec:
                     curl -fsS -m 10 --retry 5 https://hc-ping.com/$HC_UUID/start
 
                     export RESTIC_VERSION=$(restic version | awk '{print $2}')
-
-                    echo $RESTIC_VERSION
 
                     # Kubernetes, by default, uses the Pod name as the hostname, and since Pod names are random "no parent snapshot found, will read all files" occur as restic snapshots are distinguished by both path and host.
                     restic backup --host tryrocket.cloud --tag restic:$RESTIC_VERSION --tag vaultwarden:$VAULTWARDEN_VERSION /pg_dump /data
