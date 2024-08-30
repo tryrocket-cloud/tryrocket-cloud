@@ -8,7 +8,8 @@ resources:
 
   - healthchecks-external-secret.yaml
   - restic-external-secret.yaml
-
+  - ionos-s3-restic-external-secret.yaml
+  
 configMapGenerator:
   - name: pgdump-config
     literals:
