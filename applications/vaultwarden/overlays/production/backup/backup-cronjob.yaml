@@ -44,8 +44,8 @@ spec:
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-#                - configMapRef:
-#                    name: vaultwarden-config
+                - configMapRef:
+                    name: vaultwarden-config
                 - secretRef:
                     name: ionos-s3-restic-secret
                 - secretRef:
@@ -90,8 +90,9 @@ spec:
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-#                - configMapRef:
-#                    name: vaultwarden-config
+# because of $VAULTWARDEN_VERSION
+                - configMapRef:
+                    name: vaultwarden-config
 # TODO: move to secret
                 - configMapRef:
                     name: restic-config
