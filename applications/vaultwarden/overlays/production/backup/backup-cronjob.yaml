@@ -134,7 +134,7 @@ spec:
                   mountPath: /pg_dump
                   readOnly: true
 
-            - name: backup
+            - name: FSN1-BX751-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
