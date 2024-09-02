@@ -51,6 +51,8 @@ spec:
                   sleep 2  # Wait for 2 seconds before checking again
                 done
 
+                cd /pg_dump/vaultwarden_*
+
                 pg_restore -U vaultwarden -d vaultwarden /pg_dump
           volumeMounts:
             - name: pg-dump-volume
