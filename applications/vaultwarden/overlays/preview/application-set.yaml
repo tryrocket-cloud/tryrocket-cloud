@@ -52,7 +52,7 @@ spec:
                 - op: replace
                   path: /data/DOMAIN
                   value: https://{{branch_slug}}-preview.tryrocket.cloud
-                - op: add
+                - op: replace
                   path: /data/DATABASE_URL
                   value: postgresql://u-vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
 
