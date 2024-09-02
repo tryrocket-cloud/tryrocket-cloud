@@ -9,7 +9,7 @@ resources:
 configMapGenerator:
   - name: postgres-config
     literals:
-      - PGHOST=postgres.postgres-16.svc.cluster.local
+#      - PGHOST=postgres.postgres-16.svc.cluster.local
       - PGPORT=5432
       - PGDATABASE=vaultwarden
       - PGUSER=vaultwarden

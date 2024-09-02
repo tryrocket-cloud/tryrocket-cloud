@@ -73,17 +73,11 @@ spec:
                   value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
             - target:
                 kind: ConfigMap
-                name: pg-config
+                name: postgres-config
               patch: |
-                - op: replace
-                  path: /data/LOG_LEVEL
-                  value: debug
                 - op: add
-                  path: /data/ADMIN_TOKEN
-                  value: vaultwarden
-                - op: add
-                  path: /data/DOMAIN
-                  value: https://{{branch_slug}}-preview.tryrocket.cloud
+                  path: /data/PGHOST
+                  value: postgres.{{branch_slug}}-preview.svc.cluster.local
                 - op: add
                   path: /data/DATABASE_URL
                   value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
