@@ -43,6 +43,8 @@ spec:
                 done
 
                 pg_restore -U u-vaultwarden -d vaultwarden /pg_dump/vaultwarden_*
+
+                echo restore done
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
