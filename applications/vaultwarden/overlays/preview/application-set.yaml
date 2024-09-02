@@ -29,7 +29,7 @@ spec:
         # TODO: remove DNS name when pr is merged, cancelled
         # https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/
         kustomize:
-          namespace: {{branch_slug}}-preview
+          namespace: '{{branch_slug}}-preview'
           patches:
             - target:
                 kind: Ingress
