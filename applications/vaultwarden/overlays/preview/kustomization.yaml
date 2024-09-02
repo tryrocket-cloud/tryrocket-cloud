@@ -16,5 +16,5 @@ configMapGenerator:
       - PGPASSWORD=vaultwarden
       - PGTZ=Europe/Berlin
 
-patchesStrategicMerge:
-  - patch-vaultwarden-deployment.yaml
+patches:
+  - path: patch-vaultwarden-deployment.yaml
