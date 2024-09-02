@@ -42,9 +42,39 @@ no prerequisites needed
 
 ## Update
 
-    just snapshot vaultwarden <snapshot-name>
-    just snapshot postgres <snapshot-name>
-    just buckup vaultwarden
+This section outlines the process for upgrading the Vaultwarden application.
+
+1. Automated Detection of New Releases
+
+    A [GitHub Action](../../.github/workflows/check-version.yaml) runs once a week to check for new releases of the Vaultwarden application.
+
+2. Automated Pull Request Creation
+
+    If a new release is detected, the [GitHub Action](../../.github/workflows/check-version.yaml) automatically generates a pull request (PR) with the updated Docker tag version for the Vaultwarden application. This PR includes the necessary changes to upgrade the Vaultwarden deployment in the Kubernetes cluster.
+
+3. Preview Deployment
+
+    3.1 ArgoCD Preview Application Deployment
+
+    Upon creation of the pull request, ArgoCD automatically deploys a preview environment of the Vaultwarden application using the **latest backup data**. This preview app is deployed under a specific URL, allowing for testing and verification of the new release.
+
+    3.2 DNS Entry Setup in Mikrotik Router
+
+    A DNS entry for the specific preview URL is automatically configured in the Mikrotik router, ensuring that the preview environment is accessible through the designated URL.
+
+4. Human Review and Approval
+
+    A human reviewer examines the changes in the pull request, including the functionality of the preview environment. Once the reviewer is satisfied that the new release is functioning correctly, they approve and merge the pull request.
+
+5. Cleanup After Merge
+    
+    5.1 Preview Application Destruction
+
+    After the pull request is merged, the preview environment is automatically destroyed by ArgoCD.
+
+    5.2 DNS Entry Removal
+
+    The DNS entry for the preview URL is removed from the Mikrotik router, ensuring that the temporary URL is no longer accessible.
 
 ## Backup
 
