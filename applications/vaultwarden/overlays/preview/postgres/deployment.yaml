@@ -48,10 +48,10 @@ spec:
           volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
-              readOnly: true
+              readOnly: false
             - name: pg-dump-volume
               mountPath: /pg_dump
-              readOnly: true
+              readOnly: false
 
       containers:
         - name: postgres
