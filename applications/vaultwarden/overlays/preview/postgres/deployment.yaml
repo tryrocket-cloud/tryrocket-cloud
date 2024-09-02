@@ -41,10 +41,7 @@ spec:
               - /bin/sh
               - -c
               - |
-                pwd
                 restic restore latest --target .
-
-                sleep infinity
           volumeMounts:
             - name: vaultwarden-storage
               mountPath: /data
