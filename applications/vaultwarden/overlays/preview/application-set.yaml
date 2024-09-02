@@ -41,20 +41,7 @@ spec:
                 - op: replace
                   path: /spec/rules/0/host
                   value: '{{branch_slug}}-preview.tryrocket.cloud'
-            - target:
-                kind: Deployment
-                name: simple-deployment
-              patch: |-
-                - op: replace
-                  path: /spec/template/spec/containers/0/env/0
-                  value:
-                    name: GIT_BRANCH
-                    value: '{{branch_slug}}-preview'
-                - op: replace
-                  path: /spec/template/spec/containers/0/env/1
-                  value:
-                    name: GIT_HASH
-                    value: '{{head_short_sha_7}}'
+
             - target:
                 kind: ConfigMap
                 name: vaultwarden-config
@@ -71,6 +58,7 @@ spec:
                 - op: add
                   path: /data/DATABASE_URL
                   value: postgresql://u-vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
+
             - target:
                 kind: ConfigMap
                 name: postgres-config
@@ -81,6 +69,7 @@ spec:
                 - op: add
                   path: /data/DATABASE_URL
                   value: postgresql://u-vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
+
       destination:
         server: 'https://192.168.178.101:6443'
         namespace: '{{branch_slug}}-preview'
