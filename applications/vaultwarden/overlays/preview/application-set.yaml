@@ -3,6 +3,10 @@ kind: ApplicationSet
 metadata:
   name: vaultwarden-preview
 spec:
+  # Using go template since fasttemplate doesn't work
+  goTemplate: true
+  # To see errors on the log if templates fails
+  goTemplateOptions: ["missingkey=invalid"]
   generators:
     - pullRequest:
         github:
