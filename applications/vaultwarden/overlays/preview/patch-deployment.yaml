@@ -42,6 +42,8 @@ spec:
                   sleep 2  # Wait for 2 seconds before checking again
                 done
 
+                env
+
                 pg_restore -U u-vaultwarden -d vaultwarden /pg_dump/vaultwarden_*
 
                 echo restore done
