@@ -20,7 +20,7 @@ spec:
       project: "default"
       source:
         repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
-        targetRevision: '{{.branch}}'
+        targetRevision: '{{branch}}'
         path: applications/vaultwarden/overlays/preview
 
         # TODO: maybe read kustomization.yaml insetad
