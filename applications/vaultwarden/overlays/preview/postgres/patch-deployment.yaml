@@ -1,19 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-init
+  name: vaultwarden
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgres-init
   template:
-    metadata:
-      labels:
-        app: postgres-init
     spec:
-      securityContext:
-        fsGroup: 5050
       initContainers:
         - name: restore-from-s3-eu-central-1-restic-backup
           image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
@@ -56,9 +47,6 @@ spec:
             - name: pg-dump-volume
               mountPath: /pg_dump
               readOnly: true
-      containers:
-        - name: postgres-ascascascascsacsac
-          image: postgres:latest
       volumes:
         - name: vaultwarden-storage
           emptyDir: {}
