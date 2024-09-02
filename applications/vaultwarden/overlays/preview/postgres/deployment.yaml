@@ -15,28 +15,34 @@ spec:
       securityContext:
         fsGroup: 5050
       initContainers:
-      - name: init-postgres
-        image: busybox
-        command: ['sh', '-c', 'mkdir -p /var/lib/postgresql/data/pgdata']
-        volumeMounts:
-        - name: postgres-storage
-          mountPath: /var/lib/postgresql/data
-      - name: init-permissions
-        image: busybox
-        command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
-        securityContext:
-          runAsUser: 0
+        - name: init-postgres
+          image: busybox
+          command: ['sh', '-c', 'mkdir -p /var/lib/postgresql/data/pgdata']
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+        - name: init-permissions
+          image: busybox
+          command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
       containers:
-      - name: postgres
-        image: postgres:16.3-alpine
-        ports:
-        - containerPort: 5432
-        envFrom:
-          - configMapRef:
-              name: postgres-config
-        env:
-        - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata
+        - name: postgres
+          image: postgres:16.3-alpine
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
       volumes:
-      - name: postgres-storage
-        emptyDir: {}
+        - name: postgres-storage
+          emptyDir: {}
