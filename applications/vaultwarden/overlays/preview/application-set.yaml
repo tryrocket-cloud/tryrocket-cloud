@@ -57,7 +57,7 @@ spec:
                   value: https://{{branch_slug}}-preview.tryrocket.cloud
                 - op: add
                   path: /data/DATABASE_URL
-                  value: postgresql://abcabc:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
+                  value: postgresql://u-vaultwarden:vaultwarden@{{branch_slug}}-preview.postgres.svc.cluster.local:5432/vaultwarden
 
             - target:
                 kind: ConfigMap
