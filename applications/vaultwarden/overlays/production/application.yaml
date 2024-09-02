@@ -5,8 +5,6 @@ metadata:
   namespace: argocd
   labels:
     environment: production
-    app.kubernetes.io/part-of: tryrocket.cloud
-    app.kubernetes.io/managed-by: argocd
 spec:
   project: default
   
