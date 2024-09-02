@@ -53,6 +53,16 @@ spec:
       containers:
         - name: postgres
           image: postgres:16.3-alpine
+
+          lifecycle:
+            postStart:
+              exec:
+                command: |
+                      - /bin/sh
+                      - -c
+                      - |
+                      pg_restore /pg_dump
+
           ports:
             - containerPort: 5432
           envFrom:
@@ -63,7 +73,7 @@ spec:
               value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: pg-dump-volume
-              mountPath: /docker-entrypoint-initdb.d/
+              mountPath: /pg_dump
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
       volumes:
