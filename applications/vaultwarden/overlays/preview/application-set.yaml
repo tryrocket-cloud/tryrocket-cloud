@@ -25,7 +25,7 @@ spec:
 
         # TODO: maybe read kustomization.yaml insetad
         kustomize:
-          nameSuffix: '{{.branch}}'
+          nameSuffix: '{{branch_slug}}'
 #          resources:
 #            - namespace.yaml
 #            - ../../base/vaultwarden
