@@ -4,16 +4,15 @@ resources:
   - deployment.yaml
   - service.yaml
 
-
 configMapGenerator:
   - name: postgres-config
     literals:
 #      - PGHOST=postgres.postgres-16.svc.cluster.local
-      - PGPORT=5432
-      - PGDATABASE=vaultwarden
-      - PGUSER=u-vaultwarden
-      - PGPASSWORD=vaultwarden
-      - PGTZ=Europe/Berlin
+#      - PGPORT=5432
+#     - PGDATABASE=vaultwarden
+#      - PGUSER=u-vaultwarden
+#      - PGPASSWORD=vaultwarden
+#      - PGTZ=Europe/Berlin
 
       - POSTGRES_DB=vaultwarden
       - POSTGRES_USER=u-vaultwarden
