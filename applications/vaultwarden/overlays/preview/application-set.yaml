@@ -29,14 +29,7 @@ spec:
         kustomize:
           #nameSuffix: 'HAHAH-suffix'
 
-          configMapGenerator:
-            - name: vaultwarden-config
-              literals:
-                - LOG_LEVEL=debug
-                - ADMIN_TOKEN=vaultwarden
-                - DOMAIN=https://vaultwarden-testing.tryrocket.cloud
-                - DATABASE_URL=postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
-              behavior: merge
+
           patches:
             - target:
                 kind: Ingress
