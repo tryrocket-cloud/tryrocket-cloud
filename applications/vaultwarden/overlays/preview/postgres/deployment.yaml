@@ -61,6 +61,11 @@ spec:
                     - /bin/sh
                     - -c
                     - |
+                      until pg_is_ready; do
+                        echo 'Waiting for PostgreSQL to be ready...'
+                        sleep 2
+                      done
+
                       pg_restore /pg_dump
 
           ports:
