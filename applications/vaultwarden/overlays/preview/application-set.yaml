@@ -58,14 +58,14 @@ spec:
 
             - target:
                 kind: ConfigMap
-                name: postgres-config
+                name: pg-retore-config
               patch: |
-                - op: add
+                - op: replace
                   path: /data/PGHOST
                   value: postgres.{{branch_slug}}-preview.svc.cluster.local
-                - op: add
-                  path: /data/DATABASE_URL
-                  value: postgresql://u-vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
+                - op: replace
+                  path: /data/PGUSER
+                  value: u-vaultwarden
 
       destination:
         server: 'https://192.168.178.101:6443'

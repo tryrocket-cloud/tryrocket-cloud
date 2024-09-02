@@ -6,19 +6,19 @@ spec:
   template:
     spec:
       initContainers:
-        - name: restore-from-s3-eu-central-1-restic-backup
+        - name: ionos-objectstorage-eu-central-1-s3-restic-restore-latest-snapshot
           image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: ionos-s3-restic-2-secret
+                name: ionos-objectstorage-eu-central-1-s3-restic
           command:
               - /bin/sh
               - -c
               - |
                 restic restore latest --target .
           volumeMounts:
-            - name: vaultwarden-storage
+            - name: vaultwarden-volume
               mountPath: /data
               readOnly: false
             - name: pg-dump-volume
@@ -27,10 +27,10 @@ spec:
 
         - name: pg-retore
           image: postgres:16.3-alpine
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
-                name: postgres-config
+                name: pg-retore-config
           command:
               - /bin/sh
               - -c
@@ -48,8 +48,9 @@ spec:
             - name: pg-dump-volume
               mountPath: /pg_dump
               readOnly: true
+
       volumes:
-        - name: vaultwarden-storage
+        - name: vaultwarden-volume
           emptyDir: {}
         - name: pg-dump-volume
           emptyDir: {}

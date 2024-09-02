@@ -4,8 +4,17 @@ resources:
   - ./postgres
 
   - ../../base/vaultwarden
-  - ionos-s3-restic-2-external-secret.yaml
+  - ionos-objectstorage-eu-central-1-s3-restic-external-secret.yaml
 
+configMapGenerator:
+  - name: pg-retore-config
+    literals:
+      - PGHOST=
+      - PGPORT=5432
+      - PGDATABASE=vaultwarden
+      - PGUSER=vaultwarden
+      - PGPASSWORD=vaultwarden
+      - PGTZ=Europe/Berlin
 
 patchesStrategicMerge:
   - patch-vaultwarden-deployment.yaml
