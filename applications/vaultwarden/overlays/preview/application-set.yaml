@@ -27,7 +27,7 @@ spec:
 
         # TODO: maybe read kustomization.yaml insetad
         kustomize:
-          nameSuffix: 'HAHAH-suffix'
+          #nameSuffix: 'HAHAH-suffix'
           patches:
             - target:
                 kind: Ingress
