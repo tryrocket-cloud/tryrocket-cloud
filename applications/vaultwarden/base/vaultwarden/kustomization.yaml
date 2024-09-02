@@ -6,6 +6,10 @@ resources:
   - ingress.yaml
   - middleware.yaml
 
+images:
+  - name: vaultwarden/server:latest
+    newTag: 1.38.0
+
 configMapGenerator:
   - name: vaultwarden-config
     literals:
