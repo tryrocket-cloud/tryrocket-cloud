@@ -14,6 +14,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 5050
+        
       initContainers:
         - name: init-postgres
           image: busybox
@@ -31,42 +32,9 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
 
-        - name: restore-from-s3-eu-central-1-restic-backup
-          image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
-          imagePullPolicy: Always
-          envFrom:
-            - secretRef:
-                name: ionos-s3-restic-2-secret
-          command:
-              - /bin/sh
-              - -c
-              - |
-                restic restore latest --target .
-          volumeMounts:
-            - name: vaultwarden-storage
-              mountPath: /data
-              readOnly: false
-            - name: pg-dump-volume
-              mountPath: /pg_dump
-              readOnly: false
-
       containers:
         - name: postgres
           image: postgres:16.3-alpine
-
-          lifecycle:
-            postStart:
-              exec:
-                command:
-                    - /bin/sh
-                    - -c
-                    - |
-                      until pg_is_ready; do
-                        echo 'Waiting for PostgreSQL to be ready...'
-                        sleep 2
-                      done
-
-                      pg_restore /pg_dump
 
           ports:
             - containerPort: 5432
@@ -76,15 +44,11 @@ spec:
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
+
           volumeMounts:
-            - name: pg-dump-volume
-              mountPath: /pg_dump
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+
       volumes:
-        - name: vaultwarden-storage
-          emptyDir: {}
         - name: postgres-storage
-          emptyDir: {}
-        - name: pg-dump-volume
           emptyDir: {}
