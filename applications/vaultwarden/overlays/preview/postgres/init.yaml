@@ -44,9 +44,9 @@ spec:
               - /bin/sh
               - -c
               - |
-                sleep infinity
-                
-                until pg_is_ready -h $PGHOST -U $PGUSER -d $PGDATABASE; do
+                pg_isready
+
+                until pg_isready; do
                   echo "Waiting for PostgreSQL to be ready..."
                   sleep 2  # Wait for 2 seconds before checking again
                 done
