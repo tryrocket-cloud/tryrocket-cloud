@@ -20,5 +20,3 @@ configMapGenerator:
       - POSTGRES_PASSWORD=vaultwarden
 
 
-patchesStrategicMerge:
-  - patch-deployment.yaml
