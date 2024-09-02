@@ -5,7 +5,7 @@ resources:
   - ./postgres
 
 configMapGenerator:
-  - name: vaultwarden-config
+  - name: vaultwarden-config-1
     literals:
       - LOG_LEVEL=debug
       - ADMIN_TOKEN=vaultwarden
