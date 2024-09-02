@@ -40,7 +40,8 @@ spec:
                   sleep 2  # Wait for 2 seconds before checking again
                 done
 
-                pg_restore -U u-vaultwarden -d vaultwarden /pg_dump/vaultwarden_*
+                #pg_restore -U u-vaultwarden -d vaultwarden /pg_dump/vaultwarden_*
+                pg_restore -U u-vaultwarden /pg_dump/vaultwarden_*
 
                 echo restore done $(date)
                 
