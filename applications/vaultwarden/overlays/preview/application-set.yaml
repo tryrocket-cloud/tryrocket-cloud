@@ -12,7 +12,7 @@ spec:
             - preview
             - vaultwarden
             - update
-        requeueAfterSeconds: 180
+        requeueAfterSeconds: 300
   template:
     metadata:
       name: '{{branch}}-preview'
