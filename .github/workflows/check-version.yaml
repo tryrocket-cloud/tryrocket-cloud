@@ -11,12 +11,12 @@ permissions:
 
 jobs:
   check-vaultwarden-version:
-    uses: ./.github/workflows/check-latest-version.yaml
+    uses: ./.github/workflows/check-latest-github-release.yaml
     with:
       repo: 'dani-garcia/vaultwarden'
       app_name: 'vaultwarden'
   check-upsnap-version:
-    uses: ./.github/workflows/check-latest-version.yaml
+    uses: ./.github/workflows/check-latest-github-release.yaml
     with:
       repo: 'seriousm4x/UpSnap'
       app_name: 'upsnap'
