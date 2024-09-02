@@ -41,6 +41,7 @@ spec:
               - /bin/sh
               - -c
               - |
+                pwd
                 restic restore latest --target .
 
                 sleep infinity
