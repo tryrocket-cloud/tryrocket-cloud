@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/vaultwarden
   - ./postgres
-
+  - ionos-s3-restic-2-external-secret.yaml
+  
 patchesStrategicMerge:
   - patch-deployment.yaml

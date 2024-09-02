@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  - ionos-s3-restic-2-external-secret.yaml
+
 
 configMapGenerator:
   - name: postgres-config
