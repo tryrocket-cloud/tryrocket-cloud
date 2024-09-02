@@ -58,7 +58,7 @@ spec:
 #                    value: '{{.head_short_sha_7}}'
       destination:
         server: 'https://192.168.178.101:6443'
-        namespace: '{{branch_slug}}-preview'
+        namespace: '{{branch}}-preview'
       syncPolicy:
         automated:
           prune: true
