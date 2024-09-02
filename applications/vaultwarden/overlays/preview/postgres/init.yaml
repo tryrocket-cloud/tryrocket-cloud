@@ -50,8 +50,8 @@ spec:
                   echo "Waiting for PostgreSQL to be ready..."
                   sleep 2  # Wait for 2 seconds before checking again
                 done
-                
-                pg_restore -f /pg_dump 
+
+                pg_restore -U vaultwarden -d vaultwarden -f /pg_dump /path/to/dumpfile.dump
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
