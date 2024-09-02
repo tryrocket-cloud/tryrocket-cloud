@@ -44,13 +44,15 @@ spec:
               - /bin/sh
               - -c
               - |
-                
+
                 pg_restore /pg_dump
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
               readOnly: true
-
+      containers:
+        - name: postgres
+          image: postgres:latest
       volumes:
         - name: vaultwarden-storage
           emptyDir: {}
