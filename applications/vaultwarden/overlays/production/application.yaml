@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: vaultwarden-application
   namespace: argocd
+  labels:
+    environment: production
+    app.kubernetes.io/part-of: Rocket Cloud
+    app.kubernetes.io/managed-by: argocd
 spec:
   project: default
   

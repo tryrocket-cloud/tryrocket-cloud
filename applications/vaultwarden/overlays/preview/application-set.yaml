@@ -16,6 +16,10 @@ spec:
   template:
     metadata:
       name: '{{branch}}-preview'
+      labels:
+        environment: preview
+        app.kubernetes.io/part-of: Rocket Cloud
+        app.kubernetes.io/managed-by: argocd
     spec:
       project: "default"
       source:
