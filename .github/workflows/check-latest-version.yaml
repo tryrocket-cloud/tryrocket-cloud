@@ -73,3 +73,4 @@ jobs:
           labels: |
             ${{ inputs.app_name }}
             update
+            preview
