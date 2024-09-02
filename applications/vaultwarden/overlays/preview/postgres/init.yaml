@@ -51,7 +51,7 @@ spec:
               mountPath: /pg_dump
               readOnly: true
       containers:
-        - name: postgres
+        - name: postgres-ascascascascsacsac
           image: postgres:latest
       volumes:
         - name: vaultwarden-storage
