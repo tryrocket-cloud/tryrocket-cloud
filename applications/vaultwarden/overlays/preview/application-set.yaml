@@ -15,7 +15,7 @@ spec:
         requeueAfterSeconds: 60
   template:
     metadata:
-      name: '{{.branch}}-{{.number}}'
+      name: 'pr-{{.number}}'
     spec:
       project: "default"
       source:
