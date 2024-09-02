@@ -57,10 +57,10 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: |
-                      - /bin/sh
-                      - -c
-                      - |
+                command:
+                    - /bin/sh
+                    - -c
+                    - |
                       pg_restore /pg_dump
 
           ports:
