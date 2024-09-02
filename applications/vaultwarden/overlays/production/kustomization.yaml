@@ -28,9 +28,7 @@ images:
 configMapGenerator:
   - name: vaultwarden-config
     literals:
-      - LOG_LEVEL=off
       - VAULTWARDEN_VERSION=1.32.0
-      - DOMAIN=https://vaultwarden.tryrocket.cloud
     behavior: merge
 # TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
 
