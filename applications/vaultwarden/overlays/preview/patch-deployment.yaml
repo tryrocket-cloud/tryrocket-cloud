@@ -35,19 +35,15 @@ spec:
               - /bin/sh
               - -c
               - |
-                pg_isready
-
                 until pg_isready; do
                   echo "Waiting for PostgreSQL to be ready..."
                   sleep 2  # Wait for 2 seconds before checking again
                 done
 
-                env
-
                 pg_restore -U u-vaultwarden -d vaultwarden /pg_dump/vaultwarden_*
 
-                echo restore done
-                date
+                echo restore done $(date)
+                
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
