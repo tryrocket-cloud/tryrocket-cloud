@@ -66,7 +66,10 @@ jobs:
           commit-message: "Update ${{ inputs.app_name }} from ${{ env.current_tag }} to ${{ env.latest_version }} [skip ci]"
           branch: update-${{ inputs.app_name }}-${{ env.latest_version }}
           title: "Update ${{ inputs.app_name }} to ${{ env.latest_version }}"
-          body: "This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}."
+          body: |
+            This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}.
+
+            https://github.com/${{ inputs.repo }}/releases/releases/latest
           labels: |
             ${{ inputs.app_name }}
             update
