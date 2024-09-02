@@ -11,7 +11,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: ionos-objectstorage-eu-central-1-s3-restic
+                name: ionos-objectstorage-eu-central-1-s3-restic-secret
           command:
               - /bin/sh
               - -c
