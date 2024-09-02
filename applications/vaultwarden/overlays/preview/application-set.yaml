@@ -49,10 +49,7 @@ spec:
                 - op: replace
                   path: /data/LOG_LEVEL
                   value: debug
-                - op: add
-                  path: /data/ADMIN_TOKEN
-                  value: vaultwarden
-                - op: add
+                - op: replace
                   path: /data/DOMAIN
                   value: https://{{branch_slug}}-preview.tryrocket.cloud
                 - op: add
