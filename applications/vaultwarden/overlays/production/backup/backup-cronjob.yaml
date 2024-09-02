@@ -71,15 +71,15 @@ spec:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-privatekey
+                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
                   readOnly: true
                   subPath: id_ed25519
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-config
+                - name: hetzner-storagebox-vaultwarden-ssh-config
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-hosts
+                - name: hetzner-storagebox-vaultwarden-ssh-hosts
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
@@ -118,15 +118,15 @@ spec:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-privatekey
+                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
                   readOnly: true
                   subPath: id_ed25519
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-config
+                - name: hetzner-storagebox-vaultwarden-ssh-config
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-hosts
+                - name: hetzner-storagebox-vaultwarden-ssh-hosts
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
@@ -171,15 +171,15 @@ spec:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-privatekey
+                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
                   readOnly: true
                   subPath: id_ed25519
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-config
+                - name: hetzner-storagebox-vaultwarden-ssh-config
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-hosts
+                - name: hetzner-storagebox-vaultwarden-ssh-hosts
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
@@ -190,21 +190,21 @@ spec:
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
                 claimName: vaultwarden-rwx-pvc
-            - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-privatekey
+            - name: hetzner-storagebox-vaultwarden-ssh-privatekey
               secret:
                 secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
-            - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-config
+            - name: hetzner-storagebox-vaultwarden-ssh-config
               secret:
                 secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 items:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
-            - name: hetzner-storagebox-bx11-fsn1-sftp-subaccount-vaultwarden-ssh-hosts
+            - name: hetzner-storagebox-vaultwarden-ssh-hosts
               secret:
                 secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 items:
