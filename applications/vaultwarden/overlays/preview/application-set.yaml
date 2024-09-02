@@ -25,47 +25,48 @@ spec:
 
         # TODO: maybe read kustomization.yaml insetad
         kustomize:
-          resources:
-            - namespace.yaml
-            - ../../base/vaultwarden
-            - ../../base/postgres
+          nameSuffix: '{{.branch}}'
+#          resources:
+#            - namespace.yaml
+#            - ../../base/vaultwarden
+#            - ../../base/postgres
 
-          configMapGenerator:
-            - name: vaultwarden-config
-              literals:
-                - LOG_LEVEL=debug
-                - ADMIN_TOKEN=vaultwarden
-                - DOMAIN='https://{{.branch_slug}}-preview.tryrocket.cloud'
-                - DATABASE_URL=postgresql://vaultwarden:vaultwarden@postgres.vaultwarden-testing.svc.cluster.local:5432/vaultwarden
-              behavior: merge
-          patches:
-            - target:
-                kind: Ingress
-                name: vaultwarden
-              patch: |
-                - op: replace
-                  path: /spec/tls/0/hosts/0
-                  value: '{{.branch_slug}}-preview.tryrocket.cloud'
-                - op: replace
-                  path: /spec/rules/0/host
-                  value: '{{.branch_slug}}-preview.tryrocket.cloud'
-            - target:
-                kind: Deployment
-                name: simple-deployment
-              patch: |-
-                - op: replace
-                  path: /spec/template/spec/containers/0/env/0
-                  value:
-                    name: GIT_BRANCH
-                    value: '{{.branch_slug}}-preview'
-                - op: replace
-                  path: /spec/template/spec/containers/0/env/1
-                  value:
-                    name: GIT_HASH
-                    value: '{{.head_short_sha_7}}'
+#          configMapGenerator:
+#            - name: vaultwarden-config
+#              literals:
+#                - LOG_LEVEL=debug
+#                - ADMIN_TOKEN=vaultwarden
+#                - DOMAIN='https://{{.branch_slug}}-preview.tryrocket.cloud'
+#                - DATABASE_URL=postgresql://vaultwarden:vaultwarden@postgres.vaultwarden-testing.svc.cluster.local:5432/vaultwarden
+#              behavior: merge
+#          patches:
+#            - target:
+#                kind: Ingress
+#                name: vaultwarden
+#              patch: |
+#                - op: replace
+#                  path: /spec/tls/0/hosts/0
+#                  value: '{{.branch_slug}}-preview.tryrocket.cloud'
+#                - op: replace
+#                  path: /spec/rules/0/host
+#                  value: '{{.branch_slug}}-preview.tryrocket.cloud'
+#            - target:
+#                kind: Deployment
+#                name: simple-deployment
+#              patch: |-
+#                - op: replace
+#                  path: /spec/template/spec/containers/0/env/0
+#                  value:
+#                    name: GIT_BRANCH
+#                    value: '{{.branch_slug}}-preview'
+#                - op: replace
+#                  path: /spec/template/spec/containers/0/env/1
+#                  value:
+#                    name: GIT_HASH
+#                    value: '{{.head_short_sha_7}}'
       destination:
         server: 'https://192.168.178.101:6443'
-        namespace: '{{.branch}}-preview'
+        namespace: '{{.branch_slug}}-preview'
       syncPolicy:
         automated:
           prune: true
