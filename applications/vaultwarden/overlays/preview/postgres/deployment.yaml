@@ -21,6 +21,7 @@ spec:
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+
         - name: init-permissions
           image: busybox
           command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
@@ -29,6 +30,28 @@ spec:
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+
+        - name: restore-from-s3-eu-central-1-restic-backup
+          image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: ionos-s3-restic-2-secret
+          command:
+              - /bin/sh
+              - -c
+              - |
+                restic restore latest --target .
+
+                sleep infinity
+          volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
+              readOnly: true
+            - name: pg-dump-volume
+              mountPath: /pg_dump
+              readOnly: true
+
       containers:
         - name: postgres
           image: postgres:16.3-alpine
@@ -41,8 +64,14 @@ spec:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           volumeMounts:
+            - name: pg-dump-volume
+              mountPath: /docker-entrypoint-initdb.d/
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
       volumes:
+        - name: vaultwarden-storage
+          emptyDir: {}
         - name: postgres-storage
+          emptyDir: {}
+        - name: pg-dump-volume
           emptyDir: {}

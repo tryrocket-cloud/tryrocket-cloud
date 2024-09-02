@@ -29,6 +29,7 @@ spec:
         # TODO: remove DNS name when pr is merged, cancelled
         # https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/
         kustomize:
+          namespace: {{branch_slug}}-preview
           patches:
             - target:
                 kind: Ingress
@@ -70,7 +71,22 @@ spec:
                 - op: add
                   path: /data/DATABASE_URL
                   value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
-
+            - target:
+                kind: ConfigMap
+                name: pg-config
+              patch: |
+                - op: replace
+                  path: /data/LOG_LEVEL
+                  value: debug
+                - op: add
+                  path: /data/ADMIN_TOKEN
+                  value: vaultwarden
+                - op: add
+                  path: /data/DOMAIN
+                  value: https://{{branch_slug}}-preview.tryrocket.cloud
+                - op: add
+                  path: /data/DATABASE_URL
+                  value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
       destination:
         server: 'https://192.168.178.101:6443'
         namespace: '{{branch_slug}}-preview'
