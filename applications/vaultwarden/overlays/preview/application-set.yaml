@@ -25,6 +25,8 @@ spec:
         targetRevision: '{{branch}}'
         path: applications/vaultwarden/overlays/preview
 
+        # TODO: create DNS name when pr is created, syncronised
+        # TODO: remove DNS name when pr is merged, cancelled
         # https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/
         kustomize:
           patches:
