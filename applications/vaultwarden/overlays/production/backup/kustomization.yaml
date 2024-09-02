@@ -9,7 +9,7 @@ resources:
   - healthchecks-external-secret.yaml
   - restic-external-secret.yaml
   
-  - ../base/ionos-objectstorage-eu-central-1-s3-restic-external-secret.yaml
+  - ../../base/ionos-objectstorage-eu-central-1-s3-restic-external-secret.yaml
   - ionos-objectstorage-eu-central-3-s3-restic-external-secret.yaml
 
 configMapGenerator:
