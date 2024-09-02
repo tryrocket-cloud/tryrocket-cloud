@@ -1,0 +1,38 @@
+name: Run Action on Labeled PR
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+
+jobs:
+  check_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check labels
+        id: check_labels
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const requiredLabels = ['preview', 'update'];
+            const prLabels = context.payload.pull_request.labels.map(label => label.name);
+            const hasAllLabels = requiredLabels.every(label => prLabels.includes(label));
+            
+            if (!hasAllLabels) {
+              core.setOutput('should_run', 'false');
+              core.setFailed('PR does not have the required labels');
+            } else {
+              core.setOutput('should_run', 'true');
+            }
+
+  run_action:
+    needs: check_labels
+    if: steps.check_labels.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run your action or script
+        run: echo "This PR has the required labels and is now running the action."
