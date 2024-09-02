@@ -69,7 +69,7 @@ spec:
                   value: https://{{branch_slug}}-preview.tryrocket.cloud
                 - op: add
                   path: /data/DATABASE_URL
-                  value: 'postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden'
+                  value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
 
       destination:
         server: 'https://192.168.178.101:6443'
