@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vaultwarden-application
+  name: vaultwarden
   namespace: argocd
   labels:
     environment: production
