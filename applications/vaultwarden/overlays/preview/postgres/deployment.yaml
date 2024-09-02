@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: postgres
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: postgres
@@ -14,7 +14,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 5050
-        
+
       initContainers:
         - name: init-postgres
           image: busybox
