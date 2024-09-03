@@ -3,10 +3,7 @@ kind: Kustomization
 resources:
   - ./postgres
 
-  - ../../base/vaultwarden
-  - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
-
-  # todo use kustomization.yaml for secret
+  - ../../base
 
 configMapGenerator:
   - name: pg-retore-config
