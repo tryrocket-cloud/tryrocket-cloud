@@ -77,19 +77,21 @@ spec:
                 name: postgres-secret
             - configMapRef:
                 name: postgres-config
-#          livenessProbe:
-#            exec:
-#              command:
-#                - sh
-#                - -c
-#                - exec pg_isready
-#            initialDelaySeconds: 15
-#            periodSeconds: 60
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - exec pg_isready
+            initialDelaySeconds: 15
+            periodSeconds: 30
           readinessProbe:
             exec:
-              command: ["pg_isready"]
-            initialDelaySeconds: 16
-            periodSeconds: 60
+              command: 
+                  - sh
+                  - -c
+                  - exec pg_isready
+            periodSeconds: 30
             successThreshold: 1
             failureThreshold: 3
           volumeMounts:
