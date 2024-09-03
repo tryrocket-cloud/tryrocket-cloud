@@ -37,7 +37,9 @@
 - Kustomize
 
 
-## Services
+## Additional Services
 
-- Hetzner
-- IONOS
+- [Hetzner](https://www.hetzner.com/)
+- [IONOS Cloud](https://cloud.ionos.de/)
+- [IONOS](https://www.ionos.de)
+
