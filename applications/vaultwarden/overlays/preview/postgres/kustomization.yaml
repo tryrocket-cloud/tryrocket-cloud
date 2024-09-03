@@ -12,5 +12,5 @@ patches:
 secretGenerator:
   - name: postgres-secret
     literals:
-      - POSTGRES_USER=vaultwarden # TODO: adjust, maybe wrong after pg_restore
-      - POSTGRES_PASSWORD=vaultwarden
+#      - POSTGRES_USER=vaultwarden # TODO: adjust, maybe wrong after pg_restore
+#      - POSTGRES_PASSWORD=vaultwarden
