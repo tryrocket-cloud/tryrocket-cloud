@@ -58,21 +58,21 @@ spec:
                 configMapKeyRef:
                   name: postgres-config
                   key: POSTGRES_PORT
-            - name: PGUSER
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_USER
-            - name: PGPASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
             - name: PGDATABASE
               valueFrom:
                 configMapKeyRef:
                   name: postgres-config
                   key: POSTGRES_DB
+            - name: PGUSER
+              valueFrom:
+                secretRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: PGPASSWORD
+              valueFrom:
+                secretRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
           envFrom:
             - secretRef:
                 name: postgres-secret
