@@ -71,7 +71,7 @@ spec:
                 pg_restore --clean --create --no-owner -U $PGUSER -d $PGDATABASE /pg_dump/vaultwarden_*
                                 
                 echo restore done $(date)
-                # sleep infinity
+                sleep infinity
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
