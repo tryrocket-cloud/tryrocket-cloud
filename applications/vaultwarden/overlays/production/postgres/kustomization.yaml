@@ -8,12 +8,7 @@ resources:
   - pv.yaml
 
 patches:
-  path: patch-deployment.yaml
-
-
-
-
-
+  - path: patch-deployment.yaml
 
 
 configMapGenerator:
