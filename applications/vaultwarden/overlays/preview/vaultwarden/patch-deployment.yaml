@@ -68,7 +68,7 @@ spec:
                   sleep 2  # Wait for 2 seconds before checking again
                 done
 
-                pg_restore --clean -U $PGUSER -d $PGDATABASE /pg_dump/vaultwarden_*
+                pg_restore --clean --create --no-owner -U $PGUSER -d $PGDATABASE /pg_dump/vaultwarden_*
                                 
                 echo restore done $(date)
                 # sleep infinity
