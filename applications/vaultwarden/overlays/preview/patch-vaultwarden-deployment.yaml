@@ -6,12 +6,12 @@ spec:
   template:
     spec:
       initContainers:
-        - name: ionos-objectstorage-eu-central-1-s3-restic-restore-latest
+        - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-restore-latest
           image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: ionos-objectstorage-eu-central-1-s3-restic-secret
+                name: ionos-cloud-objectstorage-eu-central-1-s3-restic-secret
           command:
               - /bin/sh
               - -c

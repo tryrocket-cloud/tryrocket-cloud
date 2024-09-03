@@ -4,7 +4,9 @@ resources:
   - ./postgres
 
   - ../../base/vaultwarden
-  - ionos-objectstorage-eu-central-1-s3-restic-external-secret.yaml
+  - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
+
+  # todo use kustomization.yaml for secret
 
 configMapGenerator:
   - name: pg-retore-config

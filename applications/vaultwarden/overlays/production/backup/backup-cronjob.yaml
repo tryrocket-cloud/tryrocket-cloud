@@ -41,12 +41,12 @@ spec:
                   mountPath: /pg_dump
 
           containers:
-            - name: ionos-objectstorage-eu-central-3-s3-restic-backup
+            - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-objectstorage-eu-central-3-s3-restic-secret
+                    name: ionos-cloud-objectstorage-eu-central-3-s3-restic-secret
                 - secretRef:
                     name: healthchecks-secret
               command:
@@ -66,12 +66,12 @@ spec:
                   mountPath: /pg_dump
                   readOnly: true
 
-            - name: ionos-objectstorage-eu-central-1-s3-restic-backup
+            - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-objectstorage-eu-central-1-s3-restic-secret
+                    name: ionos-cloud-objectstorage-eu-central-1-s3-restic-secret
                 - secretRef:
                     name: healthchecks-secret
               command:
