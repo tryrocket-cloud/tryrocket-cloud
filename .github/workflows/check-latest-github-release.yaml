@@ -69,7 +69,9 @@ jobs:
           body: |
             This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}.
 
-            https://github.com/${{ inputs.repo }}/releases/releases/latest
+            - [${{ inputs.app_name }} Releases](https://github.com/${{ inputs.repo }}/releases/releases/latest)
+            - [Preview App](https://${{ inputs.app_name }}-${{ env.latest_version //./- }}-preview.tryrocket.cloud)
+            
           labels: |
             ${{ inputs.app_name }}
             update
