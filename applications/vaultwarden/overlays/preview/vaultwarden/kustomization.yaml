@@ -6,5 +6,14 @@ resources:
 
   - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
 
+configMapGenerator:
+  - name: vaultwarden-config
+    literals:
+      - LOG_LEVEL=debug
+      # - DOMAIN=https://vaultwarden.tryrocket.cloud is set dynamically by application-set.yaml
+      # - DATABASE_URL=postgresql://vaultwarden:vaultwarden@plocalhost:5432/vaultwarden is set dynamically by application-set.yaml
+    behavior: merge
+
+
 patches:
   - path: patch-deployment.yaml
