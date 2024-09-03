@@ -59,6 +59,9 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    ls -la 
+                    pwd
+
                     backup.sh
 
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
