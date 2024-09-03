@@ -96,11 +96,7 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: hetzner-storagebox-bx11-fsn1-sftp-restic-external-secret
-#                - configMapRef:
-#                    name: restic-config
-#                - secretRef:
-#                    name: restic-secret
+                    name: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 - secretRef:
                     name: healthchecks-secret
               command:
