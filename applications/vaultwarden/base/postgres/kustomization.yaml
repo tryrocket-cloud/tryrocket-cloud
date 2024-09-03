@@ -8,5 +8,6 @@ resources:
 configMapGenerator:
   - name: postgres-config
     literals:
+      - POSTGRES_HOST=
       - POSTGRES_DB=vaultwarden
       - POSTGRES_PORT=5432

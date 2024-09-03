@@ -6,6 +6,7 @@ spec:
   template:
     spec:
       initContainers:
+
         - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-restore-latest
           image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
           imagePullPolicy: Always
@@ -28,6 +29,36 @@ spec:
         - name: pg-retore
           image: postgres:16.3-alpine
           imagePullPolicy: IfNotPresent
+          env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: PGTZ
+              value: Europe/Berlin
+            - name: PGHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_HOST
+            - name: PGPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_PORT
+            - name: PGUSER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: PGPASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: PGDATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_DB
           envFrom:
             - configMapRef:
                 name: pg-retore-config
@@ -48,7 +79,11 @@ spec:
             - name: pg-dump-volume
               mountPath: /pg_dump
               readOnly: true
-
+      containers:
+        - name: vaultwarden
+          volumeMounts:
+            - name: vaultwarden-volume
+              mountPath: /data
       volumes:
         - name: vaultwarden-volume
           emptyDir: {}
