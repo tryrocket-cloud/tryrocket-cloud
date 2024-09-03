@@ -28,17 +28,13 @@
 - create database user
 - create a new database with this new user and matching the creds in deployment
 
-### Staging
-
-no prerequisites needed
-
-### Testing
-
-no prerequisites needed
-
 ## Install
 
-    just app-deploy vaultwarden production
+    # Argo CD Application
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/production/application.yaml -n argocd
+
+    # Argo CD Preview Application
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/preview/application-set.yaml -n argocd
 
 ## Update
 
