@@ -68,5 +68,11 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            app.kubernetes.io/instance: '{{branch}}-preview'
+          annotations:
+            argocd.argoproj.io/tracking-id: >-
+              '{{branch}}-preview':/Namespace:'{{branch_slug}}-preview'/'{{branch_slug}}-preview'
         syncOptions:
           - CreateNamespace=true
