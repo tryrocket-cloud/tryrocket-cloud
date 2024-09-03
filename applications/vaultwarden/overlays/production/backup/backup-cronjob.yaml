@@ -201,11 +201,11 @@ spec:
                   readOnly: true
           volumes:
             - name: backup-sh-volume
-                configMap:
-                  name: backup-sh-configmap
-                  items:
-                  - key: backup.sh
-                    path: backup.sh
+              configMap:
+                name: backup-sh-configmap
+                items:
+                - key: backup.sh
+                  path: backup.sh
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
                 claimName: vaultwarden-rwx-pvc
