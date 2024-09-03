@@ -8,6 +8,7 @@ RUN apk update && \
     fish \
     curl \
     openssh-client \
+    jq \
     && rm -rf /var/cache/apk/*
 
 # Set Fish as the default shell

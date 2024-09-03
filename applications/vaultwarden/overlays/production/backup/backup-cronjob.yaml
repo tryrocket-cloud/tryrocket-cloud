@@ -50,6 +50,7 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - configMapRef:
+                    # # TODO: only used for VAULTWARDEN_VERSION
                     name: vaultwarden-config
                 - secretRef:
                     name: ionos-objectstorage-eu-central-3-s3-restic-secret
@@ -68,18 +69,6 @@ spec:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
-                  mountPath: /root/.ssh/id_ed25519
-                  readOnly: true
-                  subPath: id_ed25519
-                - name: hetzner-storagebox-vaultwarden-ssh-config
-                  mountPath: /root/.ssh/config
-                  readOnly: true
-                  subPath: config
-                - name: hetzner-storagebox-vaultwarden-ssh-hosts
-                  mountPath: /root/.ssh/hosts
-                  readOnly: true
-                  subPath: hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true

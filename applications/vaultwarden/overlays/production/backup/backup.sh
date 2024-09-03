@@ -4,13 +4,13 @@
 RESTIC_VERSION=$(restic version | awk '{print $2}')
 HOSTNAME="tryrocket.cloud"
 HC_URL=""
-VAULTWARDEN_VERSION=""
+VAULTWARDEN_VERSION=$(curl https://vaultwarden.tryrocket.cloud/api/config | jq '.server.version')
 
 # Function to print usage
 usage() {
-  echo "Usage: $0 -u <healthcheck-uuid> -v <vaultwarden-version> [-h <hostname>] [-r <restic-version>]"
+  echo "Usage: $0 -u <healthcheck-uuid> [-v <vaultwarden-version>] [-h <hostname>] [-r <restic-version>]"
   echo "  -u  Healthcheck UUID (required)"
-  echo "  -v  Vaultwarden version (required)"
+  echo "  -v  Vaultwarden version (default: detected Vaultwarden version)"
   echo "  -h  Hostname for restic backup (default: tryrocket.cloud)"
   echo "  -r  Restic version (default: detected restic version)"
   exit 1
@@ -38,7 +38,7 @@ while getopts "u:v:h:r:" opt; do
 done
 
 # Check for required arguments
-if [[ -z "$HC_UUID" || -z "$VAULTWARDEN_VERSION" ]]; then
+if [[ -z "$HC_UUID" || -z "$VAULTWARDEN_VERSION" || -z "$RESTIC_VERSION" ]]; then
   usage
 fi
 
