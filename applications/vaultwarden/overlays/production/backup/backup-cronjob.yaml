@@ -60,7 +60,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sh backup.sh -u $HC_IONOS_3_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh -u $HC_IONOS_3_UUID
 
               volumeMounts:
                 - name: backup-sh-volume
@@ -87,7 +87,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh -u $HC_IONOS_1_UUID
 
               volumeMounts:
                 - name: backup-sh-volume
@@ -132,7 +132,7 @@ spec:
                   - |
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sh backup.sh -u $HC_HETZNER_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh -u $HC_HETZNER_UUID
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
