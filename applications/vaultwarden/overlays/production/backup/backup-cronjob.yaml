@@ -59,6 +59,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    backup.sh
+
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HC_URL=https://hc-ping.com/$HC_IONOS_3_UUID
 
@@ -74,6 +76,9 @@ spec:
                     restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
                     curl -fsS -m 10 --retry 5 $HC_URL/$?
               volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
@@ -195,6 +200,12 @@ spec:
                   mountPath: /pg_dump
                   readOnly: true
           volumes:
+            - name: backup-sh-volume
+                configMap:
+                  name: backup-sh-configmap
+                  items:
+                  - key: backup.sh
+                    path: backup.sh
             - name: vaultwarden-rwx-storage
               persistentVolumeClaim:
                 claimName: vaultwarden-rwx-pvc
