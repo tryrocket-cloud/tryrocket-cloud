@@ -88,8 +88,8 @@ spec:
           readinessProbe:
             exec:
               command: ["pg_isready"]
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 16
+            periodSeconds: 60
             successThreshold: 1
             failureThreshold: 3
           volumeMounts:
