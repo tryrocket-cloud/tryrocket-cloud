@@ -89,7 +89,7 @@ spec:
             exec:
               command: ["pg_isready"]
             initialDelaySeconds: 0
-            periodSeconds: 1000
+            periodSeconds: 15
             successThreshold: 1
             failureThreshold: 3
           volumeMounts:
