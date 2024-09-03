@@ -54,16 +54,6 @@ spec:
                 - sh
                 - -c
                 - exec pg_isready
-
-export PGHOST=mydb.example.com
-export PGPORT=5432
-export PGUSER=myuser
-export PGPASSWORD=mypassword
-export PGDATABASE=mydatabase
-
-pg_isready
-
-
             initialDelaySeconds: 60
             periodSeconds: 60
           readinessProbe:
