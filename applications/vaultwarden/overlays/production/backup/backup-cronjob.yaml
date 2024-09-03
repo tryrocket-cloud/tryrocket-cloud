@@ -1,8 +1,3 @@
-# TODO: run pg_dump and backup as ansible scripts
-# pg_dump ansible-playbook
-# backup ansible playbook
-# summarize this
----
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -18,6 +13,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          
           initContainers:
             - name: pg-dump
               image: postgres:16
@@ -49,9 +45,6 @@ spec:
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-                - configMapRef:
-                    # # TODO: only used for VAULTWARDEN_VERSION
-                    name: vaultwarden-config
                 - secretRef:
                     name: ionos-objectstorage-eu-central-3-s3-restic-secret
                 - secretRef:
@@ -77,8 +70,6 @@ spec:
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-                - configMapRef:
-                    name: vaultwarden-config
                 - secretRef:
                     name: ionos-objectstorage-eu-central-1-s3-restic-secret
                 - secretRef:
@@ -96,18 +87,6 @@ spec:
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
-                  mountPath: /root/.ssh/id_ed25519
-                  readOnly: true
-                  subPath: id_ed25519
-                - name: hetzner-storagebox-vaultwarden-ssh-config
-                  mountPath: /root/.ssh/config
-                  readOnly: true
-                  subPath: config
-                - name: hetzner-storagebox-vaultwarden-ssh-hosts
-                  mountPath: /root/.ssh/hosts
-                  readOnly: true
-                  subPath: hosts
                 - name: pg-dump-volume
                   mountPath: /pg_dump
                   readOnly: true
@@ -116,10 +95,6 @@ spec:
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-# because of $VAULTWARDEN_VERSION
-                - configMapRef:
-                    name: vaultwarden-config
-# TODO: move to secret
                 - configMapRef:
                     name: restic-config
                 - secretRef:

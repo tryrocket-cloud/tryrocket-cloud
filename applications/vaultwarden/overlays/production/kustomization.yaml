@@ -15,16 +15,6 @@ images:
   - name: vaultwarden/server:latest
     newTag: 1.32.0
     
-#    1.32.0
-# TODO: use kubectl describe deploy/vaultwarden and get the image version
-
-configMapGenerator:
-  - name: vaultwarden-config
-    literals:
-      - VAULTWARDEN_VERSION=1.32.0
-    behavior: merge
-# TODO: remove VAULTWARDEN_VERSION use kubectl describe deploy/vaultwarden and get the image version
-
 patches:
   - target:
       kind: Deployment
