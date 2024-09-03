@@ -1,23 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
-  - deployment.yaml
-  - service.yaml
+  - ../../../base/postgres
 
-configMapGenerator:
-  - name: postgres-config
-    literals:
-#      - PGHOST=postgres.postgres-16.svc.cluster.local
-#      - PGPORT=5432
-#     - PGDATABASE=vaultwarden
-#      - PGUSER=u-vaultwarden
-#      - PGPASSWORD=vaultwarden
-#      - PGTZ=Europe/Berlin
-
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_USER=u-vaultwarden
-      - POSTGRES_PASSWORD=vaultwarden
-
-
-patch       
-
+patches:
+  - path: patch-deployment.yaml
