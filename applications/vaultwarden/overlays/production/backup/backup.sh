@@ -44,6 +44,9 @@ fi
 
 HC_URL="https://hc-ping.com/$HC_UUID"
 
+echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
+echo RESTIC_VERSION=$RESTIC_VERSION
+
 # Start health check
 curl -fsS -m 10 --retry 5 $HC_URL/start
 
