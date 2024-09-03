@@ -89,7 +89,7 @@ spec:
             exec:
               command: ["pg_isready"]
             initialDelaySeconds: 0
-            periodSeconds: 60
+            periodSeconds: 1000
             failureThreshold: 1
           volumeMounts:
             - name: postgres-volume
