@@ -42,6 +42,6 @@
 - [Hetzner](https://www.hetzner.com/)
 - [IONOS Cloud](https://cloud.ionos.de/)
 - [IONOS](https://www.ionos.de)
-- [Cloudflarw](https://www.cloudflare.com)
+- [Cloudflare](https://www.cloudflare.com)
 - [GitHub](https://github.com/)
 
