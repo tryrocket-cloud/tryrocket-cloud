@@ -101,6 +101,9 @@ spec:
                     sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
 
               volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
@@ -142,6 +145,9 @@ spec:
 
                     sh backup.sh -u $HC_HETZNER_UUID -v $VAULTWARDEN_VERSION
               volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
                 - name: vaultwarden-rwx-storage
                   mountPath: /data
                   readOnly: true
