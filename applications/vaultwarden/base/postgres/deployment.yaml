@@ -14,29 +14,6 @@ spec:
         app: postgres
     spec:
 
-# Why is this here -> document or remove
-#      securityContext:
-#        fsGroup: 5050
-      
-#      initContainers:
-      
-#        - name: init-postgres
-#          image: busybox
-#          command:
-#              - /bin/sh
-#              - -c
-#              - |
-#                mkdir -p /var/lib/postgresql/data/pgdata
-#                chown -R 70:70 /var/lib/postgresql/data
-#                ls -la /var/lib/postgresql/data
-#          volumeMounts:
-#            - name: postgres-volume
-#              mountPath: /var/lib/postgresql/data
-
-# Why is this here -> document or remove
-#          securityContext: # maybe not needed
-#            runAsUser: 0
-
       containers:
         - name: postgres
           image: postgres:16.3-alpine
@@ -77,6 +54,7 @@ spec:
                 name: postgres-secret
             - configMapRef:
                 name: postgres-config
+
           livenessProbe:
             exec:
               command:
@@ -95,6 +73,7 @@ spec:
             periodSeconds: 30
             successThreshold: 1
             failureThreshold: 3
+
           volumeMounts:
             - name: postgres-volume
               mountPath: /var/lib/postgresql/data 

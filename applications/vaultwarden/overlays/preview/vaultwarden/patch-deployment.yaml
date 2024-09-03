@@ -7,6 +7,7 @@ spec:
     spec:
       initContainers:
 
+        # Restore latest restic snapshot from ionos-cloud-objectstorage-eu-central-1-s3
         - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-restore-latest
           image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
           imagePullPolicy: Always
@@ -67,7 +68,6 @@ spec:
                   echo "Waiting for PostgreSQL to be ready..."
                   sleep 2  # Wait for 2 seconds before checking again
                 done
-
 
                 # https://www.postgresql.org/docs/10/app-pgrestore.html
                 # Create the database before restoring into it. If --clean is also specified, drop and recreate the target database before connecting to it.
