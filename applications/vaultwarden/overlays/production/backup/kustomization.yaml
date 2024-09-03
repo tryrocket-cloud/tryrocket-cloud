@@ -7,7 +7,6 @@ resources:
   
 
   - healthchecks-external-secret.yaml
-  - restic-external-secret.yaml
   
 
 
