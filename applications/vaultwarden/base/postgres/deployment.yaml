@@ -68,10 +68,3 @@ spec:
             - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
           initialDelaySeconds: 5
           periodSeconds: 10
-        volumeMounts:
-        - name: postgres-storage
-          mountPath: /var/lib/postgresql/data 
-      volumes:
-      - name: postgres-storage
-        persistentVolumeClaim:
-          claimName: postgres-16-pvc
