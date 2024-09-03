@@ -59,9 +59,6 @@ spec:
                 configMapKeyRef:
                   name: postgres-config
                   key: POSTGRES_DB
-          envFrom:
-            - configMapRef:
-                name: pg-retore-config
           command:
               - /bin/sh
               - -c
