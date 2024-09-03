@@ -12,8 +12,10 @@ spec:
       labels:
         app: postgres
     spec:
-      securityContext:
-        fsGroup: 5050
+
+# Why is this here -> document or remove
+#      securityContext:
+#        fsGroup: 5050
       
       initContainers:
       
@@ -28,33 +30,50 @@ spec:
           volumeMounts:
             - name: postgres-volume
               mountPath: /var/lib/postgresql/data
-          securityContext: # maybe not needed
-            runAsUser: 0
+
+# Why is this here -> document or remove
+#          securityContext: # maybe not needed
+#            runAsUser: 0
 
       containers:
         - name: postgres
           image: postgres:16.3-alpine
           ports:
             - containerPort: 5432
+
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+
           livenessProbe:
             exec:
               command:
                 - sh
                 - -c
-                - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
-            initialDelaySeconds: 30
-            periodSeconds: 10
+                - exec pg_isready
+
+export PGHOST=mydb.example.com
+export PGPORT=5432
+export PGUSER=myuser
+export PGPASSWORD=mypassword
+export PGDATABASE=mydatabase
+
+pg_isready
+
+
+            initialDelaySeconds: 60
+            periodSeconds: 60
           readinessProbe:
             exec:
               command:
                 - sh
                 - -c
-                - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
-            initialDelaySeconds: 5
-            periodSeconds: 10
+                - exec pg_isready
+            initialDelaySeconds: 10
+            periodSeconds: 60
           volumeMounts:
             - name: postgres-volume
               mountPath: /var/lib/postgresql/data 

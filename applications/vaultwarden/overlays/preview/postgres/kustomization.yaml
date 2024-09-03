@@ -6,3 +6,12 @@ resources:
 
 patches:
   - path: patch-deployment.yaml
+
+secretGenerator:
+  - name: postgres-secret
+    literals:
+      - PGHOST=
+      - PGPORT=5432
+      - PGUSER=u-vaultwarden
+      - PGPASSWORD=vaultwarden
+      - PGDATABASE=vaultwarden
