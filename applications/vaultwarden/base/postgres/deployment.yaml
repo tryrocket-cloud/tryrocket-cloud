@@ -65,12 +65,12 @@ spec:
                   key: POSTGRES_DB
             - name: PGUSER
               valueFrom:
-                secretRef:
+                secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_USER
             - name: PGPASSWORD
               valueFrom:
-                secretRef:
+                secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
           envFrom:
