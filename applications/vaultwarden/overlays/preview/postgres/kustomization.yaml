@@ -19,3 +19,5 @@ configMapGenerator:
       - POSTGRES_PASSWORD=vaultwarden
 
 
+patch       
+

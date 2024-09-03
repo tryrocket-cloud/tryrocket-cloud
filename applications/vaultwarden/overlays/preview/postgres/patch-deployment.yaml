@@ -7,5 +7,4 @@ spec:
     spec:
       volumes:
         - name: postgres-volume
-          persistentVolumeClaim:
-            claimName: vaultwarden-postgres-pvc
+          emptyDir: {}

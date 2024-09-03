@@ -55,6 +55,6 @@ spec:
                 - exec pg_isready -U tryrocket.cloud -d tryrocket.cloud
             initialDelaySeconds: 5
             periodSeconds: 10
-      volumes:
-        - name: postgres-volume
-          emptyDir: {}
+          volumeMounts:
+            - name: postgres-volume
+              mountPath: /var/lib/postgresql/data 
