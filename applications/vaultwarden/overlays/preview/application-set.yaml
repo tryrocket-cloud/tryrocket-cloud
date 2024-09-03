@@ -68,11 +68,11 @@ spec:
 #                  value: u-vaultwarden
 
             - target:
-                kind: Secret
-                name: postgres-secret
+                kind: ConfigMap
+                name: postgres-config
               patch: |
                 - op: replace
-                  path: /data/PGHOST
+                  path: /data/POSTGRES_HOST
                   value: postgres.{{branch_slug}}-preview.svc.cluster.local
 
       destination:

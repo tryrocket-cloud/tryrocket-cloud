@@ -4,16 +4,15 @@ kind: Kustomization
 resources:
   - ../../../base/postgres
 
+  - postgres-external-secret.yaml
   - pvc.yaml
   - pv.yaml
 
 patches:
   - path: patch-deployment.yaml
 
-
 configMapGenerator:
   - name: postgres-config
     literals:
-      - POSTGRES_DB=tryrocket.cloud
-      - POSTGRES_USER=tryrocket.cloud
-      - POSTGRES_PASSWORD=tryrocket.cloud
+      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
+    behavior: merge

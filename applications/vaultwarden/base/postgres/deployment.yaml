@@ -42,12 +42,42 @@ spec:
             - containerPort: 5432
 
           env:
+            - name: TZ
+              value: Europe/Berlin
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
+            - name: PGTZ
+              value: Europe/Berlin
+            - name: PGHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_HOST
+            - name: PGPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_PORT
+            - name: PGUSER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: PGPASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: PGDATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_DB
           envFrom:
             - secretRef:
                 name: postgres-secret
-
+            - configMapRef:
+                name: postgres-config
           livenessProbe:
             exec:
               command:

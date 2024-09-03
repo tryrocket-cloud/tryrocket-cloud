@@ -7,11 +7,10 @@ resources:
 patches:
   - path: patch-deployment.yaml
 
+# POSTGRES_HOST is set dynamically by application-set.yaml
+
 secretGenerator:
   - name: postgres-secret
     literals:
-      - PGHOST=
-      - PGPORT=5432
-      - PGUSER=u-vaultwarden
-      - PGPASSWORD=vaultwarden
-      - PGDATABASE=vaultwarden
+      - POSTGRES_USER=vaultwarden # TODO: adjust, maybe wrong after pg_restore
+      - POSTGRES_PASSWORD=vaultwarden
