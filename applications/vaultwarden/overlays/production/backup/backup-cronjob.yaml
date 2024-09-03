@@ -91,14 +91,16 @@ spec:
                   mountPath: /pg_dump
                   readOnly: true
 
-            - name: fsn1-bx751-restic-backup
+            - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
-                - configMapRef:
-                    name: restic-config
                 - secretRef:
-                    name: restic-secret
+                    name: hetzner-storagebox-bx11-fsn1-sftp-restic-external-secret
+#                - configMapRef:
+#                    name: restic-config
+#                - secretRef:
+#                    name: restic-secret
                 - secretRef:
                     name: healthchecks-secret
               command:

@@ -27,7 +27,3 @@ configMapGenerator:
   - name: backup-sh-configmap
     files:
       - backup.sh=backup.sh
-
-  - name: restic-config
-    literals:
-      - RESTIC_REPOSITORY=sftp:storagebox:/home/test-backup
