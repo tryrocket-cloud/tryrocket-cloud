@@ -77,22 +77,22 @@ spec:
                 name: postgres-secret
             - configMapRef:
                 name: postgres-config
-          livenessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready
-            initialDelaySeconds: 15
-            periodSeconds: 60
-          readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready
-            initialDelaySeconds: 5
-            periodSeconds: 60
+#          livenessProbe:
+#            exec:
+#              command:
+#                - sh
+#                - -c
+#                - exec pg_isready
+#            initialDelaySeconds: 15
+#            periodSeconds: 60
+#          readinessProbe:
+#            exec:
+#              command:
+#                - sh
+#                - -c
+#                - exec pg_isready
+#            initialDelaySeconds: 5
+#            periodSeconds: 60
           volumeMounts:
             - name: postgres-volume
               mountPath: /var/lib/postgresql/data 
