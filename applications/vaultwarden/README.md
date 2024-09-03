@@ -42,6 +42,31 @@ no prerequisites needed
 
 ## Update
 
+```mermaid
+sequenceDiagram
+    participant GitHub Action
+    participant ArgoCD
+    participant Router
+    participant Human Reviewer
+    participant Backup
+
+    GitHub Action->>GitHub Action: Check for new Vaultwarden release (weekly)
+    alt New Release Detected
+        GitHub Action->>GitHub Action: Create PR with updated Docker tag
+        GitHub Action->>ArgoCD: Deploy preview environment
+        ArgoCD->>Backup: Get latest backup data
+        Backup-->>ArgoCD: latest backup snapshot
+        GitHub Action->>Router: Setup DNS entry for preview URL
+        Router-->>Human Reviewer: Preview app available at specific URL
+        Human Reviewer->>Human Reviewer: Review changes and test new release
+        Human Reviewer->>GitHub Action: Approve and merge PR
+        ArgoCD->>ArgoCD: Destroy to production environment
+        GitHub Action->>Router: Remove DNS entry
+    else No New Release
+        GitHub Action-->>GitHub Action: No action taken
+    end
+```
+
 This section outlines the process for upgrading the Vaultwarden application.
 
 1. Automated Detection of New Releases
