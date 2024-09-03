@@ -28,6 +28,7 @@ spec:
               - |
                 mkdir -p /var/lib/postgresql/data/pgdata
                 chown -R 70:70 /var/lib/postgresql/data
+                ls -la /var/lib/postgresql/data
           volumeMounts:
             - name: postgres-volume
               mountPath: /var/lib/postgresql/data
