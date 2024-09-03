@@ -16,7 +16,6 @@ patches:
 
 
 
----
 configMapGenerator:
   - name: postgres-config
     literals:
