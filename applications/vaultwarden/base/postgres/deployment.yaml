@@ -51,10 +51,7 @@ spec:
             - name: PGTZ
               value: Europe/Berlin
             - name: PGHOST
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_HOST
+              value: localhost
             - name: PGPORT
               valueFrom:
                 configMapKeyRef:
