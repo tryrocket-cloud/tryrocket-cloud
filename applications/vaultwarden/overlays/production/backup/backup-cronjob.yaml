@@ -59,7 +59,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    bash backup.sh
+                    sh backup.sh
 
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HC_URL=https://hc-ping.com/$HC_IONOS_3_UUID
