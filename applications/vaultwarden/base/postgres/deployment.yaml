@@ -83,7 +83,7 @@ spec:
                 - sh
                 - -c
                 - exec pg_isready
-            initialDelaySeconds: 60
+            initialDelaySeconds: 15
             periodSeconds: 60
           readinessProbe:
             exec:
@@ -91,7 +91,7 @@ spec:
                 - sh
                 - -c
                 - exec pg_isready
-            initialDelaySeconds: 10
+            initialDelaySeconds: 5
             periodSeconds: 60
           volumeMounts:
             - name: postgres-volume
