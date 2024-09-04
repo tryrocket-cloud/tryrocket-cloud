@@ -22,7 +22,4 @@ configMapGenerator:
     behavior: merge
 
 patches:
-  - target:
-      kind: Deployment
-      name: vaultwarden
-    path: patch-deployment.yaml
+  - patch-deployment.yaml
