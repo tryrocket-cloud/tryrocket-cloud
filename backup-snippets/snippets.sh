@@ -49,7 +49,7 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
 
 ## Vault static roles
 
-    # create a <vault user>
+    # create a <vault user> with database admin
     CREATE ROLE <vault user> WITH LOGIN PASSWORD 'secure_password';
     ALTER ROLE <vault user> WITH CREATEROLE;
 
@@ -89,3 +89,5 @@ https://github.com/tryrocket-cloud/tryrocket-cloud/issues/12
     # delete dynamic role
     vault delete database/roles/<app user>-admin-role
 
+    # list availables static roles
+    vault list database/static-roles
