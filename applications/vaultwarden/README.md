@@ -9,7 +9,6 @@
 
 
 ## todo
-- create database for vaultwarden
 
 - install github runner
 - run action to stop vw
