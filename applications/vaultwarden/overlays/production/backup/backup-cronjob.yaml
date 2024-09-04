@@ -19,6 +19,23 @@ spec:
               image: postgres:16
               imagePullPolicy: IfNotPresent
               env:
+                - name: PGTZ
+                  value: Europe/Berlin
+                - name: PGHOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_HOST
+                - name: PGPORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_PORT
+                - name: PGDATABASE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_DB
                 - name: PGUSER
                   valueFrom:
                     secretKeyRef:
