@@ -33,6 +33,7 @@ jobs:
         run: |
           latest_version=$(curl --silent "https://api.github.com/repos/${{ inputs.repo }}/releases/latest" | jq -r .tag_name)
           echo "latest_version=${latest_version}" >> $GITHUB_ENV
+          echo "latest_version_slug=${latest_version //./-}" >> $GITHUB_ENV
           echo "Latest release is ${latest_version}"
 
       - name: Get Current Version
@@ -70,7 +71,7 @@ jobs:
             This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}.
 
             - [${{ inputs.app_name }} Releases](https://github.com/${{ inputs.repo }}/releases/releases/latest)
-            - [Preview App](https://${{ inputs.app_name }}-${{ env.latest_version //./- }}-preview.tryrocket.cloud)
+            - [Preview App](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud)
             
           labels: |
             ${{ inputs.app_name }}
