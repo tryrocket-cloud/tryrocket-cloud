@@ -27,28 +27,7 @@ spec:
               value: /var/lib/postgresql/data/pgdata
             - name: PGTZ
               value: Europe/Berlin
-            - name: PGHOST
-              value: localhost
-            - name: PGPORT
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_PORT
-            - name: PGDATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_DB
-            - name: PGUSER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_USER
-            - name: PGPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
+
           envFrom:
             - secretRef:
                 name: postgres-secret
@@ -60,7 +39,7 @@ spec:
               command:
                 - sh
                 - -c
-                - exec pg_isready
+                - exec pg_isready -h localhost -p 5432 -U $POSTGRES_USER -d $POSTGRES_DB
             initialDelaySeconds: 15
             periodSeconds: 30
           readinessProbe:
@@ -68,7 +47,7 @@ spec:
               command: 
                   - sh
                   - -c
-                  - exec pg_isready
+                  - exec pg_isready -h localhost -p 5432 -U $POSTGRES_USER -d $POSTGRES_DB
             initialDelaySeconds: 5
             periodSeconds: 30
             successThreshold: 1
