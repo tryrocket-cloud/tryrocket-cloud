@@ -13,9 +13,3 @@ resources:
 patches:
   - path: patch-postgres-deployment.yaml
 
-configMapGenerator:
-  - name: postgres-config
-    literals:
-      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_PORT=5432

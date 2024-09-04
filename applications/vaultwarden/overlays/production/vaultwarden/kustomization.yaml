@@ -23,13 +23,6 @@ configMapGenerator:
       - LOG_LEVEL=off
     behavior: merge
 
-  - name: postgres-config
-    literals:
-      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_PORT=5432
-    behavior: merge
-
 patches:
   - target:
       kind: Deployment

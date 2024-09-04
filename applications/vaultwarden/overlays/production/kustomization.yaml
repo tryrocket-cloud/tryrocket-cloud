@@ -15,6 +15,13 @@ resources:
 
 namespace: vaultwarden
 
+configMapGenerator:
+  - name: postgres-config
+    literals:
+      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
+      - POSTGRES_DB=vaultwarden
+      - POSTGRES_PORT=5432
+
 # https://github.com/dani-garcia/vaultwarden/releases
 #images:
 #  - name: vaultwarden/server:latest
