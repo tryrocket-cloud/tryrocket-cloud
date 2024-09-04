@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../../../base/postgres
 
+  - postgres-superuser-external-secret.yaml
+
   - postgres-external-secret.yaml
   - pvc.yaml
   - pv.yaml

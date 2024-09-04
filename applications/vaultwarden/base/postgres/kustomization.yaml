@@ -12,6 +12,7 @@ configMapGenerator:
       - POSTGRES_DB=vaultwarden
       - POSTGRES_PORT=5432
 
+# TODO: remove this completely
 secretGenerator:
   - name: postgres-secret
     literals:

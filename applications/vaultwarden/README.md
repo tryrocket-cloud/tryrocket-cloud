@@ -27,7 +27,8 @@
 
 - create longhorn volume for postgres
 - create longhorn volume for vaultwarden
-- create static database cred role in vault
+- create a superuser password in vault for postgres database
+
 
 - create database user
 - create a new database with this new user and matching the creds in deployment
