@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: migration-pod
-    image: alpine
+    image: postgres:16.3-alpine
     command:
         - /bin/sh
         - -c
