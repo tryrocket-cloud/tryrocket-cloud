@@ -4,8 +4,7 @@ kind: Kustomization
 resources:
   - ./postgres
   - ./vaultwarden
-#  - ../../
-#  - ./backup
+  - ./backup
 
   - namespace.yaml
 #  - postgres-external-secret.yaml

@@ -11,7 +11,7 @@ resources:
 configMapGenerator:
   - name: pgdump-config
     literals:
-      - PGHOST=postgres.postgres-16.svc.cluster.local
+      - PGHOST=postgres.vaultwarden.svc.cluster.local
       - PGPORT=5432
       - PGDATABASE=vaultwarden
       - PGTZ=Europe/Berlin
