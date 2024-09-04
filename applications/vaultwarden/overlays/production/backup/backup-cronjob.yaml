@@ -36,7 +36,6 @@ spec:
                     configMapKeyRef:
                       name: postgres-config
                       key: POSTGRES_DB
-
                 - name: PGUSER
                   valueFrom:
                     secretKeyRef:
