@@ -70,8 +70,12 @@ jobs:
           body: |
             This PR updates the ${{ inputs.app_name }} version from ${{ env.current_tag }} to the latest release: ${{ env.latest_version }}.
 
-            - [${{ inputs.app_name }} Releases](https://github.com/${{ inputs.repo }}/releases/latest)
-            - [Preview App](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud)
+            - [${{ inputs.app_name }} releases](https://github.com/${{ inputs.repo }}/releases/latest)
+            
+            ## Preview App
+
+            - [Live demo](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud)
+            - [Config](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud/api/config)
             
           labels: |
             ${{ inputs.app_name }}
