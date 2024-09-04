@@ -58,7 +58,7 @@ spec:
                                 
                 echo restore done $(date)
                 
-                sleep infinity
+                #sleep infinity
           volumeMounts:
             - name: pg-dump-volume
               mountPath: /pg_dump
