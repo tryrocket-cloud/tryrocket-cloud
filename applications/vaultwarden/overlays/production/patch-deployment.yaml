@@ -5,15 +5,15 @@
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts
   value:
-    - name: vaultwarden-rwx-storage
-      mountPath: /data-rwx
+    - name: vaultwarden-data-volume
+      mountPath: /data
 
 - op: add
   path: /spec/template/spec/volumes
   value:
-    - name: vaultwarden-rwx-storage
+    - name: vaultwarden-data-volume
       persistentVolumeClaim:
-        claimName: vaultwarden-rwx-pvc
+        claimName: vaultwarden-data-pvc
 
 - op: add
   path: /spec/template/spec/containers/0/env/-
@@ -33,11 +33,11 @@
         key: password
         name: vaultwarden-postgres-secret
 
-- op: add
-  path: /spec/template/spec/containers/0/env/-
-  value:
-    name: DATABASE_URL
-    value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
+#- op: add
+#  path: /spec/template/spec/containers/0/env/-
+#  value:
+#    name: DATABASE_URL
+#    value: postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/vaultwarden
   
 - op: add
   path: /spec/template/spec/containers/0/envFrom/-

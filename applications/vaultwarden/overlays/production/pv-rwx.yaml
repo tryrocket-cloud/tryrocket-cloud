@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: vaultwarden-rwx-pv
+  name: vaultwarden-data-pv
 spec:
   capacity:
-    storage: 4Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: vaultwarden-rwx
+    volumeHandle: vaultwarden-data
