@@ -48,7 +48,7 @@ spec:
                 # Create the database before restoring into it. If --clean is also specified, drop and recreate the target database before connecting to it.
                 # When this option is used, the database named with -d is used only to issue the initial DROP DATABASE and CREATE DATABASE commands. All data is restored into the database name that appears in the archive.
 
-                pg_restore --clean --create --no-owner --exit-on-error --if-exists -U $POSTGRES_USER -d postgres /pg_dump/vaultwarden_*
+                pg_restore --clean --create --no-owner --exit-on-error --if-exists -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d postgres /pg_dump/vaultwarden_*
                                 
                 echo restore done $(date)
                 # sleep infinity
