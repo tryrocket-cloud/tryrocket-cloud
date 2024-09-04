@@ -6,7 +6,6 @@ resources:
 
   - postgres-superuser-external-secret.yaml
 
-  - postgres-external-secret.yaml
   - pvc.yaml
   - pv.yaml
 
