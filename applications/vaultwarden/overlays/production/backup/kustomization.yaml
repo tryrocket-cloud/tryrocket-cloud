@@ -9,13 +9,13 @@ resources:
   - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
   - ionos-cloud-objectstorage-eu-central-3-s3-restic-external-secret.yaml
 
-configMapGenerator:
-  - name: pgdump-config
-    literals:
-      - PGHOST=postgres.vaultwarden.svc.cluster.local
-      - PGPORT=5432
-      - PGDATABASE=vaultwarden
-      - PGTZ=Europe/Berlin
+#configMapGenerator:
+#  - name: pgdump-config
+#    literals:
+#      - PGHOST=postgres.vaultwarden.svc.cluster.local
+#      - PGPORT=5432
+#      - PGDATABASE=vaultwarden
+#      - PGTZ=Europe/Berlin
 
   - name: backup-sh-configmap
     files:

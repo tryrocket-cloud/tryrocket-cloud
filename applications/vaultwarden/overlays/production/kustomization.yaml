@@ -2,15 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - namespace.yaml
+
   - ./postgres
   - ./vaultwarden
   - ./backup
-
-  - namespace.yaml
-#  - postgres-external-secret.yaml
-#  - vaultwarden-external-secret.yaml
-#  - pvc-rwx.yaml
-#  - pv-rwx.yaml
 
 namespace: vaultwarden
 
@@ -18,20 +14,5 @@ configMapGenerator:
   - name: postgres-config
     literals:
       - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
-      - POSTGRES_DB=vaultwarden
       - POSTGRES_PORT=5432
-
-# https://github.com/dani-garcia/vaultwarden/releases
-#images:
-#  - name: vaultwarden/server:latest
-#    newTag: 1.32.0
-    
-#patches:
-#  - target:
-#      kind: Deployment
-#      name: vaultwarden
-#    path: patch-deployment.yaml
-
-
-# TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
-# TODO: refactor DATABASE_URL somehow to be env
+      - POSTGRES_DB=vaultwarden
