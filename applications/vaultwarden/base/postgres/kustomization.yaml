@@ -4,17 +4,3 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-
-configMapGenerator:
-  - name: postgres-config
-    literals:
-      - POSTGRES_HOST=
-      - POSTGRES_DB=vaultwarden
-      - POSTGRES_PORT=5432
-
-# TODO: remove this completely
-secretGenerator:
-  - name: postgres-secret
-    literals:
-      - POSTGRES_USER=vaultwarden
-      - POSTGRES_PASSWORD=vaultwarden

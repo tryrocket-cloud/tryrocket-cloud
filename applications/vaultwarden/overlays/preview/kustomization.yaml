@@ -13,6 +13,18 @@ configMapGenerator:
       - LOG_LEVEL=debug
     behavior: merge
 
+  - name: postgres-config
+    literals:
+      - POSTGRES_HOST=
+      - POSTGRES_DB=vaultwarden
+      - POSTGRES_PORT=5432
+
+secretGenerator:
+  - name: postgres-secret
+    literals:
+      - POSTGRES_USER=vaultwarden
+      - POSTGRES_PASSWORD=vaultwarden
+
 patches:
   - path: patch-postgres-deployment.yaml
   - path: patch-vaultwarden-deployment.yaml
