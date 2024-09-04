@@ -38,8 +38,6 @@ spec:
                 - |
                   pg_dump --clean --blob --if-exists -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
 
-                  ls -la /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
-
               volumeMounts:
                 - name: pg-dump-volume
                   mountPath: /pg_dump
