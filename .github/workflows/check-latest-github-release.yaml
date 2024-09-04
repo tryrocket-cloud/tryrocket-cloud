@@ -76,6 +76,10 @@ jobs:
 
             - [Live demo](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud)
             - [Config](https://${{ inputs.app_name }}-${{ env.latest_version_slug }}-preview.tryrocket.cloud/api/config)
+
+            ## Snapshots
+
+            - [Taken snapshots]()
             
           labels: |
             ${{ inputs.app_name }}
