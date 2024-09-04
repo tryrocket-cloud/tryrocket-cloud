@@ -30,4 +30,4 @@ patches:
   - target:
       kind: Deployment
       name: vaultwarden
-    path: patch-deployment.yaml
+    path: patch-deployment-1.yaml
