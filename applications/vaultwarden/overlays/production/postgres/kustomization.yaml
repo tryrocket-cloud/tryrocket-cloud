@@ -10,11 +10,11 @@ resources:
   - pvc.yaml
   - pv.yaml
 
-patches:
-  - path: patch-postgres-deployment.yaml
+#patches:
+#  - path: patch-postgres-deployment.yaml
 
-configMapGenerator:
-  - name: postgres-config
-    literals:
-      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
-    behavior: merge
+#configMapGenerator:
+#  - name: postgres-config
+#    literals:
+#      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
+#    behavior: merge
