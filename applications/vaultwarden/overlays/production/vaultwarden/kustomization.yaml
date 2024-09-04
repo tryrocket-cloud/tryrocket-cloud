@@ -28,6 +28,7 @@ configMapGenerator:
       - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
       - POSTGRES_DB=vaultwarden
       - POSTGRES_PORT=5432
+    behavior: merge
 
 patches:
   - target:
