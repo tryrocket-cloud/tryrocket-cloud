@@ -30,6 +30,11 @@ spec:
         - name: pg-retore
           image: postgres:16.3-alpine
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+            - secretRef:
+                name: postgres-secret
           command:
               - /bin/sh
               - -c
