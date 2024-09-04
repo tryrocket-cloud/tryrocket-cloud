@@ -1,26 +1,28 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
-  - ./backup
+  - ./postgres
+#  - ../../
+#  - ./backup
 
-  - namespace.yaml
-  - postgres-external-secret.yaml
-  - vaultwarden-external-secret.yaml
-  - pvc-rwx.yaml
-  - pv-rwx.yaml
+#  - namespace.yaml
+#  - postgres-external-secret.yaml
+#  - vaultwarden-external-secret.yaml
+#  - pvc-rwx.yaml
+#  - pv-rwx.yaml
+
 namespace: vaultwarden
 
 # https://github.com/dani-garcia/vaultwarden/releases
-images:
-  - name: vaultwarden/server:latest
-    newTag: 1.32.0
+#images:
+#  - name: vaultwarden/server:latest
+#    newTag: 1.32.0
     
-patches:
-  - target:
-      kind: Deployment
-      name: vaultwarden
-    path: patch-deployment.yaml
+#patches:
+#  - target:
+#      kind: Deployment
+#      name: vaultwarden
+#    path: patch-deployment.yaml
 
 
 # TODO: simplify DATABASE_USERNAME and DATABASE_PASSWORD by using just username and password form vaultwarden-postgres-secret
