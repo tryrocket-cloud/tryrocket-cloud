@@ -30,4 +30,4 @@ configMapGenerator:
       - POSTGRES_PORT=5432
 
 patches:
-  - path: patch-vaultwarden-deployment.yaml
+  - path: patch-deployment.yaml
