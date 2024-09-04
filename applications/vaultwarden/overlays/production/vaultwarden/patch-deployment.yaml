@@ -15,24 +15,6 @@
       persistentVolumeClaim:
         claimName: vaultwarden-data-pvc
 
-#- op: add
-#  path: /spec/template/spec/containers/0/env/-
-#  value:
-#    name: DATABASE_USERNAME
-#    valueFrom:
-#      secretKeyRef:
-#        key: POSTGRES_USER
-#        name: postgres-secret
-
-#- op: add
-#  path: /spec/template/spec/containers/0/env/-
-#  value:
-#    name: DATABASE_PASSWORD
-#    valueFrom:
-#      secretKeyRef:
-#        key: POSTGRES_PASSWORD
-#        name: postgres-secret
-
 - op: add
   path: /spec/template/spec/containers/0/env/-
   value:
