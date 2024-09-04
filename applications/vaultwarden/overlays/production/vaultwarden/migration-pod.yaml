@@ -14,9 +14,9 @@ spec:
           sleep infinity
     volumeMounts:
       - name: vaultwarden-new-volume
-        mountPath: /new-data
+        mountPath: /data-new
       - name: vaultwarden-old-volume
-        mountPath: /old-data
+        mountPath: /data-old
   volumes:
     - name: vaultwarden-new-volume
       persistentVolumeClaim:
