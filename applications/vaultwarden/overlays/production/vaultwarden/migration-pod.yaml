@@ -13,9 +13,14 @@ spec:
           apk update && apk add --no-cache fish git curl
           sleep infinity
     volumeMounts:
-      - name: vaultwarden-postgres-volume
-        mountPath: /pgdata
+      - name: vaultwarden-new-volume
+        mountPath: /new-data
+      - name: vaultwarden-old-volume
+        mountPath: /old-data
   volumes:
-    - name: vaultwarden-postgres-volume
+    - name: vaultwarden-new-volume
       persistentVolumeClaim:
-        claimName: vaultwarden-postgres-pvc
+        claimName: vaultwarden-data-pvc
+    - name: vaultwarden-old-volume
+      persistentVolumeClaim:
+        claimName: vaultwarden-rwx-pvc

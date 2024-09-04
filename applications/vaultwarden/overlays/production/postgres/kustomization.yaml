@@ -4,10 +4,8 @@ kind: Kustomization
 resources:
   - ../../../base/postgres
 
-  # postgres-secret for superuser creation
+  # provided postgres-secret for database superuser
   - postgres-superuser-external-secret.yaml
-
-  - migration-pod.yaml
 
   - pvc.yaml
   - pv.yaml

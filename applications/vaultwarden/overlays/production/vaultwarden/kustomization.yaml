@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+#  - ../../base/vaultwarden
+
+  - migration-pod.yaml
+
+  # provides postgres-secret
+#  - postgres-external-secret.yaml
+
+  # provides vaultwarden-secret
+#  - vaultwarden-external-secret.yaml
+
+  - pvc.yaml
+  - pv.yaml
+  - pvc-old.yaml
+  - pv-old.yaml
+
+#configMapGenerator:
+#  - name: vaultwarden-config
+#    literals:
+#      - LOG_LEVEL=off
+#    behavior: merge
+
+#  - name: postgres-config
+#    literals:
+#      - POSTGRES_HOST=
+#      - POSTGRES_DB=vaultwarden
+#      - POSTGRES_PORT=5432
+
+#patches:
+#  - path: patch-vaultwarden-deployment.yaml
