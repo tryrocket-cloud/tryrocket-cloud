@@ -22,4 +22,4 @@ configMapGenerator:
     behavior: merge
 
 patches:
-    path: patch-deployment.yaml
+  path: patch-deployment.yaml
