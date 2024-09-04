@@ -4,32 +4,30 @@ kind: Kustomization
 
 
 resources:
-#  - ../../base/vaultwarden
+  - ../../base/vaultwarden
 
-  - migration-pod.yaml
+#  - migration-pod.yaml
 
   # provides postgres-secret
-#  - postgres-external-secret.yaml
+  - postgres-external-secret.yaml
 
   # provides vaultwarden-secret
-#  - vaultwarden-external-secret.yaml
+  - vaultwarden-external-secret.yaml
 
   - pvc.yaml
   - pv.yaml
-  - pvc-old.yaml
-  - pv-old.yaml
 
-#configMapGenerator:
-#  - name: vaultwarden-config
-#    literals:
-#      - LOG_LEVEL=off
-#    behavior: merge
+configMapGenerator:
+  - name: vaultwarden-config
+    literals:
+      - LOG_LEVEL=off
+    behavior: merge
 
-#  - name: postgres-config
-#    literals:
-#      - POSTGRES_HOST=
-#      - POSTGRES_DB=vaultwarden
-#      - POSTGRES_PORT=5432
+  - name: postgres-config
+    literals:
+      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
+      - POSTGRES_DB=vaultwarden
+      - POSTGRES_PORT=5432
 
-#patches:
-#  - path: patch-vaultwarden-deployment.yaml
+patches:
+  - path: patch-vaultwarden-deployment.yaml
