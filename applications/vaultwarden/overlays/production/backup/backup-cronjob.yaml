@@ -46,9 +46,6 @@ spec:
                     secretKeyRef:
                       name: postgres-secret
                       key: POSTGRES_PASSWORD
-              envFrom:
-                - configMapRef:
-                    name: pgdump-config
               command:
                 - /bin/sh
                 - -c
