@@ -30,4 +30,4 @@ patches:
   - target:
       kind: Deployment
       name: vaultwarden
-    path: patch-deployment-1.yaml
+    path: patch-deployment-1.yaml # TODO:  check this and replace to strategic merge
