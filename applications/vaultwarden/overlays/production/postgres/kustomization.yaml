@@ -11,5 +11,5 @@ resources:
   - pv.yaml
 
 patches:
-  - path: patch-postgres-deployment.yaml
+  - path: patch-deployment.yaml
 
