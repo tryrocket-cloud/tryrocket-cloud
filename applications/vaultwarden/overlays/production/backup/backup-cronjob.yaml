@@ -59,7 +59,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-rwx-storage
+                - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: pg-dump-volume
@@ -84,7 +84,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-rwx-storage
+                - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: pg-dump-volume
@@ -110,7 +110,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-rwx-storage
+                - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: hetzner-storagebox-vaultwarden-ssh-privatekey
@@ -135,9 +135,9 @@ spec:
                 items:
                 - key: backup.sh
                   path: backup.sh
-            - name: vaultwarden-rwx-storage
+            - name: vaultwarden-data-volume
               persistentVolumeClaim:
-                claimName: vaultwarden-rwx-pvc
+                claimName: vaultwarden-data-pvc
             - name: hetzner-storagebox-vaultwarden-ssh-privatekey
               secret:
                 secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
