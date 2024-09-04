@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../../base/postgres
-
+  - migration-pod.yaml
   - postgres-superuser-external-secret.yaml
 
   - pvc.yaml

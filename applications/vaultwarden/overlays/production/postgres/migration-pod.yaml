@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: migration-pod
+spec:
+  containers:
+  - name: migration-pod
+    image: alpine
+    command:
+        - /bin/sh
+        - -c
+        - |
+          apk update && apk add --no-cache fish git curl
+          sleep infinity
+    volumeMounts:
+      - name: vaultwarden-postgres-volume
+        mountPath: /pgdata
+  volumes:
+    - name: vaultwarden-postgres-volume
+      persistentVolumeClaim:
+        claimName: vaultwarden-postgres-pvc
