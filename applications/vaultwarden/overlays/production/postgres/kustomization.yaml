@@ -9,7 +9,7 @@ resources:
   - pv.yaml
 
 patches:
-  - path: patch-deployment.yaml
+  - path: patch-postgres-deployment.yaml
 
 configMapGenerator:
   - name: postgres-config
