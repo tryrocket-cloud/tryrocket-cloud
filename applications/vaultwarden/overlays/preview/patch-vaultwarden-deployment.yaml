@@ -30,41 +30,11 @@ spec:
         - name: pg-retore
           image: postgres:16.3-alpine
           imagePullPolicy: IfNotPresent
-          env:
-            - name: TZ
-              value: Europe/Berlin
-            - name: PGTZ
-              value: Europe/Berlin
-            - name: PGHOST
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_HOST
-            - name: PGPORT
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_PORT
-            - name: PGDATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_DB
-            - name: PGUSER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_USER
-            - name: PGPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
           command:
               - /bin/sh
               - -c
               - |
-                until pg_isready; do
+                until pg_isready -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB; do
                   echo "Waiting for PostgreSQL to be ready..."
                   sleep 2  # Wait for 2 seconds before checking again
                 done
@@ -73,7 +43,7 @@ spec:
                 # Create the database before restoring into it. If --clean is also specified, drop and recreate the target database before connecting to it.
                 # When this option is used, the database named with -d is used only to issue the initial DROP DATABASE and CREATE DATABASE commands. All data is restored into the database name that appears in the archive.
 
-                pg_restore --clean --create --no-owner --exit-on-error --if-exists -U $PGUSER -d postgres /pg_dump/vaultwarden_*
+                pg_restore --clean --create --no-owner --exit-on-error --if-exists -U $POSTGRES_USER -d postgres /pg_dump/vaultwarden_*
                                 
                 echo restore done $(date)
                 # sleep infinity

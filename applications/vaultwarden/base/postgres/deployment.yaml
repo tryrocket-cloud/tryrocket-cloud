@@ -29,10 +29,10 @@ spec:
               value: Europe/Berlin
 
           envFrom:
-            - secretRef:
-                name: postgres-secret
             - configMapRef:
                 name: postgres-config
+            - secretRef:
+                name: postgres-secret
 
           livenessProbe:
             exec:
@@ -55,4 +55,7 @@ spec:
 
           volumeMounts:
             - name: postgres-volume
-              mountPath: /var/lib/postgresql/data 
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-volume
+          emptyDir: {}

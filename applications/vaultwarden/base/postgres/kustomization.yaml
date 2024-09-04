@@ -11,3 +11,9 @@ configMapGenerator:
       - POSTGRES_HOST=
       - POSTGRES_DB=vaultwarden
       - POSTGRES_PORT=5432
+
+secretGenerator:
+  - name: postgres-secret
+    literals:
+      - POSTGRES_USER=vaultwarden
+      - POSTGRES_PASSWORD=vaultwarden
