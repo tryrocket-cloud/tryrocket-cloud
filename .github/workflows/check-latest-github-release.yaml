@@ -33,7 +33,7 @@ jobs:
         run: |
           latest_version=$(curl --silent "https://api.github.com/repos/${{ inputs.repo }}/releases/latest" | jq -r .tag_name)
           echo "latest_version=${latest_version}" >> $GITHUB_ENV
-          echo "latest_version_slug=${latest_version //./-}" >> $GITHUB_ENV
+          echo "latest_version_slug=slug=$(echo "${latest_version}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')" >> $GITHUB_ENV
           echo "Latest release is ${latest_version}"
 
       - name: Get Current Version
