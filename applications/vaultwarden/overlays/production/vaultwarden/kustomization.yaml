@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+
+
 resources:
   - ../../../base/vaultwarden
 
@@ -21,5 +23,11 @@ configMapGenerator:
       - LOG_LEVEL=off
     behavior: merge
 
+#patches:
+#  - path: patch-deployment.yaml
+
 patches:
-  - path: patch-deployment.yaml
+  - target:
+      kind: Deployment
+      name: vaultwarden
+    path: patch-deployment.yaml
