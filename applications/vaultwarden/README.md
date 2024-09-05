@@ -29,7 +29,7 @@
 - create a superuser password in vault for postgres database
 - create <vault user> and <app user> in the database
 - create Vault database connection and static role
- 
+
 
 - create database user
 - create a new database with this new user and matching the creds in deployment

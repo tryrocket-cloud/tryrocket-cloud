@@ -1,0 +1,14 @@
+name: Test Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: zero2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - run: Hello World
