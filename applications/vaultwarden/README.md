@@ -69,9 +69,21 @@ sequenceDiagram
     end
 ```
 
-## Backup
+## Snapshots & Backup 
 
 [General information about backups](https://github.com/tryrocket-cloud/tryrocket-cloud/wiki/Backup)
+
+- Longhorn Volume Snapshots: 0 0,12 * * *
+- Longhorn Volume Backup: 0 3 * * 0
+- Raw Data: 0 3 * * *
+
+| **Task**                    | **Cron Schedule**    | **Description**                                         |
+|-----------------------------|----------------------|---------------------------------------------------------|
+| Longhorn Volume Snapshots| `0 0,12 * * *`       | Runs at 00:00 and 12:00 every day                       |
+| Longhorn Volume Backup   | `0 3 * * 0`          | Runs at 03:00 every Sunday                              |
+| Raw Data Backup          | `0 3 * * *`          | Runs at 03:00 every day                                 |
+
+
 
 ### Configuration:
 
