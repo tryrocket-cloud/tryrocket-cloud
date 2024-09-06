@@ -56,11 +56,9 @@ sequenceDiagram
 
 - Longhorn Volumes Backups 
   
-      `0 3 * * 0`
+      `15 0 * * 0`
 
 - Raw data
-
-      `0 3 * * *`
 
     [CronJob]((./overlays/production/backup/backup-cronjob.yaml))
 
