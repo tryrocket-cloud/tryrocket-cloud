@@ -24,8 +24,11 @@ configMapGenerator:
 #patches:
 #  - path: patch-deployment.yaml
 
-patches:
-  - target:
-      kind: Deployment
-      name: vaultwarden
-    path: patch-deployment.yaml # TODO:  check this and replace to strategic merge
+#patches:
+#  - target:
+#      kind: Deployment
+#      name: vaultwarden
+#    path: patch-deployment.yaml # TODO:  check this and replace to strategic merge
+
+patchesStrategicMerge:
+  - patch-deployment.yaml
