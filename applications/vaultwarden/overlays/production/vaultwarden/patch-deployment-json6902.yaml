@@ -1,19 +1,19 @@
-- op: add
-  path: /metadata/annotations/secret.reloader.stakater.com~1reload
-  value: "vaultwarden-postgres-secret"
+#- op: add
+#  path: /metadata/annotations/secret.reloader.stakater.com~1reload
+#  value: "vaultwarden-postgres-secret"
 
-- op: add
-  path: /spec/template/spec/containers/0/volumeMounts
-  value:
-    - name: vaultwarden-data-volume
-      mountPath: /data
+#- op: add
+#  path: /spec/template/spec/containers/0/volumeMounts
+#  value:
+#    - name: vaultwarden-data-volume
+#      mountPath: /data
 
-- op: add
-  path: /spec/template/spec/volumes
-  value:
-    - name: vaultwarden-data-volume
-      persistentVolumeClaim:
-        claimName: vaultwarden-data-pvc
+#- op: add
+#  path: /spec/template/spec/volumes
+#  value:
+#    - name: vaultwarden-data-volume
+#      persistentVolumeClaim:
+#        claimName: vaultwarden-data-pvc
 
 - op: add
   path: /spec/template/spec/containers/0/env/-
