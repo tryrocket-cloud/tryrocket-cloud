@@ -1,18 +1,10 @@
 # vaultwarden
 
-## Prerequisites
+## TODO
 
-### Production
+- add longhorn-volumes as k8s manifests
+- add longhorn recurring tasks for snapshot an backup
 
-- create longhorn volume for postgres
-- create longhorn volume for vaultwarden
-- create a superuser password in vault for postgres database
-- create <vault user> and <app user> in the database
-- create Vault database connection and static role
-
-
-- create database user
-- create a new database with this new user and matching the creds in deployment
 
 ## Install
 
