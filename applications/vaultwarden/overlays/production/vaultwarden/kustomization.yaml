@@ -21,9 +21,6 @@ configMapGenerator:
       - LOG_LEVEL=off
     behavior: merge
 
-#patches:
-#  - path: patch-deployment.yaml
-
 patches:
   - target:
       kind: Deployment
