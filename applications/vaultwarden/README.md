@@ -73,21 +73,25 @@ sequenceDiagram
 
 [General information about backups](https://github.com/tryrocket-cloud/tryrocket-cloud/wiki/Backup)
 
-- Longhorn Volume Snapshots: 0 0,12 * * *
-- Longhorn Volume Backup: 0 3 * * 0
-- Raw Data: 0 3 * * *
+  - [Vaultwarden Data Volume](../../infrastructure/longhorn/test-volume.yaml) 
+  - [Postgres Data Volume](../../infrastructure/longhorn/test-volume.yaml)
 
-| **Task**                    | **Cron Schedule**    | **Description**                                         |
-|-----------------------------|----------------------|---------------------------------------------------------|
-| Longhorn Volume Snapshots| `0 0,12 * * *`       | Runs at 00:00 and 12:00 every day                       |
-| Longhorn Volume Backup   | `0 3 * * 0`          | Runs at 03:00 every Sunday                              |
-| Raw Data Backup          | `0 3 * * *`          | Runs at 03:00 every day                                 |
+  [#74](https://github.com/tryrocket-cloud/tryrocket-cloud/issues/74)
 
+- Longhorn Volumes Snapshots
 
+       `0 0,12 * * *`
 
-### Configuration:
+- Longhorn Volumes Backups 
+  
+      `0 3 * * 0`
 
-- [CronJob](./overlays/production/backup/backup-cronjob.yaml)
+- Raw data
+
+      `0 3 * * *`
+
+    [CronJob]((./overlays/production/backup/backup-cronjob.yaml))
+
 
 ## Vaultwarden in HA mode (currently not possible)
 

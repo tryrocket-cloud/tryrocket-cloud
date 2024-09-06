@@ -1,0 +1,15 @@
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: 2x-daily-00-12
+  namespace: longhorn-system
+spec:
+  concurrency: 2
+  cron: 0 0,12 * * *
+  groups:
+    - default
+  labels:
+    - daily
+  name: 2x-daily-00-12
+  retain: 15
+  task: snapshot
