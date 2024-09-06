@@ -28,7 +28,9 @@ patches:
   - target:
       kind: Deployment
       name: vaultwarden
-    path: patch-deployment-json6902.yaml
+    path: 
+      - patch-deployment-json6902.yaml
+      - patch-deployment.yaml
 
-patchesStrategicMerge:
-  - patch-deployment.yaml
+#patchesStrategicMerge:
+#  - patch-deployment.yaml
