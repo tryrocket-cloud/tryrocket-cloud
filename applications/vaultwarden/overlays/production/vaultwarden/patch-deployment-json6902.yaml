@@ -15,11 +15,11 @@
 #      persistentVolumeClaim:
 #        claimName: vaultwarden-data-pvc
 
-- op: add
-  path: /spec/template/spec/containers/0/env/-
-  value:
-    name: DATABASE_URL
-    value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres.vaultwarden.svc.cluster.local:5432/vaultwarden
+#- op: add
+#  path: /spec/template/spec/containers/0/env/-
+#  value:
+#    name: DATABASE_URL
+#    value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres.vaultwarden.svc.cluster.local:5432/vaultwarden
   
 - op: add
   path: /spec/template/spec/containers/0/envFrom/-
