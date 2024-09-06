@@ -1,25 +1,5 @@
 # vaultwarden
 
-## Datasheet
-
-- replica 
-- where is the backup
-- how many backups
-- where is the doc how to restore
-
-
-## todo
-
-- install github runner
-- run action to stop vw
-- run action to snapshot volumes
-  - vaultwarden
-  - postgres
-- run action to backup volumes
-- run action to backup data
-- run action to sync vw app
-
-
 ## Prerequisites
 
 ### Production
