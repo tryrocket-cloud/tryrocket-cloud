@@ -159,6 +159,8 @@ spec:
                   - |
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
+                    cat /root/.ssh/known_hosts
+
                     sh backup.sh -u $HC_HETZNER_UUID
               volumeMounts:
                 - name: backup-sh-volume
