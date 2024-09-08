@@ -159,9 +159,7 @@ spec:
                   - |
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    cat /root/.ssh/id_ed25519
-
-                    sh backup.sh -u $HC_HETZNER_UUID
+                    sh backup.sh -u $HC_TRUENAS_UUID
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
