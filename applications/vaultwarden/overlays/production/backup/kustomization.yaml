@@ -8,6 +8,8 @@ resources:
   - hetzner-storagebox-bx11-fsn1-sftp-restic-external-secret.yaml
   - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
   - ionos-cloud-objectstorage-eu-central-3-s3-restic-external-secret.yaml
+  
+  - tryrocketcloud-truenas-h610i-sftp-restic-external-secret.yaml
 
 configMapGenerator:
   - name: backup-sh-configmap
