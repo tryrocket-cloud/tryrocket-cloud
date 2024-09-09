@@ -57,11 +57,6 @@ spec:
                   - -c
                   - |
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    
-                    cat /shared/vaultwarden.env
-                    #env
-
-
                     sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
 
               volumeMounts:
@@ -87,7 +82,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sh backup.sh -u $HC_IONOS_3_UUID
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    sh backup.sh -u $HC_IONOS_3_UUID -v $VAULTWARDEN_VERSION
 
               volumeMounts:
                 - name: backup-sh-volume
@@ -95,6 +91,9 @@ spec:
                   subPath: backup.sh
                 - name: vaultwarden-data-volume
                   mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-version-volume
+                  mountPath: /shared
                   readOnly: true
 
             - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
@@ -109,9 +108,10 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sh backup.sh -u $HC_HETZNER_UUID
+                    sh backup.sh -u $HC_HETZNER_UUID -v $VAULTWARDEN_VERSION
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -131,6 +131,9 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
+                - name: vaultwarden-version-volume
+                  mountPath: /shared
+                  readOnly: true
 
             - name: tryrocketcloud-truenas-h610i-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
@@ -146,7 +149,8 @@ spec:
                   - |
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sh backup.sh -u $HC_TRUENAS_UUID
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    sh backup.sh -u $HC_TRUENAS_UUID -v $VAULTWARDEN_VERSION
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -166,7 +170,10 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
-
+                - name: vaultwarden-version-volume
+                  mountPath: /shared
+                  readOnly: true
+                  
           volumes:
 
             - name: backup-sh-volume
