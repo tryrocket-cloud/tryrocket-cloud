@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infisical-deployment
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: infisical
+  template:
+    metadata:
+      labels:
+        app: infisical
+    spec:
+      containers:
+      - name: infisical
+        image: infisical/infisical:latest  # Replace with the latest image version
+        ports:
+        - containerPort: 3000  # Adjust port based on Infisical's listening port
+        env:
+        - name: ENCRYPTION_KEY
+          value: f40c9178624764ad85a6830b37ce239a
+        - name: AUTH_SECRET
+          value: q6LRi7c717a3DQ8JUxlWYkZpMhG4+RHLoFUVt3Bvo2U=
+        - name: DB_CONNECTION_URI
+          value: "postgres://user:password@postgresql-service:5432/infisical" # Example PostgreSQL connection string
+        - name: REDIS_URL
+          value: 
+        - name: SITE_URL
+          value "h"ttps://infisical.tryrocket.cloud"
+        - name: TELEMETRY_ENABLED
+          value: false
+        volumeMounts:
+        - name: infisical-data
+          mountPath: /data
+      volumes:
+      - name: infisical-data
+        emptyDir: {}  # You can also use Persistent Volume (e.g., PVC) here
