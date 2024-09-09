@@ -15,6 +15,7 @@ spec:
             - /bin/sh
             - -c
             - |
+              sleep infinity
               kubectl scale deployment vaultwarden --replicas=0 -n vaultwarden
 
           restartPolicy: OnFailure
