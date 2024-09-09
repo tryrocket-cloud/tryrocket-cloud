@@ -9,11 +9,6 @@ spec:
     repoURL: https://helm.releases.hashicorp.com
     chart: vault
     targetRevision: 0.28.1
-    helm:
-      values: |
-        server:
-          extraArgs:
-            - "-log-level=debug"
   destination:
     server: https://192.168.178.101:6443
     namespace: vault-helm
