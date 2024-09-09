@@ -11,7 +11,7 @@ images:
     newTag: edge
 
 configMapGenerator:
-  - name: vaultwarden-config
+  - name: davis-config
     literals:
       - DATABASE_DRIVER=sqlite
       - DATABASE_URL=sqlite:////data/davis-database.db
