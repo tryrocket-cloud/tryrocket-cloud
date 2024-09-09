@@ -4,9 +4,9 @@ metadata:
   name: deployment-manager
   namespace: vaultwarden
 rules:
-#- apiGroups: ["apps"]
-#  resources: ["deployments"]
-#  verbs: ["get", "list", "patch", "update"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get"] #, "list", "patch", "update"]
 - apiGroups: ["apps"]
   resources: ["deployments/scale"]
   verbs: ["patch", "update"]
