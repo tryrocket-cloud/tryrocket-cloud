@@ -51,6 +51,8 @@ spec:
                 - secretRef:
                     name: ionos-cloud-objectstorage-eu-central-1-s3-restic-secret
                 - secretRef:
+                    name: ionos-cloud-secret
+                - secretRef:
                     name: healthchecks-secret
               command:
                   - /bin/sh
@@ -76,6 +78,8 @@ spec:
               envFrom:
                 - secretRef:
                     name: ionos-cloud-objectstorage-eu-central-3-s3-restic-secret
+                - secretRef:
+                    name: ionos-cloud-secret
                 - secretRef:
                     name: healthchecks-secret
               command:
