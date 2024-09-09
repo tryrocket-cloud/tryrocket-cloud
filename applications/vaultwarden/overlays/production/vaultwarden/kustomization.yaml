@@ -4,9 +4,6 @@ kind: Kustomization
 resources:
   - ../../../base/vaultwarden
 
-  # provides postgres-secret
-  #- postgres-external-secret.yaml
-
   # provides vaultwarden-secret
   - vaultwarden-external-secret.yaml
 

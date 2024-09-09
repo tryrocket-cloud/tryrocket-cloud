@@ -4,15 +4,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-#  - ./postgres
   - ./vaultwarden
   - ./backup
 
 namespace: vaultwarden
-
-#configMapGenerator:
-#  - name: postgres-config
-#    literals:
-#      - POSTGRES_HOST=postgres.vaultwarden.svc.cluster.local
-#      - POSTGRES_PORT=5432
-#      - POSTGRES_DB=vaultwarden
