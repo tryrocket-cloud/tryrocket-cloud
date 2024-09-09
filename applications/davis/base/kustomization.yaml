@@ -14,7 +14,7 @@ configMapGenerator:
   - name: davis-config
     literals:
       - DATABASE_DRIVER=sqlite
-      - DATABASE_URL=sqlite:////data/davis-database.db
+      - DATABASE_URL=sqlite://data/davis-database.db
       - CALDAV_ENABLED=true
       - CARDDAV_ENABLED=true
       - WEBDAV_ENABLED=false
