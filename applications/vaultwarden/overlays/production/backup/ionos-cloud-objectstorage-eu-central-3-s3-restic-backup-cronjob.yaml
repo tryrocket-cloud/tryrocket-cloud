@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ionos-cloud-eu-central-3-s3-backup
+spec:
+  suspend: false
+  schedule: "30 0 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+
+          containers:
+            - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-cloud-objectstorage-eu-central-3-s3-restic-secret
+                - secretRef:
+                    name: healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    sh backup.sh -u $HC_IONOS_3_UUID
+
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vaultwarden-data-volume
+                  mountPath: /data
+                  readOnly: true
+
+          volumes:
+            - name: backup-sh-volume
+              configMap:
+                name: backup-sh-configmap
+                items:
+                - key: backup.sh
+                  path: backup.sh
+            - name: vaultwarden-data-volume
+              persistentVolumeClaim:
+                claimName: vaultwarden-data-pvc
+                
