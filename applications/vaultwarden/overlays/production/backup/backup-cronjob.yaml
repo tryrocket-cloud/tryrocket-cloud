@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hetzner-bx11-fsn1-sftp-backup
+  name: backup
 spec:
   suspend: false
   schedule: "30 0 * * *"
