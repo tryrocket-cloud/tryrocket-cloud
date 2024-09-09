@@ -1,0 +1,1 @@
+kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vault-helm/application.yaml -n argocd
