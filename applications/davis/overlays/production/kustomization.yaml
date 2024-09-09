@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
 
   - ../../base
+  - ./backup
 
   - pv.yaml
   - pvc.yaml
