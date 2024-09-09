@@ -19,8 +19,9 @@ spec:
               - -c
               - |
                 echo "Disable ArgoCD sync..."
-                #argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJleHAiOjE3MjQzMzU2NzYsIm5iZiI6MTcyMzQ3MTY3NiwiaWF0IjoxNzIzNDcxNjc2LCJqdGkiOiJ0ZXN0In0.aNNlFEcvL84fPUv-wvkw6DCet1BmlYTormJqKVlCfTM
-                argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure
+
+                argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token $ARGOCD_TOKEN
+                
                 echo "ArgoCD sync disabled!"
 
           containers:
