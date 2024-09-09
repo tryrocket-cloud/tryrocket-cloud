@@ -165,9 +165,9 @@ spec:
                 - key: backup.sh
                   path: backup.sh
 
-            - name: vaultwarden-data-volume
+            - name: davis-data-volume
               persistentVolumeClaim:
-                claimName: vaultwarden-data-pvc
+                claimName: davis-data-pvc
 
             - name: hetzner-storagebox-vaultwarden-ssh-privatekey
               secret:
