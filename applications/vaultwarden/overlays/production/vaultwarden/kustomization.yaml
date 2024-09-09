@@ -11,6 +11,7 @@ resources:
   - pv.yaml
 
   - stop-deployment-cronjob.yaml
+  
   - vaultwarden-role.yaml
   - vaultwarden-rolebinding.yaml
 
