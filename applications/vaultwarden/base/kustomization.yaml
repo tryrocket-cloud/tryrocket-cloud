@@ -21,4 +21,3 @@ configMapGenerator:
       - EXTENDED_LOGGING=true
       - ADMIN_TOKEN=vaultwarden
       - DOMAIN=https://vaultwarden.tryrocket.cloud
-#      - DATABASE_URL=postgresql://vaultwarden:vaultwarden@plocalhost:5432/vaultwarden

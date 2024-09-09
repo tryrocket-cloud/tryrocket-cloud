@@ -29,6 +29,7 @@ spec:
           volumeMounts:
             - name: vaultwarden-volume
               mountPath: /data
+              
       volumes:
         - name: vaultwarden-volume
           emptyDir: {}
