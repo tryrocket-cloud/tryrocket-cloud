@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: vaultwarden-deployment-binding
+  name: deployment-scaler-binding
   namespace: vaultwarden
 subjects:
 - kind: ServiceAccount
@@ -9,5 +9,5 @@ subjects:
   namespace: vaultwarden
 roleRef:
   kind: Role
-  name: vaultwarden-deployment-role
+  name: deployment-scaler-role
   apiGroup: rbac.authorization.k8s.io
