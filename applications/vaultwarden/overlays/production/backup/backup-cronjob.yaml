@@ -58,7 +58,9 @@ spec:
                   - |
                     export VAULTWARDEN_VERSION=$(/shared/vaultwarden.env)
                     
-                    env
+                    cat /shared/vaultwarden.env
+                    #env
+
 
                     sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
 
@@ -71,6 +73,7 @@ spec:
                   readOnly: true
                 - name: vaultwarden-version-volume
                   mountPath: /shared
+                  readOnly: true
 
             - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
