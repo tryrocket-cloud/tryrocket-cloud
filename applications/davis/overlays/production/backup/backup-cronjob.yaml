@@ -137,7 +137,6 @@ spec:
                   - |
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sleep infinity
                     sh backup.sh -u $HC_TRUENAS_UUID -v $DAVIS_VERSION
               volumeMounts:
                 - name: backup-sh-volume
