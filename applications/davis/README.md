@@ -1,5 +1,12 @@
 # davis
 
+## First Run
+
+> [!IMPORTANT]
+> 
+> ⚠ Do not forget to run all the database migrations the first time you run the container :
+>
+>     docker exec -it davis sh -c "APP_ENV=prod bin/console doctrine:migrations:migrate --no-interaction"
 
 ## TODO
 
