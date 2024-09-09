@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - backup-cronjob.yaml
-#  - hetzner-storagebox-bx11-fsn1-sftp-restic-backup-cronjob.yaml
-#  - ionos-cloud-objectstorage-eu-central-1-s3-restic-backup-cronjob.yaml
-#  - ionos-cloud-objectstorage-eu-central-3-s3-restic-backup-cronjob.yaml
-#  - tryrocketcloud-truenas-h610i-sftp-restic-backup-cronjob.yaml
+
+  - backup-role.yaml
+  - backup-rolebinding.yaml
+
 
   - healthchecks-external-secret.yaml
 
