@@ -13,7 +13,7 @@ spec:
               image: argoproj/argocd:latest
               envFrom:
                 - secretRef:
-                  name: argocd-secret
+                    name: argocd-secret
               command:
               - /bin/sh
               - -c
