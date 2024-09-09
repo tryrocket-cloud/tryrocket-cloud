@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: davis
-  annotations:
-    secret.reloader.stakater.com/reload: "davis-postgres-secret"
 spec:
-  replicas: 1
+  replicas: 0
   revisionHistoryLimit: 3
   strategy:
     type: Recreate
@@ -19,7 +17,7 @@ spec:
     spec:
       containers:
         - name: davis
-          image: ghcr.io/tchapi/davis-standalone:edge
+          image: ghcr.io/tchapi/davis:edge
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000

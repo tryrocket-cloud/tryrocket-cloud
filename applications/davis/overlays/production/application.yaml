@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: davis
+  namespace: argocd
+  labels:
+    environment: production
+spec:
+  project: default
+  
+  source:
+    repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
+    targetRevision: main
+    path: applications/davis/overlays/production
+
+  destination:
+    server: 'https://192.168.178.101:6443'
+    namespace: davis
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

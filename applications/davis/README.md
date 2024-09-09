@@ -1,5 +1,21 @@
 # davis
 
+
+## TODO
+
+- add longhorn-volumes as k8s manifests
+- add longhorn recurring tasks for snapshot an backup
+
+
+## Install
+
+    # Argo CD Application
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/davis/overlays/production/application.yaml -n argocd
+
+    # Argo CD Preview Application
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/davis/overlays/preview/application-set.yaml -n argocd
+
+
 ## Install
 
 Install davis as an Argo CD application

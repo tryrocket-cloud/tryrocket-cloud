@@ -1,8 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
+  - namespace.yaml
+
   - ../../base
-  - postgres-external-secret.yaml
+
+  - pv.yaml
+  - pvc.yaml
+
+  # provide davis-secret
+  #   - ADMIN_LOGIN=
+  #   - ADMIN_PASSWORD=
   - davis-external-secret.yaml
 
 namespace: davis
@@ -13,7 +22,18 @@ images:
   - name: ghcr.io/tchapi/davis-standalone:edge
     newTag: 4.4.4
 
+#https://github.com/tchapi/davis/blob/main/docker/.env
 configMapGenerator:
   - name: davis-config
-    envs:
-      - davis.env
+    literals:
+      - AUTH_REALM=SabreDAV
+      - AUTH_METHOD=Basic
+    behavior: merge
+
+#      - MAILER_DSN=smtp://${MAIL_USERNAME}:${MAIL_PASSWORD}@${MAIL_HOST}:${MAIL_PORT}
+#      - INVITE_FROM_ADDRESS=${INVITE_FROM_ADDRESS}
+#      - INVITE_FROM_ADDRESS=${INVITE_FROM_ADDRESS}
+#      - MAIL_HOST=smtp.myprovider.com
+#      - MAIL_PORT=587
+#      - MAIL_USERNAME=userdav
+#      - MAIL_PASSWORD=test

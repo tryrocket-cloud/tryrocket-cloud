@@ -5,6 +5,21 @@ resources:
   - service.yaml
   - ingress.yaml
   - middleware.yaml
-  - namespace.yaml
-  - pvc.yaml
-  - pv.yaml
+
+images:
+  - name: ghcr.io/tchapi/davis:edge
+    newTag: edge
+
+configMapGenerator:
+  - name: vaultwarden-config
+    literals:
+      - DATABASE_DRIVER=sqlite
+      - DATABASE_URL=sqlite:////data/davis-database.db
+      - CALDAV_ENABLED=true
+      - CARDDAV_ENABLED=true
+      - WEBDAV_ENABLED=false
+      - WEBDAV_TMP_DIR=/tmp
+      - WEBDAV_PUBLIC_DIR=/webdav
+      - WEBDAV_HOMES_DIR=/webdav-homes
+      - APP_TIMEZONE=Europe/Berlin
+      - APP_ENV=prod
