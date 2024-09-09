@@ -16,7 +16,7 @@ resources:
 configMapGenerator:
   - name: vaultwarden-config
     literals:
-      - LOG_LEVEL=off
+      - LOG_LEVEL=debug
     behavior: merge
 
 patches:
