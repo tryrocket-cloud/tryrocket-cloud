@@ -48,7 +48,6 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sleep infinity
                     sh backup.sh -u $HC_IONOS_1_UUID -v $DAVIS_VERSION
 
               volumeMounts:
@@ -75,7 +74,6 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sleep infinity
                     sh backup.sh -u $HC_IONOS_3_UUID -v $DAVIS_VERSION
 
               volumeMounts:
