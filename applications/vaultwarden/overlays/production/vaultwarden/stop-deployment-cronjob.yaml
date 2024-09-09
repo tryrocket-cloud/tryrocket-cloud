@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: deployment-trigger-job
+spec:
+  schedule: "0 0 * * *"  # Run daily at 01:00 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: deployment-trigger
+            image: bitnami/kubectl:latest  # You can use any image with kubectl installed
+            command:
+            - /bin/sh
+            - -c
+            - |
+              echo "
+              kind: Deployment
+              metadata:
+                name: vaultwarden
+              spec:
+                replicas: 0
+              " | kubectl apply -f -
+          restartPolicy: OnFailure

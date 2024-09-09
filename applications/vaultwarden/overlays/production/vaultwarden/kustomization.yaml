@@ -10,6 +10,8 @@ resources:
   - pvc.yaml
   - pv.yaml
 
+  - stop-deployment-cronjob.yaml
+
 configMapGenerator:
   - name: vaultwarden-config
     literals:
