@@ -8,9 +8,9 @@ HC_URL=""
 
 # Function to print usage
 usage() {
-  echo "Usage: $0 -u <healthcheck-uuid> [-v <vaultwarden-version>] [-h <hostname>] [-r <restic-version>]"
+  echo "Usage: $0 -u <healthcheck-uuid> -v <vaultwarden-version> [-h <hostname>] [-r <restic-version>]"
   echo "  -u  Healthcheck UUID (required)"
-  echo "  -v  Vaultwarden version (default: detected Vaultwarden version)"
+  echo "  -v  Vaultwarden version"
   echo "  -h  Hostname for restic backup (default: tryrocket.cloud)"
   echo "  -r  Restic version (default: detected restic version)"
   exit 1

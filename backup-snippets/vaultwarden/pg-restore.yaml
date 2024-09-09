@@ -1,0 +1,36 @@
+        - name: pg-retore
+          image: postgres:16.3-alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+            - secretRef:
+                name: postgres-secret
+          command:
+              - /bin/sh
+              - -c
+              - |
+                until pg_isready -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB; do
+                  echo "Waiting for PostgreSQL to be ready..."
+                  sleep 2  # Wait for 2 seconds before checking again
+                done
+
+                # https://www.postgresql.org/docs/10/app-pgrestore.html
+                # Create the database before restoring into it. If --clean is also specified, drop and recreate the target database before connecting to it.
+                # When this option is used, the database named with -d is used only to issue the initial DROP DATABASE and CREATE DATABASE commands. All data is restored into the database name that appears in the archive.
+
+                pg_restore --clean --create --no-owner --exit-on-error --if-exists -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d postgres /pg_dump/vaultwarden_*
+                                
+                echo restore done $(date)
+                
+                #sleep infinity
+          volumeMounts:
+            - name: pg-dump-volume
+              mountPath: /pg_dump
+              readOnly: true
