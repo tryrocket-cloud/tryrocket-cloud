@@ -100,8 +100,7 @@ spec:
                   - |
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sleep infinity
-                    #sh backup.sh -u $HC_HETZNER_UUID -v $DAVIS_VERSION
+                    sh backup.sh -u $HC_HETZNER_UUID -v $DAVIS_VERSION
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
