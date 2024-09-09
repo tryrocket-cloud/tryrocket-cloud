@@ -13,6 +13,48 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          
+          initContainers:
+            - name: pg-dump
+              image: postgres:16
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: PGTZ
+                  value: Europe/Berlin
+                - name: PGHOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_HOST
+                - name: PGPORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_PORT
+                - name: PGDATABASE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: POSTGRES_DB
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-secret
+                      key: POSTGRES_USER
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-secret
+                      key: POSTGRES_PASSWORD
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  pg_dump --clean --blob --if-exists -F d -Z 9 -f /pg_dump/vaultwarden_$(date +'%d-%m-%Y')
+
+              volumeMounts:
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
 
           containers:
             - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
@@ -36,6 +78,9 @@ spec:
                 - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
 
             - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
@@ -57,6 +102,9 @@ spec:
                   subPath: backup.sh
                 - name: vaultwarden-data-volume
                   mountPath: /data
+                  readOnly: true
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
                   readOnly: true
 
             - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
@@ -93,6 +141,9 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
 
             - name: tryrocketcloud-truenas-h610i-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
@@ -128,6 +179,9 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
+                - name: pg-dump-volume
+                  mountPath: /pg_dump
+                  readOnly: true
 
           volumes:
             - name: backup-sh-volume
@@ -183,3 +237,6 @@ spec:
                   - key: ssh-hosts
                     path: hosts
                 defaultMode: 384
+
+            - name: pg-dump-volume
+              emptyDir: {}
