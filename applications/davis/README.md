@@ -45,6 +45,7 @@ Install davis as an Argo CD application
 ## Update
 
 - https://github.com/tchapi/davis?tab=readme-ov-file#updating-from-a-previous-version (db migration)
+- change davis version for restic backup/kustomization.yaml
 
 ## Links
 
