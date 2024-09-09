@@ -56,7 +56,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    export VAULTWARDEN_VERSION=$(/shared/vaultwarden.env)
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     
                     cat /shared/vaultwarden.env
                     #env
