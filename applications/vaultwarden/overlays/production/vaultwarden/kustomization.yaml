@@ -15,8 +15,6 @@ resources:
   - vaultwarden-role.yaml
   - vaultwarden-rolebinding.yaml
 
-  - argocd-external-secret.yaml
-
 configMapGenerator:
   - name: vaultwarden-config
     literals:

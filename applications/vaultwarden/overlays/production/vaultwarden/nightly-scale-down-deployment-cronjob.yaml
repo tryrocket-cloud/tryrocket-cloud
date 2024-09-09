@@ -3,27 +3,11 @@ kind: CronJob
 metadata:
   name: nightly-scale-down-vaultwarden
 spec:
-  schedule: "0 0 * * *"
+  schedule: "1 0 * * *"
   jobTemplate:
     spec:
       template:
         spec:
-          initContainers:
-            - name: disable-argocd-auto-sync
-              image: argoproj/argocd:latest
-              envFrom:
-                - secretRef:
-                    name: argocd-secret
-              command:
-              - /bin/sh
-              - -c
-              - |
-                echo "Disable ArgoCD sync..."
-
-                argocd app set vaultwarden --sync-policy none --server argocd.tryrocket.cloud --insecure --auth-token $ARGOCD_TOKEN
-                
-                echo "ArgoCD sync disabled!"
-
           containers:
           - name: deployment-trigger
             image: bitnami/kubectl:latest  # You can use any image with kubectl installed

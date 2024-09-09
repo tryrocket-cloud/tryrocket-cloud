@@ -23,10 +23,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
-    syncWindows:
-      - kind: deny
-        schedule: "0 0 * * *"
-        duration: 15h
-        applications:
-          - vaultwarden
