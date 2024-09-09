@@ -103,7 +103,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-data-volume
+                - name: davis-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: hetzner-storagebox-vaultwarden-ssh-privatekey
@@ -141,7 +141,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-data-volume
+                - name: davis-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: tryrocketcloud-truenas-vaultwarden-ssh-privatekey
