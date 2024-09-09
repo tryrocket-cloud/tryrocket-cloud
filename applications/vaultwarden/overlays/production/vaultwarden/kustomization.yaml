@@ -5,7 +5,7 @@ resources:
   - ../../../base/vaultwarden
 
   # provides postgres-secret
-  - postgres-external-secret.yaml
+  #- postgres-external-secret.yaml
 
   # provides vaultwarden-secret
   - vaultwarden-external-secret.yaml
