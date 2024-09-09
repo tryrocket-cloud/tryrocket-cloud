@@ -37,3 +37,9 @@ configMapGenerator:
 #      - MAIL_PORT=587
 #      - MAIL_USERNAME=userdav
 #      - MAIL_PASSWORD=test
+
+patches:
+  - target:
+      kind: Deployment
+      name: davis
+    path: patch-deployment-json6902.yaml

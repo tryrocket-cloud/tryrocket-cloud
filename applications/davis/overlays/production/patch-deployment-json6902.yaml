@@ -1,0 +1,19 @@
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    - name: davis-data-volume
+      mountPath: /data
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    - name: davis-data-volume
+      persistentVolumeClaim:
+        claimName: davis-data-pvc
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/-
+  value:
+    secretRef:
+      name: davis-secret
+      

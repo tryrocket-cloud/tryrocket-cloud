@@ -24,26 +24,6 @@ spec:
           env:
             - name: TZ
               value: Europe/Berlin
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: davis-postgres-secret
-                  key: username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: davis-postgres-secret
-                  key: password
-            - name: DATABASE_DRIVER
-              value: postgresql
-            - name: DATABASE_URL
-              value: postgresql://$(DB_USER):$(DB_PASSWORD)@postgres.postgres-16.svc.cluster.local:5432/davis
           envFrom:
             - configMapRef:
                 name: davis-config
-            - secretRef:
-                name: davis-secret
-      volumes:
-        - name: davis-storage
-          persistentVolumeClaim:
-            claimName: davis-pvc
