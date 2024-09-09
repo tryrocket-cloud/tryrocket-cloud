@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: deployment-trigger-job
+  name: scale-down-vaultwarden
 spec:
-  schedule: "0 0 * * *"  # Run daily at 01:00 AM
+  schedule: "0 0 * * *"
   jobTemplate:
     spec:
       template:
@@ -15,12 +15,5 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "
-              apiVersion: apps/v1
-              kind: Deployment
-              metadata:
-                name: vaultwarden
-              spec:
-                replicas: 0
-              " | kubectl apply -f -
+              kubectl scale deployment vaultwarden --replicas=0 -n vaultwarden
           restartPolicy: OnFailure
