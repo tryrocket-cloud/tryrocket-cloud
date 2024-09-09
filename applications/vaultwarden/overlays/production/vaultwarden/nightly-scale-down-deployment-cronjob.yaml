@@ -12,7 +12,7 @@ spec:
             - name: disable-argocd-auto-sync
               image: argoproj/argocd:latest
               envFrom:
-                secretRef:
+                - secretRef:
                   name: argocd-secret
               command:
               - /bin/sh
