@@ -13,4 +13,4 @@ api_addr = "https://vault.tryrocket.cloud"
 
 disable_mlock = "true"
 
-log_level = "trace"
+log_level = "info"
