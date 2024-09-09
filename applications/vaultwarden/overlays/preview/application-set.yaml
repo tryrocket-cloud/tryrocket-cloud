@@ -47,17 +47,17 @@ spec:
                 - op: replace
                   path: /data/DOMAIN
                   value: https://{{branch_slug}}-preview.tryrocket.cloud
-                - op: replace
-                  path: /data/DATABASE_URL
-                  value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
+#                - op: replace
+#                  path: /data/DATABASE_URL
+#                  value: postgresql://vaultwarden:vaultwarden@postgres.{{branch_slug}}-preview.svc.cluster.local:5432/vaultwarden
 
-            - target:
-                kind: ConfigMap
-                name: postgres-config
-              patch: |
-                - op: replace
-                  path: /data/POSTGRES_HOST
-                  value: postgres.{{branch_slug}}-preview.svc.cluster.local
+#            - target:
+#                kind: ConfigMap
+#                name: postgres-config
+#              patch: |
+#                - op: replace
+#                  path: /data/POSTGRES_HOST
+#                  value: postgres.{{branch_slug}}-preview.svc.cluster.local
 
       destination:
         server: 'https://192.168.178.101:6443'
