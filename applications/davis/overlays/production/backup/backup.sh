@@ -4,13 +4,12 @@
 RESTIC_VERSION=$(restic version | awk '{print $2}')
 HOSTNAME="tryrocket.cloud"
 HC_URL=""
-#VAULTWARDEN_VERSION=$(curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version')
 
 # Function to print usage
 usage() {
-  echo "Usage: $0 -u <healthcheck-uuid> -v <vaultwarden-version> [-h <hostname>] [-r <restic-version>]"
+  echo "Usage: $0 -u <healthcheck-uuid> -v <davis-version> [-h <hostname>] [-r <restic-version>]"
   echo "  -u  Healthcheck UUID (required)"
-  echo "  -v  Vaultwarden version"
+  echo "  -v  Davis version"
   echo "  -h  Hostname for restic backup (default: tryrocket.cloud)"
   echo "  -r  Restic version (default: detected restic version)"
   exit 1
@@ -23,7 +22,7 @@ while getopts "u:v:h:r:" opt; do
       HC_UUID=$OPTARG
       ;;
     v)
-      VAULTWARDEN_VERSION=$OPTARG
+      DAVIS_VERSION=$OPTARG
       ;;
     h)
       HOSTNAME=$OPTARG
@@ -38,20 +37,20 @@ while getopts "u:v:h:r:" opt; do
 done
 
 # Check for required arguments
-if [[ -z "$HC_UUID" || -z "$VAULTWARDEN_VERSION" || -z "$RESTIC_VERSION" ]]; then
+if [[ -z "$HC_UUID" || -z "$DAVIS_VERSION" || -z "$RESTIC_VERSION" ]]; then
   usage
 fi
 
 HC_URL="https://hc-ping.com/$HC_UUID"
 
-echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
+echo DAVIS_VERSION=$DAVIS_VERSION
 echo RESTIC_VERSION=$RESTIC_VERSION
 
 # Start health check
 curl -fsS -m 10 --retry 5 $HC_URL/start
 
 # Perform restic backup
-restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" /data
+restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag davis:"$DAVIS_VERSION" /data
 curl -fsS -m 10 --retry 5 $HC_URL/$?
 
 # Perform restic check

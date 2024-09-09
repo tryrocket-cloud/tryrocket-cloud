@@ -41,6 +41,11 @@ Install davis as an Argo CD application
                         --self-heal \
                         --auto-prune
 
+
+## Update
+
+- https://github.com/tchapi/davis?tab=readme-ov-file#updating-from-a-previous-version (db migration)
+
 ## Links
 
 - https://davis.tryrocket.cloud/dashboard

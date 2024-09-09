@@ -15,18 +15,6 @@ spec:
           restartPolicy: Never
 
           initContainers:
-            - name: get-vaultwarden-version
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
-              command:
-                - /bin/sh
-                - -c
-                - |
-                  apk add --no-cache curl
-
-                  curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version' > /shared/vaultwarden.env
-              volumeMounts:
-              - name: vaultwarden-version-volume
-                mountPath: /shared
 
             - name: scale-down
               image: bitnami/kubectl:latest
@@ -35,10 +23,10 @@ spec:
               - -c
               - |
                 # sleep infinity
-                kubectl scale deployment vaultwarden --replicas=0 -n vaultwarden
+                kubectl scale deployment davis --replicas=0 -n davis
 
-                while [ "$(kubectl get pods -l app=vaultwarden -n vaultwarden --field-selector=status.phase=Running | wc -l)" != "0" ]; do
-                  echo "Waiting for Vaultwarden pods to terminate..."
+                while [ "$(kubectl get pods -l app=davis -n davis --field-selector=status.phase=Running | wc -l)" != "0" ]; do
+                  echo "Waiting for davis pods to terminate..."
                   sleep 5
                 done
 
@@ -52,22 +40,21 @@ spec:
                     name: ionos-cloud-objectstorage-eu-central-1-s3-restic-secret
                 - secretRef:
                     name: healthchecks-secret
+                - configMapRef:
+                    name: davis-version
               command:
                   - /bin/sh
                   - -c
                   - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
+                    sleep infinity
+                    sh backup.sh -u $HC_IONOS_1_UUID -v $DAVIS_VERSION
 
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-data-volume
+                - name: davis-data-volume
                   mountPath: /data
-                  readOnly: true
-                - name: vaultwarden-version-volume
-                  mountPath: /shared
                   readOnly: true
 
             - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
@@ -78,22 +65,21 @@ spec:
                     name: ionos-cloud-objectstorage-eu-central-3-s3-restic-secret
                 - secretRef:
                     name: healthchecks-secret
+                - configMapRef:
+                    name: davis-version
               command:
                   - /bin/sh
                   - -c
                   - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_IONOS_3_UUID -v $VAULTWARDEN_VERSION
+                    sleep infinity
+                    sh backup.sh -u $HC_IONOS_3_UUID -v $DAVIS_VERSION
 
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-data-volume
+                - name: davis-data-volume
                   mountPath: /data
-                  readOnly: true
-                - name: vaultwarden-version-volume
-                  mountPath: /shared
                   readOnly: true
 
             - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
@@ -104,14 +90,15 @@ spec:
                     name: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 - secretRef:
                     name: healthchecks-secret
+                - configMapRef:
+                    name: davis-version
               command:
                   - /bin/sh
                   - -c
                   - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sh backup.sh -u $HC_HETZNER_UUID -v $VAULTWARDEN_VERSION
+                    #sh backup.sh -u $HC_HETZNER_UUID -v $DAVIS_VERSION
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -131,9 +118,6 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
-                - name: vaultwarden-version-volume
-                  mountPath: /shared
-                  readOnly: true
 
             - name: tryrocketcloud-truenas-h610i-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
@@ -143,14 +127,16 @@ spec:
                     name: tryrocketcloud-truenas-h610i-sftp-restic-secret
                 - secretRef:
                     name: healthchecks-secret
+                - configMapRef:
+                    name: davis-version
               command:
                   - /bin/sh
                   - -c
                   - |
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_TRUENAS_UUID -v $VAULTWARDEN_VERSION
+                    sleep infinity
+                    sh backup.sh -u $HC_TRUENAS_UUID -v $DAVIS_VERSION
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -170,12 +156,8 @@ spec:
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
-                - name: vaultwarden-version-volume
-                  mountPath: /shared
-                  readOnly: true
                   
           volumes:
-
             - name: backup-sh-volume
               configMap:
                 name: backup-sh-configmap
@@ -230,5 +212,3 @@ spec:
                   - key: ssh-hosts
                     path: hosts
                 defaultMode: 384
-            - name: vaultwarden-version-volume
-              emptyDir: {}

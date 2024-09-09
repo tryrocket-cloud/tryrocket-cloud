@@ -19,3 +19,6 @@ configMapGenerator:
   - name: backup-sh-configmap
     files:
       - backup.sh=backup.sh
+  - name: davis-version
+    literals:
+      - DAVIS_VERSION=4.4.4
