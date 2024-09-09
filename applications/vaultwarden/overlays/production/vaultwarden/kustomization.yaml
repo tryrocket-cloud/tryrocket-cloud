@@ -10,7 +10,7 @@ resources:
   - pvc.yaml
   - pv.yaml
 
-  - stop-deployment-cronjob.yaml
+  - nightly-scale-down-deployment-cronjob.yaml
   
   - vaultwarden-role.yaml
   - vaultwarden-rolebinding.yaml
