@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: vault
 spec:
-  replicas: 
+  replicas: 0
   strategy:
     type: Recreate
   selector:
