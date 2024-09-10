@@ -43,7 +43,8 @@ spec:
                   - vault.tryrocket.cloud
 
             annotations:
-              - cert-manager.io/cluster-issuer: letsencrypt
+              |
+              cert-manager.io/cluster-issuer: letsencrypt
 
   destination:
     server: https://192.168.178.101:6443
