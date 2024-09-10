@@ -26,3 +26,7 @@ spec:
   info:
     - name: Helm Chart
       value: https://github.com/hashicorp/vault-helm
+    - name: Helm Chart Values
+      value: https://github.com/hashicorp/vault-helm/blob/main/values.yaml
+    - name: Helm Chart Documentation
+      value: https://developer.hashicorp.com/vault/docs/platform/k8s/helm
