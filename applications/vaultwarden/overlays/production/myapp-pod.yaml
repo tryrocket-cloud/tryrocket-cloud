@@ -10,6 +10,10 @@ metadata:
       {{- with secret "kv/data/myapp" -}}
       export HELLO={{ .Data.data.hello }}
       {{- end -}}
+      {{- with secret "kv/data/myapp" -}}
+        export hello="{{ .Data.data.hello }}"
+      {{- end }}
+
 spec:
   serviceAccountName: myapp-sa
   containers:
@@ -23,9 +27,7 @@ spec:
         sleep infinity
   - name: test-image-env
     image: alpine
-    command: 
-      - /bin/sh
-      - -c
-      - |
-        cat /vault/secrets/hello
-        sleep infinity
+    command:
+      ['sh', '-c']
+    args:
+      ['source /vault/secrets/myapp && sleep infinity']
