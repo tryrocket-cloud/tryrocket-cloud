@@ -8,9 +8,6 @@ metadata:
     vault.hashicorp.com/agent-inject-secret-hello: "kv/data/myapp"
     vault.hashicorp.com/agent-inject-template-myapp: |
       {{- with secret "kv/data/myapp" -}}
-      export HELLO={{ .Data.data.hello }}
-      {{- end -}}
-      {{- with secret "kv/data/myapp" -}}
         export hello="{{ .Data.data.hello }}"
       {{- end }}
 
