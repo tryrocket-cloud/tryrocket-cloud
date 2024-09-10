@@ -4,10 +4,10 @@ metadata:
   name: example-pod
   annotations:
     vault.hashicorp.com/agent-inject: true
-    vault.hashicorp.com/role: "myapp-role"
+    vault.hashicorp.com/role: myapp-role
     vault.hashicorp.com/agent-inject-secret-credentials: "kv/data/myapp"
 spec:
-#  serviceAccountName: test-sa
+  serviceAccountName: myapp-role
   containers:
   - name: test-image
     image: alpine
