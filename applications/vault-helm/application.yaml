@@ -18,7 +18,7 @@ spec:
         
         server:
           # Supported log levels include: trace, debug, info, warn, error
-          logLevel: "trace"
+          logLevel: "info"
 
           standalone:
             config: |-
