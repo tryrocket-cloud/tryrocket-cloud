@@ -46,6 +46,17 @@ spec:
               |
               cert-manager.io/cluster-issuer: letsencrypt
 
+          dataStorage:
+            enabled: true
+            size: 1Gi
+            mountPath: "/vault/data"
+            storageClass: longhorn-retain
+            accessMode: ReadWriteMany
+
+          persistentVolumeClaimRetentionPolicy:
+            whenDeleted: Retain
+            whenScaled: Retain
+
   destination:
     server: https://192.168.178.101:6443
     namespace: vault-helm

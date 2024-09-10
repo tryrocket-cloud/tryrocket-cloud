@@ -5,7 +5,7 @@ metadata:
   annotations:
     vault.hashicorp.com/agent-inject: true
     vault.hashicorp.com/role: "myapp-role"
-    vault.hashicorp.com/agent-inject-secret-credentials: "kv/data/myapp"
+    vault.hashicorp.com/agent-inject-secret-hello: "kv/data/myapp"
 spec:
   serviceAccountName: myapp-role
   containers:
@@ -15,6 +15,7 @@ spec:
       - bin
       - sh
       - |
+        cat /vault/secrets/hello
         sleep infinity
 #    volumeMounts:
 #    - name: vault-secrets
