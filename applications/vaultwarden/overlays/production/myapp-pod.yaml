@@ -12,8 +12,8 @@ spec:
   - name: test-image
     image: alpine
     command: 
-      - bin
-      - sh
+      - /bin/sh
+      - -c
       - |
         cat /vault/secrets/hello
         sleep infinity
