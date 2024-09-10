@@ -18,7 +18,7 @@ spec:
         
         server:
           # Supported log levels include: trace, debug, info, warn, error
-          logLevel: "info"
+          logLevel: "trace"
   destination:
     server: https://192.168.178.101:6443
     namespace: vault-helm
