@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: example-pod
+  name: myapp-pod
   annotations:
     vault.hashicorp.com/agent-inject: true
     vault.hashicorp.com/role: "myapp-role"
     vault.hashicorp.com/agent-inject-secret-hello: "kv/data/myapp"
 spec:
-  serviceAccountName: myapp-role
+  serviceAccountName: myapp-sa
   containers:
   - name: test-image
     image: alpine

@@ -4,8 +4,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - test-vault-pod.yaml
-  
+  - myapp-pod.yaml
+  - myapp-sa.yaml
+
   - ./vaultwarden
   - ./backup
 
