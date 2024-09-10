@@ -16,9 +16,9 @@ spec:
       - sh
       - |
         sleep infinity
-    volumeMounts:
-    - name: vault-secrets
-      mountPath: /vault/secrets
+#    volumeMounts:
+#    - name: vault-secrets
+#      mountPath: /vault/secrets
 #  volumes:
 #  - name: vault-secrets
 #    emptyDir: {}
