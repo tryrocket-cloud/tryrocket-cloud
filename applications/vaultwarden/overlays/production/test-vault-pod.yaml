@@ -19,6 +19,6 @@ spec:
     volumeMounts:
     - name: vault-secrets
       mountPath: /vault/secrets
-  volumes:
-  - name: vault-secrets
-    emptyDir: {}
+#  volumes:
+#  - name: vault-secrets
+#    emptyDir: {}
