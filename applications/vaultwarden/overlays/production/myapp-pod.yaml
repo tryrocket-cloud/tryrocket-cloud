@@ -6,10 +6,14 @@ metadata:
     vault.hashicorp.com/agent-inject: true
     vault.hashicorp.com/role: "myapp-role"
     vault.hashicorp.com/agent-inject-secret-hello: "kv/data/myapp"
+    vault.hashicorp.com/agent-inject-template-myapp: |
+      {{- with secret "kv/data/myapp" -}}
+      export HELLO={{ .Data.data.hello }}
+      {{- end -}}
 spec:
   serviceAccountName: myapp-sa
   containers:
-  - name: test-image
+  - name: test-image-volume
     image: alpine
     command: 
       - /bin/sh
@@ -17,9 +21,11 @@ spec:
       - |
         cat /vault/secrets/hello
         sleep infinity
-#    volumeMounts:
-#    - name: vault-secrets
-#      mountPath: /vault/secrets
-#  volumes:
-#  - name: vault-secrets
-#    emptyDir: {}
+  - name: test-image-env
+    image: alpine
+    command: 
+      - /bin/sh
+      - -c
+      - |
+        cat /vault/secrets/hello
+        sleep infinity
