@@ -9,6 +9,11 @@ spec:
     repoURL: https://helm.releases.hashicorp.com
     chart: vault
     targetRevision: 0.28.1
+    helm:
+      values: |
+        # Configures the log verbosity of the injector.
+        # Supported log levels include: trace, debug, info, warn, error
+        logLevel: "debug"
   destination:
     server: https://192.168.178.101:6443
     namespace: vault-helm
@@ -18,3 +23,6 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  info:
+    - name: Helm Chart
+      value: https://github.com/hashicorp/vault-helm
