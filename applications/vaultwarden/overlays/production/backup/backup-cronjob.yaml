@@ -215,21 +215,21 @@ spec:
 
             - name: tryrocketcloud-truenas-vaultwarden-ssh-privatekey
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-restic-secret
+                secretName: tryrocketcloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
             - name: tryrocketcloud-truenas-vaultwarden-ssh-config
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-restic-secret
+                secretName: tryrocketcloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
             - name: tryrocketcloud-truenas-vaultwarden-ssh-hosts
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-restic-secret
+                secretName: tryrocketcloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-hosts
                     path: hosts
