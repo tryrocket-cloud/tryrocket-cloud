@@ -1,3 +1,3 @@
-path "kv/data/vaultwarden/" {
+path "kv/data/vaultwarden/*" {
   capabilities = ["read"]
 }
