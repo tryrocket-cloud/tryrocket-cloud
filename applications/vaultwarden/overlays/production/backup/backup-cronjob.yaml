@@ -42,9 +42,8 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  sleep infinity
                   bw config server $VAULTWARDEN_SERVER_DOMAIN
-                  BW_SESSION=$(bw login $VAULTWARDEN_USER $MASTER_PASSWORD --raw)
+                  export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
 
                   bw sync
 
@@ -83,6 +82,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    sleep infinity
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     sh backup.sh
 
