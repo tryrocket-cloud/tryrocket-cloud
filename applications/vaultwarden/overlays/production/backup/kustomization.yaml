@@ -15,7 +15,7 @@ resources:
   # truenas-tryrocket-cloud-sftp-secret  
   # truenas-tryrocket-cloud-restic-secret
   # truenas-tryrocket-cloud-healthchecks-secret
-  - truenas.tryrocket.cloud-sftp-restic-healthchecks-externalsecret.yaml
+  - truenas.tryrocket.cloud-sftp-restic-healthchecks.externalsecret.yaml
 
   # ionos-com-objectstorage-s3-secret
   - ionos.com-objectstorage-s3.externalsecret.yaml
