@@ -17,3 +17,9 @@
     secretRef:
       name: vaultwarden-secret
       
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/-
+  value:
+    secretRef:
+      name: myapp-secret
+      
