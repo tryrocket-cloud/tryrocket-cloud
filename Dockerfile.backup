@@ -9,7 +9,11 @@ RUN apk update && \
     curl \
     openssh-client \
     jq \
+    nodejs \
+    npm \
     && rm -rf /var/cache/apk/*
+
+RUN npm install -g @bitwarden/cli
 
 # Set Fish as the default shell
 ENV SHELL /usr/bin/fish
