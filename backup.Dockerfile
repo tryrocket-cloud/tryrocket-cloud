@@ -14,7 +14,8 @@ RUN apk update && \
     kubectl \
     && rm -rf /var/cache/apk/*
 
-RUN npm install -g @bitwarden/cli
+# https://github.com/bitwarden/clients/issues/9646
+RUN npm install -g @bitwarden/cli@2024.6.0
 
 # Set Fish as the default shell
 ENV SHELL /usr/bin/fish
