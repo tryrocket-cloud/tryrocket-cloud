@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ../../base
 
-namespace: vault
+namespace: vaultold
