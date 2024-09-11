@@ -1,10 +1,10 @@
 path "kv/data/vaultwarden.tryrocket.cloud/*" {
   capabilities = ["read"]
 }
-path "kv/data/hetzner.com/storagebox/bx11/fsn1/subaccounts/5" {
+path "kv/data/hetzner.com/storagebox/bx11/fsn1/subaccounts/5/*" {
   capabilities = ["read"]
 }
-path "kv/data/truenas.tryrocket.cloud/h610i/users/vaultwarden" {
+path "kv/data/truenas.tryrocket.cloud/users/vaultwarden/*" {
   capabilities = ["read"]
 }
 path "kv/data/ionos.com/objectstorage" {
