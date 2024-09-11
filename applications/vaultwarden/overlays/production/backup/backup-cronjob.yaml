@@ -25,10 +25,6 @@ spec:
 
                   curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version' > /shared/vaultwarden.env
 
-                  if [[ ! -f /shared/vaultwarden.env ]]; then
-                    exit 1
-                  fi
-
                   [ -f /shared/vaultwarden.env ] && echo "File exists" || echo "File does not exist"
                   [ -s /shared/vaultwarden.env ] && echo "File is not empty" || echo "File is empty"
               volumeMounts:
