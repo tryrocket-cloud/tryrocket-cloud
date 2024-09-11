@@ -49,11 +49,11 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-1-s3-restic-secret
+                    name: ionos-cloud-objectstorage-s3-secret
                 - secretRef:
-                    name: ionos-cloud-secret
+                    name: ionos-cloud-objectstorage-eu-central-1-restic-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-1-restic-healthchecks-secret
+                    name: ionos-cloud-objectstorage-eu-central-1-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -77,11 +77,11 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-3-s3-restic-secret
+                    name: ionos-cloud-objectstorage-s3-secret
                 - secretRef:
-                    name: ionos-cloud-secret
+                    name: ionos-cloud-objectstorage-eu-central-3-restic-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-3-restic-healthchecks-secret
+                    name: ionos-cloud-objectstorage-eu-central-3-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -105,9 +105,9 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
+                    name: hetzner-storagebox-bx11-fsn1-restic-secret
                 - secretRef:
-                    name: hetzner-storagebox-bx11-fsn1-restic-healthchecks-secret
+                    name: hetzner-storagebox-bx11-fsn1-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -144,9 +144,9 @@ spec:
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: tryrocketcloud-truenas-h610i-sftp-restic-secret
+                    name: tryrocketcloud-truenas-h610i-restic-secret
                 - secretRef:
-                    name: tryrocketcloud-truenas-h610i-restic-healthchecks-secret
+                    name: tryrocketcloud-truenas-h610i-healthchecks-secret
               command:
                   - /bin/sh
                   - -c

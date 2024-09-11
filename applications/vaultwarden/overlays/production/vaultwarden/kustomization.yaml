@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ../../../base
 
-  # provides vaultwarden-secret
+  # vaultwarden-secret
   - vaultwarden-external-secret.yaml
 
   - pvc.yaml
