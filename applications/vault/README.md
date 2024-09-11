@@ -1,11 +1,8 @@
-## Before prod
-
-name: vault
-namespace: vault
+# Vault
 
 ## Install
 
-    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vault-helm/application.yaml -n argocd
+    kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vault/application.yaml -n argocd
 
 ## After install
 
