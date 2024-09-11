@@ -22,6 +22,9 @@ spec:
       - |
         cat /vault/secrets/hello
         sleep infinity
+    envFrom:
+      - secretRef:
+          name: myapp-k8s-secret
   - name: test-image-env
     image: alpine
     command:

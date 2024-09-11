@@ -6,6 +6,8 @@ resources:
 
   - myapp-pod.yaml
   - myapp-sa.yaml
+  - external-secret.yaml
+  - clustersecretstore.yaml
 
   - ./vaultwarden
   - ./backup
