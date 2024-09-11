@@ -36,11 +36,11 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - host: vault.tryrocket.cloud
+              - host: vault-helm.tryrocket.cloud
             tls:
               - secretName: tryrocket-cloud-http-tls
                 hosts:
-                  - vault.tryrocket.cloud
+                  - vault-helm.tryrocket.cloud
 
             annotations:
               |
