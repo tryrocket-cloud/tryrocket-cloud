@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault-helm
+  name: vault
   namespace: argocd
 spec:
   project: default
@@ -36,11 +36,11 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - host: vault-helm.tryrocket.cloud
+              - host: vault.tryrocket.cloud
             tls:
               - secretName: tryrocket-cloud-http-tls
                 hosts:
-                  - vault-helm.tryrocket.cloud
+                  - vault.tryrocket.cloud
 
             annotations:
               |
@@ -55,7 +55,7 @@ spec:
 
   destination:
     server: https://192.168.178.101:6443
-    namespace: vault-helm
+    namespace: vault
   syncPolicy:
     automated:
       prune: true
