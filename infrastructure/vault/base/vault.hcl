@@ -9,7 +9,7 @@ storage "postgresql" {
   connection_url = "postgres://vault:vault@postgres.postgres-16.svc.cluster.local:5432/vault"
 }
 
-api_addr = "https://vault.tryrocket.cloud"
+api_addr = "https://vaultold.tryrocket.cloud"
 
 disable_mlock = "true"
 
