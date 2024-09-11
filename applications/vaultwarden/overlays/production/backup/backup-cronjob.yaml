@@ -43,6 +43,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
+                  rm /root/.config/Bitwarden CLI
                   bw config server $VAULTWARDEN_SERVER_DOMAIN
                   export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
 
