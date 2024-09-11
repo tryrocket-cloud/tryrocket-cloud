@@ -45,3 +45,14 @@
 - [Cloudflare](https://www.cloudflare.com)
 - [GitHub](https://github.com/)
 
+## Installation
+
+- Prepare Debian nodes
+  - Install Debian OS
+  - Install k3s on each node and connect to each other
+  - Install neovim, fish
+- Install ArgoCD
+- Install Vault
+- Install External Secrets Operator
+- Install CertManager
+- Install Longhorn
