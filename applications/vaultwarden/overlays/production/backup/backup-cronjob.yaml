@@ -52,8 +52,6 @@ spec:
                   bw export --format json --output /shared/vault-backup.json
 
                   bw logout
-
-                  #sleep infinity
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
@@ -86,7 +84,6 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    sleep infinity
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     sh backup.sh
 
