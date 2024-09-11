@@ -5,14 +5,14 @@ metadata:
   annotations:
     spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt
-    traefik.ingress.kubernetes.io/router.middlewares: vault-vault-http-https-middleware@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: vaultold-vault-http-https-middleware@kubernetescrd
 spec:
   tls:
     - hosts:
-        - vault.tryrocket.cloud
+        - vaultold.tryrocket.cloud
       secretName: tryrocket-cloud-http-tls
   rules:
-    - host: vault.tryrocket.cloud
+    - host: vaultold.tryrocket.cloud
       http:
         paths:
           - path: /
