@@ -193,21 +193,21 @@ spec:
 
             - name: hetzner-storagebox-vaultwarden-ssh-privatekey
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
+                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
             - name: hetzner-storagebox-vaultwarden-ssh-config
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
+                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
             - name: hetzner-storagebox-vaultwarden-ssh-hosts
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
+                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-hosts
                     path: hosts
