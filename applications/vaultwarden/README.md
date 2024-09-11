@@ -6,6 +6,24 @@
 - add longhorn recurring tasks for snapshot an backup
 
 
+## Prerequisites
+
+- [External Secrets Operator](https://external-secrets.io/latest/) is installed
+
+- [Vault](https://www.vaultproject.io/) is installed and configured
+
+- Create Vaultwarden kubernetes role Vault
+
+      vault write auth/kubernetes/role/vaultwarden \
+          bound_service_account_names=vaultwarden-vault-sa \
+          bound_service_account_namespaces=vaultwarden \
+          policies=vaultwarden \
+          ttl=24h
+
+- Create Vaultwarden policy in Vault ([vaultwarden-policy.hcl](/applications/vaultwarden/overlays/production/vaultwarden-policy.hcl))
+    
+      vault policy write vaultwarden vaultwarden-policy.hcl
+
 ## Install
 
     # Argo CD Application
