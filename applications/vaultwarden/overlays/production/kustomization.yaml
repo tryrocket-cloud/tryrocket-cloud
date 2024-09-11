@@ -4,11 +4,6 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - myapp-pod.yaml
-  - myapp-sa.yaml
-  - external-secret.yaml
-  - clustersecretstore.yaml
-
   - ./vaultwarden
   - ./backup
 
