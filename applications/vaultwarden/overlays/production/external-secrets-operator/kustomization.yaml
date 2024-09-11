@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - vault.secretstore.yaml
   - vault.serviceaccount.yaml
-  - test-external-secret.yaml
