@@ -53,7 +53,7 @@ spec:
 
                   bw logout
 
-                  sleep infinity
+                  #sleep infinity
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
