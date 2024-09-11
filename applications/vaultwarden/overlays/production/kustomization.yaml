@@ -4,6 +4,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
+  - vault.secretstore.yaml
+  - vault.serviceaccount.yaml
+  - external-secret.yaml
+
   - ./vaultwarden
   - ./backup
 
