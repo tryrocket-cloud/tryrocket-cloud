@@ -52,7 +52,7 @@
   - Install k3s on each node and connect to each other
   - Install neovim, fish
 - Install ArgoCD
-- Install Vault (isntalled as ArgoCD + Helm application)
-- Install External Secrets Operator
+- Install Vault (ArgoCD Application + Helm)
+- Install External Secrets Operator (ArgoCD Application + Helm)
 - Install CertManager
 - Install Longhorn
