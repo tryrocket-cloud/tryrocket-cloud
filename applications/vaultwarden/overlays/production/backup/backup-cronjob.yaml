@@ -53,13 +53,13 @@ spec:
                 - secretRef:
                     name: ionos-cloud-secret
                 - secretRef:
-                    name: healthchecks-secret
+                    name: ionos-cloud-objectstorage-eu-central-1-restic-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
                   - |
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_IONOS_1_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh
 
               volumeMounts:
                 - name: backup-sh-volume
@@ -81,13 +81,13 @@ spec:
                 - secretRef:
                     name: ionos-cloud-secret
                 - secretRef:
-                    name: healthchecks-secret
+                    name: ionos-cloud-objectstorage-eu-central-3-restic-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
                   - |
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_IONOS_3_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh
 
               volumeMounts:
                 - name: backup-sh-volume
@@ -107,7 +107,7 @@ spec:
                 - secretRef:
                     name: hetzner-storagebox-bx11-fsn1-sftp-restic-secret
                 - secretRef:
-                    name: healthchecks-secret
+                    name: hetzner-storagebox-bx11-fsn1-restic-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -115,7 +115,7 @@ spec:
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sh backup.sh -u $HC_HETZNER_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -146,7 +146,7 @@ spec:
                 - secretRef:
                     name: tryrocketcloud-truenas-h610i-sftp-restic-secret
                 - secretRef:
-                    name: healthchecks-secret
+                    name: tryrocketcloud-truenas-h610i-restic-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -154,7 +154,7 @@ spec:
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh -u $HC_TRUENAS_UUID -v $VAULTWARDEN_VERSION
+                    sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
