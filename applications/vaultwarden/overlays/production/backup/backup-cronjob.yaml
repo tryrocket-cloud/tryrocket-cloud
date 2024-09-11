@@ -28,6 +28,8 @@ spec:
                   if [[ ! -f /shared/vaultwarden.env ]]; then
                     exit 1
                   fi
+
+                  ls /shared/vaultwarden.env
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
@@ -61,6 +63,7 @@ spec:
                       exit 1
                   fi
 
+                  ls /shared/vault-backup.json
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
