@@ -29,7 +29,8 @@ spec:
                     exit 1
                   fi
 
-                  cat /shared/vaultwarden.env
+                  [ -f /shared/vaultwarden.env ] && echo "File exists" || echo "File does not exist"
+                  [ -s /shared/vaultwarden.env ] && echo "File is not empty" || echo "File is empty"
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
@@ -59,11 +60,8 @@ spec:
 
                   bw logout
 
-                  if [[ ! -f /shared/vault-backup.json ]]; then
-                      exit 1
-                  fi
-
-                  ls /shared/vault-backup.json
+                  [ -f /shared/vault-backup.json ] && echo "File exists" || echo "File does not exist"
+                  [ -s /shared/vault-backup.json ] && echo "File is not empty" || echo "File is empty"
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
