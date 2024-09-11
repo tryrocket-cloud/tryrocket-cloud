@@ -52,6 +52,11 @@ spec:
                   bw export --format json --output /shared/vault-backup.json
 
                   bw logout
+
+                  if [[ ! -f /shared/vault-backup.json ]]; then
+                      exit 1
+                  fi
+
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
