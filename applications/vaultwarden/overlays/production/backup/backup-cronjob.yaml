@@ -30,6 +30,7 @@ spec:
 
             - name: export-vault
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
               env:
                 - name: NODE_NO_WARNINGS
                   value: "1"
