@@ -29,7 +29,7 @@ spec:
                     exit 1
                   fi
 
-                  ls /shared/vaultwarden.env
+                  cat /shared/vaultwarden.env
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
