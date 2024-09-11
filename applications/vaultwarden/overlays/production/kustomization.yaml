@@ -6,6 +6,6 @@ resources:
 
   - ./vaultwarden
   - ./backup
-  - ./external-secrets-operator
+  - ./external-secrets
 
 namespace: vaultwarden

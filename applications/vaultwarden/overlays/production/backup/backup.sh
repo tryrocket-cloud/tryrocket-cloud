@@ -51,7 +51,7 @@ echo RESTIC_VERSION=$RESTIC_VERSION
 curl -fsS -m 10 --retry 5 $HC_URL/start
 
 # Perform restic backup
-restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" /data
+restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" /data /shared/vault-backup.json
 curl -fsS -m 10 --retry 5 $HC_URL/$?
 
 # Perform restic check
