@@ -44,16 +44,16 @@ spec:
 
           containers:
 
-            - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-backup
+            - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-cloud-objectstorage-s3-secret
+                    name: ionos-com-objectstorage-s3-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-1-restic-secret
+                    name: ionos-com-objectstorage-eu-central-1-restic-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-1-healthchecks-secret
+                    name: ionos-com-objectstorage-eu-central-1-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -72,16 +72,16 @@ spec:
                   mountPath: /shared
                   readOnly: true
 
-            - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
+            - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: ionos-cloud-objectstorage-s3-secret
+                    name: ionos-com-objectstorage-s3-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-3-restic-secret
+                    name: ionos-com-objectstorage-eu-central-3-restic-secret
                 - secretRef:
-                    name: ionos-cloud-objectstorage-eu-central-3-healthchecks-secret
+                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -100,14 +100,14 @@ spec:
                   mountPath: /shared
                   readOnly: true
 
-            - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
+            - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: hetzner-storagebox-bx11-fsn1-restic-secret
+                    name: hetzner-com-storagebox-bx11-fsn1-restic-secret
                 - secretRef:
-                    name: hetzner-storagebox-bx11-fsn1-healthchecks-secret
+                    name: hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -123,15 +123,15 @@ spec:
                 - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
-                - name: hetzner-storagebox-vaultwarden-ssh-privatekey
+                - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
                   readOnly: true
                   subPath: id_ed25519
-                - name: hetzner-storagebox-vaultwarden-ssh-config
+                - name: hetzner-com-storagebox-vaultwarden-ssh-config
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: hetzner-storagebox-vaultwarden-ssh-hosts
+                - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
@@ -139,14 +139,14 @@ spec:
                   mountPath: /shared
                   readOnly: true
 
-            - name: tryrocketcloud-truenas-h610i-sftp-restic-backup
+            - name: tryrocket-cloud-truenas-h610i-sftp-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
-                    name: tryrocketcloud-truenas-h610i-restic-secret
+                    name: tryrocket-cloud-truenas-h610i-restic-secret
                 - secretRef:
-                    name: tryrocketcloud-truenas-h610i-healthchecks-secret
+                    name: tryrocket-cloud-truenas-h610i-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
@@ -162,15 +162,15 @@ spec:
                 - name: vaultwarden-data-volume
                   mountPath: /data
                   readOnly: true
-                - name: tryrocketcloud-truenas-vaultwarden-ssh-privatekey
+                - name: tryrocket-cloud-truenas-vaultwarden-ssh-privatekey
                   mountPath: /root/.ssh/id_ed25519
                   readOnly: true
                   subPath: id_ed25519
-                - name: tryrocketcloud-truenas-vaultwarden-ssh-config
+                - name: tryrocket-cloud-truenas-vaultwarden-ssh-config
                   mountPath: /root/.ssh/config
                   readOnly: true
                   subPath: config
-                - name: tryrocketcloud-truenas-vaultwarden-ssh-hosts
+                - name: tryrocket-cloud-truenas-vaultwarden-ssh-hosts
                   mountPath: /root/.ssh/hosts
                   readOnly: true
                   subPath: hosts
@@ -191,45 +191,45 @@ spec:
               persistentVolumeClaim:
                 claimName: vaultwarden-data-pvc
 
-            - name: hetzner-storagebox-vaultwarden-ssh-privatekey
+            - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
-            - name: hetzner-storagebox-vaultwarden-ssh-config
+            - name: hetzner-com-storagebox-vaultwarden-ssh-config
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
-            - name: hetzner-storagebox-vaultwarden-ssh-hosts
+            - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
               secret:
-                secretName: hetzner-storagebox-bx11-fsn1-sftp-secret
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
                 items:
                   - key: ssh-hosts
                     path: hosts
                 defaultMode: 384
 
-            - name: tryrocketcloud-truenas-vaultwarden-ssh-privatekey
+            - name: tryrocket-cloud-truenas-vaultwarden-ssh-privatekey
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-secret
+                secretName: tryrocket-cloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-privatekey
                     path: id_ed25519
                 defaultMode: 384
-            - name: tryrocketcloud-truenas-vaultwarden-ssh-config
+            - name: tryrocket-cloud-truenas-vaultwarden-ssh-config
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-secret
+                secretName: tryrocket-cloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-config
                     path: config
                 defaultMode: 384
-            - name: tryrocketcloud-truenas-vaultwarden-ssh-hosts
+            - name: tryrocket-cloud-truenas-vaultwarden-ssh-hosts
               secret:
-                secretName: tryrocketcloud-truenas-h610i-sftp-secret
+                secretName: tryrocket-cloud-truenas-h610i-sftp-secret
                 items:
                   - key: ssh-hosts
                     path: hosts
