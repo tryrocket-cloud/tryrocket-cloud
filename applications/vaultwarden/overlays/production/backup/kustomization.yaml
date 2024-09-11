@@ -7,26 +7,32 @@ resources:
   - backup-role.yaml
   - backup-rolebinding.yaml
 
+  # Restic backup:
+  #  Location: hetzner-storagebox-bx11-fsn1
+  #  Protocol: sftp
+  #  Backup application: restic
+  #  Checks: Healthchecks.io
+  #
   # hetzner-storagebox-bx11-fsn1-sftp-secret
   # hetzner-storagebox-bx11-fsn1-restic-secret
   # hetzner-storagebox-bx11-fsn1-healthchecks-secret
-  - hetzner-storagebox-bx11-fsn1-sftp-restic-healthchecks-external-secret.yaml
+  - hetzner.com-storagebox-bx11-fsn1-sftp-restic-healthchecks.externalsecret.yaml
 
   # tryrocketcloud-truenas-h610i-sftp-secret  
   # tryrocketcloud-truenas-h610i-restic-secret
   # tryrocketcloud-truenas-h610i-healthchecks-secret
-  - tryrocketcloud-truenas-h610i-sftp-restic-healthchecks-external-secret.yaml
+  - tryrocket.cloud-truenas-h610i-sftp-restic-healthchecks.externalsecret.yaml
 
   # ionos-cloud-objectstorage-s3-secret
-  - ionos-cloud-objectstorage-s3-external-secret.yaml
+  - ionos.com-objectstorage-s3.externalsecret.yaml
 
-  # ionos-cloud-objectstorage-eu-central-1-restic-secret
-  # ionos-cloud-objectstorage-eu-central-1-healthchecks-secret
-  - ionos-cloud-objectstorage-eu-central-1-s3-restic-external-secret.yaml
+  # ionoscom-objectstorage-eu-central-1-restic-secret
+  # ionoscom-objectstorage-eu-central-1-healthchecks-secret
+  - ionos.com-objectstorage-eu-central-1-s3-restic-healthchecks.externalsecret.yaml
 
-  # ionos-cloud-objectstorage-eu-central-3-restic-secret
-  # ionos-cloud-objectstorage-eu-central-3-healthchecks-secret
-  - ionos-cloud-objectstorage-eu-central-3-s3-restic-external-secret.yaml
+  # ionoscom-objectstorage-eu-central-3-restic-secret
+  # ionoscom-objectstorage-eu-central-3-healthchecks-secret
+  - ionos.com-objectstorage-eu-central-3-s3-restic-healthchecks.externalsecret.yaml
 
 configMapGenerator:
   - name: backup-sh-configmap
