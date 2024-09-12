@@ -24,6 +24,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
   info:
-    - name: Example
-      value: https://example.com
+    - name: GitHub
+      value: https://github.com/tchapi/davis
         
