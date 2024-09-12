@@ -21,8 +21,6 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  apk add --no-cache curl
-
                   curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version' > /shared/vaultwarden.env
 
                   [ -f /shared/vaultwarden.env ] && exit 0 || exit 1
@@ -46,7 +44,6 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                 
                   bw config server $VAULTWARDEN_SERVER_DOMAIN
                   export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
 
