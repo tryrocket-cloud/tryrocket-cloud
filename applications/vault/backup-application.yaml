@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault-backup
+  namespace: argocd
+  labels:
+    environment: production
+spec:
+  project: default
+  
+  source:
+    repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
+    targetRevision: main
+    path: applications/vault
+
+  destination:
+    server: 'https://192.168.178.101:6443'
+    namespace: vault
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+  info:
+    - name: A
+      value: A

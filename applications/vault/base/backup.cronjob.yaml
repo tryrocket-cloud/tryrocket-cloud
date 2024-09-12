@@ -1,0 +1,199 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  suspend: true
+  schedule: "* * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+
+          initContainers:
+            - name: get-vault-version
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              env:
+                - name: VAULT_SERVER
+                  value: https://vault.tryrocket.cloud
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  HTTP_STATUS=$(curl --silent --write-out "%{http_code}" --output /tmp/vault_config.json ${VAULT_SERVER}/v1/sys/health)
+
+                  if [ "$HTTP_STATUS" -ne 200 ]; then
+                    echo "Error: Failed to fetch Hashicorp Vault config, HTTP status: $HTTP_STATUS"
+                    exit 1
+                  fi
+
+                  jq --raw-output '.version' /tmp/vault_config.json > /shared/vault.env
+
+                  if [ $? -ne 0 ]; then
+                    echo "Error: Failed to extract .version using jq"
+                    exit 1
+                  fi
+
+                  if [ ! -f /shared/vault.env ]; then
+                    echo "Error: /shared/vault.env file does not exist"
+                    exit 1
+                  fi
+
+                  if [ ! -s /shared/vault.env ]; then
+                    echo "Error: /shared/vault.env is empty"
+                    exit 1
+                  fi
+
+                  cat /shared/vault.env
+              volumeMounts:
+              - name: vaultw-backup-shared-volume
+                mountPath: /shared
+
+            - name: scale-down
+              image: bitnami/kubectl:latest
+              command:
+              - /bin/sh
+              - -c
+              - |
+                kubectl scale deployment vault --replicas=0 -n vault
+
+                while [ "$(kubectl get pods -l app=vault -n vault --field-selector=status.phase=Running | wc -l)" != "0" ]; do
+                  echo "Waiting for Hashicorp Vault pods to terminate..."
+                  sleep 5
+                done
+
+          containers:
+            - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULT_VERSION=$(cat /shared/vault.env)
+                    sh backup.sh
+
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vault-data-volume # HERE unknown
+                  mountPath: /data
+                  readOnly: true
+                - name: vault-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+
+            - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULT_VERSION=$(cat /shared/vault.env)
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vault-data-volume # unknown
+                  mountPath: /data
+                  readOnly: true
+                - name: vault-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+
+            - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-restic-secret
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULT_VERSION=$(cat /shared/vault.env)
+                    ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vault-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: hetzner-com-storagebox-vault-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: hetzner-com-storagebox-vault-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: hetzner-com-storagebox-vault-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+                - name: vault-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+                  
+          volumes:
+            - name: backup-sh-volume
+              configMap:
+                name: backup-sh-configmap
+                items:
+                - key: backup.sh
+                  path: backup.sh
+
+            - name: vault-data-volume
+              persistentVolumeClaim:
+                claimName: vaultwarden-data-pvc #### UNKNOWD
+
+            - name: hetzner-com-storagebox-vault-ssh-privatekey
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: hetzner-com-storagebox-vault-ssh-config
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-config
+                    path: config
+                defaultMode: 384
+            - name: hetzner-com-storagebox-vault-ssh-hosts
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-hosts
+                    path: hosts
+                defaultMode: 384
+
+            - name: vault-backup-shared-volume
+              emptyDir: {}
