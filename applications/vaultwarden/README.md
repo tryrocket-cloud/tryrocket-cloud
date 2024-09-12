@@ -63,6 +63,30 @@ sequenceDiagram
 
 [General information about backups](https://github.com/tryrocket-cloud/tryrocket-cloud/wiki/Backup)
 
+
+**Data**
+
+- daily: (30 0 * * *)
+  - offsite
+    - hetzner.com (export.json)
+    - ionos.com (export.json)
+    - ionos.com (export.json)
+  - onsite
+    -
+- weekly: (30 0 * * 0)
+  - offsite
+    - hetzner.com (data)
+    - ionos.com (data)
+    - ionos.com (data)
+  - onsite
+    - truenas.tryrocket.cloud (data)
+    - truenas (export.json)
+
+**Longhorn**
+
+- daily: volume snapshot
+- weekly: volume backup
+
   - [Vaultwarden Data Volume](../../infrastructure/longhorn/test-volume.yaml) 
   - [Postgres Data Volume](../../infrastructure/longhorn/test-volume.yaml)
 
