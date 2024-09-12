@@ -50,7 +50,7 @@ spec:
 
                   cat /shared/vault.env
               volumeMounts:
-              - name: vaultw-backup-shared-volume
+              - name: vault-backup-shared-volume
                 mountPath: /shared
 
             - name: scale-down
