@@ -7,5 +7,5 @@ resources:
 patches:
   - target:
       kind: CronJob
-      name: base-backup
+      name: backup
     path: patch-cronjob.yaml

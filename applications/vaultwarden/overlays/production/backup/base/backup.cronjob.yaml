@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: base-backup
+  name: backup
 spec:
   suspend: true
   schedule: "* * * * *"
