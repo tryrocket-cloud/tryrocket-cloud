@@ -1,15 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: deployment-manager
   namespace: vault
+  name: pod-deleter
 rules:
-- apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get"] #, "list", "patch", "update"]
-- apiGroups: ["apps"]
-  resources: ["deployments/scale"]
-  verbs: ["patch", "update"]
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["get", "list", "watch"]
+  verbs: ["get", "list", "delete"]

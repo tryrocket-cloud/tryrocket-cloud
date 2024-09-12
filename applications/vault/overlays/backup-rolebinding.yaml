@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: deployment-manager-binding
+  name: pod-deleter-binding
   namespace: vault
 subjects:
 - kind: ServiceAccount
@@ -9,5 +9,5 @@ subjects:
   namespace: vault
 roleRef:
   kind: Role
-  name: deployment-manager
+  name: pod-deleter
   apiGroup: rbac.authorization.k8s.io
