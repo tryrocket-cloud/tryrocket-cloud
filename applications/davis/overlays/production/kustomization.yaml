@@ -4,52 +4,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - ../../base
-  - ./backup
-
-  - ./external-secrets
-
-  - pv.yaml
-  - pvc.yaml
-
-  # provide davis-secret
-  #   - ADMIN_LOGIN=
-  #   - ADMIN_PASSWORD=
-  - davis-external-secret.yaml
----
-  - namespace.yaml
-
   - ./davis
   - ./backup
   - ./external-secrets
 
 
 namespace: davis
-
-# https://github.com/tchapi/davis/releases
-# https://github.com/tchapi/davis/pkgs/container/davis-standalone
-images:
-  - name: ghcr.io/tchapi/davis-standalone:edge
-    newTag: 4.4.4
-
-#https://github.com/tchapi/davis/blob/main/docker/.env
-configMapGenerator:
-  - name: davis-config
-    literals:
-      - AUTH_REALM=SabreDAV
-      - AUTH_METHOD=Basic
-    behavior: merge
-
-#      - MAILER_DSN=smtp://${MAIL_USERNAME}:${MAIL_PASSWORD}@${MAIL_HOST}:${MAIL_PORT}
-#      - INVITE_FROM_ADDRESS=${INVITE_FROM_ADDRESS}
-#      - INVITE_FROM_ADDRESS=${INVITE_FROM_ADDRESS}
-#      - MAIL_HOST=smtp.myprovider.com
-#      - MAIL_PORT=587
-#      - MAIL_USERNAME=userdav
-#      - MAIL_PASSWORD=test
-
-patches:
-  - target:
-      kind: Deployment
-      name: davis
-    path: patch-deployment-json6902.yaml
