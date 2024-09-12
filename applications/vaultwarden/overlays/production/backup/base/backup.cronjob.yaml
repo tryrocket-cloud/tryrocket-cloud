@@ -59,7 +59,7 @@ spec:
               env:
                 - name: NODE_NO_WARNINGS
                   value: "1"
-                - name: VAULTWARDEN_SERVER_DOMAIN
+                - name: VAULTWARDEN_SERVER
                   value: https://vaultwarden.tryrocket.cloud
               envFrom:
                 - secretRef:
@@ -68,7 +68,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  bw config server $VAULTWARDEN_SERVER_DOMAIN
+                  bw config server $VAULTWARDEN_SERVER
                   export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
 
                   bw sync
