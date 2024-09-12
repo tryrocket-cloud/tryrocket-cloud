@@ -25,8 +25,8 @@ spec:
 
                   curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version' > /shared/vaultwarden.env
 
-                  [ -f /shared/vaultwarden.env ] && echo "File exists" || echo "File does not exist"
-                  [ -s /shared/vaultwarden.env ] && echo "File is not empty" || echo "File is empty"
+                  [ -f /shared/vaultwarden.env ] && exit 0 || exit 1
+                  [ -s /shared/vaultwarden.env ] && exit 0 || exit 1
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
@@ -56,8 +56,8 @@ spec:
 
                   bw logout
 
-                  [ -f /shared/vault-backup.json ] && echo "File exists" || echo "File does not exist"
-                  [ -s /shared/vault-backup.json ] && echo "File is not empty" || echo "File is empty"
+                  [ -f /shared/vault-backup.json ] && exit 0 || exit 1
+                  [ -s /shared/vault-backup.json ] && exit 0 || exit 1
 
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
