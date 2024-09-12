@@ -23,3 +23,11 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+  info:
+    - name: GitHub
+      value: https://github.com/dani-garcia/vaultwarden
+    - name: Bitwarden cli (github)
+      value: https://github.com/bitwarden/clients
+    - name: Bitwarden cli (npm)
+      value: https://www.npmjs.com/package/@bitwarden/cli
