@@ -15,7 +15,7 @@ spec:
           restartPolicy: Never
 
           initContainers:
-            - name: get-version
+            - name: get-vaultwarden-version
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               env:
                 - name: VAULTWARDEN_SERVER
@@ -53,7 +53,7 @@ spec:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
 
-            - name: export-vault
+            - name: export-vaultwarden-vault
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               env:
