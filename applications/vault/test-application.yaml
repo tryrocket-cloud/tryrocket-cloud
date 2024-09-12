@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  labels:
+    environment: production
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
+    targetRevision: main
+    path: applications/vault/
+
+  destination:
+    server: https://192.168.178.101:6443
+    namespace: vault
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+  # https://github.com/argoproj/argo-cd/issues/4326#issuecomment-1045107563
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
+
+  info:
+    - name: Helm Chart
+      value: https://github.com/hashicorp/vault-helm
+    - name: Helm Chart Values
+      value: https://github.com/hashicorp/vault-helm/blob/main/values.yaml
+    - name: Helm Chart Documentation
+      value: https://developer.hashicorp.com/vault/docs/platform/k8s/helm

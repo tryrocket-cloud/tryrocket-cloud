@@ -1,0 +1,224 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-export-backup
+spec:
+  suspend: true
+  schedule: "30 0 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+
+          initContainers:
+            - name: get-vaultwarden-version
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              env:
+                - name: VAULTWARDEN_SERVER
+                  value: https://vaultwarden.tryrocket.cloud
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  HTTP_STATUS=$(curl --silent --write-out "%{http_code}" --output /tmp/vaultwarden_config.json ${VAULTWARDEN_SERVER}/api/config)
+
+                  if [ "$HTTP_STATUS" -ne 200 ]; then
+                    echo "Error: Failed to fetch Vaultwarden config, HTTP status: $HTTP_STATUS"
+                    exit 1
+                  fi
+
+                  jq --raw-output '.server.version' /tmp/vaultwarden_config.json > /shared/vaultwarden.env
+
+                  if [ $? -ne 0 ]; then
+                    echo "Error: Failed to extract .server.version using jq"
+                    exit 1
+                  fi
+
+                  if [ ! -f /shared/vaultwarden.env ]; then
+                    echo "Error: /shared/vaultwarden.env file does not exist"
+                    exit 1
+                  fi
+
+                  if [ ! -s /shared/vaultwarden.env ]; then
+                    echo "Error: /shared/vaultwarden.env is empty"
+                    exit 1
+                  fi
+
+                  cat /shared/vaultwarden.env
+              volumeMounts:
+              - name: vaultwarden-backup-shared-volume
+                mountPath: /shared
+
+            - name: export-vaultwarden-vault
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              env:
+                - name: NODE_NO_WARNINGS
+                  value: "1"
+                - name: VAULTWARDEN_SERVER
+                  value: https://vaultwarden.tryrocket.cloud
+              envFrom:
+                - secretRef:
+                    name: vaultwarden-credentials-secret
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  bw config server $VAULTWARDEN_SERVER
+                  export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
+
+                  bw sync
+
+                  bw export --format json --output /shared/vault-backup.json
+
+                  bw logout
+
+                  [ ! -f /shared/vault-backup.json ] && exit 1
+                  [ ! -s /shared/vault-backup.json ] && exit 1
+                  
+                  jq empty /shared/vault-backup.json > /dev/null 2>&1
+
+                  if [ $? -ne 0 ]; then
+                    jq empty /shared/vault-backup.json
+                    exit 1
+                  fi
+              volumeMounts:
+              - name: vaultwarden-backup-shared-volume
+                mountPath: /shared
+
+          containers:
+            - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    sh backup.sh
+
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vaultwarden-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+
+            - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vaultwarden-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: vaultwarden-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+
+            - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-restic-secret
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    sh backup.sh
+
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: vaultwarden-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: hetzner-com-storagebox-vaultwarden-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+                - name: vaultwarden-backup-shared-volume
+                  mountPath: /shared
+                  readOnly: true
+                  
+          volumes:
+            - name: backup-sh-volume
+              configMap:
+                name: backup-sh-configmap
+                items:
+                - key: backup.sh
+                  path: backup.sh
+
+            - name: vaultwarden-data-volume
+              persistentVolumeClaim:
+                claimName: vaultwarden-data-pvc
+
+            - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: hetzner-com-storagebox-vaultwarden-ssh-config
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-config
+                    path: config
+                defaultMode: 384
+            - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-hosts
+                    path: hosts
+                defaultMode: 384
+
+            - name: vaultwarden-backup-shared-volume
+              emptyDir: {}
