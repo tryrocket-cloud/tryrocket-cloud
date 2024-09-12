@@ -96,7 +96,6 @@ spec:
                   - -c
                   - |
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
-                    sleep infinity
                     sh backup.sh
 
               volumeMounts:
