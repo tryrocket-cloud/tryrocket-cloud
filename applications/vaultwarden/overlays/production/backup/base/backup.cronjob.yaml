@@ -47,6 +47,8 @@ spec:
                     echo "Error: /shared/vaultwarden.env is empty"
                     exit 1
                   fi
+
+                  cat /shared/vaultwarden.env
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
