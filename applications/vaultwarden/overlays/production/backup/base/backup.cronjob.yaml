@@ -77,9 +77,15 @@ spec:
 
                   bw logout
 
-                  [ -f /shared/vault-backup.json ] && exit 0 || exit 1
-                  [ -s /shared/vault-backup.json ] && exit 0 || exit 1
+                  [ ! -f /shared/vault-backup.json ] && exit 1
+                  [ ! -s /shared/vault-backup.json ] && exit 1
+                  
+                  jq empty /shared/vault-backup.json > /dev/null 2>&1
 
+                  if [ $? -ne 0 ]; then
+                    jq empty /shared/vault-backup.json
+                    exit 1
+                  fi
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
