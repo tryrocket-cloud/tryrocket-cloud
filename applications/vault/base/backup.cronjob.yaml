@@ -83,7 +83,6 @@ spec:
                   - |
                     export VAULT_VERSION=$(cat /shared/vault.env)
 
-                    sleep infinity
                     sh backup.sh
 
               volumeMounts:
@@ -113,7 +112,6 @@ spec:
                   - |
                     export VAULT_VERSION=$(cat /shared/vault.env)
 
-                    sleep infinity
                     sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume
@@ -141,7 +139,6 @@ spec:
                     export VAULT_VERSION=$(cat /shared/vault.env)
                     ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
-                    sleep infinity
                     sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume

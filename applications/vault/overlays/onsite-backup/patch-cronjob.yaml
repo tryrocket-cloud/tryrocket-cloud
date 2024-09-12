@@ -26,7 +26,6 @@ spec:
 
                     export VAULT_VERSION=$(cat /shared/vault.env)
 
-                    sleep infinity
                     sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume
