@@ -1,5 +1,23 @@
 # davis
 
+## Prerequisites
+
+- [External Secrets Operator](https://external-secrets.io/latest/) is installed
+
+- [Vault](https://www.vaultproject.io/) is installed and configured
+
+- Create Davis kubernetes role Vault
+
+      vault write auth/kubernetes/role/davis \
+          bound_service_account_names=davis-vault-sa \
+          bound_service_account_namespaces=davis \
+          policies=davis \
+          ttl=24h
+
+- Create Davis policy in Vault ([davis-policy.hcl](/applications/davis/overlays/production/davis-policy.hcl))
+    
+      vault policy write davis davis-policy.hcl
+
 ## First Run
 
 > [!IMPORTANT]

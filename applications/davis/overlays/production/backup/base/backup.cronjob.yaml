@@ -1,0 +1,153 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  suspend: true
+  schedule: "* * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+
+          initContainers:
+            - name: scale-down
+              image: bitnami/kubectl:latest
+              command:
+              - /bin/sh
+              - -c
+              - |
+                # sleep infinity
+                kubectl scale deployment davis --replicas=0 -n davis
+
+                while [ "$(kubectl get pods -l app=davis -n davis --field-selector=status.phase=Running | wc -l)" != "0" ]; do
+                  echo "Waiting for davis pods to terminate..."
+                  sleep 5
+                done
+
+          containers:
+            - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-1-healthchecks-secret
+                - configMapRef:
+                    name: davis-version
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    sh backup.sh
+
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: davis-data-volume
+                  mountPath: /data
+                  readOnly: true
+
+            - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: ionos-com-objectstorage-s3-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-restic-secret
+                - secretRef:
+                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
+                - configMapRef:
+                    name: davis-version
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: davis-data-volume
+                  mountPath: /data
+                  readOnly: true
+
+            - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-restic-secret
+                - secretRef:
+                    name: hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
+                - configMapRef:
+                    name: davis-version
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: davis-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: hetzner-com-storagebox-davis-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: hetzner-com-storagebox-davis-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: hetzner-com-storagebox-davis-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+
+          volumes:
+            - name: backup-sh-volume
+              configMap:
+                name: backup-sh-configmap
+                items:
+                - key: backup.sh
+                  path: backup.sh
+
+            - name: davis-data-volume
+              persistentVolumeClaim:
+                claimName: davis-data-pvc
+
+            - name: hetzner-com-storagebox-davis-ssh-privatekey
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: hetzner-com-storagebox-davis-ssh-config
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-config
+                    path: config
+                defaultMode: 384
+            - name: hetzner-com-storagebox-davis-ssh-hosts
+              secret:
+                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
+                items:
+                  - key: ssh-hosts
+                    path: hosts
+                defaultMode: 384

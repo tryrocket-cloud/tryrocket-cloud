@@ -2,27 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - namespace.yaml
-
   - ../../base
-  - ./backup
-
-  - ./external-secrets
 
   - pv.yaml
   - pvc.yaml
 
-  # provide davis-secret
-  #   - ADMIN_LOGIN=
-  #   - ADMIN_PASSWORD=
+  # davis-secret
   - davis-external-secret.yaml
----
-  - namespace.yaml
-
-  - ./davis
-  - ./backup
-  - ./external-secrets
-
 
 namespace: davis
 

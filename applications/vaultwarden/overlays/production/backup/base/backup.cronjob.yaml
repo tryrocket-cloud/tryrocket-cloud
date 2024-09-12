@@ -148,7 +148,6 @@ spec:
                   - |
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     sh backup.sh
-
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh

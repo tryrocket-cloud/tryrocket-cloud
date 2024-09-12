@@ -4,7 +4,6 @@
 RESTIC_VERSION=$(restic version | awk '{print $2}')
 HOSTNAME="tryrocket.cloud"
 HC_URL=""
-#VAULTWARDEN_VERSION=$(curl --silent https://vaultwarden.tryrocket.cloud/api/config | jq --raw-output '.server.version')
 
 # Function to print usage
 usage() {

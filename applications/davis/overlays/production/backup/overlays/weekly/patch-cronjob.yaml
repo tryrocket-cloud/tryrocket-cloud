@@ -1,0 +1,71 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  suspend: false
+  schedule: "30 0 * * 0"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: truenas-tryrocket-cloud-restic-backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: truenas-tryrocket-cloud-restic-secret
+                - secretRef:
+                    name: truenas-tryrocket-cloud-healthchecks-secret
+                - configMapRef:
+                    name: davis-version
+              command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
+
+                    sh backup.sh
+              volumeMounts:
+                - name: backup-sh-volume
+                  mountPath: /backup.sh
+                  subPath: backup.sh
+                - name: davis-data-volume
+                  mountPath: /data
+                  readOnly: true
+                - name: truenas-tryrocket-cloud-sftp-ssh-privatekey
+                  mountPath: /root/.ssh/id_ed25519
+                  readOnly: true
+                  subPath: id_ed25519
+                - name: truenas-tryrocket-cloud-sftp-ssh-config
+                  mountPath: /root/.ssh/config
+                  readOnly: true
+                  subPath: config
+                - name: truenas-tryrocket-cloud-sftp-ssh-hosts
+                  mountPath: /root/.ssh/hosts
+                  readOnly: true
+                  subPath: hosts
+
+          volumes:
+            - name: truenas-tryrocket-cloud-sftp-ssh-privatekey
+              secret:
+                secretName: truenas-tryrocket-cloud-sftp-secret
+                items:
+                  - key: ssh-privatekey
+                    path: id_ed25519
+                defaultMode: 384
+            - name: truenas-tryrocket-cloud-sftp-ssh-config
+              secret:
+                secretName: truenas-tryrocket-cloud-sftp-secret
+                items:
+                  - key: ssh-config
+                    path: config
+                defaultMode: 384
+            - name: truenas-tryrocket-cloud-sftp-ssh-hosts
+              secret:
+                secretName: truenas-tryrocket-cloud-sftp-secret
+                items:
+                  - key: ssh-hosts
+                    path: hosts
+                defaultMode: 384
