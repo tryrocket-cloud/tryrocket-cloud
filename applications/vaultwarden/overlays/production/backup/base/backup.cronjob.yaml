@@ -23,13 +23,27 @@ spec:
                 - |
                   HTTP_STATUS=$(curl --silent --write-out "%{http_code}" --output /tmp/vaultwarden_config.json https://vaultwarden.tryrocket.cloud/api/config)
 
-                  [ "$HTTP_STATUS" -ne 200 ] && exit 1
+                  if [ "$HTTP_STATUS" -ne 200 ]; then
+                    echo "Error: Failed to fetch Vaultwarden config, HTTP status: $HTTP_STATUS"
+                    exit 1
+                  fi
 
                   jq --raw-output '.server.version' /tmp/vaultwarden_config.json > /shared/vaultwarden.env
 
-                  [ $? -ne 0 ] && exit 1
-                  [ ! -f /shared/vaultwarden.env ] && exit 1
-                  [ ! -s /shared/vaultwarden.env ] && exit 1
+                  if [ $? -ne 0 ]; then
+                    echo "Error: Failed to extract .server.version using jq"
+                    exit 1
+                  fi
+
+                  if [ ! -f /shared/vaultwarden.env ]; then
+                    echo "Error: /shared/vaultwarden.env file does not exist"
+                    exit 1
+                  fi
+
+                  if [ ! -s /shared/vaultwarden.env ]; then
+                    echo "Error: /shared/vaultwarden.env is empty"
+                    exit 1
+                  fi
               volumeMounts:
               - name: vaultwarden-backup-shared-volume
                 mountPath: /shared
