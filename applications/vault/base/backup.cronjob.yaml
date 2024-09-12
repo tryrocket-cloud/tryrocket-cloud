@@ -59,7 +59,7 @@ spec:
               - /bin/sh
               - -c
               - |
-                kubectl scale deployment vault --replicas=0 -n vault
+                kubectl delete pod vault-0 -n vault
 
                 while [ "$(kubectl get pods -l app=vault -n vault --field-selector=status.phase=Running | wc -l)" != "0" ]; do
                   echo "Waiting for Hashicorp Vault pods to terminate..."
