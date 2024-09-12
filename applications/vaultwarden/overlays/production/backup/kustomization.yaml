@@ -20,9 +20,6 @@ resources:
   # ionos-com-objectstorage-eu-central-3-healthchecks-secret
   - ionos.com-objectstorage-eu-central-3-s3-restic-healthchecks.externalsecret.yaml
 
-  # user and master password for plaintext backup
-  - vaultwarden-credentials.externalsecret.yaml
-
 configMapGenerator:
   - name: backup-sh-configmap
     files:
