@@ -1,0 +1,7 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: offsite-backup-daily
+spec:
+  suspend: false
+  schedule: "30 0 * * 1-6"

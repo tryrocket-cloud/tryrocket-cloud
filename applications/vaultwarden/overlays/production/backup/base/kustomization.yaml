@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
-  - offsite-backup-daily-cronjob.yaml
-  - onsite-backup-weekly-cronjob.yaml
+  - backup-cronjob.yaml
 
   # scale down deployment replicas
   - backup-role.yaml
@@ -12,11 +12,6 @@ resources:
   # hetzner-com-storagebox-bx11-fsn1-restic-secret
   # hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
   - hetzner.com-storagebox-bx11-fsn1-sftp-restic-healthchecks.externalsecret.yaml
-
-  # truenas-tryrocket-cloud-sftp-secret  
-  # truenas-tryrocket-cloud-restic-secret
-  # truenas-tryrocket-cloud-healthchecks-secret
-  - truenas.tryrocket.cloud-sftp-restic-healthchecks.externalsecret.yaml
 
   # ionos-com-objectstorage-s3-secret
   - ionos.com-objectstorage-s3.externalsecret.yaml
@@ -30,6 +25,7 @@ resources:
   - ionos.com-objectstorage-eu-central-3-s3-restic-healthchecks.externalsecret.yaml
 
   - vaultwarden-credentials.externalsecret.yaml
+
 
 configMapGenerator:
   - name: backup-sh-configmap

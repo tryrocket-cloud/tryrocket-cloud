@@ -5,7 +5,10 @@ resources:
   - namespace.yaml
 
   - ./vaultwarden
-  - ./backup
+  
+  - ./backup/overlays/daily
+  - ./backup/overlays/weekly
+  
   - ./external-secrets
 
 namespace: vaultwarden

@@ -4,7 +4,7 @@
 
 - add longhorn-volumes as k8s manifests
 - add longhorn recurring tasks for snapshot an backup
-- export vaultwarden with bitwarden cli for backup
+- backup-cronjob inhertitance
 
 ## Prerequisites
 
