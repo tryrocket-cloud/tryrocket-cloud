@@ -25,6 +25,8 @@ spec:
                     ssh-keyscan -f /root/.ssh/hosts >> /root/.ssh/known_hosts
 
                     export VAULT_VERSION=$(cat /shared/vault.env)
+
+                    sleep infinity
                     sh backup.sh
               volumeMounts:
                 - name: backup-sh-volume
