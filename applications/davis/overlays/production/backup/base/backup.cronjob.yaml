@@ -99,7 +99,7 @@ spec:
 
                     sleep infinity
 
-                    sh backup.sh
+                    #sh backup.sh
 
               volumeMounts:
                 - name: backup-sh-volume
