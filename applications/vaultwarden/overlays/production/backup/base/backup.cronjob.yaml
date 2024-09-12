@@ -17,11 +17,14 @@ spec:
           initContainers:
             - name: get-version
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              env:
+                - name: VAULTWARDEN_SERVER
+                  value: https://vaultwarden.tryrocket.cloud
               command:
                 - /bin/sh
                 - -c
                 - |
-                  HTTP_STATUS=$(curl --silent --write-out "%{http_code}" --output /tmp/vaultwarden_config.json https://vaultwarden.tryrocket.cloud/api/config)
+                  HTTP_STATUS=$(curl --silent --write-out "%{http_code}" --output /tmp/vaultwarden_config.json ${VAULTWARDEN_SERVER}/api/config)
 
                   if [ "$HTTP_STATUS" -ne 200 ]; then
                     echo "Error: Failed to fetch Vaultwarden config, HTTP status: $HTTP_STATUS"
