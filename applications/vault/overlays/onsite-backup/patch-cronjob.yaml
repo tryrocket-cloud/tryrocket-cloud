@@ -32,7 +32,7 @@ spec:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vault-data-volume # unknown
+                - name: vault-data-volume
                   mountPath: /data
                   readOnly: true
                 - name: truenas-tryrocket-cloud-sftp-ssh-privatekey
