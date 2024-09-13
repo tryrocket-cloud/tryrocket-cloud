@@ -1,6 +1,10 @@
 - op: add
+  path: /spec/template/metadata/annotations
+  value: {}
+
+- op: add
   path: /spec/template/metadata/annotations/backup.velero.io~1backup-volumes
-  value: "vaultwarden-data-volume"
+  value: vaultwarden-data-volume
 
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts
