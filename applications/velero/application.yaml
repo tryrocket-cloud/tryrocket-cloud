@@ -25,7 +25,7 @@ spec:
         configuration:
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
-          - name: ionos.com
+          - name: ionos.com-eu-central-1
             provider: aws
             bucket: velero-test123
           volumeSnapshotLocation:
