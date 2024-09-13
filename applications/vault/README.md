@@ -50,6 +50,19 @@
 
 Service Account `vault-auth` with `system:auth-delegator` ClusterRole is needed to be able to generate a `token_reviewer_jwt` for Vault. `system:auth-delegator` grants permissions to use TokenReview API. Vault will be using `token_reviewer_jwt` as an authentication token for the TokenReview API calls. TokenReview API is the API to validate tokens. `token_reviewer_jwt` are short-lived tokens and for now need to be updated manually (need research).
 
+### Scenario: Vault is running inside the Kubernetes cluster
+
+    vault auth enable kubernetes
+    kubectl exec -it vault-0 -n vault -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt > ca.crt
+    vault write auth/kubernetes/config \
+        kubernetes_host="https://kubernetes.default.svc:443" \
+        kubernetes_ca_cert=@ca.crt
+    rm ca.crt
+
+
+
+### Scenario: Vault is running outside the Kubernetes cluster
+
 ### Create a service account for Vault Kubernetes authentication:
 
 *Why:* Service Account is needed to generate a `token_reviewer_jwt` for 
