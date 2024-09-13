@@ -42,3 +42,43 @@
 
     - vault auth enable kubernetes
     - apply `tryrocket.cloud-policy.hcl`
+
+
+# Cluster authentication
+
+Create a service account for Vault Kubernetes authentication:
+
+    kubectl -n default create serviceaccount vault-auth
+
+> When you create a service account, Kubernetes does not automatically generate a service account token secret in clusters using Kubernetes versions 1.24 and later. In those versions, Kubernetes has removed the automatic creation of service account tokens as part of the transition to a more secure TokenRequest API for short-lived tokens.
+
+Create token for `vault-auth` service account
+
+    kubectl -n default create token vault-auth
+    kubectl -n default create token vault-auth --duration=24h
+
+In Kubernetes 1.24+ and beyond, where service account tokens are short-lived by default, you need to handle token renewal for Kubernetes authentication with Vault. The tokens generated using the TokenRequest API are designed to be automatically refreshed by the Kubernetes API. 
+
+`token_reviewer_jwt` is the token provided in the Vault configuration to enable Kubernetes authentication. It's used by Vault to validate service account tokens presented by other applications. In Kubernetes 1.24+, the `token_reviewer_jwt` is often short-lived when created using the TokenRequest API. This means you'll need to periodically update this token in Vault.
+
+    
+    kubectl -n default create token vault-auth --duration=24h
+
+    In Kubernetes 1.24+ and beyond, where service account tokens are short-lived by default, you need to handle token renewal for Kubernetes authentication with Vault. The tokens generated using the TokenRequest API are designed to be automatically refreshed by the Kubernetes API. 
+
+    # kubectl apply -f vault-cluster-role-binding.yaml
+
+    # vault-cluster-role-binding.yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+    name: vault-tokenreview-role-binding
+    roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:auth-delegator   # Grants access to the tokenreview API
+    subjects:
+    - kind: ServiceAccount
+        name: vault-auth
+        namespace: default
+
