@@ -1,6 +1,7 @@
 - op: add
   path: /metadata/annotations/-
-  value: backup.velero.io/backup-volumes: vaultwarden-data-volume
+  value: 
+    backup.velero.io/backup-volumes: vaultwarden-data-volume
 
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts
