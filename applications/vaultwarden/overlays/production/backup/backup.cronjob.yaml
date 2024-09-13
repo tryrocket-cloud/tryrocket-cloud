@@ -107,6 +107,7 @@ spec:
                   - |
                     export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                     sh backup.sh
+                    sleep infinity
 
               volumeMounts:
                 - name: backup-sh-volume
