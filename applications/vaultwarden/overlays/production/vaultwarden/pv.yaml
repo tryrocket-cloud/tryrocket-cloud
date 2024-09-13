@@ -6,9 +6,9 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: vaultwarden-data
+    volumeHandle: vaultwarden-prod-data
