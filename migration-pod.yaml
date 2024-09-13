@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: migration-pod
-    image: postgres:16.3-alpine
+    image: alpine
     command:
         - /bin/sh
         - -c
@@ -13,14 +13,14 @@ spec:
           apk update && apk add --no-cache fish git curl
           sleep infinity
     volumeMounts:
-      - name: vaultwarden-new-volume
-        mountPath: /data-new
-      - name: vaultwarden-old-volume
+      - name: old-volume
         mountPath: /data-old
+      - name: new-volume
+        mountPath: /data-new
   volumes:
-    - name: vaultwarden-new-volume
+    - name: old-volume
       persistentVolumeClaim:
-        claimName: vaultwarden-data-pvc
-    - name: vaultwarden-old-volume
+        claimName: old-data-pvc
+    - name: new-volume
       persistentVolumeClaim:
-        claimName: vaultwarden-rwx-pvc
+        claimName: new-data-pvc
