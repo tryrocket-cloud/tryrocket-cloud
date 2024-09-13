@@ -32,7 +32,8 @@ spec:
             credential:
               name: creds
               key: cloud
-            config: 
+            config:
+              region: eu-central-1
               s3Url: https://s3-eu-central-1.ionoscloud.com
           volumeSnapshotLocation:
           - provider: aws
