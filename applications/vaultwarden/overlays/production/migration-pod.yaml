@@ -13,14 +13,14 @@ spec:
           apk update && apk add --no-cache fish git curl
           sleep infinity
     volumeMounts:
-#      - name: vaultwarden-new-volume
-#        mountPath: /data-new
-      - name: vaultwarden-old-volume
+      - name: old-volume
         mountPath: /data-old
+      - name: new-volume
+        mountPath: /data-new
   volumes:
-#    - name: vaultwarden-new-volume
-#      persistentVolumeClaim:
-#        claimName: pvc-68aaaf61-9587-4d2e-bdd3-ff18d345bc6e
-    - name: vaultwarden-old-volume
+    - name: old-volume
       persistentVolumeClaim:
-        claimName: pvc-5ea240ff-56eb-48e8-83f0-33b038fb3e6c
+        claimName: old-data-pvc
+    - name: new-volume
+      persistentVolumeClaim:
+        claimName: new-data-pvc

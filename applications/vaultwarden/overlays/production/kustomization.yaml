@@ -9,5 +9,7 @@ resources:
   - ./external-secrets
 
   - ./migration-pod.yaml
+  - ./pv.yaml
+  - ./pvc.yaml
 
 namespace: vaultwarden
