@@ -13,7 +13,6 @@
       mountPath: /data
     - name: vaultwarden-backup-test-volume
       mountPath: /shared
-      readOnly: true
 
 - op: add
   path: /spec/template/spec/volumes
