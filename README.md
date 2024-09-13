@@ -25,6 +25,7 @@
 
 - Longhorn cli
 - Argo CD cli
+- Velero cli
 - Ansible
 - kubectl
 - yq

@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+  namespace: argocd
+  labels:
+    environment: production
+spec:
+  project: default
+  source:
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    chart: velero
+    targetRevision: 7.2.1
+    helm:
+      values: |
+        initContainers:
+          - name: velero-plugin-for-ionos
+            # https://github.com/vmware-tanzu/velero-plugin-for-aws
+            image: velero/velero-plugin-for-aws:v1.10.1
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+              - mountPath: /target
+                name: plugins
+  destination:
+    server: https://192.168.178.101:6443
+    namespace: velero
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+  info:
+    - name: Landingpage
+      value: https://velero.io/
+    - name: Helm Chart (GitHub)
+      value: https://github.com/vmware-tanzu/helm-charts
+    - name: Helm Chart
+      value: https://vmware-tanzu.github.io/helm-charts/
+    - name: Helm Chart Value
+      value: https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/values.yaml
+    - name: Helm Chart Documentation
+      value: https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/README.md
+    - name: velero-plugin-for-aws (GitHub)
+      value: https://github.com/vmware-tanzu/velero-plugin-for-aws
