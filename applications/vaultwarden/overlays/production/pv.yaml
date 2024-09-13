@@ -11,7 +11,7 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: vaultwarden-data-pvc
+    volumeHandle: vaultwarden-data
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -26,4 +26,4 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    volumeHandle: vaultwarden-prod-data-pvc
+    volumeHandle: vaultwarden-prod-data
