@@ -8,4 +8,6 @@ resources:
   - ./backup
   - ./external-secrets
 
+  - ./migration-pod.yaml
+
 namespace: vaultwarden
