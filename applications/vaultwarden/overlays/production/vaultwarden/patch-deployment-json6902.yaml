@@ -9,7 +9,7 @@
   value:
     - name: vaultwarden-data-volume
       persistentVolumeClaim:
-        claimName: vaultwarden-data-pvc
+        claimName: vaultwarden-prod-data-pvc
 
 - op: add
   path: /spec/template/spec/containers/0/envFrom/-
