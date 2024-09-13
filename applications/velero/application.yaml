@@ -26,8 +26,11 @@ spec:
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
           - name: ionos.com-eu-central-1
+            default: true
             provider: aws
             bucket: velero-test123
+            config: 
+              s3Url: https://s3-eu-central-1.ionoscloud.com
           volumeSnapshotLocation:
           - provider: aws
 
