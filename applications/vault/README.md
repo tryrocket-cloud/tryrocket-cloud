@@ -48,9 +48,11 @@
 
 *TLDR;*
 
-Service Account `vault-auth` with `system:auth-delegator` ClusterRole is needed to be able to generate a `token_reviewer_jwt` for Vault. `system:auth-delegator` grants permissions to use TokenReview API. Vault will be using `token_reviewer_jwt` as an authentication token for the TokenReview API calls. TokenReview API is the API to validate tokens. `token_reviewer_jwt` are short-lived tokens and for now need to be updated manually (need research).
+Service Account `vault` with `system:auth-delegator` ClusterRole is needed to be able to generate a `token_reviewer_jwt` for Vault. `system:auth-delegator` grants permissions to use TokenReview API. Vault will be using `token_reviewer_jwt` as an authentication token for the TokenReview API calls. TokenReview API is the API to validate tokens. `token_reviewer_jwt` are short-lived tokens and for now need to be updated manually (need research).
 
 ### Scenario: Vault is running inside the Kubernetes cluster
+
+When running Vault inside the Kubernetes cluster, you can use the Kubernetes service account token that is mounted into the Vault pod. By using the official Helm Chart for Vault the service account `vault` and cluster binding role `vault-server-binding` are already created. 
 
     vault auth enable kubernetes
     kubectl exec -it vault-0 -n vault -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt > ca.crt
@@ -59,38 +61,38 @@ Service Account `vault-auth` with `system:auth-delegator` ClusterRole is needed 
         kubernetes_ca_cert=@ca.crt
     rm ca.crt
 
-
+Now, the Vault shoud be able to verify tokens comming from application service accounts.
 
 ### Scenario: Vault is running outside the Kubernetes cluster
 
-### Create a service account for Vault Kubernetes authentication:
+#### Create a service account for Vault Kubernetes authentication:
 
 *Why:* Service Account is needed to generate a `token_reviewer_jwt` for 
 
-    kubectl -n default create serviceaccount vault-auth
+    kubectl -n default create serviceaccount vault
 
 > [!NOTE]  
 >
 > When you create a service account, Kubernetes does not automatically generate a service account token secret in clusters using Kubernetes versions 1.24 and later. In those versions, Kubernetes has removed the automatic creation of service account tokens as part of the transition to a more secure TokenRequest API for short-lived tokens.
 
-### Create token for `vault-auth` service account:
+#### Create token for `vault-auth` service account:
 
-    kubectl -n default create token vault-auth
-    kubectl -n default create token vault-auth --duration=24h
+    kubectl -n default create token vault
+    kubectl -n default create token vault --duration=24h
 
 > [!NOTE]  
 >
 > `token_reviewer_jwt` is the token provided in the Vault configuration to enable Kubernetes authentication. It's used by Vault to validate service account tokens presented by other applications. In Kubernetes 1.24+, the `token_reviewer_jwt` is often short-lived when created using the TokenRequest API. This means you'll need to periodically update this token in Vault.
 
-### How to validate if a token has permissions to perform a TokenReview
+#### How to validate if a token has permissions to perform a TokenReview
 
     # decode the token
     echo "$TOKEN" | cut -d '.' -f2 | base64 --decode | jq .
 
     # check permissions
-    kubectl auth can-i create tokenreviews --as=system:serviceaccount:default:vault-auth -n default
+    kubectl auth can-i create tokenreviews --as=system:serviceaccount:default:vault -n default
     
-### Who grants permissions to perform a TokenReview
+#### Who grants permissions to perform a TokenReview
 
 [system:auth-delegator](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) Allows delegated authentication and authorization checks. This is commonly used by add-on API servers for unified authentication and authorization.
 
@@ -105,7 +107,7 @@ roleRef:
 ...
 ```
 
-### Combine `vault-auth` service account and `system:auth-delegator`
+#### Combine `vault-auth` service account and `system:auth-delegator`
 
 ```yaml
 # vault-cluster-role-binding.yaml
@@ -120,7 +122,7 @@ roleRef:
     name: system:auth-delegator   # Grants access to the tokenreview API
 subjects:
 - kind: ServiceAccount
-    name: vault-auth
+    name: vault
     namespace: default
 ```
 
