@@ -8,8 +8,8 @@ resources:
   - ./backup
   - ./external-secrets
 
-  - ./migration-pod.yaml
-  - ./pv.yaml
-  - ./pvc.yaml
+#  - ./migration-pod.yaml
+#  - ./pv.yaml
+#  - ./pvc.yaml
 
 namespace: vaultwarden
