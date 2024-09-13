@@ -63,29 +63,16 @@ sequenceDiagram
 
 [General information about backups](https://github.com/tryrocket-cloud/tryrocket-cloud/wiki/Backup)
 
+### Vaultwarden Backup and Snapshot Strategy
 
-**Data**
+| Schedule | Action | Details | Destination(s)|
+|---|---|---|---|
+| **Daily (30 0 * * *)** | Vaultwarden export and backup | Export Vaultwarden data and back it up using Restic | Hetzner.com, Ionos.com (EU Central 1 & EU Central 3) |
+| **Daily (0 0 * * *)** | Longhorn volume snapshot |  | Local (Longhorn) |
+| **Weekly (30 0 * * 0)** | Longhorn volume backup to TrueNAS | Backup Longhorn volumes to external TrueNAS storage | TrueNAS |
+| **Weekly (30 0 * * 0)**       | Restore from Longhorn backup and perform full Restic backup | Restore a new volume from Longhorn backup and perform full backup using Restic | Hetzner.com, Ionos.com (EU Central 1 & EU Central 3) |
 
-- daily: (30 0 * * *)
-  - offsite
-    - hetzner.com (export.json)
-    - ionos.com (export.json)
-    - ionos.com (export.json)
-  - onsite
-    -
-- weekly: (30 0 * * 0)
-  - offsite
-    - hetzner.com (data)
-    - ionos.com (data)
-    - ionos.com (data)
-  - onsite
-    - truenas.tryrocket.cloud (data)
-    - truenas (export.json)
 
-**Longhorn**
-
-- daily: volume snapshot
-- weekly: volume backup
 
   - [Vaultwarden Data Volume](../../infrastructure/longhorn/test-volume.yaml) 
   - [Postgres Data Volume](../../infrastructure/longhorn/test-volume.yaml)
