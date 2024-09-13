@@ -50,6 +50,10 @@ Create a service account for Vault Kubernetes authentication:
 
     kubectl -n default create serviceaccount vault-auth
 
+> **Note**
+>
+> This is a note
+
 > When you create a service account, Kubernetes does not automatically generate a service account token secret in clusters using Kubernetes versions 1.24 and later. In those versions, Kubernetes has removed the automatic creation of service account tokens as part of the transition to a more secure TokenRequest API for short-lived tokens.
 
 Create token for `vault-auth` service account
