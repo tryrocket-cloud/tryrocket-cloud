@@ -61,6 +61,8 @@ spec:
                   value: "1"
                 - name: VAULTWARDEN_SERVER
                   value: https://vaultwarden.tryrocket.cloud
+                - name: VAULTWARDEN_EXPORT_JSON
+                  value: /shared/vaulwarden-export.json
               envFrom:
                 - secretRef:
                     name: vaultwarden-credentials-secret
@@ -73,17 +75,17 @@ spec:
 
                   bw sync
 
-                  bw export --format json --output /shared/vault-backup.json
+                  bw export --format json --output "$VAULTWARDEN_EXPORT_JSON"
 
                   bw logout
 
-                  [ ! -f /shared/vault-backup.json ] && exit 1
-                  [ ! -s /shared/vault-backup.json ] && exit 1
+                  [ ! -f "$VAULTWARDEN_EXPORT_JSON" ] && exit 1
+                  [ ! -s "$VAULTWARDEN_EXPORT_JSON" ] && exit 1
                   
-                  jq empty /shared/vault-backup.json > /dev/null 2>&1
+                  jq empty "$VAULTWARDEN_EXPORT_JSON" > /dev/null 2>&1
 
                   if [ $? -ne 0 ]; then
-                    jq empty /shared/vault-backup.json
+                    jq empty "$VAULTWARDEN_EXPORT_JSON"
                     exit 1
                   fi
               volumeMounts:
