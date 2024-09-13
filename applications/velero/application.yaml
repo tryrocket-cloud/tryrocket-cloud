@@ -26,7 +26,7 @@ spec:
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
           - provider: aws
-            bucket:
+            bucket: velero-test123
           volumeSnapshotLocation:
           - provider: aws
 
