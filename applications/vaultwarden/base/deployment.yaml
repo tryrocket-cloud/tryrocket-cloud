@@ -58,3 +58,5 @@ spec:
       volumes:
         - name: vaultwarden-backup-test-volume
           emptyDir: {}
+        - name: vaultwarden-backup-test-volume1
+          emptyDir: {}
