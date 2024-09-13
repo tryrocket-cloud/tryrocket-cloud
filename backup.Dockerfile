@@ -15,7 +15,8 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 
 # https://github.com/bitwarden/clients/issues/9646
-RUN npm install -g @bitwarden/cli@2024.6.0
+#RUN npm install -g @bitwarden/cli@2024.6.0
+RUN npm install -g @bitwarden/cli
 
 # Set Fish as the default shell
 ENV SHELL /usr/bin/fish
