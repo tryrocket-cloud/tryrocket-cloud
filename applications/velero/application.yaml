@@ -29,6 +29,9 @@ spec:
             default: true
             provider: aws
             bucket: velero-test123
+            credential:
+              name: creds
+              key: cloud
             config: 
               s3Url: https://s3-eu-central-1.ionoscloud.com
           volumeSnapshotLocation:
