@@ -21,6 +21,13 @@ spec:
             volumeMounts:
               - mountPath: /target
                 name: plugins
+
+        configuration:
+          # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
+          backupStorageLocation:
+          - provider: aws
+            bucket:
+
   destination:
     server: https://192.168.178.101:6443
     namespace: velero
