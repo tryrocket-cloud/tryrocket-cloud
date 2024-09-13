@@ -55,6 +55,6 @@ spec:
             - name: vaultwarden-backup-test-volume
               mountPath: /shared
               readOnly: true
-          volumes:
-            - name: vaultwarden-backup-test-volume
-              emptyDir: {}
+      volumes:
+        - name: vaultwarden-backup-test-volume
+          emptyDir: {}
