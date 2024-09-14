@@ -35,7 +35,6 @@ spec:
             config:
               region: eu-central-1
               s3Url: https://s3-eu-central-1.ionoscloud.com
-              s3ForcePathStyle: false
           volumeSnapshotLocation:
           - provider: aws
 
