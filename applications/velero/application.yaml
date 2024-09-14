@@ -31,7 +31,7 @@ spec:
             default: true
             provider: aws
             bucket: velero-test123
-            resticRepoPrefix: hellorestic
+            resticRepoPrefix: s3:s3-eu-central-1.ionoscloud.com/restic-test123
             credential:
               name: creds
               key: cloud
