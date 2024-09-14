@@ -42,7 +42,7 @@ spec:
               # the request headers.
               #
               # Optional (defaults to "CRC32")
-              checksumAlgorithm: "CRC32"
+              checksumAlgorithm: "CRC32C"
           volumeSnapshotLocation:
           - provider: aws
 
