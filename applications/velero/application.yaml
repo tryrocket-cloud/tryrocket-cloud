@@ -22,6 +22,8 @@ spec:
               - mountPath: /target
                 name: plugins
 
+        deployNodeAgent: false
+
         configuration:
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
@@ -90,3 +92,5 @@ spec:
       value: https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/README.md
     - name: velero-plugin-for-aws (GitHub)
       value: https://github.com/vmware-tanzu/velero-plugin-for-aws
+    - name: Config velero-plugin-for-aws 
+      value: https://github.com/vmware-tanzu/velero-plugin-for-aws/blob/main/volumesnapshotlocation.md
