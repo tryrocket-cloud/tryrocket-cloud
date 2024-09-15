@@ -55,6 +55,7 @@ spec:
               key: cloud
             config:
               region: eu-central-1
+          features: EnableCSI
 
   destination:
     server: https://192.168.178.101:6443
