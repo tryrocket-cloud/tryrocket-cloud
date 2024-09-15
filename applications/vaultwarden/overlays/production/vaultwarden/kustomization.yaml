@@ -9,6 +9,7 @@ resources:
 
   - pvc.yaml
   - pv.yaml
+  - test-pvc.yaml
 
 patches:
   - target:

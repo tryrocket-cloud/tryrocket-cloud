@@ -13,6 +13,8 @@
       mountPath: /data
     - name: vaultwarden-backup-test-volume
       mountPath: /shared
+    - name: vaultwarden-test-volume
+      mountPath: /test
 
 - op: add
   path: /spec/template/spec/volumes
@@ -20,6 +22,9 @@
     - name: vaultwarden-data-volume
       persistentVolumeClaim:
         claimName: vaultwarden-prod-data-pvc
+    - name: vaultwarden-test-volume
+      persistentVolumeClaim:
+        claimName: vaultwarden-test-pvc
     - name: vaultwarden-backup-test-volume
       emptyDir: {}
 
