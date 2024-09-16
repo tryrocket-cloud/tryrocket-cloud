@@ -30,6 +30,8 @@ spec:
           # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
           logLevel: error 
 
+          features: EnableCSI
+
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
           - name: ionos.com-eu-central-1
@@ -60,7 +62,7 @@ spec:
               key: cloud
             config:
               region: eu-central-1
-          features: EnableCSI
+          
 
   destination:
     server: https://192.168.178.101:6443
