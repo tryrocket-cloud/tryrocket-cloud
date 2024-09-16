@@ -14,21 +14,24 @@ spec:
     helm:
       values: |
         # TODO move to another file
-        #schedules:
-        #  vaultwarden-daily-backup:
-        #    disabled: false
-        #    labels:
-        #      myenv: vaultwarden-test-label
-        #    annotations:
-        #      myenv: foo
-        #    schedule: "* * * * *"
-        #    paused: false
-        #    template:
-        #      ttl: "240h"
-        #      includedNamespaces:
-        #        - vaultwarden
-        #      snapshotVolumes: true
-
+        # https://velero.io/docs/v1.14/api-types/schedule/
+        schedules:
+          vaultwarden-daily-backup:
+            disabled: false
+            labels:
+              myenv: vaultwarden-test-label
+            annotations:
+              myenv: foo
+            schedule: "* * * * *"
+            paused: false
+            template:
+              ttl: "240h"
+              includedNamespaces:
+                - vaultwarden
+              snapshotVolumes: true
+              metadata:
+                labels:
+                  labelname: somelabelvalue
 
         upgradeCRDs: true # maybe too dangerous
         cleanUpCRDs: true # maybe too dangerous
