@@ -14,20 +14,20 @@ spec:
     helm:
       values: |
         # TODO move to another file
-        schedules:
-          vaultwarden-daily-backup:
-            disabled: false
-            labels:
-              myenv: vaultwarden-test-label
-            annotations:
-              myenv: foo
-            schedule: "* * * * *"
-            paused: false
-            template:
-              ttl: "240h"
-              includedNamespaces:
-                - vaultwarden
-              snapshotVolumes: true
+        #schedules:
+        #  vaultwarden-daily-backup:
+        #    disabled: false
+        #    labels:
+        #      myenv: vaultwarden-test-label
+        #    annotations:
+        #      myenv: foo
+        #    schedule: "* * * * *"
+        #    paused: false
+        #    template:
+        #      ttl: "240h"
+        #      includedNamespaces:
+        #        - vaultwarden
+        #      snapshotVolumes: true
 
 
         upgradeCRDs: true # maybe too dangerous
