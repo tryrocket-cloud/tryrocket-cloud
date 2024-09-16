@@ -1,0 +1,14 @@
+schedules:
+  vaultwarden-daily-backup:
+    disabled: false
+    labels:
+      myenv: vaultwarden-test-label
+    annotations:
+      myenv: foo
+    schedule: "* * * * *"
+    paused: false
+    template:
+      ttl: "240h"
+      includedNamespaces:
+        - vaultwarden
+      snapshotVolumes: true
