@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - schedule.yaml
 
-namespace: vaultwarden
+namespace: velero

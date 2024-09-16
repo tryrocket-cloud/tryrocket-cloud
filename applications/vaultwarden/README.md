@@ -35,7 +35,9 @@
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/preview/application-set.yaml -n argocd
 
     # Backup is managed manually due to high risk of loosing all backups dur to argo autosync
-    kubectl apply -k https://github.com/tryrocket-cloud/tryrocket-cloud/tree/main/applications/vaultwarden/overlays/backup
+    kubectl apply -k https://github.com/tryrocket-cloud/tryrocket-cloud//applications/vaultwarden/overlays/backup
+
+    kubectl get backups.velero.io -n velero
     
 
 ## Update
