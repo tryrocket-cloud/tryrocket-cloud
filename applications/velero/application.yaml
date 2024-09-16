@@ -29,6 +29,7 @@ spec:
               includedNamespaces:
                 - vaultwarden
               snapshotVolumes: true
+              # Setting labels to override copying labels from schedule which brings also argocd managed labels
               metadata:
                 labels:
                   labelname: somelabelvalue
