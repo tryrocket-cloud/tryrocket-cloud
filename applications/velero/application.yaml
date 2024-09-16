@@ -62,7 +62,8 @@ spec:
               key: cloud
             config:
               region: eu-central-1
-
+    kustomize:
+      path: .
   destination:
     server: https://192.168.178.101:6443
     namespace: velero
