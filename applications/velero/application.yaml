@@ -22,7 +22,7 @@ spec:
               myenv: vaultwarden-test-label
             annotations:
               myenv: foo
-            schedule: "* * * * *"
+            schedule: "*/5 * * * *"
             paused: false
             template:
               ttl: "240h"
