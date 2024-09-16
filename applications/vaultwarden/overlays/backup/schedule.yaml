@@ -1,0 +1,15 @@
+# https://velero.io/docs/v1.14/api-types/schedule/
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: vaultwarden-daily-backup
+spec:
+  paused: false
+  schedule: "0 3 * * *"
+  # https://velero.io/docs/v1.14/backup-reference/#backups-ownerreference-with-schedule
+  useOwnerReferencesInBackup: false
+  template:
+    ttl: 1440h # TTL set to 2 months
+    includedNamespaces:
+      - vaultwarden
+    snapshotVolumes: true

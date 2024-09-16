@@ -14,28 +14,7 @@ spec:
     helm:
       values: |
         # TODO move to another file
-        # https://velero.io/docs/v1.14/api-types/schedule/
-        schedules:
-          vaultwarden-daily-backup:
-            disabled: false
-            labels:
-              myenv: vaultwarden-test-label
-            annotations:
-              argocd.argoproj.io/compare-options: IgnoreExtraneous
-              argocd.argoproj.io/sync-options: Delete=false,Prune=false
-            schedule: "0 3 * * * 0"
-            # https://velero.io/docs/v1.14/backup-reference/#backups-ownerreference-with-schedule
-            useOwnerReferencesInBackup: false
-            paused: false
-            template:
-              ttl: "240h"
-              includedNamespaces:
-                - vaultwarden
-              snapshotVolumes: true
-              # Setting labels to override copying labels from schedule which brings also argocd managed labels
-              #metadata:
-              #  labels:
-              #    labelname: somelabelvalue
+
 
         upgradeCRDs: true # maybe too dangerous
         cleanUpCRDs: true # maybe too dangerous

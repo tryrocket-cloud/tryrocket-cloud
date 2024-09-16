@@ -26,11 +26,15 @@
 
 ## Install
 
+    kubectl create namespace vaultwarden
+
     # Argo CD Application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/production/application.yaml -n argocd
 
     # Argo CD Preview Application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/preview/application-set.yaml -n argocd
+
+    kubectl apply -k https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/backup
 
 ## Update
 
