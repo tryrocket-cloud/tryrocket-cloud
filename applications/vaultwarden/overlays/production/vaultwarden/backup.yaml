@@ -3,7 +3,7 @@ kind: Schedule
 metadata:
   name: vaultwarden-daily-backup
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "* * * * *"
   template:
     ttl: 720h
     includedNamespaces:
