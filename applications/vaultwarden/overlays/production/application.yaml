@@ -27,8 +27,12 @@ spec:
   ignoreDifferences:
     - group: snapshot.storage.k8s.io
       kind: VolumeSnapshot
+      jqPathExpressions:
+        - .metadata.labels."velero.io/backup-name"
     - group: snapshot.storage.k8s.io
       kind: VolumeSnapshotContent
+      jqPathExpressions:
+        - .metadata.labels."velero.io/backup-name"
 
   info:
     - name: GitHub
