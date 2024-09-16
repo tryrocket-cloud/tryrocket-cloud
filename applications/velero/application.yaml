@@ -13,6 +13,7 @@ spec:
     targetRevision: 7.2.1
     helm:
       values: |
+        cleanUpCRDs: true
         initContainers:
           - name: velero-plugin-for-ionos
             # https://github.com/vmware-tanzu/velero-plugin-for-aws
