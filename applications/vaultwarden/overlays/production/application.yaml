@@ -24,6 +24,16 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
+  ignoreDifferences:
+    - group: snapshot.storage.k8s.io
+      kind: VolumeSnapshot
+      jsonPointers:
+        - /status
+    - group: snapshot.storage.k8s.io
+      kind: VolumeSnapshotContent
+      jsonPointers:
+        - /status
+
   info:
     - name: GitHub
       value: https://github.com/dani-garcia/vaultwarden
