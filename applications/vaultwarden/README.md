@@ -34,7 +34,9 @@
     # Argo CD Preview Application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/preview/application-set.yaml -n argocd
 
-    kubectl apply -k https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/backup
+    # Backup is managed manually due to high risk of loosing all backups dur to argo autosync
+    kubectl apply -k https://github.com/tryrocket-cloud/tryrocket-cloud/tree/main/applications/vaultwarden/overlays/backup
+    
 
 ## Update
 

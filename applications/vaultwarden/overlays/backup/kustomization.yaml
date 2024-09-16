@@ -2,13 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ./vaultwarden
-  - ./backup
-  - ./external-secrets
-
-#  - migration-pod.yaml
-#  - pv.yaml
-#  - pvc.yaml
-
+  - schedule.yaml
 
 namespace: vaultwarden
