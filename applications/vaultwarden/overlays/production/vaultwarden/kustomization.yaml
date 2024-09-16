@@ -11,8 +11,6 @@ resources:
   - pv.yaml
   - test-pvc.yaml
 
-  - backup.yaml
-
 patches:
   - target:
       kind: Deployment
