@@ -13,8 +13,8 @@ spec:
     targetRevision: 7.2.1
     helm:
       values: |
-        upgradeCRDs: true
-        cleanUpCRDs: true
+        upgradeCRDs: true # maybe too dangerous
+        cleanUpCRDs: true # maybe too dangerous
         initContainers:
           - name: velero-plugin-for-ionos
             # https://github.com/vmware-tanzu/velero-plugin-for-aws
@@ -28,7 +28,7 @@ spec:
 
         configuration:
           # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
-          logLevel: error 
+          logLevel: info 
 
           features: EnableCSI
 
