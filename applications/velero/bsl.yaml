@@ -9,7 +9,6 @@ metadata:
   name: ionos.com-eu-central-1
   namespace: velero
 spec:
-  default: true
   provider: aws
   objectStorage:
     bucket: velero-test123
