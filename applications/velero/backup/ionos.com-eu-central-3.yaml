@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: Schedule
 metadata:
-  name: daily-schedule-ionos.com-eu-central-3
+  name: ionos.com-eu-central-3
 spec:
   paused: false
   schedule: "0 3 * * *"
