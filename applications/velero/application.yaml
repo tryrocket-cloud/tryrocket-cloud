@@ -36,9 +36,9 @@ spec:
 
           # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
           backupStorageLocation:
-          - name: ionos.com-eu-central-1
+          - name: ionos.com-eu-central-1-backup
             default: true
-            provider: ionos # aws
+            provider: ionos
             bucket: velero-test123
             credential:
               name: creds
@@ -46,6 +46,7 @@ spec:
             config:
               region: eu-central-1
               s3Url: https://s3-eu-central-1.ionoscloud.com
+              prefix: my-path-backup-1
               
               # The checksum algorithm to use for uploading objects to S3.
               # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
@@ -54,8 +55,8 @@ spec:
               #
               # Optional (defaults to "CRC32")
               checksumAlgorithm: "CRC32C"
-          - name: ionos.com-eu-central-3
-            provider: ionos # aws
+          - name: ionos.com-eu-central-3-backup
+            provider: ionos
             bucket: velero-test456
             credential:
               name: creds
@@ -63,6 +64,7 @@ spec:
             config:
               region: eu-central-3
               s3Url: https://s3.eu-central-3.ionoscloud.com/
+              prefix: my-path-backup-2
               
               # The checksum algorithm to use for uploading objects to S3.
               # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
@@ -72,23 +74,25 @@ spec:
               # Optional (defaults to "CRC32")
               checksumAlgorithm: "CRC32C"
           volumeSnapshotLocation:
-          - name: ionos.com-eu-central-1
+          - name: ionos.com-eu-central-1-snapshot
             default: true
-            provider: ionos #aws
-            bucket: velero-test456
-            credential:
+            provider: ionos
+            bucket: velero-test123
+            credential:  # TODO: do external-secrets
               name: creds
               key: cloud
             config:
               region: eu-central-1
-          - name: ionos.com-eu-central-3
-            provider: ionos #aws
+              prefix: my-path-snapshot-1
+          - name: ionos.com-eu-central-3-snapshot
+            provider: ionos
             bucket: velero-test456
-            credential:
+            credential: # TODO: do external-secrets
               name: creds
               key: cloud
             config:
               region: eu-central-3
+              prefix: my-path-snapshot-2
   destination:
     server: https://192.168.178.101:6443
     namespace: velero
