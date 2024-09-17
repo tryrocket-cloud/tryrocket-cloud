@@ -37,6 +37,7 @@ spec:
 
           # Name of the default backup storage location. Default: default
           defaultBackupStorageLocation: ""
+          
 
           backupStorageLocation: []
           volumeSnapshotLocation: []
