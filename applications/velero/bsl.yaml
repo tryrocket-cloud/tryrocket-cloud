@@ -4,7 +4,7 @@
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
-  name: ionos.com-eu-central-1-backup
+  name: ionos.com-eu-central-1
   namespace: velero
 spec:
   default: true
@@ -29,7 +29,7 @@ spec:
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
-  name: onos.com-eu-central-3-backup
+  name: ionos.com-eu-central-3
   namespace: velero
 spec:
   provider: ionos

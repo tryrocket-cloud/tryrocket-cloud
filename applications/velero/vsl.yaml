@@ -1,10 +1,10 @@
-# https://velero.io/docs/v1.14/api-types/volumesnapshotlocation/
+# https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
 
 ---
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: ionos.com-eu-central-1-snapshot
+  name: ionos.com-eu-central-1
   namespace: velero
 spec:
   default: true
@@ -19,7 +19,7 @@ spec:
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: ionos.com-eu-central-3-snapshot
+  name: ionos.com-eu-central-3
   namespace: velero
 spec:
   provider: ionos
