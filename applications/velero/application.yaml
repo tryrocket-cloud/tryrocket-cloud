@@ -34,7 +34,7 @@ spec:
           logLevel: info 
 
           extraArgs:
-            "--default-backup-storage-location="
+            - "--default-backup-storage-location="
 
           features: EnableCSI
 
