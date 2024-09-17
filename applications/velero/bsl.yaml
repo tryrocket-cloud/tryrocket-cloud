@@ -12,7 +12,7 @@ spec:
   provider: aws
   objectStorage:
     bucket: velero-test123
-    prefix: velero
+#    prefix: tryrocket.cloud/production
   credential:
     name: creds
     key: cloud
@@ -28,6 +28,3 @@ spec:
     #
     # Optional (defaults to "CRC32")
     checksumAlgorithm: "CRC32C"
-
-
-# TODO: provide me a naming scheme for velero backups. Start with the bucket name. Create also S3 bucket policy

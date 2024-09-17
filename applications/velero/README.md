@@ -8,7 +8,6 @@
 
 - backup - paths ionos
 - ionos profile with acl
-- kopia repository password
 - kopia configuration? like prune and co.
 - stop vaultwarden before update, maybe backup hooks?
 

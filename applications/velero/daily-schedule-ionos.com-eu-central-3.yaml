@@ -1,0 +1,20 @@
+# https://velero.io/docs/v1.14/api-types/schedule/
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: daily-schedule-ionos.com-eu-central-3
+spec:
+  paused: false
+  schedule: "0 3 * * *"
+  # https://velero.io/docs/v1.14/backup-reference/#backups-ownerreference-with-schedule
+  useOwnerReferencesInBackup: false
+  template:
+    ttl: 1440h # TTL set to 2 months
+    includedNamespaces:
+      - vaultwarden
+      - vault
+      - davis
+    snapshotVolumes: true
+    storageLocation: ionos.com-eu-central-3
+    volumeSnapshotLocations:
+      - longhorn

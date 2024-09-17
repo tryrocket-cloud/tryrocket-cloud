@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: Schedule
 metadata:
-  name: vaultwarden-daily-backup
+  name: daily-schedule-ionos.com-eu-central-1
 spec:
   paused: false
   schedule: "0 3 * * *"
@@ -12,6 +12,8 @@ spec:
     ttl: 1440h # TTL set to 2 months
     includedNamespaces:
       - vaultwarden
+      - vault
+      - davis
     snapshotVolumes: true
     storageLocation: ionos.com-eu-central-1
     volumeSnapshotLocations:
