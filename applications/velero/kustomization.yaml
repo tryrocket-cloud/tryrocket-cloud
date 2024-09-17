@@ -6,8 +6,10 @@ resources:
   - bsl2.yaml
 
   - vsl.yaml
-  
+
   - schedule.yaml
   - velero-repo-credentials-externalsecret.yaml
+  
+  - ./external-secrets
 
 namespace: velero
