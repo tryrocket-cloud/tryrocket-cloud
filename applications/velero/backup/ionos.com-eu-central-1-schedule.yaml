@@ -12,8 +12,6 @@ spec:
     ttl: 1440h # TTL set to 2 months
     includedNamespaces:
       - vaultwarden
-      - vault
-      - davis
     snapshotVolumes: true
     storageLocation: ionos.com-eu-central-1
     volumeSnapshotLocations:
