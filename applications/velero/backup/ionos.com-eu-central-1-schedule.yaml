@@ -12,6 +12,8 @@ spec:
     ttl: 1440h # TTL set to 2 months
     includedNamespaces:
       - vaultwarden
+    includedResources:
+    - 'secret/tryrocket-cloud-http-tls'
     snapshotVolumes: true
     storageLocation: ionos.com-eu-central-1
     volumeSnapshotLocations:
