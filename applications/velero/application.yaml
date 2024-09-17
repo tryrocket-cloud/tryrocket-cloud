@@ -34,8 +34,9 @@ spec:
           logLevel: info 
 
           features: EnableCSI
-          backupStorageLocation:
-          volumeSnapshotLocation:
+
+          backupStorageLocation: []
+          volumeSnapshotLocation: []
 
   - repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
     targetRevision: main
