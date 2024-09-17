@@ -4,14 +4,13 @@
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: ionos.com-eu-central-1
+  name: ionos.com-eu-central-3
   namespace: velero
 spec:
-  default: true
-  provider: aws
-  bucket: velero-test123
+  provider: ionos
+  bucket: velero-test456
   credential: # TODO: do external-secrets
     name: creds
     key: cloud
   config:
-    region: eu-central-1
+    region: eu-central-3

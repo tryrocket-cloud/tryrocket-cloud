@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - bsl.yaml
   - bsl2.yaml
-#  - vsl.yaml
+
+  - vsl.yaml
 
 namespace: velero
