@@ -14,6 +14,7 @@ spec:
       - vaultwarden
     includedResources:
     - 'secret/tryrocket-cloud-http-tls'
+    - 'pods'
     snapshotVolumes: true
     storageLocation: ionos.com-eu-central-1
     volumeSnapshotLocations:
