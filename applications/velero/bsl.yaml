@@ -29,3 +29,6 @@ spec:
     #
     # Optional (defaults to "CRC32")
     checksumAlgorithm: "CRC32C"
+
+
+# TODO: provide me a naming scheme for velero backups. Start with the bucket name. Create also S3 bucket policy
