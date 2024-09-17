@@ -7,9 +7,6 @@ resources:
 
   - vsl.yaml
 
-  - daily-schedule-ionos.com-eu-central-1.yaml
-  - daily-schedule-ionos.com-eu-central-3.yaml
-  
   - velero-repo-credentials-externalsecret.yaml
 
   - ./external-secrets

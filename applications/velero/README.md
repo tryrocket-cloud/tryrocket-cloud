@@ -17,6 +17,9 @@
     # Argo CD Application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/velero/application.yaml -n argocd
 
+    # Schedules not managed by argo
+    kubectl apply -k https://github.com/tryrocket-cloud/tryrocket-cloud//applications/velero/backup
+
 ## Links
 
 - https://github.com/cloudogu/velero-longhorn-demo/blob/main/README_en.md
