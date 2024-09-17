@@ -13,8 +13,7 @@ spec:
     targetRevision: 7.2.1
     helm:
       values: |
-        # TODO move to another file
-
+        # https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/values.yaml
 
         upgradeCRDs: true # maybe too dangerous
         cleanUpCRDs: true # maybe too dangerous
@@ -39,7 +38,7 @@ spec:
           backupStorageLocation:
           - name: ionos.com-eu-central-1
             default: true
-            provider: aws
+            provider: ionos # aws
             bucket: velero-test123
             credential:
               name: creds
@@ -55,16 +54,41 @@ spec:
               #
               # Optional (defaults to "CRC32")
               checksumAlgorithm: "CRC32C"
+          - name: ionos.com-eu-central-3
+            provider: ionos # aws
+            bucket: velero-test456
+            credential:
+              name: creds
+              key: cloud
+            config:
+              region: eu-central-3
+              s3Url: https://s3.eu-central-3.ionoscloud.com/
+              
+              # The checksum algorithm to use for uploading objects to S3.
+              # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
+              # If the value is set as empty string "", no checksum will be calculated and attached to 
+              # the request headers.
+              #
+              # Optional (defaults to "CRC32")
+              checksumAlgorithm: "CRC32C"
           volumeSnapshotLocation:
           - name: ionos.com-eu-central-1
             default: true
-            provider: aws
-            bucket: velero-test123
+            provider: ionos #aws
+            bucket: velero-test456
             credential:
               name: creds
               key: cloud
             config:
               region: eu-central-1
+          - name: ionos.com-eu-central-3
+            provider: ionos #aws
+            bucket: velero-test456
+            credential:
+              name: creds
+              key: cloud
+            config:
+              region: eu-central-3
   destination:
     server: https://192.168.178.101:6443
     namespace: velero

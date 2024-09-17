@@ -34,11 +34,13 @@
     # Argo CD Preview Application
     kubectl apply -f https://raw.githubusercontent.com/tryrocket-cloud/tryrocket-cloud/main/applications/vaultwarden/overlays/preview/application-set.yaml -n argocd
 
-    # Backup is managed manually due to high risk of loosing all backups dur to argo autosync
+    # Backup is managed manually due to high risk of loosing all backups due to argo autosync
     kubectl apply -k https://github.com/tryrocket-cloud/tryrocket-cloud//applications/vaultwarden/overlays/backup
 
+    kubectl get schedule.velero.io -n velero
     kubectl get backups.velero.io -n velero
-    
+    velero backup create manual-backup --from-schedule vaultwarden-daily-backup --wait
+    velero backup delete --all --confirm
 
 ## Update
 
