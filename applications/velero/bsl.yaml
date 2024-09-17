@@ -20,7 +20,7 @@ spec:
   config:
     region: eu-central-1
     s3Url: https://s3-eu-central-1.ionoscloud.com
-    profile: 
+    profile: ""
     # The checksum algorithm to use for uploading objects to S3.
     # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
     # If the value is set as empty string "", no checksum will be calculated and attached to 
