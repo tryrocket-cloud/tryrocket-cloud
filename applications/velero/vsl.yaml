@@ -7,7 +7,6 @@ metadata:
   name: ionos.com-eu-central-1
   namespace: velero
 spec:
-  default: true
   provider: aws
   bucket: velero-test123
   credential: # TODO: do external-secrets
