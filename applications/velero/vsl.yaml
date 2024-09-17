@@ -8,7 +8,8 @@ metadata:
   namespace: velero
 spec:
   provider: aws
-  bucket: velero-test123
+  objectStorage:
+    bucket: velero-test123
   credential: # TODO: do external-secrets
     name: creds
     key: cloud
