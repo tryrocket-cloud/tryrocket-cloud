@@ -13,7 +13,7 @@ spec:
   provider: aws
   objectStorage:
     bucket: velero-test123
-    #prefix: my-path-backup-1
+    prefix: my-path-backup-1
   credential:
     name: creds
     key: cloud
