@@ -13,9 +13,7 @@ spec:
     includedNamespaces:
       - vaultwarden
     snapshotVolumes: true
-    storageLocation:
-      - ionos.com-eu-central-1
-      - ionos.com-eu-central-3
+    storageLocation: ionos.com-eu-central-1
     volumeSnapshotLocations:
       - ionos.com-eu-central-1
       - ionos.com-eu-central-3
