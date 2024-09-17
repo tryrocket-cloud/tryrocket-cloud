@@ -31,13 +31,13 @@ spec:
 
         configuration:
           # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
-          logLevel: debug 
+          logLevel: info 
 
           features: EnableCSI
 
           # Name of the default backup storage location. Default: default
           defaultBackupStorageLocation: ""
-          
+
 
           backupStorageLocation: []
           volumeSnapshotLocation: []
