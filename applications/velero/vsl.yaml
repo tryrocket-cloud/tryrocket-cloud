@@ -1,0 +1,31 @@
+# https://velero.io/docs/v1.14/api-types/volumesnapshotlocation/
+
+---
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: ionos.com-eu-central-1-snapshot
+  namespace: velero
+spec:
+  default: true
+  provider: ionos
+  bucket: velero-test123
+  credential: # TODO: do external-secrets
+    name: creds
+    key: cloud
+  config:
+    region: eu-central-1
+---
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: ionos.com-eu-central-3-snapshot
+  namespace: velero
+spec:
+  provider: ionos
+  bucket: velero-test456
+  credential: # TODO: do external-secrets
+    name: creds
+    key: cloud
+  config:
+    region: eu-central-3

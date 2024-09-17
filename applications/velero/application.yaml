@@ -7,8 +7,9 @@ metadata:
     environment: production
 spec:
   project: default
-  source:
-    repoURL: https://vmware-tanzu.github.io/helm-charts
+
+  sources:
+  - repoURL: 'https://vmware-tanzu.github.io/helm-charts'
     chart: velero
     targetRevision: 7.2.1
     helm:
@@ -34,65 +35,10 @@ spec:
 
           features: EnableCSI
 
-          # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
-          backupStorageLocation:
-          - name: ionos.com-eu-central-1-backup
-            default: true
-            provider: ionos
-            bucket: velero-test123
-            credential:
-              name: creds
-              key: cloud
-            config:
-              region: eu-central-1
-              s3Url: https://s3-eu-central-1.ionoscloud.com
-              prefix: my-path-backup-1
-              
-              # The checksum algorithm to use for uploading objects to S3.
-              # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
-              # If the value is set as empty string "", no checksum will be calculated and attached to 
-              # the request headers.
-              #
-              # Optional (defaults to "CRC32")
-              checksumAlgorithm: "CRC32C"
-          - name: ionos.com-eu-central-3-backup
-            provider: ionos
-            bucket: velero-test456
-            credential:
-              name: creds
-              key: cloud
-            config:
-              region: eu-central-3
-              s3Url: https://s3.eu-central-3.ionoscloud.com/
-              prefix: my-path-backup-2
-              
-              # The checksum algorithm to use for uploading objects to S3.
-              # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
-              # If the value is set as empty string "", no checksum will be calculated and attached to 
-              # the request headers.
-              #
-              # Optional (defaults to "CRC32")
-              checksumAlgorithm: "CRC32C"
-          volumeSnapshotLocation:
-          - name: ionos.com-eu-central-1-snapshot
-            default: true
-            provider: ionos
-            bucket: velero-test123
-            credential:  # TODO: do external-secrets
-              name: creds
-              key: cloud
-            config:
-              region: eu-central-1
-              prefix: my-path-snapshot-1
-          - name: ionos.com-eu-central-3-snapshot
-            provider: ionos
-            bucket: velero-test456
-            credential: # TODO: do external-secrets
-              name: creds
-              key: cloud
-            config:
-              region: eu-central-3
-              prefix: my-path-snapshot-2
+  - repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
+    targetRevision: main
+    path: applications/velero
+
   destination:
     server: https://192.168.178.101:6443
     namespace: velero

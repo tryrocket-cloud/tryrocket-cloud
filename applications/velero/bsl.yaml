@@ -1,0 +1,51 @@
+# See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
+
+---
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: ionos.com-eu-central-1-backup
+  namespace: velero
+spec:
+  default: true
+  provider: ionos
+  objectStorage:
+    bucket: velero-test123
+  credential:
+    name: creds
+    key: cloud
+  config:
+    region: eu-central-1
+    s3Url: https://s3-eu-central-1.ionoscloud.com
+    prefix: my-path-backup-1
+    # The checksum algorithm to use for uploading objects to S3.
+    # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
+    # If the value is set as empty string "", no checksum will be calculated and attached to 
+    # the request headers.
+    #
+    # Optional (defaults to "CRC32")
+    checksumAlgorithm: "CRC32C"
+---
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: onos.com-eu-central-3-backup
+  namespace: velero
+spec:
+  provider: ionos
+  objectStorage:
+    bucket: velero-test456
+  credential:
+    name: creds
+    key: cloud
+  config:
+    region: eu-central-3
+    s3Url: https://s3.eu-central-3.ionoscloud.com/
+    prefix: my-path-backup-2
+    # The checksum algorithm to use for uploading objects to S3.
+    # The Supported values are  "CRC32",  "CRC32C", "SHA1", "SHA256".
+    # If the value is set as empty string "", no checksum will be calculated and attached to 
+    # the request headers.
+    #
+    # Optional (defaults to "CRC32")
+    checksumAlgorithm: "CRC32C"
