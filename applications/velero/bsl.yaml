@@ -1,5 +1,7 @@
 # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
 
+
+# Velero backs up Kubernetes resources (e.g., manifests, config maps, secrets) and Pod volume data (kopia) by storing these items in an S3-compatible bucket or other supported object storage services.
 ---
 apiVersion: velero.io/v1
 kind: BackupStorageLocation

@@ -4,12 +4,12 @@
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: ionos.com-eu-central-1
+  name: longhorn
   namespace: velero
 spec:
-  provider: aws
+  provider: longhorn
   credential: # TODO: do external-secrets
     name: creds
     key: cloud
   config:
-    region: eu-central-1
+    type: snap
