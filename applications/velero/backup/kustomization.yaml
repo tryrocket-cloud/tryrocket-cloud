@@ -3,6 +3,5 @@ kind: Kustomization
 
 resources:
   - ionos.com-eu-central-1-schedule.yaml
-  - ionos.com-eu-central-3-schedule.yaml
 
 namespace: velero
