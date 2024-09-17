@@ -1,5 +1,18 @@
 # Velero
 
+# Notes
+
+- BackupRepository will be generated from BackupStorageLocation
+
+# TODO
+
+- backup - paths ionos
+- ionos profile with acl
+- kopia repository password
+- kopia configuration? like prune and co.
+- stop vaultwarden before update, maybe backup hooks?
+
+
 ## Install
     
     # Argo CD Application

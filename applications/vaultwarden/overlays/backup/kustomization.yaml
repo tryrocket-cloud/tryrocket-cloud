@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
   - schedule.yaml
+  - velero-repo-credentials-externalsecret.yaml
 
 namespace: velero
