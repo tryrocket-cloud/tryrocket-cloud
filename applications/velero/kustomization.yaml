@@ -8,3 +8,12 @@ resources:
   - vsl.yaml
 
 namespace: velero
+
+patches:
+  - target:
+      kind: Deployment
+      name: velero
+    patch:
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: "--default-backup-storage-location="
