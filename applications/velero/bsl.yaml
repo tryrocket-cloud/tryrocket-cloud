@@ -8,7 +8,7 @@ metadata:
   namespace: velero
 spec:
   default: true
-  provider: ionos
+  provider: aws
   objectStorage:
     bucket: velero-test123
   credential:
@@ -32,7 +32,7 @@ metadata:
   name: ionos.com-eu-central-3
   namespace: velero
 spec:
-  provider: ionos
+  provider: aws
   objectStorage:
     bucket: velero-test456
   credential:
