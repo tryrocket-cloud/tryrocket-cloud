@@ -15,7 +15,7 @@
 - Create Vaultwarden kubernetes role Vault
 
       vault write auth/kubernetes/role/vaultwarden \
-          bound_service_account_names=vaultwarden-vault-sa \
+          bound_service_account_names=vault \
           bound_service_account_namespaces=vaultwarden \
           policies=vaultwarden \
           ttl=24h
