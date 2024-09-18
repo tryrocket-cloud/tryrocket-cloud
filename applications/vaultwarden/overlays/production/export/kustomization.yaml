@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - backup.cronjob.yaml
+
+  # hetzner-com-storagebox-bx11-fsn1-sftp-secret
+  # hetzner-com-storagebox-bx11-fsn1-restic-secret
+  # hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
+  - hetzner.com-storagebox-bx11-fsn1-sftp-restic-healthchecks.externalsecret.yaml
+
+  # ionos-com-objectstorage-s3-secret
+  - ionos.com-objectstorage-s3.externalsecret.yaml
+
+  # ionos-com-objectstorage-eu-central-1-restic-secret
+  # ionos-com-objectstorage-eu-central-1-healthchecks-secret
+  - ionos.com-objectstorage-eu-central-1-s3-restic-healthchecks.externalsecret.yaml
+
+  # ionos-com-objectstorage-eu-central-3-restic-secret
+  # ionos-com-objectstorage-eu-central-3-healthchecks-secret
+  - ionos.com-objectstorage-eu-central-3-s3-restic-healthchecks.externalsecret.yaml
+
+  # user and master password for plaintext backup
+  - vaultwarden-credentials.externalsecret.yaml
+
+configMapGenerator:
+  - name: backup-sh-configmap
+    files:
+      - backup.sh=backup.sh
