@@ -1,14 +1,16 @@
-import { Construct } from "constructs";
-import { App, TerraformStack } from "cdktf";
+import { App } from "cdktf";
 
-class MyStack extends TerraformStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+import { IonosCloudStack } from "./stacks/ionoscloud-stack";
+import { RouterOSStack } from "./stacks/routeros-stack";
+import { KubernetesStack } from "./stacks/kubernetes-stack";
 
-    // define resources here
-  }
-}
+import { config } from 'dotenv';
 
+config();
 const app = new App();
-new MyStack(app, "cdktf");
+
+new IonosCloudStack(app, "ionoscloud");
+new RouterOSStack(app, "routeros");
+new KubernetesStack(app, "kubernetes");
+
 app.synth();

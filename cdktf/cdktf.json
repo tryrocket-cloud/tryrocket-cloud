@@ -1,11 +1,15 @@
 {
-  "language": "typescript",
-  "app": "npx ts-node main.ts",
-  "projectId": "f6a38684-ebe1-4b0b-a92d-c2c2bd555dc3",
-  "sendCrashReports": "false",
-  "terraformProviders": [],
-  "terraformModules": [],
-  "context": {
-
-  }
+    "language": "typescript",
+    "app": "npx ts-node main.ts",
+    "projectId": "f6a38684-ebe1-4b0b-a92d-c2c2bd555dc3",
+    "sendCrashReports": "false",
+    "terraformProviders": [
+        "ionos-cloud/ionoscloud@~>6.5.5",
+        "hashicorp/vault@~>4.4.0",
+        "hashicorp/random@~>3.6.3",
+        "hashicorp/kubernetes@~>2.32.0",
+        "terraform-routeros/routeros@~>1.61.2"
+    ],
+    "terraformModules": [],
+    "context": {}
 }
