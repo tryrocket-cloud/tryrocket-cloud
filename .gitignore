@@ -1,1 +1,34 @@
 .env
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore crash log files
+crash.log
+
+# Ignore Terraform variable files containing secrets
+*.tfvars
+*.tfvars.json
+
+# Ignore override files as they are usually not part of configuration
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore module files
+.terraform/
+
+# Ignore plan output
+*.tfplan
+
+# Ignore .terraform.lock.hcl unless you explicitly want to version it
+.terraform.lock.hcl
+
+# Ignore .DS_Store (macOS specific)
+.DS_Store
+
+# Ignore log files
+*.log
+
