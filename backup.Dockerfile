@@ -2,6 +2,7 @@ FROM alpine:latest
 
 RUN apk update && \
     apk add --no-cache \
+    kopia \
     restic \
     borgbackup \
     neovim \
@@ -29,6 +30,7 @@ RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh/
 RUN kubectl version --client
 RUN npm version
 RUN restic version
+RUN kopia --version
 RUN jq --version
 RUN borg --version
 RUN nvim --version
