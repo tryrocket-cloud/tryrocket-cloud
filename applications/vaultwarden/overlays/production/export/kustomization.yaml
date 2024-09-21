@@ -12,4 +12,4 @@ resources:
   # user and master password for plaintext backup
   - vaultwarden-credentials.externalsecret.yaml
   
-  - vaultwarden-export-cronjob.yaml
+  - export-backup-cronjob.yaml
