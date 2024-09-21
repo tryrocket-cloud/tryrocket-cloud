@@ -1,9 +1,12 @@
 name: Build Backup Docker Image
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '30 23 * * 6'
 
 permissions:
   packages: write
