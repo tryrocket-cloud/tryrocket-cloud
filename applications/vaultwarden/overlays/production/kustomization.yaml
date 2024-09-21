@@ -3,8 +3,9 @@ kind: Kustomization
 
 resources:
   - ./vaultwarden
-  - ./backup
+#  - ./backup
   - ./external-secrets
+  - ./export
 
 #  - migration-pod.yaml
 #  - pv.yaml
