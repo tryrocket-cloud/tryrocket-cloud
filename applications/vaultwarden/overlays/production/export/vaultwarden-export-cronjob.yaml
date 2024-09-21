@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden-export
 spec:
   suspend: true
-  schedule: "0 */6 * * *"
+  schedule: "30 0 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
@@ -93,23 +93,55 @@ spec:
                 mountPath: /export
 
           containers:
-            - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
+            - name: ionos-com-objectstorage-eu-central-3-s3-kopia-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
+              env:
+                - name: VAULTWARDEN_EXPORT_JSON
+                  value: /export/vaulwarden-export.json
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-s3-secret
                 - secretRef:
-                    name: ionos-com-objectstorage-eu-central-1-restic-secret
+                    name: ionos-com-objectstorage-eu-central-3-kopia-secret
                 - secretRef:
-                    name: ionos-com-objectstorage-eu-central-1-healthchecks-secret
+                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
-                  - /bin/sh
-                  - -c
-                  - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh
+                - /bin/sh
+                - -c
+                - |
+                  VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                  KOPIA_VERSION=$(kopia --version | awk '{print $1}')
+                  HOSTNAME="tryrocket.cloud"
+                  
+                  [ ! -f "$VAULTWARDEN_EXPORT_JSON" ] && exit 1  # Ensure the file exists
+                  [ ! -s "$VAULTWARDEN_EXPORT_JSON" ] && exit 1  # Ensure the file is not empty
+                  [ -z "$HC_UUID" ] && exit 1  # Ensure health check UUID is set
+                  [ -z "$VAULTWARDEN_VERSION" ] && exit 1  # Ensure Vaultwarden version is set
+                  [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
 
+                  HC_URL="https://hc-ping.com/$HC_UUID"
+
+                  echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
+                  echo "KOPIA_VERSION=$KOPIA_VERSION"
+
+                  sleep infinity
+                  
+                  # Start health check
+                  curl -fsS -m 10 --retry 5 $HC_URL/start
+
+                  # Perform Kopia backup
+                  kopia snapshot create /export --hostname="$HOSTNAME" --description="kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
+                  curl -fsS -m 10 --retry 5 $HC_URL/$?
+
+                  # Perform Kopia consistency check
+                  kopia repository verify --verify-files-percent 33
+                  curl -fsS -m 10 --retry 5 $HC_URL/$?
+
+                  # Prune old snapshots
+                  kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
+                  curl -fsS -m 10 --retry 5 $HC_URL/$?
+                  
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
@@ -121,6 +153,9 @@ spec:
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
+              env:
+                - name: VAULTWARDEN_EXPORT_JSON
+                  value: /export/vaulwarden-export.json
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-s3-secret
@@ -132,49 +167,38 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    sh backup.sh
+                    VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    RESTIC_VERSION=$(restic version | awk '{print $2}')
+                    HOSTNAME="tryrocket.cloud"
+                    
+                    [ ! -z "$HC_UUID" ] && exit 1
+                    [ ! -z "$VAULTWARDEN_VERSION" ] && exit 1
+                    [ ! -z "$RESTIC_VERSION" ] && exit 1
+
+                    HC_URL="https://hc-ping.com/$HC_UUID"
+
+                    echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
+                    echo RESTIC_VERSION=$RESTIC_VERSION
+
+                    # Start health check
+                    curl -fsS -m 10 --retry 5 $HC_URL/start
+
+                    # Perform restic backup
+                    restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
+                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+
+                    # Perform restic check
+                    restic check --read-data-subset 1/7
+                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+
+                    # Prune old backups
+                    restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
+                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+
               volumeMounts:
                 - name: backup-sh-volume
                   mountPath: /backup.sh
                   subPath: backup.sh
-                - name: vaultwarden-backup-shared-volume
-                  mountPath: /shared
-                  readOnly: true
-
-            - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
-              imagePullPolicy: Always
-              envFrom:
-                - secretRef:
-                    name: hetzner-com-storagebox-bx11-fsn1-restic-secret
-                - secretRef:
-                    name: hetzner-com-storagebox-bx11-fsn1-healthchecks-secret
-              command:
-                  - /bin/sh
-                  - -c
-                  - |
-                    export VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
-                    ssh-keyscan -p 23 -f /root/.ssh/hosts >> /root/.ssh/known_hosts
-
-                    sh backup.sh
-
-              volumeMounts:
-                - name: backup-sh-volume
-                  mountPath: /backup.sh
-                  subPath: backup.sh
-                - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
-                  mountPath: /root/.ssh/id_ed25519
-                  readOnly: true
-                  subPath: id_ed25519
-                - name: hetzner-com-storagebox-vaultwarden-ssh-config
-                  mountPath: /root/.ssh/config
-                  readOnly: true
-                  subPath: config
-                - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
-                  mountPath: /root/.ssh/hosts
-                  readOnly: true
-                  subPath: hosts
                 - name: vaultwarden-backup-shared-volume
                   mountPath: /shared
                   readOnly: true
@@ -186,28 +210,6 @@ spec:
                 items:
                 - key: backup.sh
                   path: backup.sh
-
-            - name: hetzner-com-storagebox-vaultwarden-ssh-privatekey
-              secret:
-                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
-                items:
-                  - key: ssh-privatekey
-                    path: id_ed25519
-                defaultMode: 384
-            - name: hetzner-com-storagebox-vaultwarden-ssh-config
-              secret:
-                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
-                items:
-                  - key: ssh-config
-                    path: config
-                defaultMode: 384
-            - name: hetzner-com-storagebox-vaultwarden-ssh-hosts
-              secret:
-                secretName: hetzner-com-storagebox-bx11-fsn1-sftp-secret
-                items:
-                  - key: ssh-hosts
-                    path: hosts
-                defaultMode: 384
 
             - name: vaultwarden-backup-shared-volume
               emptyDir: {}
