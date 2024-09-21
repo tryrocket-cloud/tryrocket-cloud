@@ -126,7 +126,7 @@ spec:
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
 
                   sleep infinity
-                  
+
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
 
@@ -143,11 +143,8 @@ spec:
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
                   
               volumeMounts:
-                - name: backup-sh-volume
-                  mountPath: /backup.sh
-                  subPath: backup.sh
-                - name: vaultwarden-backup-shared-volume
-                  mountPath: /shared
+                - name: vaultwarden-export-volume
+                  mountPath: /export
                   readOnly: true
 
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
@@ -196,11 +193,8 @@ spec:
                     curl -fsS -m 10 --retry 5 $HC_URL/$?
 
               volumeMounts:
-                - name: backup-sh-volume
-                  mountPath: /backup.sh
-                  subPath: backup.sh
-                - name: vaultwarden-backup-shared-volume
-                  mountPath: /shared
+                - name: vaultwarden-export-volume
+                  mountPath: /export
                   readOnly: true
                   
           volumes:
@@ -211,5 +205,5 @@ spec:
                 - key: backup.sh
                   path: backup.sh
 
-            - name: vaultwarden-backup-shared-volume
+            - name: vaultwarden-export-volume
               emptyDir: {}
