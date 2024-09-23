@@ -100,7 +100,7 @@ spec:
                 - name: VAULTWARDEN_EXPORT_JSON
                   value: /export/vaultwarden-export.json
                 - name: KOPIA_CHECK_FOR_UPDATES
-                  value: false  
+                  value: "false"  
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-bucket-secret
