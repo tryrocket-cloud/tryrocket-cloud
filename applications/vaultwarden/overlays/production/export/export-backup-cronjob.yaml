@@ -110,6 +110,8 @@ spec:
                 - /bin/sh
                 - -c
                 - |
+                  sleep infinity
+                  
                   VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
@@ -125,7 +127,7 @@ spec:
                   echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
 
-                  sleep infinity
+                  
 
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
