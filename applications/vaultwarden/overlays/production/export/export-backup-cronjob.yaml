@@ -148,6 +148,8 @@ spec:
                   #kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
                   
+                  sleep infinity
+
               volumeMounts:
                 - name: vaultwarden-export-volume
                   mountPath: /export
