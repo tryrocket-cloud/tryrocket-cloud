@@ -161,16 +161,17 @@ spec:
                   value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
-                    name: ionos-com-objectstorage-s3-secret
+                    name: ionos-com-objectstorage-bucket-secret
                 - secretRef:
-                    name: ionos-com-objectstorage-eu-central-3-restic-secret
+                    name: ionos-com-objectstorage-user-secret
+                - secretRef:
+                    name: restic-repository-secret
                 - secretRef:
                     name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
                   - |
-                    sleep infinity
                     VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HOSTNAME="tryrocket.cloud"
@@ -198,8 +199,6 @@ spec:
                     # Prune old backups
                     restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
                     curl -fsS -m 10 --retry 5 $HC_URL/$?
-
-                    sleep infinity
 
               volumeMounts:
                 - name: vaultwarden-export-volume

@@ -13,4 +13,5 @@ resources:
   - vaultwarden-credentials.externalsecret.yaml
   
   - export-backup-cronjob.yaml
-  - test.yaml
+  - kopia-external-secret.yaml
+  - restic-external-secret.yaml
