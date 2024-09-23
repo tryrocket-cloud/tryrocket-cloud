@@ -65,7 +65,7 @@ spec:
                   value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
-                    name: vaultwarden-secret
+                    name: vaultwarden-user-secret
               command:
                 - /bin/sh
                 - -c
