@@ -195,15 +195,15 @@ spec:
                     #curl -fsS -m 10 --retry 5 $HC_URL/start
 
                     # Perform restic backup
-                    #restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
+                    restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
                     #curl -fsS -m 10 --retry 5 $HC_URL/$?
 
                     # Perform restic check
-                    #restic check --read-data-subset 1/7
+                    restic check --read-data-subset 1/7
                     #curl -fsS -m 10 --retry 5 $HC_URL/$?
 
                     # Prune old backups
-                    #restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
+                    restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
                     #curl -fsS -m 10 --retry 5 $HC_URL/$?
 
               volumeMounts:
