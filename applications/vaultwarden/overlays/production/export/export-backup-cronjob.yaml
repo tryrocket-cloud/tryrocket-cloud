@@ -118,14 +118,7 @@ spec:
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
                   
-                  [ ! -f "$VAULTWARDEN_EXPORT_JSON" ] && exit 1  # Ensure the file exists
-                  [ ! -s "$VAULTWARDEN_EXPORT_JSON" ] && exit 1  # Ensure the file is not empty
-                  [ -z "$HC_UUID" ] && exit 1  # Ensure health check UUID is set
-                  [ -z "$VAULTWARDEN_VERSION" ] && exit 1  # Ensure Vaultwarden version is set
                   [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
-
-                  echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
-                  echo "KOPIA_VERSION=$KOPIA_VERSION"
 
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_PING_URL/start
@@ -170,18 +163,12 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    #sleep infinity
-                    echo start
                     VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
+                    RESTIC_REPOSITORY=s3:$ENDPOINT/$BUCKET/$PREFIX
                     HOSTNAME="tryrocket.cloud"
 
-                    [ -z "$HC_UUID" ] && exit 1
-                    [ -z "$VAULTWARDEN_VERSION" ] && exit 1
                     [ -z "$RESTIC_VERSION" ] && exit 1
-
-                    echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
-                    echo RESTIC_VERSION=$RESTIC_VERSION
 
                     # Start health check
                     curl -fsS -m 10 --retry 5 $HC_PING_URL/start
