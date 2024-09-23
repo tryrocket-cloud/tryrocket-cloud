@@ -12,6 +12,6 @@ resources:
   # user and master password for plaintext backup
   - vaultwarden-credentials.externalsecret.yaml
   
-  - export-backup-cronjob.yaml
-  - kopia-external-secret.yaml
-  - restic-external-secret.yaml
+  - ./export-backup-cronjob.yaml
+  - ./kopia-external-secret.yaml
+  - ./restic-external-secret.yaml
