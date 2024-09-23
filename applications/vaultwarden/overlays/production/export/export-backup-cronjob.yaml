@@ -207,13 +207,3 @@ spec:
 
             - name: vaultwarden-export-volume
               emptyDir: {}
-
-
-Could not find dir, "/root/.config/Bitwarden CLI"; creating it instead.
-Could not find data file, "/root/.config/Bitwarden CLI/data.json"; creating it instead.
-Saved setting `config`.Syncing complete.
-? Master password: [input is hidden] You have logged out.
-
-Could not find dir, "/root/.config/Bitwarden CLI"; creating it instead.
-Could not find data file, "/root/.config/Bitwarden CLI/data.json"; creating it instead.
-Saved setting `config`.Syncing complete.Saved /export/vaultwarden-export.jsonYou have logged out.
