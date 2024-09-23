@@ -65,13 +65,13 @@ spec:
                   value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
-                    name: vaultwarden-credentials-secret
+                    name: vaultwarden-secret
               command:
                 - /bin/sh
                 - -c
                 - |
                   bw config server $VAULTWARDEN_SERVER
-                  export BW_SESSION=$(bw login "$VAULTWARDEN_USER" "$MASTER_PASSWORD" --raw)
+                  export BW_SESSION=$(bw login "$USERNAME" "$PASSWORD" --raw)
 
                   bw sync
 
