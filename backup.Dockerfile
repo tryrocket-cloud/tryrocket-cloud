@@ -1,21 +1,21 @@
 FROM alpine:edge
 
-RUN cat /etc/os-release 
-
-RUN apk update && \
+# Add necessary repositories, update, and install packages
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    apk update && \
     apk add --no-cache \
-    restic \
-    kopia \
-    borgbackup \
-    neovim \
-    fish \
-    curl \
-    openssh-client \
-    jq \
-    nodejs \
-    npm \
-    kubectl \
-    && rm -rf /var/cache/apk/*
+        restic \
+        kopia \
+        borgbackup \
+        neovim \
+        fish \
+        curl \
+        openssh-client \
+        jq \
+        nodejs \
+        npm \
+        kubectl && \
+    rm -rf /var/cache/apk/*
 
 # https://github.com/bitwarden/clients/issues/9646
 RUN npm install -g @bitwarden/cli@2024.6.0
