@@ -39,9 +39,9 @@ spec:
   data:
     - secretKey: AWS_ACCESS_KEY_ID
       remoteRef:
-        key: ionos.com/objectstorage/users/vaultwarden
+        key: ionos.com/users/vaultwarden
         property: AWS_ACCESS_KEY_ID
     - secretKey: AWS_SECRET_ACCESS_KEY
       remoteRef:
-        key: ionos.com/objectstorage/users/vaultwarden
+        key: ionos.com/users/vaultwarden
         property: AWS_SECRET_ACCESS_KEY
