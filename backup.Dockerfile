@@ -39,4 +39,4 @@ RUN nvim --version
 RUN curl --version
 
 # Command to run on container start
-CMD ["fish"]
+#CMD ["fish"]
