@@ -178,7 +178,7 @@ spec:
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HOSTNAME="tryrocket.cloud"
                     echo start1
-                    [ ! -z "$HC_UUID" ] && exit 1
+                    #[ ! -z "$HC_UUID" ] && exit 1
                     echo start11
                     [ ! -z "$VAULTWARDEN_VERSION" ] && exit 1
                     echo start111
