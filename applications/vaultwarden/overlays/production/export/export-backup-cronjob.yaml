@@ -177,6 +177,8 @@ spec:
                     VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HOSTNAME="tryrocket.cloud"
+                    echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
+                    echo RESTIC_VERSION=$RESTIC_VERSION
                     echo start1
                     #[ ! -z "$HC_UUID" ] && exit 1
                     echo start11
