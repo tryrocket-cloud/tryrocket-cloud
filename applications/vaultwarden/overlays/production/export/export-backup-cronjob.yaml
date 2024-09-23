@@ -62,7 +62,7 @@ spec:
                 - name: VAULTWARDEN_SERVER
                   value: https://vaultwarden.tryrocket.cloud
                 - name: VAULTWARDEN_EXPORT_JSON
-                  value: /export/vaulwarden-export.json
+                  value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
                     name: vaultwarden-credentials-secret
@@ -98,7 +98,7 @@ spec:
               imagePullPolicy: Always
               env:
                 - name: VAULTWARDEN_EXPORT_JSON
-                  value: /export/vaulwarden-export.json
+                  value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-s3-secret
@@ -110,8 +110,6 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  sleep infinity
-                  
                   VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
@@ -126,8 +124,6 @@ spec:
 
                   echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
-
-                  
 
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
@@ -154,7 +150,7 @@ spec:
               imagePullPolicy: Always
               env:
                 - name: VAULTWARDEN_EXPORT_JSON
-                  value: /export/vaulwarden-export.json
+                  value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-s3-secret

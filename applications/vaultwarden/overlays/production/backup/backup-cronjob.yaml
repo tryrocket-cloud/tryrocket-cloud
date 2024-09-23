@@ -62,7 +62,7 @@ spec:
                 - name: VAULTWARDEN_SERVER
                   value: https://vaultwarden.tryrocket.cloud
                 - name: VAULTWARDEN_EXPORT_JSON
-                  value: /shared/vaulwarden-export.json
+                  value: /shared/vaultwarden-export.json
               envFrom:
                 - secretRef:
                     name: vaultwarden-credentials-secret
