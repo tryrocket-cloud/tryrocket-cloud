@@ -182,11 +182,11 @@ spec:
                     echo start1
                     #[ ! -z "$HC_UUID" ] && exit 1
                     echo start11
-                    [ ! -z "$VAULTWARDEN_VERSION" ] && exit 1
+                    #[ ! -z "$VAULTWARDEN_VERSION" ] && exit 1
                     echo start111
-                    [ ! -z "$RESTIC_VERSION" ] && exit 1
+                    #[ ! -z "$RESTIC_VERSION" ] && exit 1
                     echo start2
-                    HC_URL="https://hc-ping.com/$HC_UUID"
+                    #HC_URL="https://hc-ping.com/$HC_UUID"
 
                     echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
                     echo RESTIC_VERSION=$RESTIC_VERSION
