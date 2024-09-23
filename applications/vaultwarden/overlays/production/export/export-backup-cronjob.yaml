@@ -142,7 +142,7 @@ spec:
                   
               volumeMounts:
                 - name: vaultwarden-export-volume
-                  mountPath: /shared
+                  mountPath: /export
                   readOnly: true
 
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
