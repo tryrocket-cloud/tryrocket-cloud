@@ -101,9 +101,9 @@ spec:
                   value: /export/vaultwarden-export.json
               envFrom:
                 - secretRef:
-                    name: ionos-com-objectstorage-s3-secret
+                    name: ionos-com-objectstorage-bucket-secret
                 - secretRef:
-                    name: ionos-com-objectstorage-eu-central-3-kopia-secret
+                    name: ionos-com-objectstorage-user-secret
                 - secretRef:
                     name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
@@ -129,6 +129,12 @@ spec:
 
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
+
+                  kopia repository connect s3 \
+                                        --bucket="$BUCKET" \
+                                        --endpoint="$ENDPOINT" \
+                                        --region="$REGION" \
+                                        --prefix=vaultwarden/backup/kopia/
 
                   # Perform Kopia backup
                   kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
