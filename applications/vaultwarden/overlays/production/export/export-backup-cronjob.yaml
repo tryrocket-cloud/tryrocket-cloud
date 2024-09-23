@@ -124,13 +124,11 @@ spec:
                   [ -z "$VAULTWARDEN_VERSION" ] && exit 1  # Ensure Vaultwarden version is set
                   [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
 
-                  HC_URL="https://hc-ping.com/$HC_UUID"
-
                   echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
 
                   # Start health check
-                  curl -fsS -m 10 --retry 5 $HC_URL/start
+                  curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
                   kopia repository connect s3 \
                                         --bucket="$BUCKET" \
@@ -140,11 +138,11 @@ spec:
 
                   # Perform Kopia backup
                   kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
-                  curl -fsS -m 10 --retry 5 $HC_URL/$?
+                  curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                   # Perform Kopia consistency check
                   kopia snapshot verify --verify-files-percent 33
-                  curl -fsS -m 10 --retry 5 $HC_URL/$?
+                  curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                   kopia policy show --global
 
@@ -182,25 +180,23 @@ spec:
                     [ -z "$VAULTWARDEN_VERSION" ] && exit 1
                     [ -z "$RESTIC_VERSION" ] && exit 1
 
-                    HC_URL="https://hc-ping.com/$HC_UUID"
-
                     echo VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION
                     echo RESTIC_VERSION=$RESTIC_VERSION
 
                     # Start health check
-                    curl -fsS -m 10 --retry 5 $HC_URL/start
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
                     # Perform restic backup
                     restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
-                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                     # Perform restic check
                     restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                     # Prune old backups
                     restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
-                    curl -fsS -m 10 --retry 5 $HC_URL/$?
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
               volumeMounts:
                 - name: vaultwarden-export-volume
