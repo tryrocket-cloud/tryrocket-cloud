@@ -99,13 +99,16 @@ spec:
               env:
                 - name: VAULTWARDEN_EXPORT_JSON
                   value: /export/vaultwarden-export.json
+              env:
+                - name: KOPIA_CHECK_FOR_UPDATES
+                  value: false  
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-bucket-secret
                 - secretRef:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
-                    name: kopia-secret
+                    name: kopia-repository-secret
                 - secretRef:
                     name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
@@ -144,13 +147,7 @@ spec:
                   kopia snapshot verify --verify-files-percent 33
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
 
-                  ## Prune old snapshots
-                  #kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
-                  curl -fsS -m 10 --retry 5 $HC_URL/$?
-                  
                   kopia policy show --global
-
-                  sleep infinity
 
               volumeMounts:
                 - name: vaultwarden-export-volume
@@ -201,6 +198,8 @@ spec:
                     # Prune old backups
                     restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
                     curl -fsS -m 10 --retry 5 $HC_URL/$?
+
+                    sleep infinity
 
               volumeMounts:
                 - name: vaultwarden-export-volume
