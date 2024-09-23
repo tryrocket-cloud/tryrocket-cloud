@@ -45,3 +45,26 @@ spec:
       remoteRef:
         key: ionos.com/users/vaultwarden
         property: AWS_SECRET_ACCESS_KEY
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: kopia-external-secret
+spec:
+  refreshInterval: "168h"
+  secretStoreRef:
+    name: vault
+    kind: SecretStore
+  target:
+    name: kopia-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: KOPIA_PASSWORD
+      remoteRef:
+        key: vaultwarden.tryrocket.cloud/backup/kopia
+        property: KOPIA_PASSWORD
+    - secretKey: PREFIX
+      remoteRef:
+        key: vaultwarden.tryrocket.cloud/backup/kopia
+        property: prefix
+

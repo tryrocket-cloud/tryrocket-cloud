@@ -10,6 +10,6 @@ path "kv/data/truenas.tryrocket.cloud/users/vaultwarden/*" {
 path "kv/data/ionos.com/objectstorage/buckets/tryrocket.cloud" {
   capabilities = ["read"]
 }
-path "kv/data/ionos.com/objectstorage/users/vaultwarden" {
+path "kv/data/ionos.com/users/vaultwarden" {
   capabilities = ["read"]
 }

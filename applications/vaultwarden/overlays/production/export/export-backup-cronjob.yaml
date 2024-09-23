@@ -105,6 +105,8 @@ spec:
                 - secretRef:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
+                    name: kopia-secret
+                - secretRef:
                     name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
                 - /bin/sh
@@ -124,8 +126,6 @@ spec:
 
                   echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
-
-                  kopia policy show --global
 
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
@@ -148,6 +148,8 @@ spec:
                   #kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
                   
+                  kopia policy show --global
+
                   sleep infinity
 
               volumeMounts:
