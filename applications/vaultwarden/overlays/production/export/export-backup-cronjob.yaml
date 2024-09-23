@@ -110,7 +110,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                  VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
                   
@@ -142,7 +142,7 @@ spec:
                   
               volumeMounts:
                 - name: vaultwarden-export-volume
-                  mountPath: /export
+                  mountPath: /shared
                   readOnly: true
 
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
@@ -162,7 +162,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    VAULTWARDEN_VERSION=$(cat /shared/vaultwarden.env)
+                    VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HOSTNAME="tryrocket.cloud"
                     
