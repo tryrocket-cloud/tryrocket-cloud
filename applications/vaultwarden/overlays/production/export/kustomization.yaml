@@ -2,6 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - export-backup-cronjob.yaml
+  
   # ionos-com-objectstorage-s3-secret
   - ionos.com-objectstorage-s3-externalsecret.yaml
 
@@ -12,7 +14,7 @@ resources:
   # user and password for plaintext backup
   - vaultwarden-user-external-secret.yaml
   
-  - export-backup-cronjob.yaml
+
   - kopia-external-secret.yaml
   - restic-external-secret.yaml
   - s3-external-secret.yaml

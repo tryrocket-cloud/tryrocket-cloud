@@ -108,8 +108,6 @@ spec:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
                     name: kopia-repository-secret
-                - secretRef:
-                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
                 - /bin/sh
                 - -c
@@ -157,8 +155,6 @@ spec:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
                     name: restic-repository-secret
-                - secretRef:
-                    name: ionos-com-objectstorage-eu-central-3-healthchecks-secret
               command:
                   - /bin/sh
                   - -c
