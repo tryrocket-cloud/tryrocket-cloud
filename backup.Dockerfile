@@ -1,5 +1,7 @@
 FROM alpine:edge
 
+RUN cat /etc/os-release 
+
 RUN apk update && \
     apk add --no-cache \
     restic \
