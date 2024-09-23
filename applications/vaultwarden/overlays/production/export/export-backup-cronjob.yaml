@@ -172,6 +172,7 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    sleep infinity
                     VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
                     HOSTNAME="tryrocket.cloud"
