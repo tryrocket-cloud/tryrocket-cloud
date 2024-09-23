@@ -184,7 +184,7 @@ spec:
                     echo start11
                     #[ ! -z "$VAULTWARDEN_VERSION" ] && exit 1
                     echo start111
-                    #[ ! -z "$RESTIC_VERSION" ] && exit 1
+                    [ ! -z "$RESTIC_VERSION" ] && exit 1
                     echo start2
                     #HC_URL="https://hc-ping.com/$HC_UUID"
 
