@@ -10,7 +10,7 @@ resources:
   - ionos.com-objectstorage-eu-central-3-s3-kopia-restic-healthchecks-externalsecret.yaml
 
   # user and password for plaintext backup
-  - vaultwarden-external-secret.yaml
+  - vaultwarden-user-external-secret.yaml
   
   - export-backup-cronjob.yaml
   - kopia-external-secret.yaml
