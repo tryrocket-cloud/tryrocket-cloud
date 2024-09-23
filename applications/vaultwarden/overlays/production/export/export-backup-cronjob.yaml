@@ -125,19 +125,21 @@ spec:
                   echo "VAULTWARDEN_VERSION=$VAULTWARDEN_VERSION"
                   echo "KOPIA_VERSION=$KOPIA_VERSION"
 
+                  kopia policy show --global
+
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_URL/start
 
                   # Perform Kopia backup
-                  kopia snapshot create /export --hostname="$HOSTNAME" --description="kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
+                  kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
 
                   # Perform Kopia consistency check
-                  kopia repository verify --verify-files-percent 33
+                  kopia snapshot verify --verify-files-percent 33
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
 
-                  # Prune old snapshots
-                  kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
+                  ## Prune old snapshots
+                  #kopia snapshot prune --keep-last 30 --keep-monthly 3 --keep-annual 1
                   curl -fsS -m 10 --retry 5 $HC_URL/$?
                   
               volumeMounts:
@@ -205,3 +207,13 @@ spec:
 
             - name: vaultwarden-export-volume
               emptyDir: {}
+
+
+Could not find dir, "/root/.config/Bitwarden CLI"; creating it instead.
+Could not find data file, "/root/.config/Bitwarden CLI/data.json"; creating it instead.
+Saved setting `config`.Syncing complete.
+? Master password: [input is hidden] You have logged out.
+
+Could not find dir, "/root/.config/Bitwarden CLI"; creating it instead.
+Could not find data file, "/root/.config/Bitwarden CLI/data.json"; creating it instead.
+Saved setting `config`.Syncing complete.Saved /export/vaultwarden-export.jsonYou have logged out.
