@@ -170,6 +170,8 @@ spec:
                     [ -z "$RESTIC_VERSION" ] && exit 1
                     [ -z "$RESTIC_REPOSITORY" ] && exit 1
 
+                    sleep infinity
+
                     # Start health check
                     curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
