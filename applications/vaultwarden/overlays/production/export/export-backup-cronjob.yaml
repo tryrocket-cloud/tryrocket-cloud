@@ -187,12 +187,5 @@ spec:
                   readOnly: true
 
           volumes:
-            - name: backup-sh-volume
-              configMap:
-                name: backup-sh-configmap
-                items:
-                - key: backup.sh
-                  path: backup.sh
-
             - name: vaultwarden-export-volume
               emptyDir: {}
