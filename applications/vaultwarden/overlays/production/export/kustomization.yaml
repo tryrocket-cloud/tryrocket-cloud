@@ -18,3 +18,7 @@ resources:
   - kopia-external-secret.yaml
   - restic-external-secret.yaml
   - s3-external-secret.yaml
+
+  # cache
+  - backup-cache-pv.yaml
+  - backup-cache-pvc.yaml
