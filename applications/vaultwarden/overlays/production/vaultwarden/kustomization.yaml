@@ -6,8 +6,8 @@ resources:
 
   - admin-token-external-secret.yaml
 
-  - pvc.yaml
-  - pv.yaml
+  - vaultwarden-prod-data-pvc.yaml
+  - vaultwarden-prod-data-pv.yaml
 
 patches:
   - target:
