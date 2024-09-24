@@ -26,6 +26,8 @@ spec:
                   value: https://vault.tryrocket.cloud
                 - name: VAULT_PATH
                   value: kv
+                - name: VAULT_SKIP_VERIFY
+                  value: "true"
               envFrom:
                 - secretRef:
                     name: vault-token-secret
