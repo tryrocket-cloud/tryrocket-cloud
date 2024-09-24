@@ -5,11 +5,11 @@ resources:
   - export-backup-cronjob.yaml
   
   # ionos-com-objectstorage-s3-secret
-  - ionos.com-objectstorage-s3-externalsecret.yaml
+  #- ionos.com-objectstorage-s3-externalsecret.yaml
 
   # ionos-com-objectstorage-eu-central-3-restic-secret
   # ionos-com-objectstorage-eu-central-3-healthchecks-secret
-  - ionos.com-objectstorage-eu-central-3-s3-kopia-restic-healthchecks-externalsecret.yaml
+  #- ionos.com-objectstorage-eu-central-3-s3-kopia-restic-healthchecks-externalsecret.yaml
 
   # user and password for plaintext backup
   - vaultwarden-user-external-secret.yaml
