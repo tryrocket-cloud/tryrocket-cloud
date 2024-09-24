@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vaultwarden-helm
+  namespace: argocd
+  labels:
+    environment: production
+spec:
+  project: default
+  source:
+    repoURL: https://gissilabs.github.io/charts/
+    chart: vaultwarden
+    targetRevision: 1.2.2
+    helm:
+      values: |
+        
+
+  destination:
+    server: https://192.168.178.101:6443
+    namespace: vaultwarden-helm
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+  info:
+    - name: Helm Chart
+      value: https://artifacthub.io/packages/helm/gissilabs/vaultwarden
+    - name: Helm Chart Values
+      value: https://artifacthub.io/packages/helm/gissilabs/vaultwarden?modal=values
