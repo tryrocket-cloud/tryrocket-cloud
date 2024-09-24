@@ -161,10 +161,10 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
-                    RESTIC_VERSION=$(restic version | awk '{print $2}')
-                    RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
-                    HOSTNAME="tryrocket.cloud"
+                    export VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
+                    export RESTIC_VERSION=$(restic version | awk '{print $2}')
+                    export RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
+                    export HOSTNAME="tryrocket.cloud"
 
                     [ -z "$VAULTWARDEN_VERSION" ] && exit 1
                     [ -z "$RESTIC_VERSION" ] && exit 1
