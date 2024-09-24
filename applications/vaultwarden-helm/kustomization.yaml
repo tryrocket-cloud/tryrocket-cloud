@@ -5,4 +5,4 @@ resources:
   - ./external-secrets
   - admin-token-external-secret.yaml
 
-namespace: vault
+namespace: vaultwarden-helm
