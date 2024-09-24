@@ -25,7 +25,7 @@ spec:
                 - name: VAULT_ADDR
                   value: https://vault.tryrocket.cloud
                 - name: VAULT_PATH
-                  value: kv/
+                  value: kv
               envFrom:
                 - secretRef:
                     name: vault-token-secret
