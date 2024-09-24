@@ -114,6 +114,8 @@ spec:
                 - /bin/sh
                 - -c
                 - |
+                  cat /etc/environment
+                  
                   VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
@@ -161,6 +163,8 @@ spec:
                   - /bin/sh
                   - -c
                   - |
+                    cat /etc/environment
+
                     export VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     export RESTIC_VERSION=$(restic version | awk '{print $2}')
                     export RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
