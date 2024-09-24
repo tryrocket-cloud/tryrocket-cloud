@@ -3,6 +3,5 @@ kind: Kustomization
 
 resources:
   - ./export-backup
-  - ./external-secrets
 
 namespace: vault
