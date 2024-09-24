@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: export-backup
+  name: vaultwarden-export-backup
 spec:
   suspend: true
   schedule: "30 0 * * *"
