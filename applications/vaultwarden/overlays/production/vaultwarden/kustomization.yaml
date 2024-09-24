@@ -4,12 +4,10 @@ kind: Kustomization
 resources:
   - ../../../base
 
-  # vaultwarden-secret
-  - vaultwarden-external-secret.yaml
+  - admin-token-external-secret.yaml
 
   - pvc.yaml
   - pv.yaml
-  - test-pvc.yaml
 
 patches:
   - target:

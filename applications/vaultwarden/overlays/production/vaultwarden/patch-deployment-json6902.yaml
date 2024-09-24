@@ -2,19 +2,11 @@
   path: /spec/template/metadata/annotations
   value: {}
 
-#- op: add
-#  path: /spec/template/metadata/annotations/backup.velero.io~1backup-volumes
-#  value: vaultwarden-backup-test-volume
-
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts
   value:
     - name: vaultwarden-data-volume
       mountPath: /data
-#    - name: vaultwarden-backup-test-volume
-#      mountPath: /shared
-#    - name: vaultwarden-test-volume
-#      mountPath: /test
 
 - op: add
   path: /spec/template/spec/volumes
@@ -22,14 +14,9 @@
     - name: vaultwarden-data-volume
       persistentVolumeClaim:
         claimName: vaultwarden-prod-data-pvc
-#    - name: vaultwarden-test-volume
-#      persistentVolumeClaim:
-#        claimName: vaultwarden-test-pvc
-#    - name: vaultwarden-backup-test-volume
-#      emptyDir: {}
 
 - op: add
   path: /spec/template/spec/containers/0/envFrom/-
   value:
     secretRef:
-      name: vaultwarden-secret
+      name: admin-token-secret
