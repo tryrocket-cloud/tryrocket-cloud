@@ -114,8 +114,6 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  cat /etc/environment
-                  
                   VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
                   HOSTNAME="tryrocket.cloud"
@@ -138,6 +136,9 @@ spec:
                   # Perform Kopia consistency check
                   kopia snapshot verify --verify-files-percent 33
                   curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+
+                  cat /etc/environment
+                  cat ~/.config/kopia/repository.config
               volumeMounts:
                 - name: vaultwarden-export-volume
                   mountPath: /export
