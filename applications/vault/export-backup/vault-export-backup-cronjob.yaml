@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vault-export-backup
+spec:
+  suspend: true
+  schedule: "30 0 * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 600
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+          initContainers:
+
+            - name: export-hashicorp-vault
+              image: ghcr.io/jonasvinther/medusa:latest
+              imagePullPolicy: IfNotPresent
+              command: ["./medusa", "export", "$(VAULT_PATH)", "-o", "/export/backup.vault"]
+              env:
+                - name: VAULT_ADDR
+                  value: https://vault.tryrocket.cloud
+              envFrom:
+                - secretRef:
+                    name: vault-token-secret
+              volumeMounts:
+                - name: vault-export-volume
+                  mountPath: /export
+
+          containers:
+            - name: test-export
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              imagePullPolicy: Always
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  sleep infinity
+              volumeMounts:
+                - name: vault-export-volume
+                  mountPath: /export
+                  readOnly: true
+
+          volumes:
+            - name: vault-export-volume
+              emptyDir: {}
