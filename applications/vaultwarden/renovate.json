@@ -1,0 +1,14 @@
+{
+    "extends": ["config:base"],
+    "schedule": ["before 5am on Monday"],
+    "packageRules": [
+      {
+        "packagePatterns": ["kustomize", "vaultwarden"],
+        "groupName": "kustomize and vaultwarden"
+      }
+    ],
+    "autoMerge": false,
+    "autoMergeType": "pr",
+    "ignoreTests": false
+  }
+  
