@@ -114,31 +114,30 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
-                  KOPIA_VERSION=$(kopia --version | awk '{print $1}')
-                  HOSTNAME="tryrocket.cloud"
-                  
-                  [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
+                  time (
+                    VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
+                    KOPIA_VERSION=$(kopia --version | awk '{print $1}')
+                    HOSTNAME="tryrocket.cloud"
+                    
+                    [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
 
-                  # Start health check
-                  curl -fsS -m 10 --retry 5 $HC_PING_URL/start
+                    # Start health check
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
-                  kopia repository connect s3 \
-                                        --bucket="$BUCKET" \
-                                        --endpoint="$ENDPOINT" \
-                                        --region="$REGION" \
-                                        --prefix=vaultwarden/backup/kopia/
+                    kopia repository connect s3 \
+                                          --bucket="$BUCKET" \
+                                          --endpoint="$ENDPOINT" \
+                                          --region="$REGION" \
+                                          --prefix=vaultwarden/backup/kopia/
 
-                  # Perform Kopia backup
-                  kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
-                  curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+                    # Perform Kopia backup
+                    kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
-                  # Perform Kopia consistency check
-                  kopia snapshot verify --verify-files-percent 33
-                  curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
-
-                  kopia policy show --global
-                  ls -la /cache/vaultwarden/kopia
+                    # Perform Kopia consistency check
+                    kopia snapshot verify --verify-files-percent 33
+                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+                  )
 
               volumeMounts:
                 - name: vaultwarden-export-volume
@@ -165,30 +164,31 @@ spec:
                   - /bin/sh
                   - -c
                   - |
-                    VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
-                    RESTIC_VERSION=$(restic version | awk '{print $2}')
-                    RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
-                    HOSTNAME="tryrocket.cloud"
+                    time (
+                      VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
+                      RESTIC_VERSION=$(restic version | awk '{print $2}')
+                      RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
+                      HOSTNAME="tryrocket.cloud"
 
-                    [ -z "$VAULTWARDEN_VERSION" ] && exit 1
-                    [ -z "$RESTIC_VERSION" ] && exit 1
-                    [ -z "$RESTIC_REPOSITORY" ] && exit 1
+                      [ -z "$VAULTWARDEN_VERSION" ] && exit 1
+                      [ -z "$RESTIC_VERSION" ] && exit 1
+                      [ -z "$RESTIC_REPOSITORY" ] && exit 1
 
-                    # Start health check
-                    curl -fsS -m 10 --retry 5 $HC_PING_URL/start
+                      # Start health check
+                      curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
-                    # Perform restic backup
-                    restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
-                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+                      # Perform restic backup
+                      restic backup --host "$HOSTNAME" --tag restic:"$RESTIC_VERSION" --tag vaultwarden:"$VAULTWARDEN_VERSION" --tag export $VAULTWARDEN_EXPORT_JSON
+                      curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
-                    # Perform restic check
-                    restic check --read-data-subset 1/7
-                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+                      # Perform restic check
+                      restic check --read-data-subset 1/7
+                      curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
-                    # Prune old backups
-                    restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
-                    curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
-
+                      # Prune old backups
+                      restic forget --keep-daily 30 --keep-monthly 3 --keep-yearly 1 --prune
+                      curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
+                    )
               volumeMounts:
                 - name: vaultwarden-export-volume
                   mountPath: /export
