@@ -13,7 +13,74 @@ spec:
     targetRevision: 1.2.2
     helm:
       values: |
-        
+        vaultwarden:
+          domain: https://vw.tryrocket.cloud
+          
+          # Allow any user to sign-up: https://github.com/dani-garcia/vaultwarden/wiki/Disable-registration-of-new-users
+          allowSignups: true
+          ## Whitelist domains allowed to sign-up. 'allowSignups' is ignored if set.
+          #signupDomains:
+          #  - domain.tld
+          # Verify e-mail before login is enabled. SMTP must be enabled.
+          verifySignup: false
+          # When a user logs in an email is required to be sent. If sending the email fails the login attempt will fail. SMTP must be enabled.
+          requireEmail: false
+          ## Maximum attempts before an email token is reset and a new email will need to be sent.
+          #emailAttempts: 3
+          ## Email token validity in seconds.
+          #emailTokenExpiration: 600
+          # Allow invited users to sign-up even feature is disabled: https://github.com/dani-garcia/vaultwarden/wiki/Disable-invitations
+          allowInvitation: true
+          ## Number of hours after which an organization invite token, emergency access invite token,
+          ## email verification token and deletion request token will expire
+          #invitationExpiration: 120
+          ## Allow users to set password hints. Applies to all users.
+          #passwordHintsAllowed: true
+          # Show password hints: https://github.com/dani-garcia/vaultwarden/wiki/Password-hint-display
+          showPasswordHint: false
+          ## Default organization name in invitation e-mails that are not coming from a specific organization.
+          #defaultInviteName: ""
+          # Enable Web Vault (static content). https://github.com/dani-garcia/vaultwarden/wiki/Disabling-or-overriding-the-Vault-interface-hosting
+          enableWebVault: true
+          # Enable Bitwarden Sends globally  
+          enableSends: true
+          # Restrict creation of orgs. Options are: 'all', 'none' or a comma-separated list of users.
+          orgCreationUsers: all
+          ## Limit attachment disk usage per organization.
+          #attachmentLimitOrg: 
+          ## Limit attachment disk usage per user.
+          #attachmentLimitUser: 
+          ## Limit send disk usage per user.
+          #sendLimitUser:
+          ## HaveIBeenPwned API Key. Can be purchased at https://haveibeenpwned.com/API/Key.
+          #hibpApiKey: 
+          ## Number of days to auto-delete trashed items. By default iteams are not auto-deleted.
+          #autoDeleteDays: 
+          ## Organization event logging
+          #orgEvents: false
+          ## Organization event retation. Leave empty to not delete.
+          #orgEventsRetention: ""
+          ## Allow users to change their email.
+          #emailChangeAllowed: true
+          ## Map of custom environment variables. Use carefully.
+          #extraEnv:
+          #  IP_HEADER: CF-Connecting-IP
+          #  ALLOWED_IFRAME_ANCESTORS: myintranet.local
+          #  COOL_VARIABLE:
+          #    secretKeyRef:
+          #      name: my-secret
+          #      key: my-secret-key
+          #  ANOTHER_VARIABLE:
+          #    configMapKeyRef:
+          #      name: my-config-map
+          #      key: my-config-map-key
+
+          admin:
+            enabled: true
+            disableAdminToken: false
+            
+            # Use existing secret for the admin token. Key is 'admin-token'.
+            existingSecret: vaultwarden-secret
 
   destination:
     server: https://192.168.178.101:6443
