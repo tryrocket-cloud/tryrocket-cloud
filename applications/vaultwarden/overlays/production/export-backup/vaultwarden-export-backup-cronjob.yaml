@@ -105,7 +105,7 @@ spec:
                 - name: KOPIA_CHECK_FOR_UPDATES
                   value: "false"
                 - name: KOPIA_CACHE_DIRECTORY
-                  value: /cache/vaultwarden/kopia
+                  value: /cache/ionos.com/vaultwarden/kopia
                 - name: HOSTNAME
                   value: tryrocket.cloud
               envFrom:
@@ -152,7 +152,7 @@ spec:
                 - name: VAULTWARDEN_EXPORT_JSON
                   value: /export/vaultwarden-export.json
                 - name: RESTIC_CACHE_DIR
-                  value: /cache/vaultwarden/restic
+                  value: /cache/ionos.com/vaultwarden/restic
                 - name: HOSTNAME
                   value: tryrocket.cloud
               envFrom:
