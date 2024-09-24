@@ -15,7 +15,7 @@ spec:
       values: |
         vaultwarden:
           domain: https://vw.tryrocket.cloud
-          
+
           # Allow any user to sign-up: https://github.com/dani-garcia/vaultwarden/wiki/Disable-registration-of-new-users
           allowSignups: true
           ## Whitelist domains allowed to sign-up. 'allowSignups' is ignored if set.
@@ -81,6 +81,26 @@ spec:
             
             # Use existing secret for the admin token. Key is 'admin-token'.
             existingSecret: vaultwarden-secret
+
+          emergency:
+            # Allow any user to enable emergency access.
+            enabled: true
+            ## Schedule to send expiration reminders to emergency access grantors. Cron schedule format.
+            #reminder: "0 3 * * * *"
+            ## Schedule to grant emergency access requests that have met the required wait time. Cron schedule format.
+            #timeout: "0 3 * * * *"
+
+        ingress:
+          enabled: true
+          host: "vw.tryrocket.cloud"
+          annotations:
+            spec.ingressClassName: traefik
+            cert-manager.io/cluster-issuer: letsencrypt
+            traefik.ingress.kubernetes.io/router.middlewares: vaultwarden-helm-vaultwarden-http-https-middleware@kubernetescrd
+          tls:
+            - secretName: tryrocket-cloud-http-tls
+              hosts:
+                - vw.tryrocket.cloud
 
   destination:
     server: https://192.168.178.101:6443
