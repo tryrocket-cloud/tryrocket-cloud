@@ -7,8 +7,9 @@ metadata:
     environment: production
 spec:
   project: default
-  source:
-    repoURL: https://gissilabs.github.io/charts/
+  
+  sources:
+  - repoURL: https://gissilabs.github.io/charts/
     chart: vaultwarden
     targetRevision: 1.2.2
     helm:
@@ -80,7 +81,7 @@ spec:
             disableAdminToken: false
             
             # Use existing secret for the admin token. Key is 'admin-token'.
-            existingSecret: vaultwarden-secret
+            existingSecret: admin-token-secret
 
           emergency:
             # Allow any user to enable emergency access.
@@ -101,6 +102,10 @@ spec:
             - secretName: tryrocket-cloud-http-tls
               hosts:
                 - vw.tryrocket.cloud
+
+  - repoURL: 'https://github.com/tryrocket-cloud/tryrocket-cloud.git'
+    targetRevision: main
+    path: applications/vaultwarden-helm
 
   destination:
     server: https://192.168.178.101:6443
