@@ -11,13 +11,12 @@ resources:
   # ionos-com-objectstorage-eu-central-3-healthchecks-secret
   #- ionos.com-objectstorage-eu-central-3-s3-kopia-restic-healthchecks-externalsecret.yaml
 
-  # user and password for plaintext backup
+  # user and password for export backup
   - vaultwarden-user-external-secret.yaml
   
-
   - ionos.com-kopia-external-secret.yaml
   - ionos.com-restic-external-secret.yaml
-  
+
   - s3-external-secret.yaml
 
   # cache
