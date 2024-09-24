@@ -138,6 +138,7 @@ spec:
                   curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                   kopia policy show --global
+                  ls -la /cache/vaultwarden/kopia
 
               volumeMounts:
                 - name: vaultwarden-export-volume
@@ -169,6 +170,7 @@ spec:
                     RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
                     HOSTNAME="tryrocket.cloud"
 
+                    [ -z "$VAULTWARDEN_VERSION" ] && exit 1
                     [ -z "$RESTIC_VERSION" ] && exit 1
                     [ -z "$RESTIC_REPOSITORY" ] && exit 1
 
