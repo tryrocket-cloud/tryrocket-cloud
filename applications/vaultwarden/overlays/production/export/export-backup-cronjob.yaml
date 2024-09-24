@@ -124,11 +124,7 @@ spec:
                   # Start health check
                   curl -fsS -m 10 --retry 5 $HC_PING_URL/start
 
-                  kopia repository connect s3 \
-                                        --bucket="$BUCKET" \
-                                        --endpoint="$ENDPOINT" \
-                                        --region="$REGION" \
-                                        --prefix=vaultwarden/backup/kopia/
+                  kopia repository connect s3 --bucket="$BUCKET" --endpoint="$ENDPOINT" --region="$REGION" --prefix="$PREFIX"
 
                   # Perform Kopia backup
                   kopia snapshot create /export --description="Daily export" --tags="hostname:$HOSTNAME kopia:$KOPIA_VERSION vaultwarden:$VAULTWARDEN_VERSION"
