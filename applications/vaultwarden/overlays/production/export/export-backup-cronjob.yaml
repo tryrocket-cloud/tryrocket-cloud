@@ -13,7 +13,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-
           initContainers:
             - name: get-vaultwarden-version
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
