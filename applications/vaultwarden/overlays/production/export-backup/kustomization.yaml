@@ -15,8 +15,9 @@ resources:
   - vaultwarden-user-external-secret.yaml
   
 
-  - kopia-external-secret.yaml
-  - restic-external-secret.yaml
+  - ionos.com-kopia-external-secret.yaml
+  - ionos.com-restic-external-secret.yaml
+  
   - s3-external-secret.yaml
 
   # cache

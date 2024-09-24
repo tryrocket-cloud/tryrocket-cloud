@@ -110,7 +110,7 @@ spec:
                 - secretRef:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
-                    name: kopia-repository-secret
+                    name: ionos.com-kopia-repository-secret
               command:
                 - /bin/sh
                 - -c
@@ -157,7 +157,7 @@ spec:
                 - secretRef:
                     name: ionos-com-objectstorage-user-secret
                 - secretRef:
-                    name: restic-repository-secret
+                    name: ionos.com-restic-repository-secret
               command:
                   - /bin/sh
                   - -c
