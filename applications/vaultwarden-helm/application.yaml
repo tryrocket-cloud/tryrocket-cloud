@@ -15,6 +15,11 @@ spec:
     helm:
       values: |
         vaultwarden:
+          ## Logging options. https://github.com/dani-garcia/vaultwarden/wiki/Logging
+          log:
+            # Log level. Options are "trace", "debug", "info", "warn", "error" or "off". 
+            level: "debug"
+
           domain: https://vw.tryrocket.cloud
 
           # Allow any user to sign-up: https://github.com/dani-garcia/vaultwarden/wiki/Disable-registration-of-new-users
