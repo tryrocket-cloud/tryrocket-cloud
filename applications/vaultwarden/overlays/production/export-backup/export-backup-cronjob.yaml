@@ -5,6 +5,7 @@ metadata:
 spec:
   suspend: true
   schedule: "30 0 * * *"
+  concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
@@ -52,7 +53,7 @@ spec:
               - name: vaultwarden-export-volume
                 mountPath: /export
 
-            - name: export-vaultwarden-vault
+            - name: export-vaultwarden-user-vault
               image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
               imagePullPolicy: Always
               env:
@@ -70,7 +71,7 @@ spec:
                 - -c
                 - |
                   # TODO: refactor to handle multiple users
-                  
+
                   bw config server $VAULTWARDEN_SERVER
                   export BW_SESSION=$(bw login "$USERNAME" "$PASSWORD" --raw)
 
