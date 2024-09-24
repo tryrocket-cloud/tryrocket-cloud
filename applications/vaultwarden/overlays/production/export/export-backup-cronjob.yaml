@@ -103,6 +103,8 @@ spec:
                   value: "false"
                 - name: KOPIA_CACHE_DIRECTORY
                   value: /cache/vaultwarden/kopia
+                - name: HOSTNAME
+                  value: tryrocket.cloud
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-bucket-secret
@@ -116,7 +118,6 @@ spec:
                 - |
                   VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                   KOPIA_VERSION=$(kopia --version | awk '{print $1}')
-                  HOSTNAME="tryrocket.cloud"
                   
                   [ -z "$KOPIA_VERSION" ] && exit 1  # Ensure Kopia version is set
 
@@ -137,8 +138,8 @@ spec:
                   kopia snapshot verify --verify-files-percent 33
                   curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
-                  cat /etc/environment
-                  cat ~/.config/kopia/repository.config
+                  #cat /etc/environment
+                  #cat ~/.config/kopia/repository.config
               volumeMounts:
                 - name: vaultwarden-export-volume
                   mountPath: /export
@@ -153,6 +154,8 @@ spec:
                   value: /export/vaultwarden-export.json
                 - name: RESTIC_CACHE_DIR
                   value: /cache/vaultwarden/restic
+                - name: HOSTNAME
+                  value: tryrocket.cloud
               envFrom:
                 - secretRef:
                     name: ionos-com-objectstorage-bucket-secret
@@ -169,7 +172,6 @@ spec:
                     export VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     export RESTIC_VERSION=$(restic version | awk '{print $2}')
                     export RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
-                    export HOSTNAME="tryrocket.cloud"
 
                     [ -z "$VAULTWARDEN_VERSION" ] && exit 1
                     [ -z "$RESTIC_VERSION" ] && exit 1
