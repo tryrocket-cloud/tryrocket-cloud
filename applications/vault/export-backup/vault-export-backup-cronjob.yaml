@@ -20,7 +20,7 @@ spec:
             - name: export-hashicorp-vault
               image: ghcr.io/jonasvinther/medusa:latest
               imagePullPolicy: IfNotPresent
-              command: ["./medusa", "export", "$(VAULT_PATH)", "-o", "/backup/backup.vault"]
+              command: ["./medusa", "export", "$(VAULT_PATH)", "-o", "/export/backup.vault"]
               env:
                 - name: VAULT_ADDR
                   value: https://vault.tryrocket.cloud
