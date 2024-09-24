@@ -185,7 +185,7 @@ spec:
                     curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                     # Perform restic check
-                    restic check --read-data-subset 1/7
+                    restic check --read-data-subset 1/3
                     curl -fsS -m 10 --retry 5 $HC_PING_URL/$?
 
                     # Prune old backups
