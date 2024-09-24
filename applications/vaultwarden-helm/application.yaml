@@ -96,6 +96,10 @@ spec:
             ## Schedule to grant emergency access requests that have met the required wait time. Cron schedule format.
             #timeout: "0 3 * * * *"
 
+        persistence:
+          enabled: true
+          existingClaim: vaultwarden-data-production
+
         ingress:
           enabled: true
           host: "vw.tryrocket.cloud"

@@ -4,5 +4,8 @@ kind: Kustomization
 resources:
   - ./external-secrets
   - admin-token-external-secret.yaml
+  
+  - vaultwarden-data-production-pv.yaml
+  - vaultwarden-data-production-pvc.yaml
 
 namespace: vaultwarden-helm
