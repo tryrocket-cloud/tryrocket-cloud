@@ -166,10 +166,11 @@ spec:
                   - |
                     VAULTWARDEN_VERSION=$(cat /export/vaultwarden.env)
                     RESTIC_VERSION=$(restic version | awk '{print $2}')
-                    RESTIC_REPOSITORY=s3:$ENDPOINT/$BUCKET/$PREFIX
+                    RESTIC_REPOSITORY="s3:$ENDPOINT/$BUCKET/$PREFIX"
                     HOSTNAME="tryrocket.cloud"
 
                     [ -z "$RESTIC_VERSION" ] && exit 1
+                    [ -z "$RESTIC_REPOSITORY" ] && exit 1
 
                     # Start health check
                     curl -fsS -m 10 --retry 5 $HC_PING_URL/start
