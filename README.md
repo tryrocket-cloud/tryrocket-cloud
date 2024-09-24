@@ -1,47 +1,19 @@
-# tryrocket-cloud
+# tryrocket.cloud
 
-## Prerequisites
+<div align="center">
 
-- [k3s](https://k3s.io/)
-- [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
-- [External Secrets Operator](https://external-secrets.io/latest/)
-- [cert-manager](https://cert-manager.io/)
-- [Longhorn](https://longhorn.io/)
-- [stakater](https://docs.stakater.com/reloader/#)
+<img src="https://raw.githubusercontent.com/auricom/home-ops/main/docs/src/assets/logo.png" align="center" width="144px" height="144px"/>
 
-## Tools
+## My home Kubernetes cluster :sailboat:
 
-- Longhorn cli
-- Argo CD cli
-- Velero cli
-- Ansible
-- kubectl
-- yq
-- jq
-- Postgres tool
-  - pg_dump
-  - pg_reatore
-- Docker
-- Just
-- Kustomize
+... managed with ArgoCD and Renovate :robot:
+</div>
 
 
-## Additional Services
+<div align="center">
 
-- [Hetzner](https://www.hetzner.com/)
-- [IONOS Cloud](https://cloud.ionos.de/)
-- [IONOS](https://www.ionos.de)
-- [Cloudflare](https://www.cloudflare.com)
-- [GitHub](https://github.com/)
+[![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label&logo=discord&logoColor=white&color=blue)](https://discord.gg/k8s-at-home)
+[![Kubernetes](https://img.shields.io/badge/v1.30-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://talos.dev/)
+[![Renovate](https://img.shields.io/github/actions/workflow/status/auricom/home-ops/renovate.yaml?branch=main&label=&logo=renovatebot&style=for-the-badge&color=blue)](https://github.com/auricom/home-ops/actions/workflows/renovate.yaml)
 
-## Installation
-
-- Prepare Debian nodes
-  - Install Debian OS
-  - Install k3s on each node and connect to each other
-  - Install neovim, fish
-- Install ArgoCD
-- Install Vault (ArgoCD Application + Helm)
-- Install External Secrets Operator (ArgoCD Application + Helm)
-- Install CertManager
-- Install Longhorn
+</div>
