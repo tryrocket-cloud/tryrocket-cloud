@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'  # or any Node.js version compatible with your project
+          node-version: 'latest'  # or any Node.js version compatible with your project
 
       - name: Install dependencies
         run: npm install --save-dev @commitlint/config-conventional @commitlint/cli
