@@ -17,11 +17,3 @@
 [![Renovate](https://img.shields.io/github/actions/workflow/status/auricom/home-ops/renovate.yaml?branch=main&label=&logo=renovatebot&style=for-the-badge&color=blue)](https://github.com/auricom/home-ops/actions/workflows/renovate.yaml)
 
 </div>
-
-## Versions
-
-- 1.0 - raspberry pi 4 - docker compose (files no automation) -> portainer (gitea repository) manual
-- 2.0 - (pi 4, m700, 3080) - podman, quadlets - ansible, gitea, cicd
-- 
-- 3.0 - 3080, m700 - k3s cluster, argo
-- 4.0 - 3080, 3080 - talos k8s cluster, argo/flux
