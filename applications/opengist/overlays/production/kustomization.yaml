@@ -8,4 +8,4 @@ namespace: opengist
 # https://github.com/thomiceli/opengist/releases
 images:
   - name: ghcr.io/thomiceli/opengist:latest
-    newTag: 1.7.3
+    newTag: 1.7.5@sha256:0bfceefe34421723088a1df598cd1d6430489211bf0179802d5358c13c0c2525
