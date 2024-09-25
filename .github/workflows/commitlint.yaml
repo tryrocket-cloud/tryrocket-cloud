@@ -1,0 +1,28 @@
+name: Commit Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # or any Node.js version compatible with your project
+
+      - name: Install dependencies
+        run: npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+      - name: Lint commit messages
+        run: |
+          npx commitlint --from=${{ github.event.before }} --to=HEAD

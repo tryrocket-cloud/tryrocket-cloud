@@ -17,3 +17,10 @@
 [![Renovate](https://img.shields.io/github/actions/workflow/status/auricom/home-ops/renovate.yaml?branch=main&label=&logo=renovatebot&style=for-the-badge&color=blue)](https://github.com/auricom/home-ops/actions/workflows/renovate.yaml)
 
 </div>
+
+## Using
+
+- [Convetional Commits](https://www.conventionalcommits.org/en/v1.0.0/) *since: 25.09.2024*
+- [release-please](https://github.com/googleapis/release-please) *since: 25.09.2024*
+
+toso github action + all other things related to convetional commits
