@@ -9,4 +9,4 @@ namespace: adguard-home
 # https://hub.docker.com/r/adguard/adguardhome
 images:
   - name: adguard/adguardhome:latest
-    newTag: v0.107.52
+    newTag: v0.107.53@sha256:d9c512051141e6a617d773f16cdf6782c178464c6e766acf9fe63482a171f95c
