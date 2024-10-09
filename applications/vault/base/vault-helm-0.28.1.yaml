@@ -378,7 +378,7 @@ spec:
       containers:
         - name: vault
           
-          image: hashicorp/vault:1.17.2
+          image: hashicorp/vault:1.18.0@sha256:e2da7099950443e234ed699940fabcdc44b5babe33adfb459e189a63b7bb50d7
           imagePullPolicy: IfNotPresent
           command:
           - "/bin/sh"
@@ -576,7 +576,7 @@ spec:
   
   containers:
     - name: release-name-server-test
-      image: hashicorp/vault:1.17.2
+      image: hashicorp/vault:1.18.0@sha256:e2da7099950443e234ed699940fabcdc44b5babe33adfb459e189a63b7bb50d7
       imagePullPolicy: IfNotPresent
       env:
         - name: VAULT_ADDR
