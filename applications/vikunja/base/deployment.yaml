@@ -20,14 +20,14 @@ spec:
       dnsPolicy: ClusterFirst
       initContainers:
         - name: init-chown
-          image: busybox
+          image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
           command: ["sh", "-c", "chown -R 1000:1000 /app/vikunja/files && chmod -R 750 /app/vikunja/files"]
           volumeMounts:
             - name: vikunja-storage
               mountPath: /app/vikunja/files
       containers:
         - name: vikunja
-          image: vikunja/vikunja:latest
+          image: vikunja/vikunja:latest@sha256:c93c58841215592c51a40fa978da25efadd1fff2460b42443c344132f322eef1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3456

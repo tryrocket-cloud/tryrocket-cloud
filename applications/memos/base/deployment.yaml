@@ -20,7 +20,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: memos
-          image: neosmemo/memos:latest
+          image: neosmemo/memos:latest@sha256:7dffaf5ba7692d64efd50bc4949e8378abf5e1c9b08aed854448a374ff25d976
           imagePullPolicy: IfNotPresent
 #          args:
 #            - '--driver'

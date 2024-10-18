@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:13  # Adjust to the version you want
+        image: postgres:13@sha256:2eef614e037388b341d1ab9cdc473c1fe31ac09f00cc348112dee9eb319246a3  # Adjust to the version you want
         env:
         - name: POSTGRES_DB
           value: "infisical"

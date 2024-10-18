@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: truenas-tryrocket-cloud-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:3f8193ccc9edf2b174a350dbf8594ee2ce2f750eb6015022e836b1717fd2f406
               imagePullPolicy: Always
               envFrom:
                 - secretRef:

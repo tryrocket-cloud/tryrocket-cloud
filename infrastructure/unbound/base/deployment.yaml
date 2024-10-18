@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: unbound  
-        image: mvance/unbound:latest
+        image: mvance/unbound:latest@sha256:4bf67b567f392956455bd4f8a4cdd48010e234f1a07c0a99c2cff2ddbb3e8a7a
         volumeMounts:
         - mountPath: /opt/unbound/etc/unbound/unbound.conf
           name: unbound-config

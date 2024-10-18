@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mailrise
-          image: yoryan/mailrise:latest
+          image: yoryan/mailrise:latest@sha256:41c8c872ea8786265d299b5cf18edeefc420d02ba6ec78731a0d4e23c74813a9
           ports:
             - containerPort: 8025
           env:

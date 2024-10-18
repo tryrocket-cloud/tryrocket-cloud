@@ -9,7 +9,7 @@ namespace: vikunja
 # https://github.com/tchapi/davis/releases
 images:
   - name: vikunja/vikunja:latest
-    newTag: 0.24.1
+    newTag: 0.24.1@sha256:acf323bc5ba298a9a1b3594bbbd07a036fe39f347850e8b8c05d641fb08c7003
 
 configMapGenerator:
   - name: vikunja-postgres-config
