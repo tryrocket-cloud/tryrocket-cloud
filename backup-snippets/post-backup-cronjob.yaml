@@ -15,7 +15,7 @@ spec:
           serviceAccountName: backup-sa
           containers:
             - name: enable-argocd-auto-sync
-              image: argoproj/argocd:latest
+              image: argoproj/argocd:latest@sha256:cb9948c6f14a5130f84aa887603ca5183a1f62836d336eac1562f6b031d197d5
               command:
               - /bin/sh
               - -c

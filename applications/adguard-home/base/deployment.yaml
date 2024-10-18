@@ -18,7 +18,7 @@ spec:
 #        kubernetes.io/hostname: optiplex-3080
       containers:
         - name: adguard-home
-          image: adguard/adguardhome:latest
+          image: adguard/adguardhome:latest@sha256:d9c512051141e6a617d773f16cdf6782c178464c6e766acf9fe63482a171f95c
           imagePullPolicy: IfNotPresent
           command:
             - "sh"

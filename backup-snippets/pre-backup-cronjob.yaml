@@ -15,7 +15,7 @@ spec:
           serviceAccountName: backup-sa
           containers:
             - name: disable-argocd-auto-sync
-              image: argoproj/argocd:latest
+              image: argoproj/argocd:latest@sha256:cb9948c6f14a5130f84aa887603ca5183a1f62836d336eac1562f6b031d197d5
               command:
               - /bin/sh
               - -c
@@ -25,7 +25,7 @@ spec:
                 echo "ArgoCD sync disabled!"
 
             - name: scale-down-vaultwarden-replicas
-              image: bitnami/kubectl:latest
+              image: bitnami/kubectl:latest@sha256:b509ab6000477ebe788df3509a8c4177e91238ee3003f33edea0931be3794340
               command:
               - /bin/sh
               - -c
