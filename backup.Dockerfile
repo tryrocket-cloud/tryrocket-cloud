@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:edge@sha256:b93f4f6834d5c6849d859a4c07cc88f5a7d8ce5fb8d2e72940d8edd8be343c04
 
 # Add necessary repositories, update, and install packages
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \

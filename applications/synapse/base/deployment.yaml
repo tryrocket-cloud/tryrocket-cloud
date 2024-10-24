@@ -16,14 +16,14 @@ spec:
     spec:
       initContainers:
       - name: init-permissions
-        image: busybox
+        image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
         command: ["sh", "-c", "chmod -R 777 /data"]
         volumeMounts:
         - name: synapse-storage
           mountPath: /data
       containers:
         - name: synapse
-          image: matrixdotorg/synapse:latest
+          image: matrixdotorg/synapse:latest@sha256:5d6b27645b6c21819c914c1cfa53de24e7e2d6bafb1172a61de530fed16098a3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8008
