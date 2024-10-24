@@ -18,7 +18,7 @@ spec:
         fsGroup: 5050
       initContainers:
       - name: init-permissions
-        image: busybox
+        image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
         command: ['sh', '-c', 'chown -R 5050:5050 /var/lib/pgadmin']
         volumeMounts:
         - name: pgadmin-storage
@@ -27,7 +27,7 @@ spec:
           runAsUser: 0
       containers:
       - name: pgadmin4
-        image: dpage/pgadmin4:8.10
+        image: dpage/pgadmin4:8.10@sha256:ab92b145c617f3c48ff54ed2cd765210a12e7b4f0d0da7897d944b2a90203910
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 80

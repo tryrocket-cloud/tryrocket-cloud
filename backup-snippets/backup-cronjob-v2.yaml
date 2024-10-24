@@ -43,7 +43,7 @@ spec:
 #                  readOnly: true
 
             - name: pg_dump
-              image: postgres:16
+              image: postgres:16@sha256:91f464e7ba0ad91a106c94cff079fb4384139291b8c0502fd36989cf2c788bbb
               imagePullPolicy: IfNotPresent
               env:
                 - name: PGUSER
@@ -82,7 +82,7 @@ spec:
 
           containers:
             - name: restic
-              image: restic/restic
+              image: restic/restic@sha256:eb37dc377471af7726e2422e02747a06ae90c107138460d75b0c7345824d01fa
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:

@@ -236,7 +236,7 @@ spec:
       containers:
         - name: sidecar-injector
           
-          image: "hashicorp/vault-k8s:1.4.2"
+          image: "hashicorp/vault-k8s:1.4.2@sha256:690647d935f9bb17b4e9d1eb75d10b1b23cfd63d98ca1c456e88ae1429d6c656"
           imagePullPolicy: "IfNotPresent"
           securityContext:
             allowPrivilegeEscalation: false
@@ -378,7 +378,7 @@ spec:
       containers:
         - name: vault
           
-          image: hashicorp/vault:1.17.2
+          image: hashicorp/vault:1.17.2@sha256:aaaedf0b3b34560157cc7c06f50f794eb7baa071165f2eed4db94b44db901806
           imagePullPolicy: IfNotPresent
           command:
           - "/bin/sh"
@@ -576,7 +576,7 @@ spec:
   
   containers:
     - name: release-name-server-test
-      image: hashicorp/vault:1.17.2
+      image: hashicorp/vault:1.17.2@sha256:aaaedf0b3b34560157cc7c06f50f794eb7baa071165f2eed4db94b44db901806
       imagePullPolicy: IfNotPresent
       env:
         - name: VAULT_ADDR

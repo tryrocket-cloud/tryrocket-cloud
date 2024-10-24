@@ -9,7 +9,7 @@ spec:
 
         # Restore latest restic snapshot from ionos-cloud-objectstorage-eu-central-1-s3
         - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-restore-latest
-          image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+          image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:633886ddc1b21ad1848e26b08a20c1ce0aa77a8d46ebb68a87241d6de503defe
           imagePullPolicy: Always
           envFrom:
             - secretRef:

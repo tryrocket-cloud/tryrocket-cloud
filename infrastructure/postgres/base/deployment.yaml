@@ -16,13 +16,13 @@ spec:
         fsGroup: 5050
       initContainers:
       - name: init-postgres
-        image: busybox
+        image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
         command: ['sh', '-c', 'mkdir -p /var/lib/postgresql/data/pgdata']
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
       - name: init-permissions
-        image: busybox
+        image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
         command: ['sh', '-c', 'chown -R 70:70 /var/lib/postgresql/data']
         volumeMounts:
         - name: postgres-storage
@@ -31,7 +31,7 @@ spec:
           runAsUser: 0
       containers:
       - name: postgres
-        image: postgres:16.3-alpine
+        image: postgres:16.3-alpine@sha256:36ed71227ae36305d26382657c0b96cbaf298427b3f1eaeb10d77a6dea3eec41
         ports:
         - containerPort: 5432
         env:

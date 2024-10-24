@@ -8,4 +8,4 @@ namespace: unbound
 images:
   - name: mvance/unbound
     newName: mvance/unbound-rpi
-    newTag: latest
+    newTag: latest@sha256:4b95a1331a69a60720147ecfda15a06e14ba369f0f56728263ca7a86e3aa5c6d
