@@ -16,7 +16,7 @@ spec:
           
           initContainers:
             - name: pg-dump
-              image: postgres:16
+              image: postgres:16@sha256:91f464e7ba0ad91a106c94cff079fb4384139291b8c0502fd36989cf2c788bbb
               imagePullPolicy: IfNotPresent
               env:
                 - name: PGTZ
@@ -58,7 +58,7 @@ spec:
 
           containers:
             - name: ionos-cloud-objectstorage-eu-central-3-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -83,7 +83,7 @@ spec:
                   readOnly: true
 
             - name: ionos-cloud-objectstorage-eu-central-1-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -108,7 +108,7 @@ spec:
                   readOnly: true
 
             - name: hetzner-storagebox-bx11-fsn1-sftp-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -146,7 +146,7 @@ spec:
                   readOnly: true
 
             - name: tryrocketcloud-truenas-h610i-sftp-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:

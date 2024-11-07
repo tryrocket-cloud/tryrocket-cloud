@@ -16,7 +16,7 @@ spec:
 
           initContainers:
             - name: get-vaultwarden-version
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               env:
                 - name: VAULTWARDEN_SERVER
                   value: https://vaultwarden.tryrocket.cloud
@@ -54,7 +54,7 @@ spec:
                 mountPath: /shared
 
             - name: export-vaultwarden-vault
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               env:
                 - name: NODE_NO_WARNINGS
@@ -94,7 +94,7 @@ spec:
 
           containers:
             - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -119,7 +119,7 @@ spec:
                   readOnly: true
 
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -143,7 +143,7 @@ spec:
                   readOnly: true
 
             - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:

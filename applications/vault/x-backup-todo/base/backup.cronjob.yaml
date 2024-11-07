@@ -16,7 +16,7 @@ spec:
 
           initContainers:
             - name: get-vault-version
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               env:
                 - name: VAULT_SERVER
                   value: https://vault.tryrocket.cloud
@@ -54,7 +54,7 @@ spec:
                 mountPath: /shared
 
             - name: scale-down
-              image: bitnami/kubectl:latest
+              image: bitnami/kubectl:latest@sha256:45e7c7a9d120f93e9b66b689c63896ff87bb5b4d73b1203a0636d09e1219c879
               command:
               - /bin/sh
               - -c
@@ -68,7 +68,7 @@ spec:
 
           containers:
             - name: ionos-com-objectstorage-eu-central-1-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -97,7 +97,7 @@ spec:
                   readOnly: true
 
             - name: ionos-com-objectstorage-eu-central-3-s3-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:
@@ -125,7 +125,7 @@ spec:
                   readOnly: true
 
             - name: hetzner-com-storagebox-bx11-fsn1-sftp-restic-backup
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               envFrom:
                 - secretRef:

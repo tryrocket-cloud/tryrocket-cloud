@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: semaphore
-          image: semaphoreui/semaphore:latest
+          image: semaphoreui/semaphore:latest@sha256:2b5d06248804c0091954808181f5518678620a3d0feb9de388224765f4d40459
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

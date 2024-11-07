@@ -10,7 +10,7 @@ namespace: semaphore
 # https://hub.docker.com/r/semaphoreui/semaphore
 images:
   - name: semaphoreui/semaphore:latest
-    newTag: v2.10.22
+    newTag: v2.10.22@sha256:2a2df841e4b6b33e82f87101e942ab6008207bd3b8e936bc9a48e2eea3671498
 
 configMapGenerator:
   - name: semaphore-postgres-config
