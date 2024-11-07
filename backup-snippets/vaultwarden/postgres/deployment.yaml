@@ -16,7 +16,7 @@ spec:
 
       containers:
         - name: postgres
-          image: postgres:16.3-alpine
+          image: postgres:16.3-alpine@sha256:36ed71227ae36305d26382657c0b96cbaf298427b3f1eaeb10d77a6dea3eec41
           ports:
             - containerPort: 5432
 

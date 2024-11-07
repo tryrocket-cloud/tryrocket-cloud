@@ -10,7 +10,7 @@ namespace: invidious
 # https://github.com/iv-org/invidious/releases
 images:
   - name: quay.io/invidious/invidious:latest
-    newTag: 2024.07.27-90e94d4
+    newTag: 2024.07.27-90e94d4@sha256:f5d5b4feb2bf8696d6afff1e8e696485b348d18937143a3ed9b4a6992ebd7846
 
 configMapGenerator:
   - name: invidious-postgres-config

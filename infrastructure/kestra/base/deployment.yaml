@@ -17,7 +17,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: kestra
-          image: kestra/kestra:latest-full
+          image: kestra/kestra:latest-full@sha256:2ab0e24e6ed588acdc0f6612334f46925dfcbffb1ef1ec3d0a2f83d1dc68d807
           ports:
             - containerPort: 8080
           env:

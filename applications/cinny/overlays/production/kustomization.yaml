@@ -8,4 +8,4 @@ namespace: cinny
 # https://github.com/cinnyapp/cinny/releases
 images:
   - name: ghcr.io/cinnyapp/cinny:latest
-    newTag: v4.1.0
+    newTag: v4.1.0@sha256:3b669f2fabf2d8341ba5289b7cd2ef8a9926caa59093263131419b609ea1291d

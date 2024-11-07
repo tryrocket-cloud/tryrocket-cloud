@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cinny
-          image: ghcr.io/cinnyapp/cinny:latest
+          image: ghcr.io/cinnyapp/cinny:latest@sha256:5d078d330399d2787f4bdbb8e27d4509ad2fa7da0978aedade23bd38fc7bda91
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

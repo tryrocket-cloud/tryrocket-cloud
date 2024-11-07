@@ -9,7 +9,7 @@ namespace: linkding
 # https://github.com/sissbruecker/linkding/releases
 images:
   - name: sissbruecker/linkding:latest
-    newTag: 1.31.0-alpine
+    newTag: 1.31.0-alpine@sha256:1fa14d3082148e8e6ac6c00e617bcb47c3a3f6cfc86e636a9c4a5a5c05dd493d
 
 configMapGenerator:
   - name: linkding-postgres-config

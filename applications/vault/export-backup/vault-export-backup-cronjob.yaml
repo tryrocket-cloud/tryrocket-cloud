@@ -18,7 +18,7 @@ spec:
           initContainers:
 
             - name: export-hashicorp-vault
-              image: ghcr.io/jonasvinther/medusa:latest
+              image: ghcr.io/jonasvinther/medusa:latest@sha256:41a1978e28877c241490a7608bbb26e9cb4327292dbc8429be36d1b8e19db02a
               imagePullPolicy: IfNotPresent
               command: ["./medusa", "export", "$(VAULT_PATH)", "-o", "/export/backup.vault"]
               env:
@@ -37,7 +37,7 @@ spec:
 
           containers:
             - name: test-export
-              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup
+              image: ghcr.io/tryrocket-cloud/tryrocket-cloud:backup@sha256:803b8ec6d401c52415ffabc6e3a27612f0f96345cbf2b8a85a448513e230aa73
               imagePullPolicy: Always
               command:
                 - /bin/sh

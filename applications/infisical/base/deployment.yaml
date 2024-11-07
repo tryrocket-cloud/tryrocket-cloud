@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: infisical
-        image: infisical/infisical:latest  # Replace with the latest image version
+        image: infisical/infisical:latest@sha256:a79a0ac9a4dc731ef34bfff229b1c4e7d954d449e822bf21c9b29b5436cace04  # Replace with the latest image version
         ports:
         - containerPort: 3000  # Adjust port based on Infisical's listening port
         env:

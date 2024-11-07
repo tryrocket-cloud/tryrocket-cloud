@@ -20,7 +20,7 @@ spec:
       hostNetwork: true
       containers:
         - name: magicpack
-          image: alexswki/magicpack
+          image: alexswki/magicpack@sha256:2f4290f52c60ed181cc5e257767b30348e993b69b0a2093bf995497730c29c66
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
