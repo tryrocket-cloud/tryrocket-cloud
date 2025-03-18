@@ -19,8 +19,8 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
         py3-pip && \
     rm -rf /var/cache/apk/*
 
-# Install AWS CLI via pip
-RUN pip3 install --upgrade awscli
+# Install AWS CLI via pip with the flag to override the externally-managed environment
+RUN pip3 install --upgrade --break-system-packages awscli
 
 # https://github.com/bitwarden/clients/issues/9646
 #RUN npm install -g @bitwarden/cli@2024.6.0
