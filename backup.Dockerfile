@@ -14,8 +14,13 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
         jq \
         nodejs \
         npm \
-        kubectl && \
+        kubectl \
+        python3 \
+        py3-pip && \
     rm -rf /var/cache/apk/*
+
+# Install AWS CLI via pip
+RUN pip3 install --upgrade awscli
 
 # https://github.com/bitwarden/clients/issues/9646
 #RUN npm install -g @bitwarden/cli@2024.6.0
@@ -37,6 +42,7 @@ RUN jq --version
 RUN borg --version
 RUN nvim --version
 RUN curl --version
+RUN aws --version
 
 # Command to run on container start
 #CMD ["fish"]
