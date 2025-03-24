@@ -58,7 +58,7 @@ jobs:
           file: ./caddy.Dockerfile
           platforms: linux/arm64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/caddy:latest
+          tags: ghcr.io/${{ github.repository }}:caddy
 
 #  build-and-push-caddy:
 #    runs-on: ubuntu-latest
