@@ -83,7 +83,7 @@ jobs:
           context: .
           file: ./bwcli.Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:bwcli:latest
+          tags: ghcr.io/${{ github.repository }}:bwcli
           platforms: linux/amd64,linux/arm64
           build-args: |
             BW_PLATFORM=linux
