@@ -77,17 +77,34 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push multi-arch image
+      - name: Build and push bwcli for amd64
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./bwcli.Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:bwcli
-          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/${{ github.repository }}:bwcli-amd64
+          platforms: linux/amd64
           build-args: |
             BW_PLATFORM=linux
 
+      - name: Build and push bwcli for arm64
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./bwcli.Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}:bwcli-arm64
+          platforms: linux/arm64
+          build-args: |
+            BW_PLATFORM=linux-arm64
+
+      - name: Create multi-arch manifest for bwcli
+        run: |
+          docker manifest create ghcr.io/${{ github.repository }}:bwcli \
+            --amend ghcr.io/${{ github.repository }}:bwcli-amd64 \
+            --amend ghcr.io/${{ github.repository }}:bwcli-arm64
+          docker manifest push ghcr.io/${{ github.repository }}:bwcli
 
 #  build-and-push-caddy:
 #    runs-on: ubuntu-latest
