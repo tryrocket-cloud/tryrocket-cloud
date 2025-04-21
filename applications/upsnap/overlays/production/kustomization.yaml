@@ -8,7 +8,7 @@ namespace: upsnap
 # https://github.com/seriousm4x/UpSnap/releases
 images:
   - name: ghcr.io/seriousm4x/upsnap:latest
-    newTag: 4.3.1
+    newTag: 4.3.3@sha256:5640aaef14f6c6ae9a33595e5498fdd017b9c5bc2aa5be052602ede5ea6c8191
 
 configMapGenerator:
   - name: upsnap-config

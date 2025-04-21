@@ -11,4 +11,4 @@ resources:
 
 images:
 - name: ghcr.io/seriousm4x/upsnap:latest
-  newTag: 1.32.0
+  newTag: 4.3.3@sha256:5640aaef14f6c6ae9a33595e5498fdd017b9c5bc2aa5be052602ede5ea6c8191
