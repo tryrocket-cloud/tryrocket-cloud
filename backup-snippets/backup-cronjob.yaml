@@ -15,7 +15,7 @@ spec:
           serviceAccountName: backup-sa
           initContainers:
           - name: postgres-backup
-            image: postgres:16
+            image: postgres:16@sha256:91f464e7ba0ad91a106c94cff079fb4384139291b8c0502fd36989cf2c788bbb
             imagePullPolicy: IfNotPresent
             env:
             - name: TZ
@@ -40,7 +40,7 @@ spec:
               mountPath: /data
           containers:
           - name: restic-backup
-            image: restic/restic
+            image: restic/restic@sha256:5106a15eeb2f0774ae43442885f34c6da7b8343ef88f5c26a956d7cbf0493a11
             imagePullPolicy: IfNotPresent
             env:
             - name: TZ

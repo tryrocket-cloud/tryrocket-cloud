@@ -8,7 +8,7 @@ resources:
 
 images:
   - name: ghcr.io/tchapi/davis-standalone:edge
-    newTag: edge
+    newTag: edge@sha256:ac5bb17675027cc2d2442f35fcac614835cf9f7bf9b7a981f12e9731e09be5c8
 
 configMapGenerator:
   - name: davis-config

@@ -16,7 +16,7 @@ namespace: davis
 # https://github.com/tchapi/davis/pkgs/container/davis-standalone
 images:
   - name: ghcr.io/tchapi/davis-standalone:edge
-    newTag: 4.4.4
+    newTag: 4.4.4@sha256:cfb36cc07688e78d9e0486fe3730ede0b5087ec173866ddf144ada64104b9a34
 
 #https://github.com/tchapi/davis/blob/main/docker/.env
 configMapGenerator:

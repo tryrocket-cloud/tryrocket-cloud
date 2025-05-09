@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: davis
-          image: ghcr.io/tchapi/davis-standalone:edge
+          image: ghcr.io/tchapi/davis-standalone:edge@sha256:ac5bb17675027cc2d2442f35fcac614835cf9f7bf9b7a981f12e9731e09be5c8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000

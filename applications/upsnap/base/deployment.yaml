@@ -18,7 +18,7 @@ spec:
       hostNetwork: true
       containers:
         - name: upsnap
-          image: ghcr.io/seriousm4x/upsnap:latest
+          image: ghcr.io/seriousm4x/upsnap:latest@sha256:5640aaef14f6c6ae9a33595e5498fdd017b9c5bc2aa5be052602ede5ea6c8191
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8090
